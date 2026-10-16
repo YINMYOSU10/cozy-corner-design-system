@@ -4,7 +4,10 @@ const px = (t) => parseFloat(t.value);
 const rows = (list, visual) =>
   `<div class="rows">${list.map((t) => `<div class="row"><div class="meta">${tokenMeta(t)}</div><div>${visual(t)}</div></div>`).join('')}</div>`;
 
-export default { title: 'Foundations' };
+export default {
+  title: 'Foundations',
+  parameters: { docs: { description: { component: 'Spacing, border and elevation tokens.' } } },
+};
 
 export const Spacing = {
   render: () => {

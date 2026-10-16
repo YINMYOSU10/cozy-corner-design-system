@@ -1,8 +1,9 @@
-import { tokens, dashboardTokens, CATEGORIES, categoryOf, page, section, tokenMeta, tidy, esc } from './tokens.js';
+import { tokens, dashboardTokens, CATEGORIES, categoryOf, page, section, tidy, esc, isColor } from './tokens.js';
 
-export default { title: 'Overview' };
-
-const isColor = (v) => /^(#|rgba?\()/.test(v);
+export default {
+  title: 'Overview',
+  parameters: { docs: { description: { component: 'Every Cozy Corner design token, generated from the Figma export.' } } },
+};
 
 export const Introduction = {
   render: () => {

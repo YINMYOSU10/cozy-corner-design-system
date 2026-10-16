@@ -1,6 +1,9 @@
 import { tokens, withPrefix, page, section, tokenMeta, label, esc, weight, tidy } from './tokens.js';
 
-export default { title: 'Typography' };
+export default {
+  title: 'Typography',
+  parameters: { docs: { description: { component: 'Text styles from Figma, how they change per platform, and the raw font values they are built from.' } } },
+};
 
 const SAMPLE = 'The cosy corner keeps the kettle warm';
 const SHORTHAND = 'cozy-corner-typography-';

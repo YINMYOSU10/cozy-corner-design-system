@@ -1,6 +1,10 @@
-import { tokens, withPrefix, groupAfter, SEMANTIC_COLOR, page, section, tokenMeta, label, esc } from './tokens.js';
+import { withPrefix, groupAfter, page, section, tokenMeta, label, esc, tidy, semanticGroups, aliasOf, isColor } from './tokens.js';
 
-export default { title: 'Color' };
+export default {
+  title: 'Color/Semantic',
+  parameters: { docs: { description: { component: 'Colours named by job (background, text, border…) rather than by hue. Each one points at a core palette colour. Use these in product code.' } } },
+};
+
 
 const darkish = (name) => /inverse|ondark/.test(name);
 
@@ -13,19 +17,28 @@ const subgroups = (group, preview) =>
     .map(([sub, list]) => `<h3>${esc(label(sub))}</h3>${grid(list, preview)}`)
     .join('');
 
-export const CorePalettes = {
-  name: 'Core palettes',
+
+const GROUP_INTRO = {
+  bg: 'Surfaces and fills', text: 'Copy', icon: 'Icons', border: 'Strokes and dividers',
+  accent: 'Decorative hues', twotone: 'Background + foreground pairs', logo: 'Brand wordmark',
+};
+
+export const AllRoles = {
+  name: 'All roles',
   render: () => {
-    const core = tokens.filter((t) => t.name.startsWith('color-') && !SEMANTIC_COLOR.includes(t.name.split('-')[1]));
-    const ramps = [...groupAfter('color-', core)].map(([hue, list]) => section(label(hue), `
-      <div class="ramp">${list.map((t) => `
-        <div class="chip">
-          <div class="sw" style="background:var(--${t.name})"></div>
-          <span class="step">${esc(t.name.split('-').slice(2).join('-'))}</span>
-          ${tokenMeta(t)}
-        </div>`).join('')}
-      </div>`, list.length));
-    return page('Core palettes', 'Raw colour ramps. Use the semantic tokens in product code; these are what they point to.', ramps.join(''));
+    const groups = semanticGroups();
+    const total = groups.reduce((n, [, l]) => n + l.length, 0);
+    return page(`Semantic colour — ${total} roles`,
+      'Every semantic colour with the core token it points at. Usage notes come from the token descriptions in Figma; add a description there and it appears here after the next export.',
+      groups.map(([g, list]) => section(`${label(g)} · ${GROUP_INTRO[g] || ''}`, `
+        <table class="tokens roles"><thead><tr><th>Token</th><th>Colour</th><th>Points to</th><th>Usage</th></tr></thead><tbody>
+        ${list.map((t) => `<tr>
+          <td><code class="var">--${esc(t.name)}</code></td>
+          <td><span class="swatch-cell">${isColor(t.value) ? `<span class="mini" style="background:var(--${t.name})"></span>` : ''}<span class="val">${esc(tidy(t.value))}</span></span></td>
+          <td>${aliasOf(t.name) ? `<span class="val">← ${esc(aliasOf(t.name))}</span>` : '<span class="val">—</span>'}</td>
+          <td>${t.note ? esc(t.note) : '<span class="val">—</span>'}</td>
+        </tr>`).join('')}
+        </tbody></table>`, list.length)).join(''));
   },
 };
 

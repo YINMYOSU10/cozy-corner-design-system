@@ -10,6 +10,19 @@ const parse = (src) =>
 export const tokens = parse(rootCss);
 export const dashboardTokens = parse(dashboardCss);
 
+// Aliases only live in the Figma source (the CSS has them resolved), so read
+// the export for "which core token does this point at". Read-only.
+const sources = import.meta.glob('../tokens/*.tokens.json', { eager: true, import: 'default' });
+const aliases = new Map();
+for (const file of Object.values(sources)) {
+  for (const [name, t] of Object.entries(file)) {
+    if (typeof t?.$value === 'string' && /^\{.+\}$/.test(t.$value)) aliases.set(name, t.$value);
+  }
+}
+export const aliasOf = (name) => aliases.get(name);
+
+export const isColor = (v) => /^(#|rgba?\()/.test(v);
+
 export const withPrefix = (prefix, list = tokens) =>
   list.filter((t) => t.name.startsWith(prefix));
 
@@ -36,7 +49,9 @@ export const CATEGORIES = [
   ['Border', (n) => /^border(radius|width)-/.test(n)],
   ['Elevation', (n) => n.startsWith('cozy-corner-elevation-') || n.startsWith('elevation-')],
 ];
-export const categoryOf = (name) => CATEGORIES.find(([, test]) => test(name))?.[0];
+export const semanticGroups = () =>
+  SEMANTIC_COLOR.map((g) => [g, withPrefix(`color-${g}-`)]).filter(([, l]) => l.length);
+export const categoryOf =(name) => CATEGORIES.find(([, test]) => test(name))?.[0];
 
 // Figma names weights; CSS needs numbers.
 export const WEIGHTS = { thin: 100, extralight: 200, light: 300, regular: 400, medium: 500,

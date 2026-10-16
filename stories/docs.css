@@ -75,3 +75,11 @@ table.tokens .mini { width: 28px; height: 28px; border-radius: var(--borderradiu
   .docs { padding: var(--spacing-xxl) var(--spacing-lg); }
   .row { grid-template-columns: 1fr; gap: var(--spacing-sm); }
 }
+
+/* Semantic roles table */
+table.roles td:first-child { width: 34%; }
+table.roles td:nth-child(2) { width: 18%; }
+table.roles td:nth-child(3) { width: 22%; }
+table.roles td:last-child { color: var(--color-text-secondary); font: var(--cozy-corner-typography-body-small); }
+.swatch-cell { display: inline-flex; align-items: center; gap: var(--spacing-sm); }
+.swatch-cell .mini { display: inline-block; width: 28px; height: 28px; flex: none; border-radius: var(--borderradius-xs); border: var(--borderwidth-1) solid rgba(0,0,0,.08); }
