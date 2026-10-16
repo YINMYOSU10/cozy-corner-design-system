@@ -49,14 +49,15 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const isDisabled = disabled || state === 'Disable';
-  const iconPx = size === '32' ? 16 : 24;
+  const iconOnly = iconStyle === 'Icon only';
+  // Figma: 16px at Size 32, 24px at 48 and 56, except Icon only at 56 which is 32px.
+  const iconPx = size === '32' ? 16 : iconOnly && size === '56' ? 32 : 24;
   const icon = (custom: ReactNode, slot: string) => (
     <span className="cc-button__icon" data-slot={slot}>
       {custom ?? <PlusIcon size={iconPx} />}
     </span>
   );
 
-  const iconOnly = iconStyle === 'Icon only';
   const showLeading = iconStyle === 'Both icons' || iconStyle === 'leading icon';
   const showTrailing = iconStyle === 'Both icons' || iconStyle === 'trailing icon';
 
