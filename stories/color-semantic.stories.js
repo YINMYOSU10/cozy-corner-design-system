@@ -1,4 +1,4 @@
-import { withPrefix, groupAfter, page, section, tokenMeta, label, esc, tidy, semanticGroups, aliasOf, isColor } from './tokens.js';
+import { withPrefix, groupAfter, page, section, tokenMeta, label, esc, tidy, semanticGroups, aliasOf, isColor, asReact } from './tokens.js';
 
 export default {
   title: 'Color/Semantic',
@@ -93,3 +93,5 @@ export const Logo = {
      <div class="card" style="max-width:420px"><div class="preview" style="height:96px;font:var(--cozy-corner-typography-logo);letter-spacing:var(--typography-logo-letterspacing)">
        <span style="color:var(--color-logo-orange)">cozy</span>&nbsp;<span style="color:var(--color-logo-brown)">corner</span></div></div>`),
 };
+
+asReact({ AllRoles, Background, Text, Icon, Border, Accent, TwoTone, Logo });

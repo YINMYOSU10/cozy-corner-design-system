@@ -1,4 +1,4 @@
-import { tokens, groupAfter, SEMANTIC_COLOR, page, section, tokenMeta, label, esc } from './tokens.js';
+import { tokens, groupAfter, SEMANTIC_COLOR, page, section, tokenMeta, label, esc, asReact } from './tokens.js';
 
 export default {
   title: 'Color/Core palette',
@@ -21,3 +21,4 @@ export const AllFamilies = {
   },
 };
 
+asReact({ AllFamilies });

@@ -1,8 +1,8 @@
-import '../build/css/tokens.css';
-import '../build/css/tokens-dashboard.css';
+import '../build/tokens/css/tokens.css';
+import '../build/tokens/css/tokens-dashboard.css';
 import '../stories/docs.css';
 
-/** @type { import('@storybook/html').Preview } */
+/** @type { import('@storybook/react-vite').Preview } */
 export default {
   // Adds a "Docs" page to every group in the sidebar.
   tags: ['autodocs'],
