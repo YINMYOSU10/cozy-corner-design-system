@@ -1,6 +1,6 @@
 /* Button / Primary — Figma 66:459. Every value is a token from
-   build/tokens/css/tokens.css. Height and fixed width are not bound to a
-   token in Figma, so they are left to content (see the build report). */
+   build/tokens/css/tokens.css. Labelled buttons hug their content
+   horizontally; height comes from the size-button tokens. */
 
 .cc-button {
   /* Type=Default, State=Default */
@@ -15,7 +15,8 @@
   align-items: center;
   justify-content: center;
   gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-md);
+  /* Figma strokes sit inside the frame, so the border eats into the padding */
+  padding: var(--spacing-sm) calc(var(--spacing-md) - var(--cc-button-border-width));
   margin: 0;
   box-sizing: border-box;
   overflow: clip;
@@ -50,7 +51,14 @@
 /* Shape */
 .cc-button[data-shape='Pill'] { border-radius: var(--borderradius-circle); }
 
-/* Size: 48 and 56 use Label large; 32 uses Body small (above) */
+/* Size: height from size-button-*; Icon only is square */
+.cc-button[data-size='32'] { --cc-button-size: var(--size-button-sm); }
+.cc-button[data-size='48'] { --cc-button-size: var(--size-button-md); }
+.cc-button[data-size='56'] { --cc-button-size: var(--size-button-lg); }
+.cc-button { height: var(--cc-button-size); }
+.cc-button[data-icon-style='Icon only'] { width: var(--cc-button-size); }
+
+/* Type: 48 and 56 use Label large; 32 uses Body small (above) */
 .cc-button[data-size='48'],
 .cc-button[data-size='56'] {
   font: var(--cozy-corner-typography-label-large);
