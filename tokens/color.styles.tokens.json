@@ -1,0 +1,131 @@
+{
+  "cozy-corner-overlay-linear": {
+    "$type": "gradient",
+    "$value": [
+      {
+        "color": "{color-bg-overlay}",
+        "position": 0
+      },
+      {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.16862745583057404,
+            0.12941177189350128,
+            0.10588235408067703
+          ],
+          "alpha": 0
+        },
+        "position": 1
+      }
+    ],
+    "$description": "Linear overlay: bg/overlay (neutral-1000 @30%) fading to transparent. For loading shimmers.",
+    "$extensions": {
+      "figma": {
+        "gradientType": "linear",
+        "gradientTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "cozy-corner-overlay-shimmer": {
+    "$type": "gradient",
+    "$value": [
+      {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.16862745583057404,
+            0.12941177189350128,
+            0.10588235408067703
+          ],
+          "alpha": 0
+        },
+        "position": 0
+      },
+      {
+        "color": "{color-bg-overlay}",
+        "position": 0.5
+      },
+      {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.16862745583057404,
+            0.12941177189350128,
+            0.10588235408067703
+          ],
+          "alpha": 0
+        },
+        "position": 1
+      }
+    ],
+    "$description": "Loading shimmer band: transparent → bg/overlay → transparent, left to right. Animate its position across a placeholder.",
+    "$extensions": {
+      "figma": {
+        "gradientType": "linear",
+        "gradientTransform": [
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ]
+        ]
+      }
+    }
+  },
+  "cozy-corner-overlay-scrimbottom": {
+    "$type": "gradient",
+    "$value": [
+      {
+        "color": {
+          "colorSpace": "srgb",
+          "components": [
+            0.16862745583057404,
+            0.12941177189350128,
+            0.10588235408067703
+          ],
+          "alpha": 0
+        },
+        "position": 0
+      },
+      {
+        "color": "{color-bg-overlay}",
+        "position": 1
+      }
+    ],
+    "$description": "Text-on-image scrim: transparent at top → bg/overlay at bottom.",
+    "$extensions": {
+      "figma": {
+        "gradientType": "linear",
+        "gradientTransform": [
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            -1,
+            0,
+            1
+          ]
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "name": "Design Tokens",
+  "collections": {
+    "cozy.corner.core": {
+      "modes": {
+        "value": [
+          "cozy.corner.core.value.tokens.json"
+        ]
+      }
+    },
+    "cozy.corner.semantic": {
+      "modes": {
+        "light": [
+          "cozy.corner.semantic.light.tokens.json"
+        ]
+      }
+    },
+    "cozy.corner.semantic.typography": {
+      "modes": {
+        "website": [
+          "cozy.corner.semantic.typography.website.tokens.json"
+        ],
+        "mobile": [
+          "cozy.corner.semantic.typography.mobile.tokens.json"
+        ],
+        "dashboard": [
+          "cozy.corner.semantic.typography.dashboard.tokens.json"
+        ]
+      }
+    }
+  },
+  "styles": {
+    "typography": [
+      "typography.styles.tokens.json"
+    ],
+    "effects": [
+      "effects.styles.tokens.json"
+    ],
+    "color": [
+      "color.styles.tokens.json"
+    ]
+  }
+}

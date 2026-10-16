@@ -1,0 +1,635 @@
+{
+  "cozy-corner-typography-display": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-display-fontfamily}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{typography-display-fontsize}",
+      "lineHeight": "{typography-display-lineheight}",
+      "letterSpacing": "{typography-display-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-h1": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-h1-fontfamily}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{typography-h1-fontsize}",
+      "lineHeight": "{typography-h1-lineheight}",
+      "letterSpacing": "{typography-h1-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-h2": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-h2-fontfamily}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{typography-h2-fontsize}",
+      "lineHeight": "{typography-h2-lineheight}",
+      "letterSpacing": "{typography-h2-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-bodysemibold-fontfamily}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{typography-bodysemibold-fontsize}",
+      "lineHeight": "{typography-bodysemibold-lineheight}",
+      "letterSpacing": "{typography-bodysemibold-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-body-fontfamily}",
+      "fontWeight": "Regular",
+      "fontSize": "{typography-body-fontsize}",
+      "lineHeight": "{typography-body-lineheight}",
+      "letterSpacing": "{typography-body-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body-small-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-bodysmallsemibold-fontfamily}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{typography-bodysmallsemibold-fontsize}",
+      "lineHeight": "{typography-bodysmallsemibold-lineheight}",
+      "letterSpacing": "{typography-bodysmallsemibold-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-bodysmall-fontfamily}",
+      "fontWeight": "Regular",
+      "fontSize": "{typography-bodysmall-fontsize}",
+      "lineHeight": "{typography-bodysmall-lineheight}",
+      "letterSpacing": "{typography-bodysmall-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-label-large": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-labellarge-fontfamily}",
+      "fontWeight": "Medium",
+      "fontSize": "{typography-labellarge-fontsize}",
+      "lineHeight": "{typography-labellarge-lineheight}",
+      "letterSpacing": "{typography-labellarge-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-label": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-label-fontfamily}",
+      "fontWeight": "Medium",
+      "fontSize": "{typography-label-fontsize}",
+      "lineHeight": "{typography-label-lineheight}",
+      "letterSpacing": "{typography-label-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-label-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-labelsmall-fontfamily}",
+      "fontWeight": "Medium",
+      "fontSize": "{typography-labelsmall-fontsize}",
+      "lineHeight": "{typography-labelsmall-lineheight}",
+      "letterSpacing": "{typography-labelsmall-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-link": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-link-fontfamily}",
+      "fontWeight": "Medium",
+      "fontSize": "{typography-link-fontsize}",
+      "lineHeight": "{typography-link-lineheight}",
+      "letterSpacing": "{typography-link-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-link-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-linksmall-fontfamily}",
+      "fontWeight": "Medium",
+      "fontSize": "{typography-linksmall-fontsize}",
+      "lineHeight": "{typography-linksmall-lineheight}",
+      "letterSpacing": "{typography-linksmall-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body-large": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-bodylarge-fontfamily}",
+      "fontWeight": "Regular",
+      "fontSize": "{typography-bodylarge-fontsize}",
+      "lineHeight": "{typography-bodylarge-lineheight}",
+      "letterSpacing": "{typography-bodylarge-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body-large-medium": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-bodylargemedium-fontfamily}",
+      "fontWeight": "Medium",
+      "fontSize": "{typography-bodylargemedium-fontsize}",
+      "lineHeight": "{typography-bodylargemedium-lineheight}",
+      "letterSpacing": "{typography-bodylargemedium-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-body-large-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{typography-bodylargesemibold-fontfamily}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{typography-bodylargesemibold-fontsize}",
+      "lineHeight": "{typography-bodylargesemibold-lineheight}",
+      "letterSpacing": "{typography-bodylargesemibold-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-logo": {
+    "$type": "typography",
+    "$description": "Brand wordmark. Size follows the platform mode: Website 32, Mobile 24, Dashboard 20.",
+    "$value": {
+      "fontFamily": "{typography-logo-fontfamily}",
+      "fontWeight": "Bold",
+      "fontSize": "{typography-logo-fontsize}",
+      "lineHeight": "{typography-logo-lineheight}",
+      "letterSpacing": "{typography-logo-letterspacing}"
+    }
+  },
+  "cozy-corner-typography-website-display": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-fraunces}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-48}",
+      "lineHeight": "{lineheight-56}",
+      "letterSpacing": {
+        "value": -0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-h1": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-fraunces}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-32}",
+      "lineHeight": "{lineheight-40}",
+      "letterSpacing": {
+        "value": -0.1599999964237213,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-h2": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-fraunces}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-24}",
+      "lineHeight": "{lineheight-32}",
+      "letterSpacing": {
+        "value": -0.07999999821186066,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-body-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-body": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-body-small-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-body-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-label-large": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-label": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-label-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-12}",
+      "lineHeight": "{lineheight-18}",
+      "letterSpacing": {
+        "value": 0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-link": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-link-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-12}",
+      "lineHeight": "{lineheight-18}",
+      "letterSpacing": {
+        "value": 0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-website-logo": {
+    "$type": "typography",
+    "$description": "Brand wordmark for the Website Logo. Fredoka Bold 32/40.",
+    "$value": {
+      "fontFamily": "{fontfamily-fredoka}",
+      "fontWeight": "Bold",
+      "fontSize": "{fontsize-32}",
+      "lineHeight": "{lineheight-40}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-display": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-fraunces}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-32}",
+      "lineHeight": "{lineheight-38}",
+      "letterSpacing": {
+        "value": -0.1599999964237213,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-h1": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-fraunces}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-24}",
+      "lineHeight": "{lineheight-30}",
+      "letterSpacing": {
+        "value": -0.07999999821186066,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-h2": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-fraunces}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-20}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-body": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-body-small": {
+    "$type": "typography",
+    "$description": "Placeholder: Body small is only defined for Website in the foundations file.",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-label-large": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-label": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-label-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-12}",
+      "lineHeight": "{lineheight-16}",
+      "letterSpacing": {
+        "value": 0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-link": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-link-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-12}",
+      "lineHeight": "{lineheight-16}",
+      "letterSpacing": {
+        "value": 0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-body-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-26}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-mobile-body-small-semibold": {
+    "$type": "typography",
+    "$description": "Placeholder: Body small is only defined for Website in the foundations file.",
+    "$value": {
+      "fontFamily": "{fontfamily-karla}",
+      "fontWeight": "SemiBold",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-display": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Semi Bold",
+      "fontSize": "{fontsize-28}",
+      "lineHeight": "{lineheight-34}",
+      "letterSpacing": {
+        "value": -0.1599999964237213,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-h1": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Semi Bold",
+      "fontSize": "{fontsize-24}",
+      "lineHeight": "{lineheight-30}",
+      "letterSpacing": {
+        "value": -0.07999999821186066,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-h2": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Semi Bold",
+      "fontSize": "{fontsize-18}",
+      "lineHeight": "{lineheight-24}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body-large-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Semi Bold",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body-large-medium": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Medium",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body-large": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-16}",
+      "lineHeight": "{lineheight-22}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Semi Bold",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-20}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-14}",
+      "lineHeight": "{lineheight-20}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body-small-semibold": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Semi Bold",
+      "fontSize": "{fontsize-12}",
+      "lineHeight": "{lineheight-16}",
+      "letterSpacing": {
+        "value": 0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-body-small": {
+    "$type": "typography",
+    "$value": {
+      "fontFamily": "{fontfamily-inter}",
+      "fontWeight": "Regular",
+      "fontSize": "{fontsize-12}",
+      "lineHeight": "{lineheight-16}",
+      "letterSpacing": {
+        "value": 0.3199999928474426,
+        "unit": "px"
+      }
+    }
+  },
+  "cozy-corner-typography-dashboard-logo": {
+    "$type": "typography",
+    "$description": "Brand wordmark for the Dashboard Logo. Fredoka Bold 20/24.",
+    "$value": {
+      "fontFamily": "{fontfamily-fredoka}",
+      "fontWeight": "Bold",
+      "fontSize": "{fontsize-20}",
+      "lineHeight": "{lineheight-24}",
+      "letterSpacing": {
+        "value": 0,
+        "unit": "px"
+      }
+    }
+  }
+}

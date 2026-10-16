@@ -1,0 +1,102 @@
+{
+  "cozy-corner-elevation-level-1": {
+    "$type": "shadow",
+    "$description": "key + ambient layers bound to horizon-core/elevation/level-1",
+    "$value": [
+      {
+        "color": "{elevation-level1-shadow1-color}",
+        "offsetX": "{elevation-level1-shadow1-offsetx}",
+        "offsetY": "{elevation-level1-shadow1-offsety}",
+        "blur": "{elevation-level1-shadow1-blur}",
+        "spread": "{elevation-level1-shadow1-spread}"
+      },
+      {
+        "color": "{elevation-level1-shadow2-color}",
+        "offsetX": "{elevation-level1-shadow2-offsetx}",
+        "offsetY": "{elevation-level1-shadow2-offsety}",
+        "blur": "{elevation-level1-shadow2-blur}",
+        "spread": "{elevation-level1-shadow2-spread}"
+      }
+    ]
+  },
+  "cozy-corner-elevation-level-2": {
+    "$type": "shadow",
+    "$description": "key + ambient layers bound to horizon-core/elevation/level-2",
+    "$value": [
+      {
+        "color": "{elevation-level2-shadow1-color}",
+        "offsetX": "{elevation-level2-shadow1-offsetx}",
+        "offsetY": "{elevation-level2-shadow1-offsety}",
+        "blur": "{elevation-level2-shadow1-blur}",
+        "spread": "{elevation-level2-shadow1-spread}"
+      },
+      {
+        "color": "{elevation-level2-shadow2-color}",
+        "offsetX": "{elevation-level2-shadow2-offsetx}",
+        "offsetY": "{elevation-level2-shadow2-offsety}",
+        "blur": "{elevation-level2-shadow2-blur}",
+        "spread": "{elevation-level2-shadow2-spread}"
+      }
+    ]
+  },
+  "cozy-corner-elevation-level-3": {
+    "$type": "shadow",
+    "$description": "key + ambient layers bound to horizon-core/elevation/level-3",
+    "$value": [
+      {
+        "color": "{elevation-level3-shadow1-color}",
+        "offsetX": "{elevation-level3-shadow1-offsetx}",
+        "offsetY": "{elevation-level3-shadow1-offsety}",
+        "blur": "{elevation-level3-shadow1-blur}",
+        "spread": "{elevation-level3-shadow1-spread}"
+      },
+      {
+        "color": "{elevation-level3-shadow2-color}",
+        "offsetX": "{elevation-level3-shadow2-offsetx}",
+        "offsetY": "{elevation-level3-shadow2-offsety}",
+        "blur": "{elevation-level3-shadow2-blur}",
+        "spread": "{elevation-level3-shadow2-spread}"
+      }
+    ]
+  },
+  "cozy-corner-elevation-level-4": {
+    "$type": "shadow",
+    "$description": "key + ambient layers bound to horizon-core/elevation/level-3",
+    "$value": [
+      {
+        "color": "{elevation-level4-shadow1-color}",
+        "offsetX": "{elevation-level4-shadow1-offsetx}",
+        "offsetY": "{elevation-level4-shadow1-offsety}",
+        "blur": "{elevation-level4-shadow1-blur}",
+        "spread": "{elevation-level4-shadow1-spread}"
+      },
+      {
+        "color": "{elevation-level4-shadow2-color}",
+        "offsetX": "{elevation-level4-shadow2-offsetx}",
+        "offsetY": "{elevation-level4-shadow2-offsety}",
+        "blur": "{elevation-level4-shadow2-blur}",
+        "spread": "{elevation-level4-shadow2-spread}"
+      }
+    ]
+  },
+  "cozy-corner-elevation-level-5": {
+    "$type": "shadow",
+    "$description": "key + ambient layers bound to horizon-core/elevation/level-3",
+    "$value": [
+      {
+        "color": "{elevation-level5-shadow1-color}",
+        "offsetX": "{elevation-level5-shadow1-offsetx}",
+        "offsetY": "{elevation-level5-shadow1-offsety}",
+        "blur": "{elevation-level5-shadow1-blur}",
+        "spread": "{elevation-level5-shadow1-spread}"
+      },
+      {
+        "color": "{elevation-level5-shadow2-color}",
+        "offsetX": "{elevation-level5-shadow2-offsetx}",
+        "offsetY": "{elevation-level5-shadow2-offsety}",
+        "blur": "{elevation-level5-shadow2-blur}",
+        "spread": "{elevation-level5-shadow2-spread}"
+      }
+    ]
+  }
+}

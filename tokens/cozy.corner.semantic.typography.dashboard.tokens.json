@@ -1,0 +1,398 @@
+{
+  "typography-display-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-display-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-28}"
+  },
+  "typography-display-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-34}"
+  },
+  "typography-display-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": -0.1599999964237213,
+      "unit": "px"
+    }
+  },
+  "typography-h1-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-h1-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-24}"
+  },
+  "typography-h1-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-30}"
+  },
+  "typography-h1-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": -0.07999999821186066,
+      "unit": "px"
+    }
+  },
+  "typography-h2-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-h2-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-18}"
+  },
+  "typography-h2-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-24}"
+  },
+  "typography-h2-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "typography-bodysemibold-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{typography-body-fontfamily}",
+    "$description": "Same as body, weight SemiBold."
+  },
+  "typography-bodysemibold-fontsize": {
+    "$type": "dimension",
+    "$value": "{typography-body-fontsize}",
+    "$description": "Same as body, weight SemiBold."
+  },
+  "typography-bodysemibold-lineheight": {
+    "$type": "dimension",
+    "$value": "{typography-body-lineheight}",
+    "$description": "Same as body, weight SemiBold."
+  },
+  "typography-bodysemibold-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-semibold}",
+    "$description": "Same as body, weight SemiBold."
+  },
+  "typography-bodysemibold-letterspacing": {
+    "$type": "dimension",
+    "$value": "{typography-body-letterspacing}",
+    "$description": "Same as body, weight SemiBold."
+  },
+  "typography-body-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-body-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-14}"
+  },
+  "typography-body-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-20}"
+  },
+  "typography-body-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "typography-bodysmallsemibold-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{typography-bodysmall-fontfamily}",
+    "$description": "Same as bodySmall, weight SemiBold."
+  },
+  "typography-bodysmallsemibold-fontsize": {
+    "$type": "dimension",
+    "$value": "{typography-bodysmall-fontsize}",
+    "$description": "Same as bodySmall, weight SemiBold."
+  },
+  "typography-bodysmallsemibold-lineheight": {
+    "$type": "dimension",
+    "$value": "{typography-bodysmall-lineheight}",
+    "$description": "Same as bodySmall, weight SemiBold."
+  },
+  "typography-bodysmallsemibold-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-semibold}",
+    "$description": "Same as bodySmall, weight SemiBold."
+  },
+  "typography-bodysmallsemibold-letterspacing": {
+    "$type": "dimension",
+    "$value": "{typography-bodysmall-letterspacing}",
+    "$description": "Same as bodySmall, weight SemiBold."
+  },
+  "typography-bodysmall-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}",
+    "$description": "Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm."
+  },
+  "typography-bodysmall-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-12}",
+    "$description": "Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm."
+  },
+  "typography-bodysmall-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-16}",
+    "$description": "Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm."
+  },
+  "typography-bodysmall-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0.3199999928474426,
+      "unit": "px"
+    },
+    "$description": "Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm."
+  },
+  "typography-label-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-label-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-14}"
+  },
+  "typography-label-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-22}"
+  },
+  "typography-label-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "typography-labelsmall-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-labelsmall-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-12}"
+  },
+  "typography-labelsmall-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-16}"
+  },
+  "typography-labelsmall-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0.47999998927116394,
+      "unit": "px"
+    }
+  },
+  "typography-display-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-semibold}"
+  },
+  "typography-h1-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-semibold}"
+  },
+  "typography-h2-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-semibold}"
+  },
+  "typography-body-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-regular}"
+  },
+  "typography-bodysmall-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-regular}",
+    "$description": "Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm."
+  },
+  "typography-label-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-medium}"
+  },
+  "typography-labelsmall-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-medium}"
+  },
+  "typography-labellarge-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}"
+  },
+  "typography-labellarge-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-16}"
+  },
+  "typography-labellarge-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-26}"
+  },
+  "typography-labellarge-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-medium}"
+  },
+  "typography-labellarge-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "typography-link-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{typography-label-fontfamily}",
+    "$description": "Same as label; text styles add underline."
+  },
+  "typography-link-fontsize": {
+    "$type": "dimension",
+    "$value": "{typography-label-fontsize}",
+    "$description": "Same as label; text styles add underline."
+  },
+  "typography-link-lineheight": {
+    "$type": "dimension",
+    "$value": "{typography-label-lineheight}",
+    "$description": "Same as label; text styles add underline."
+  },
+  "typography-link-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{typography-label-fontweight}",
+    "$description": "Same as label; text styles add underline."
+  },
+  "typography-link-letterspacing": {
+    "$type": "dimension",
+    "$value": "{typography-label-letterspacing}",
+    "$description": "Same as label; text styles add underline."
+  },
+  "typography-linksmall-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{typography-labelsmall-fontfamily}",
+    "$description": "Same as labelSmall; text styles add underline."
+  },
+  "typography-linksmall-fontsize": {
+    "$type": "dimension",
+    "$value": "{typography-labelsmall-fontsize}",
+    "$description": "Same as labelSmall; text styles add underline."
+  },
+  "typography-linksmall-lineheight": {
+    "$type": "dimension",
+    "$value": "{typography-labelsmall-lineheight}",
+    "$description": "Same as labelSmall; text styles add underline."
+  },
+  "typography-linksmall-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{typography-labelsmall-fontweight}",
+    "$description": "Same as labelSmall; text styles add underline."
+  },
+  "typography-linksmall-letterspacing": {
+    "$type": "dimension",
+    "$value": "{typography-labelsmall-letterspacing}",
+    "$description": "Same as labelSmall; text styles add underline."
+  },
+  "typography-bodylarge-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylarge-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-16}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylarge-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-22}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylarge-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-regular}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylarge-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    },
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargemedium-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargemedium-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-16}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargemedium-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-22}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargemedium-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-medium}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargemedium-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    },
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargesemibold-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-inter}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargesemibold-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-16}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargesemibold-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-22}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargesemibold-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-semibold}",
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-bodylargesemibold-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    },
+    "$description": "Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large."
+  },
+  "typography-logo-fontfamily": {
+    "$type": "fontFamily",
+    "$value": "{fontfamily-fredoka}"
+  },
+  "typography-logo-fontsize": {
+    "$type": "dimension",
+    "$value": "{fontsize-20}"
+  },
+  "typography-logo-lineheight": {
+    "$type": "dimension",
+    "$value": "{lineheight-24}"
+  },
+  "typography-logo-fontweight": {
+    "$type": "fontWeight",
+    "$value": "{fontweight-bold}"
+  },
+  "typography-logo-letterspacing": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  }
+}

@@ -1,0 +1,1096 @@
+{
+  "color-bg-base": {
+    "$type": "color",
+    "$value": "{color-neutral-50}",
+    "$description": "Page background behind every screen."
+  },
+  "color-bg-surfaceprimary": {
+    "$type": "color",
+    "$value": "{color-neutral-0}"
+  },
+  "color-bg-surfacesecondary": {
+    "$type": "color",
+    "$value": "{color-neutral-100}"
+  },
+  "color-bg-inverse": {
+    "$type": "color",
+    "$value": "{color-neutral-1000}"
+  },
+  "color-bg-overlay": {
+    "$type": "color",
+    "$value": "{color-neutral-1000a}"
+  },
+  "color-bg-disabled": {
+    "$type": "color",
+    "$value": "{color-neutral-200}",
+    "$description": "Single disabled background for every interaction, including terracotta."
+  },
+  "color-text-primary": {
+    "$type": "color",
+    "$value": "{color-neutral-800}"
+  },
+  "color-icon-primary": {
+    "$type": "color",
+    "$value": "{color-neutral-800}"
+  },
+  "color-text-secondary": {
+    "$type": "color",
+    "$value": "{color-neutral-600}"
+  },
+  "color-icon-secondary": {
+    "$type": "color",
+    "$value": "{color-neutral-600}"
+  },
+  "color-text-bold": {
+    "$type": "color",
+    "$value": "{color-neutral-1000}"
+  },
+  "color-icon-bold": {
+    "$type": "color",
+    "$value": "{color-neutral-1000}"
+  },
+  "color-text-disabled": {
+    "$type": "color",
+    "$value": "{color-neutral-400}"
+  },
+  "color-icon-disabled": {
+    "$type": "color",
+    "$value": "{color-neutral-400}"
+  },
+  "color-text-inverse": {
+    "$type": "color",
+    "$value": "{color-neutral-0}"
+  },
+  "color-icon-inverse": {
+    "$type": "color",
+    "$value": "{color-neutral-0}"
+  },
+  "color-text-inversesecondary": {
+    "$type": "color",
+    "$value": "{color-neutral-200}"
+  },
+  "color-icon-inversesecondary": {
+    "$type": "color",
+    "$value": "{color-neutral-200}"
+  },
+  "color-text-disabledondark": {
+    "$type": "color",
+    "$value": "{color-neutral-300}"
+  },
+  "color-icon-disabledondark": {
+    "$type": "color",
+    "$value": "{color-neutral-300}"
+  },
+  "color-text-brand": {
+    "$type": "color",
+    "$value": "{color-terracotta-700}"
+  },
+  "color-icon-brand": {
+    "$type": "color",
+    "$value": "{color-terracotta-600}"
+  },
+  "color-text-negative": {
+    "$type": "color",
+    "$value": "{color-red-800}"
+  },
+  "color-icon-negative": {
+    "$type": "color",
+    "$value": "{color-red-700}"
+  },
+  "color-text-positive": {
+    "$type": "color",
+    "$value": "{color-green-800}"
+  },
+  "color-icon-positive": {
+    "$type": "color",
+    "$value": "{color-green-700}"
+  },
+  "color-text-warning": {
+    "$type": "color",
+    "$value": "{color-gold-800}"
+  },
+  "color-icon-warning": {
+    "$type": "color",
+    "$value": "{color-gold-700}"
+  },
+  "color-text-info": {
+    "$type": "color",
+    "$value": "{color-blue-800}"
+  },
+  "color-icon-info": {
+    "$type": "color",
+    "$value": "{color-blue-700}"
+  },
+  "color-text-update": {
+    "$type": "color",
+    "$value": "{color-plum-800}"
+  },
+  "color-icon-update": {
+    "$type": "color",
+    "$value": "{color-plum-700}"
+  },
+  "color-text-onselected": {
+    "$type": "color",
+    "$value": "{color-neutral-1000}"
+  },
+  "color-border-primary": {
+    "$type": "color",
+    "$value": "{color-neutral-500}",
+    "$description": "Changed from neutral-200 to neutral-500 at user request."
+  },
+  "color-border-secondary": {
+    "$type": "color",
+    "$value": "{color-neutral-300}"
+  },
+  "color-border-inverse": {
+    "$type": "color",
+    "$value": "{color-neutral-1000}"
+  },
+  "color-border-focus": {
+    "$type": "color",
+    "$value": "{color-terracotta-500}"
+  },
+  "color-bg-primary-light": {
+    "$type": "color",
+    "$value": "{color-terracotta-100}"
+  },
+  "color-bg-primary-lighthovered": {
+    "$type": "color",
+    "$value": "{color-terracotta-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-primary-lightfocused": {
+    "$type": "color",
+    "$value": "{color-terracotta-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-primary-idle": {
+    "$type": "color",
+    "$value": "{color-terracotta-500}"
+  },
+  "color-bg-primary-hovered": {
+    "$type": "color",
+    "$value": "{color-terracotta-600}"
+  },
+  "color-bg-primary-focused": {
+    "$type": "color",
+    "$value": "{color-terracotta-600}"
+  },
+  "color-bg-primary-pressed": {
+    "$type": "color",
+    "$value": "{color-terracotta-700}"
+  },
+  "color-bg-negative-light": {
+    "$type": "color",
+    "$value": "{color-red-100}"
+  },
+  "color-bg-negative-lighthovered": {
+    "$type": "color",
+    "$value": "{color-red-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-negative-lightfocused": {
+    "$type": "color",
+    "$value": "{color-red-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-negative-idle": {
+    "$type": "color",
+    "$value": "{color-red-600}"
+  },
+  "color-bg-negative-hovered": {
+    "$type": "color",
+    "$value": "{color-red-700}"
+  },
+  "color-bg-negative-focused": {
+    "$type": "color",
+    "$value": "{color-red-700}"
+  },
+  "color-bg-positive-light": {
+    "$type": "color",
+    "$value": "{color-green-100}"
+  },
+  "color-bg-positive-lighthovered": {
+    "$type": "color",
+    "$value": "{color-green-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-positive-lightfocused": {
+    "$type": "color",
+    "$value": "{color-green-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-positive-idle": {
+    "$type": "color",
+    "$value": "{color-green-600}"
+  },
+  "color-bg-positive-hovered": {
+    "$type": "color",
+    "$value": "{color-green-700}"
+  },
+  "color-bg-positive-focused": {
+    "$type": "color",
+    "$value": "{color-green-700}"
+  },
+  "color-bg-warning-light": {
+    "$type": "color",
+    "$value": "{color-gold-100}"
+  },
+  "color-bg-warning-lighthovered": {
+    "$type": "color",
+    "$value": "{color-gold-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-warning-lightfocused": {
+    "$type": "color",
+    "$value": "{color-gold-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-warning-idle": {
+    "$type": "color",
+    "$value": "{color-gold-500}"
+  },
+  "color-bg-warning-hovered": {
+    "$type": "color",
+    "$value": "{color-gold-600}"
+  },
+  "color-bg-warning-focused": {
+    "$type": "color",
+    "$value": "{color-gold-600}"
+  },
+  "color-bg-info-light": {
+    "$type": "color",
+    "$value": "{color-blue-100}"
+  },
+  "color-bg-info-lighthovered": {
+    "$type": "color",
+    "$value": "{color-blue-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-info-lightfocused": {
+    "$type": "color",
+    "$value": "{color-blue-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-info-idle": {
+    "$type": "color",
+    "$value": "{color-blue-600}"
+  },
+  "color-bg-info-hovered": {
+    "$type": "color",
+    "$value": "{color-blue-700}"
+  },
+  "color-bg-info-focused": {
+    "$type": "color",
+    "$value": "{color-blue-700}"
+  },
+  "color-bg-update-light": {
+    "$type": "color",
+    "$value": "{color-plum-100}"
+  },
+  "color-bg-update-lighthovered": {
+    "$type": "color",
+    "$value": "{color-plum-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-update-lightfocused": {
+    "$type": "color",
+    "$value": "{color-plum-300}",
+    "$description": "Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table."
+  },
+  "color-bg-update-idle": {
+    "$type": "color",
+    "$value": "{color-plum-600}"
+  },
+  "color-bg-update-hovered": {
+    "$type": "color",
+    "$value": "{color-plum-700}"
+  },
+  "color-bg-update-focused": {
+    "$type": "color",
+    "$value": "{color-plum-700}"
+  },
+  "color-bg-selected-default": {
+    "$type": "color",
+    "$value": "{color-gold-500}",
+    "$description": "Labelled \"light\" in the semantic table; renamed since light = 100 everywhere else."
+  },
+  "color-bg-selected-selectedhovered": {
+    "$type": "color",
+    "$value": "{color-gold-400}",
+    "$description": "Table label said gold-500 but hex was DEB04E (= gold-400). Using the hex value — confirm."
+  },
+  "color-bg-selected-unselected": {
+    "$type": "color",
+    "$value": "{color-neutral-50}"
+  },
+  "color-bg-selected-unselectedhovered": {
+    "$type": "color",
+    "$value": "{color-neutral-100}"
+  },
+  "color-bg-accent-terracotta": {
+    "$type": "color",
+    "$value": "{color-terracotta-100}"
+  },
+  "color-bg-accent-gold": {
+    "$type": "color",
+    "$value": "{color-gold-100}"
+  },
+  "color-bg-accent-blue": {
+    "$type": "color",
+    "$value": "{color-blue-100}"
+  },
+  "color-bg-accent-green": {
+    "$type": "color",
+    "$value": "{color-green-100}"
+  },
+  "color-bg-accent-red": {
+    "$type": "color",
+    "$value": "{color-red-100}"
+  },
+  "color-bg-accent-plum": {
+    "$type": "color",
+    "$value": "{color-plum-100}"
+  },
+  "color-bg-accent-sand": {
+    "$type": "color",
+    "$value": "{color-neutral-100}"
+  },
+  "color-border-brand-light": {
+    "$type": "color",
+    "$value": "{color-terracotta-300}"
+  },
+  "color-border-brand-default": {
+    "$type": "color",
+    "$value": "{color-terracotta-400}"
+  },
+  "color-border-brand-bold": {
+    "$type": "color",
+    "$value": "{color-terracotta-500}",
+    "$description": "Table said primary-100 with hex C1633D (= 500). Using 500."
+  },
+  "color-border-negative-light": {
+    "$type": "color",
+    "$value": "{color-red-300}"
+  },
+  "color-border-negative-default": {
+    "$type": "color",
+    "$value": "{color-red-400}"
+  },
+  "color-border-negative-bold": {
+    "$type": "color",
+    "$value": "{color-red-500}"
+  },
+  "color-border-positive-light": {
+    "$type": "color",
+    "$value": "{color-green-300}"
+  },
+  "color-border-positive-default": {
+    "$type": "color",
+    "$value": "{color-green-400}"
+  },
+  "color-border-positive-bold": {
+    "$type": "color",
+    "$value": "{color-green-500}"
+  },
+  "color-border-warning-light": {
+    "$type": "color",
+    "$value": "{color-gold-300}"
+  },
+  "color-border-warning-default": {
+    "$type": "color",
+    "$value": "{color-gold-400}"
+  },
+  "color-border-warning-bold": {
+    "$type": "color",
+    "$value": "{color-gold-500}"
+  },
+  "color-border-info-light": {
+    "$type": "color",
+    "$value": "{color-blue-300}"
+  },
+  "color-border-info-default": {
+    "$type": "color",
+    "$value": "{color-blue-400}"
+  },
+  "color-border-info-bold": {
+    "$type": "color",
+    "$value": "{color-blue-500}"
+  },
+  "color-border-update-light": {
+    "$type": "color",
+    "$value": "{color-plum-300}"
+  },
+  "color-border-update-default": {
+    "$type": "color",
+    "$value": "{color-plum-400}",
+    "$description": "Table said plum-500 with hex B77FAA (= plum-400). Using 400 per hex + Border Color page."
+  },
+  "color-border-update-bold": {
+    "$type": "color",
+    "$value": "{color-plum-500}",
+    "$description": "Table said plum-300 with hex 9E5C90 (= plum-500). Using 500."
+  },
+  "color-accent-terracotta-light": {
+    "$type": "color",
+    "$value": "{color-terracotta-100}"
+  },
+  "color-accent-terracotta-default": {
+    "$type": "color",
+    "$value": "{color-terracotta-500}"
+  },
+  "color-accent-terracotta-foreground": {
+    "$type": "color",
+    "$value": "{color-terracotta-800}"
+  },
+  "color-accent-red-light": {
+    "$type": "color",
+    "$value": "{color-red-100}"
+  },
+  "color-accent-red-default": {
+    "$type": "color",
+    "$value": "{color-red-600}"
+  },
+  "color-accent-red-foreground": {
+    "$type": "color",
+    "$value": "{color-red-800}"
+  },
+  "color-accent-green-light": {
+    "$type": "color",
+    "$value": "{color-green-100}"
+  },
+  "color-accent-green-default": {
+    "$type": "color",
+    "$value": "{color-green-600}"
+  },
+  "color-accent-green-foreground": {
+    "$type": "color",
+    "$value": "{color-green-800}"
+  },
+  "color-accent-gold-light": {
+    "$type": "color",
+    "$value": "{color-gold-100}"
+  },
+  "color-accent-gold-default": {
+    "$type": "color",
+    "$value": "{color-gold-500}"
+  },
+  "color-accent-gold-foreground": {
+    "$type": "color",
+    "$value": "{color-gold-800}"
+  },
+  "color-accent-blue-light": {
+    "$type": "color",
+    "$value": "{color-blue-100}"
+  },
+  "color-accent-blue-default": {
+    "$type": "color",
+    "$value": "{color-blue-600}"
+  },
+  "color-accent-blue-foreground": {
+    "$type": "color",
+    "$value": "{color-blue-800}"
+  },
+  "color-accent-plum-light": {
+    "$type": "color",
+    "$value": "{color-plum-100}"
+  },
+  "color-accent-plum-default": {
+    "$type": "color",
+    "$value": "{color-plum-600}"
+  },
+  "color-accent-plum-foreground": {
+    "$type": "color",
+    "$value": "{color-plum-800}"
+  },
+  "color-twotone-terracotta-bg": {
+    "$type": "color",
+    "$value": "{color-terracotta-100}"
+  },
+  "color-twotone-terracotta-foreground": {
+    "$type": "color",
+    "$value": "{color-terracotta-700}"
+  },
+  "color-twotone-red-bg": {
+    "$type": "color",
+    "$value": "{color-red-100}"
+  },
+  "color-twotone-red-foreground": {
+    "$type": "color",
+    "$value": "{color-red-700}"
+  },
+  "color-twotone-green-bg": {
+    "$type": "color",
+    "$value": "{color-green-100}"
+  },
+  "color-twotone-green-foreground": {
+    "$type": "color",
+    "$value": "{color-green-700}"
+  },
+  "color-twotone-gold-bg": {
+    "$type": "color",
+    "$value": "{color-gold-100}"
+  },
+  "color-twotone-gold-foreground": {
+    "$type": "color",
+    "$value": "{color-gold-700}"
+  },
+  "color-twotone-blue-bg": {
+    "$type": "color",
+    "$value": "{color-blue-100}"
+  },
+  "color-twotone-blue-foreground": {
+    "$type": "color",
+    "$value": "{color-blue-700}"
+  },
+  "color-twotone-plum-bg": {
+    "$type": "color",
+    "$value": "{color-plum-100}"
+  },
+  "color-twotone-plum-foreground": {
+    "$type": "color",
+    "$value": "{color-plum-700}",
+    "$description": "Page labelled plum-100 with hex 6E3563 (= plum-700). Using 700."
+  },
+  "elevation-level1-shadow1-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow1-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 1,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow1-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 3,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow1-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow1-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.07999999821186066
+    }
+  },
+  "elevation-level1-shadow2-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow2-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 1,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow2-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 2,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow2-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level1-shadow2-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.05999999865889549
+    }
+  },
+  "elevation-level2-shadow1-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow1-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow1-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 12,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow1-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow1-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.10000000149011612
+    }
+  },
+  "elevation-level2-shadow2-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow2-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 2,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow2-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow2-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level2-shadow2-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.05999999865889549
+    }
+  },
+  "elevation-level3-shadow1-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow1-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 12,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow1-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 24,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow1-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow1-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.11999999731779099
+    }
+  },
+  "elevation-level3-shadow2-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow2-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 4,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow2-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow2-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level3-shadow2-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.05999999865889549
+    }
+  },
+  "elevation-level4-shadow1-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow1-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 24,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow1-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 48,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow1-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow1-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.1599999964237213
+    }
+  },
+  "elevation-level4-shadow2-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow2-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 8,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow2-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 16,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow2-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level4-shadow2-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.07999999821186066
+    }
+  },
+  "elevation-level5-shadow1-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow1-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 32,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow1-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 64,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow1-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow1-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.20000000298023224
+    }
+  },
+  "elevation-level5-shadow2-offsetx": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow2-offsety": {
+    "$type": "dimension",
+    "$value": {
+      "value": 12,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow2-blur": {
+    "$type": "dimension",
+    "$value": {
+      "value": 24,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow2-spread": {
+    "$type": "dimension",
+    "$value": {
+      "value": 0,
+      "unit": "px"
+    }
+  },
+  "elevation-level5-shadow2-color": {
+    "$type": "color",
+    "$value": {
+      "colorSpace": "srgb",
+      "components": [
+        0.16862745583057404,
+        0.12941177189350128,
+        0.10588235408067703
+      ],
+      "alpha": 0.10000000149011612
+    }
+  },
+  "color-border-neutral-light": {
+    "$type": "color",
+    "$value": "{color-neutral-300}"
+  },
+  "color-border-neutral-default": {
+    "$type": "color",
+    "$value": "{color-neutral-400}"
+  },
+  "color-border-neutral-bold": {
+    "$type": "color",
+    "$value": "{color-neutral-500}"
+  },
+  "color-bg-neutral-light": {
+    "$type": "color",
+    "$value": "{color-neutral-100}"
+  },
+  "color-bg-neutral-lighthovered": {
+    "$type": "color",
+    "$value": "{color-neutral-300}"
+  },
+  "color-bg-neutral-lightfocused": {
+    "$type": "color",
+    "$value": "{color-neutral-300}"
+  },
+  "color-bg-neutral-idle": {
+    "$type": "color",
+    "$value": "{color-neutral-600}"
+  },
+  "color-bg-neutral-hovered": {
+    "$type": "color",
+    "$value": "{color-neutral-700}"
+  },
+  "color-bg-neutral-focused": {
+    "$type": "color",
+    "$value": "{color-neutral-700}"
+  },
+  "color-text-trend-up": {
+    "$type": "color",
+    "$value": "{color-green-500}",
+    "$description": "Dashboard trend text (e.g. \"+6 today\"). ~3.3:1 on white — below 4.5:1 AA for body text."
+  },
+  "color-text-trend-down": {
+    "$type": "color",
+    "$value": "{color-red-500}",
+    "$description": "Dashboard trend text (e.g. \"+6 today\"). ~4.3:1 on white — below 4.5:1 AA for body text."
+  },
+  "color-bg-gray-light": {
+    "$type": "color",
+    "$value": "{color-gray-100}"
+  },
+  "color-bg-gray-lighthovered": {
+    "$type": "color",
+    "$value": "{color-gray-300}"
+  },
+  "color-bg-gray-lightfocused": {
+    "$type": "color",
+    "$value": "{color-gray-300}"
+  },
+  "color-bg-gray-idle": {
+    "$type": "color",
+    "$value": "{color-gray-600}"
+  },
+  "color-bg-gray-hovered": {
+    "$type": "color",
+    "$value": "{color-gray-700}"
+  },
+  "color-bg-gray-focused": {
+    "$type": "color",
+    "$value": "{color-gray-700}"
+  },
+  "color-border-gray-light": {
+    "$type": "color",
+    "$value": "{color-gray-300}"
+  },
+  "color-border-gray-default": {
+    "$type": "color",
+    "$value": "{color-gray-400}"
+  },
+  "color-border-gray-bold": {
+    "$type": "color",
+    "$value": "{color-gray-500}"
+  },
+  "color-icon-gray": {
+    "$type": "color",
+    "$value": "{color-gray-700}"
+  },
+  "color-bg-accent-gray": {
+    "$type": "color",
+    "$value": "{color-gray-100}"
+  },
+  "color-accent-gray-light": {
+    "$type": "color",
+    "$value": "{color-gray-100}"
+  },
+  "color-accent-gray-default": {
+    "$type": "color",
+    "$value": "{color-gray-600}"
+  },
+  "color-accent-gray-foreground": {
+    "$type": "color",
+    "$value": "{color-gray-800}"
+  },
+  "color-twotone-gray-bg": {
+    "$type": "color",
+    "$value": "{color-gray-100}"
+  },
+  "color-twotone-gray-foreground": {
+    "$type": "color",
+    "$value": "{color-gray-700}"
+  },
+  "color-text-gray-light": {
+    "$type": "color",
+    "$value": "{color-gray-400}",
+    "$description": "Disabled text, placeholders, very low-emphasis hints. Not for readable content."
+  },
+  "color-text-gray-default": {
+    "$type": "color",
+    "$value": "{color-gray-600}",
+    "$description": "Secondary grey text: tag labels, captions, metadata."
+  },
+  "color-text-gray-bold": {
+    "$type": "color",
+    "$value": "{color-gray-800}",
+    "$description": "Primary grey text: headings and values on grey UI."
+  },
+  "color-logo-orange": {
+    "$type": "color",
+    "$value": "{color-logo-orange}"
+  },
+  "color-logo-pink": {
+    "$type": "color",
+    "$value": "{color-logo-pink}"
+  },
+  "color-logo-brown": {
+    "$type": "color",
+    "$value": "{color-logo-brown}"
+  },
+  "color-logo-ink": {
+    "$type": "color",
+    "$value": "{color-logo-ink}"
+  }
+}
