@@ -1,0 +1,118 @@
+/* Button / Primary — Figma 66:459. Every value is a token from
+   build/tokens/css/tokens.css. Height and fixed width are not bound to a
+   token in Figma, so they are left to content (see the build report). */
+
+.cc-button {
+  /* Type=Default, State=Default */
+  --cc-button-bg: var(--color-bg-primary-idle);
+  --cc-button-text: var(--color-text-inverse);
+  --cc-button-icon: var(--color-icon-inverse);
+  --cc-button-border: var(--color-bg-primary-idle);
+  --cc-button-border-width: var(--borderwidth-0);
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin: 0;
+  box-sizing: border-box;
+  overflow: clip;
+  appearance: none;
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: center;
+
+  background: var(--cc-button-bg);
+  color: var(--cc-button-text);
+  border: var(--cc-button-border-width) solid var(--cc-button-border);
+  border-radius: var(--borderradius-sm);
+  font: var(--cozy-corner-typography-body-small);
+  letter-spacing: var(--typography-bodysmall-letterspacing);
+}
+
+.cc-button__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+}
+
+.cc-button__icon {
+  display: flex;
+  flex-shrink: 0;
+  border-radius: var(--borderradius-xs);
+  color: var(--cc-button-icon);
+}
+
+/* Shape */
+.cc-button[data-shape='Pill'] { border-radius: var(--borderradius-circle); }
+
+/* Size: 48 and 56 use Label large; 32 uses Body small (above) */
+.cc-button[data-size='48'],
+.cc-button[data-size='56'] {
+  font: var(--cozy-corner-typography-label-large);
+  letter-spacing: var(--typography-labellarge-letterspacing);
+}
+
+/* ---- Type=Default states ---- */
+.cc-button[data-type='Default']:hover:not(:disabled),
+.cc-button[data-type='Default'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-primary-hovered);
+}
+.cc-button[data-type='Default']:active:not(:disabled),
+.cc-button[data-type='Default'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-primary-pressed);
+}
+.cc-button[data-type='Default']:focus-visible,
+.cc-button[data-type='Default'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-primary-focused);
+}
+
+/* ---- Type=Outline ---- */
+.cc-button[data-type='Outline'] {
+  --cc-button-bg: transparent;
+  --cc-button-text: var(--color-text-brand);
+  --cc-button-icon: var(--color-icon-brand);
+  --cc-button-border: var(--color-border-brand-default);
+  --cc-button-border-width: var(--borderwidth-1);
+}
+.cc-button[data-type='Outline']:hover:not(:disabled),
+.cc-button[data-type='Outline'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-primary-light);
+}
+.cc-button[data-type='Outline']:active:not(:disabled),
+.cc-button[data-type='Outline'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-primary-lighthovered);
+  --cc-button-border: var(--color-border-brand-bold);
+}
+.cc-button[data-type='Outline']:focus-visible,
+.cc-button[data-type='Outline'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-primary-light);
+}
+
+/* ---- Focus ring (both types): 2px page-colour gap, then 2px focus colour ---- */
+.cc-button:focus-visible,
+.cc-button[data-state='Focus'] {
+  outline: none;
+  box-shadow:
+    0 0 0 var(--borderwidth-2) var(--color-bg-base),
+    0 0 0 calc(var(--borderwidth-2) * 2) var(--color-border-focus);
+}
+
+/* ---- Disable (both types) ---- */
+.cc-button:disabled {
+  cursor: not-allowed;
+  --cc-button-text: var(--color-text-disabled);
+  --cc-button-icon: var(--color-icon-disabled);
+}
+.cc-button[data-type='Default']:disabled {
+  --cc-button-bg: var(--color-bg-disabled);
+  --cc-button-border: var(--color-bg-disabled);
+}
+.cc-button[data-type='Outline']:disabled {
+  --cc-button-bg: transparent;
+  --cc-button-border: var(--color-border-secondary);
+}

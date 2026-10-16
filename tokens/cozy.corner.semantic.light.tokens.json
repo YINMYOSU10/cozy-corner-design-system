@@ -1092,5 +1092,20 @@
   "color-logo-ink": {
     "$type": "color",
     "$value": "{color-logo-ink}"
+  },
+  "size-button-sm": {
+    "$type": "dimension",
+    "$value": "{size-32}",
+    "$description": "Small button height (Button Size=32)."
+  },
+  "size-button-md": {
+    "$type": "dimension",
+    "$value": "{size-48}",
+    "$description": "Medium button height (Button Size=48)."
+  },
+  "size-button-lg": {
+    "$type": "dimension",
+    "$value": "{size-56}",
+    "$description": "Large button height (Button Size=56)."
   }
 }

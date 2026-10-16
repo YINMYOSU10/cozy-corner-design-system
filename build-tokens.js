@@ -61,7 +61,7 @@ const css = (name, sources, selector, filter) =>
     platforms: {
       css: {
         transformGroup: 'css',
-        buildPath: 'build/css/',
+        buildPath: 'build/tokens/css/',
         files: [{ destination: name, format: 'css/variables',
                   options: { selector, showFileHeader: false }, filter }],
       },
@@ -74,10 +74,10 @@ const native = (sources) =>
     parsers: ['json/drop-self-refs'],
     preprocessors: ['typography/fix'],
     platforms: {
-      ios: { transformGroup: 'ios-swift', buildPath: 'build/ios/',
+      ios: { transformGroup: 'ios-swift', buildPath: 'build/tokens/ios/',
              files: [{ destination: 'Tokens.swift', format: 'ios-swift/class.swift',
                        options: { className: 'Tokens' } }] },
-      android: { transformGroup: 'android', buildPath: 'build/android/',
+      android: { transformGroup: 'android', buildPath: 'build/tokens/android/',
                  files: [{ destination: 'colors.xml', format: 'android/resources',
                            resourceType: 'color', filter: { $type: 'color' } }] },
     },

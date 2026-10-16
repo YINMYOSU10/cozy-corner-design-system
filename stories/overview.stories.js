@@ -1,4 +1,4 @@
-import { tokens, dashboardTokens, CATEGORIES, categoryOf, page, section, tidy, esc, isColor } from './tokens.js';
+import { tokens, dashboardTokens, CATEGORIES, categoryOf, page, section, tidy, esc, isColor, asReact } from './tokens.js';
 
 export default {
   title: 'Overview',
@@ -10,7 +10,7 @@ export const Introduction = {
     const counts = CATEGORIES.map(([name]) => [name, tokens.filter((t) => categoryOf(t.name) === name).length]);
     const orphans = tokens.filter((t) => !categoryOf(t.name));
     return page('Cozy Corner tokens',
-      'Generated from the Figma export in <code class="var">tokens/</code> via <code class="var">npm run build:tokens</code>. These pages read <code class="var">build/css/*.css</code> directly, so they always match what ships.',
+      'Generated from the Figma export in <code class="var">tokens/</code> via <code class="var">npm run build:tokens</code>. These pages read <code class="var">build/tokens/css/*.css</code> directly, so they always match what ships.',
       section('Coverage', `<div class="stats">
         <div class="stat"><b>${tokens.length}</b>tokens in tokens.css</div>
         <div class="stat"><b>${dashboardTokens.length}</b>dashboard-mode overrides</div>
@@ -48,3 +48,5 @@ export const AllTokens = {
     return el;
   },
 };
+
+asReact({ Introduction, AllTokens });

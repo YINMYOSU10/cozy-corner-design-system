@@ -1,7 +1,26 @@
 // Reads the CSS that `npm run build:tokens` generates, so the stories always
 // show exactly what ships. Re-export from Figma, rebuild, and Storybook updates.
-import rootCss from '../build/css/tokens.css?raw';
-import dashboardCss from '../build/css/tokens-dashboard.css?raw';
+import rootCss from '../build/tokens/css/tokens.css?raw';
+import dashboardCss from '../build/tokens/css/tokens-dashboard.css?raw';
+import { createElement, useEffect, useRef } from 'react';
+
+// The token pages build plain HTML. This shows that HTML (a string or a DOM
+// node) inside Storybook's React renderer.
+function Html({ content }) {
+  const ref = useRef(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (typeof content === 'string') el.innerHTML = content;
+    else el.replaceChildren(content);
+  }, [content]);
+  return createElement('div', { ref });
+}
+export const asReact = (stories) => {
+  for (const story of Object.values(stories)) {
+    const render = story.render;
+    story.render = (args, ctx) => createElement(Html, { content: render(args, ctx) });
+  }
+};
 
 const parse = (src) =>
   [...src.matchAll(/--([a-z0-9-]+):\s*([^;]+);(?:[ \t]*\/\*\*\s*(.*?)\s*\*\/)?/g)]

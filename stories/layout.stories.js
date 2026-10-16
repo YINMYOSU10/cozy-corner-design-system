@@ -1,4 +1,4 @@
-import { withPrefix, page, section, tokenMeta, esc, tidy } from './tokens.js';
+import { withPrefix, page, section, tokenMeta, esc, tidy, asReact } from './tokens.js';
 
 const px = (t) => parseFloat(t.value);
 const rows = (list, visual) =>
@@ -45,3 +45,5 @@ export const Elevation = {
       </tbody></table>`, raw.length));
   },
 };
+
+asReact({ Spacing, Border, Elevation });

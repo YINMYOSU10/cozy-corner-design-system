@@ -1,4 +1,4 @@
-import { tokens, withPrefix, page, section, tokenMeta, label, esc, weight, tidy } from './tokens.js';
+import { tokens, withPrefix, page, section, tokenMeta, label, esc, weight, tidy, asReact } from './tokens.js';
 
 export default {
   title: 'Typography',
@@ -93,3 +93,5 @@ export const Primitives = {
       section('Font weights', `<div class="rows">${weights}</div>`, withPrefix('fontweight-').length));
   },
 };
+
+asReact({ TextStyles, PlatformModes, ModeSwitch, Primitives });
