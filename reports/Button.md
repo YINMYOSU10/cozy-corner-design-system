@@ -1,433 +1,388 @@
 # QA report: Button / Primary
 
-- **Component:** `src/components/Button/` (Button.tsx, Button.css, PlusIcon.tsx, Button.stories.tsx), branch `component/button` at `57a6d65`
+- **Run:** 2026-10-18, one-time full first-test pass on staging, approved by the human in chat. Why: the 28 earlier Staging Testing rows were deleted by accident and could not be restored, so the registry had no test evidence. `Development` read `Completed` before this run. That is not a normal QA wake.
+- **Tested build:** the `Staging Storybook` cell, https://cozy-corner-design-system-git-staging-cozy-corner2.vercel.app (branch `staging`, head `e485ccb`). `src/components/Button/` on `origin/staging` is identical to the local `component/button` checkout. I tested the deployed URL, not a local build.
+- **Staging check:** `<base>/index.json` returned 200 and parsed. It lists 14 Button entries: the docs page, Playground, and 12 sheet stories. This is the real Storybook, not a Vercel login page.
 - **Figma:** [Button / Primary, 66:459](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=66-459), file `MWuaFZQ58G4WvtbCyeaE1X`
-- **Storybook:** http://localhost:6006, 12 sheet stories plus Playground
-- **Run date:** 2026-10-17 (re-test). Previous run: 2026-10-16 at `74cca7f`
-- **Tester:** QA agent (did not build this component)
-
-## Re-test
-
-What changed since the previous run: one code fix (F1, commit `57a6d65`) and three Figma fixes (G1, G2, G3). The expected matrix was rebuilt from Figma for this run. I did not reuse the previous run's results or the story file.
-
-| Finding | Cases | Previous | Re-test | Evidence |
-|---|---|---|---|---|
-| F1: Icon only at Size 56 rendered a 24px icon | 20 | FAIL (engineering) | **Fixed (Re-test)** | All 20 render a 32×32 `.cc-button__icon`, centred, `--borderradius-xs`. The SVG paths `M24.6667 16H7.33333` / `M16 24.6667V7.33333` at stroke 1.18182 match the Figma vectors in 101:1069 exactly (x 7.333→24.667, stroke 1.1818). Size 48 Icon only is still 24px and Size 32 is still 16px. |
-| G1: Size 56 leading icon had a stray Trailing Icon slot in Figma | 20 | DESIGN GAP | **Fixed (Re-test)** | `get_metadata`: all 20 are now 98×56. The per-variant dump shows exactly one visible slot ("Leading Icon"). 101:1284 / 132:7653 no longer show a second plus. Rendered 97.45×56. |
-| G2: Outline Press border differed by size in Figma | 20 | DESIGN GAP | **Fixed (Re-test)** | All 30 Outline·Press variants now bind `color/border/brand/bold`. The code uses `--color-border-brand-bold` (Button.css line 97), rendered `rgb(193,99,61)`. No code change was needed. |
-| G3: Default·Disable text/icon bound to */inverse in 20 variants | 20 | DESIGN GAP | **Fixed (Re-test)** | All 30 Default·Disable variants now bind `color/text/disabled` and `color/icon/disabled`. Rendered label and icon stroke are `--color-text-disabled` / `--color-icon-disabled` (`#a8967d`). |
-
-Every row that carried a previous finding (72 rows, since 4 F1 rows also carried a G finding) now passes. The 228 rows that passed before still pass. **No regressions.**
-
-## Summary
-
-| | Cases |
-|---|---|
-| Variants in Figma (expected matrix) | 300 |
-| Pass | 300 |
-| Fail, engineering | 0 |
-| Design gap (Figma disagreeing with itself) | 0 |
-
-## How each case was checked
-
-1. **Expected matrix taken from Figma, not from the story file.** I used `get_metadata` on 66:459 to get all 300 variant names and their widths and heights. I ran two read-only Plugin API scripts (`use_figma`, no writes; the tool confirmed nothing was committed) over every variant. They checked:
-   - fill, stroke, stroke weight and align
-   - radius, padding, gap
-   - effects and their colour bindings
-   - visible text: fill binding, font and text style
-   - visible icon slots: name, size, radius binding, and the stroke binding of every vector
-   - sizing mode and the size/button height and width bindings
-
-   Each variant was checked against the per-(Type, State) pattern. The pattern check found **0 deviations in 300 variants**. Every variant in a (Type, State) group binds the same fill, stroke, text and icon tokens. The groups are:
-   - Fill per (Type, State): idle, hovered, pressed, focused, disabled for Default; none, light, lightHovered, light, none for Outline
-   - Outline stroke: brand/default, with brand/bold on Press and border/secondary on Disable
-   - Text and icon colour: inverse, brand, and disabled on every Disable
-   - Radius: `borderRadius/sm` for Rounded, `borderRadius/circle` for Pill
-   - Spacing: padding `spacing/sm`/`spacing/md` and gap `spacing/sm` on all 300
-   - Text style: Body small (Karla 400 14/22) at 32 and Label large (Inter 500 16/26) at 48 and 56
-   - Icon slots: 16 at 32 and 24 at 48/56, except Icon only at 56, which is 32. Every slot uses `borderRadius/xs`
-   - Focus: two drop shadows, spread 2 `color/bg/base` and spread 4 `color/border/focus`
-   - Sizing: labelled variants hug their width, with height bound to `size/button/sm|md|lg`. Icon only is fixed square, with width and height bound to the same token
-2. **Fonts confirmed before any width was measured.** I measured `Label Hamburgefonstiv` on a canvas against a bogus family:
-   - Karla 400 14px: 148.57px, against 133.10px for the fallback
-   - Inter 500 16px: 177.84px, against 152.12px for the fallback
-
-   `document.fonts` showed Karla and Inter loaded. A first reading taken before the story rendered gave identical widths for both, because the fonts had not loaded yet. I waited for the render and re-measured before trusting any width.
-3. **All 300 cases measured in the browser.** One script loaded each of the 12 sheet stories (same-origin iframes off-screen, `document.fonts.ready` awaited) and read every `[data-matrix]` cell. For each cell it checked:
-   - Rendered width (±1.5px) and height (exact)
-   - Computed background, border width and colour, radius, `box-shadow`, and padding plus stroke
-   - Label family, weight, size, line height and colour; container gap
-   - Icon count, icon box size, icon radius, icon stroke colour, and Icon only centring (±0.5px)
-   - The `disabled` attribute and `aria-label` for Icon only
-
-   Each value was compared with the computed value of the CSS token named by the Figma binding (`color/bg/primary/lightHovered` → `--color-bg-primary-lighthovered`, and so on). **300 of 300 had no mismatches.** I spot-checked the comparisons to make sure they were not vacuous: tokens resolved to real values (e.g. `--color-border-brand-bold` = `#c1633d`), all 20 Size 56 Icon only cells reported a 32px icon, Size 48 Icon only reported 24px, and the widths were as listed below.
-4. **Visual check.** I took new screenshots of every state row on the Default·Rounded·56 and Outline·Pill·56 sheets. They show the 32px Icon only plus, the single-icon Size 56 leading variant, and the disabled colours. I also pulled fresh Figma renders for each previously failing group and compared them by eye. They now agree with the rendered component.
-5. **States were driven on the unpinned State=Default cells of the Outline·Pill·56 sheet (Icon only, Size 56).** I did not use the Playground story. Its URL args applied `type` but not `size` or `iconStyle`, so I drove the live sheet buttons instead.
-   - **Hover:** a real pointer hover gave `:hover` true and background `rgb(246,221,209)` = `--color-bg-primary-light`, which matches the pinned Hover row. Pass.
-   - **Focus:** I clicked blank page, then pressed Tab ×5. That landed on the Icon only button. `:focus-visible` was true, and the ring was `0 0 0 2px --color-bg-base, 0 0 0 4px --color-border-focus`. After a fresh mouse click from blank page, `:focus-visible` was false and there was no ring. Pass.
-   - **Activation:** Enter, Space and a mouse click each fired `click` once, plus the extra mouse click in the focus check, for 4 in total. Pass.
-   - **Disable:** a real click on the disabled Icon only fired 0 handlers. Hover left the background transparent and the border at `--color-border-secondary`, and the cursor was `not-allowed`. Tab ×21 from blank page went through the 20 enabled buttons and wrapped back to the first. None of the 5 disabled buttons took focus. Pass.
-   - **Press:** checked only through the pinned `state="Press"` rows. The browser tools cannot hold a pointer down, so the real `:active` look was **not driven**. The `:active:not(:disabled)` rules are present (Button.css lines 73 and 94), but I make no claim about how they render.
-   - **Loading:** Figma has no Loading state and the component has none, so there was nothing to test.
-6. **Story coverage reconciled with Figma.** 12 sheets × 25 cells = 300, a one-to-one match with the 300 Figma variants, so no case is missing. The Playground story has no row in Figma. It is a documented controls story, not dead code.
-7. **Tokens.** I scanned Button.css, Button.tsx and PlusIcon.tsx and found no raw hex, rgb or font values in the styles. The raw values I found are listed under "Token notes" below.
-
-**Width tolerance:** labelled buttons render 0.34px (Size 32) or 0.55px (48/56) narrower than Figma, on every case alike. That is Figma and Chrome measuring text differently, not a component defect. I accepted widths within ±1.5px.
-
-## Findings
-
-No open findings. Each previous finding with its re-test status:
-
-### F1: Icon only at Size 56 renders a 24px icon; Figma uses 32px (engineering, 20 cases): Fixed (Re-test)
-
-```
-Button · Icon only · Size 56 · every State × Shape × Type
-Expected  Icon slot 32×32 (Figma "Icon" frame 32, radius borderRadius/xs)
-Saw       .cc-button__icon 32×32, svg 32×32, centred; path geometry identical to Figma 101:1069
-Where     Button.tsx line 54 (prop `size` + `iconStyle`), PlusIcon.tsx `size: 16 | 24 | 32`
-```
-- Evidence: `Button-figma-56-iconOnly-default.png` (Figma) vs the last column of `Button-state-*-Default-Rounded-56.png` and `Button-state-*-Outline-Pill-56.png` (rendered)
-
-### G1: Size 56 "leading icon" carried a stray trailing slot in Figma (design gap, 20 cases): Fixed (Re-test)
-
-Figma now gives 98×56 with only "Leading Icon" visible, in all 20. The render is 97.45×56. Evidence: `Button-figma-56-leading-rounded-default.png` and `Button-figma-56-leading-pill-disable.png` (one icon) vs the "leading icon" column of the state screenshots.
-
-### G2: Outline Press border differed by size in Figma (design inconsistency, 20 cases): Fixed (Re-test)
-
-All 30 Outline·Press variants bind `color/border/brand/bold`. The code uses `--color-border-brand-bold`. Evidence: `Button-figma-48-outline-press.png` vs `Button-state-Press-Outline-Pill-56.png`.
-
-### G3: Default·Disable text and icon colours were inconsistent in Figma (design inconsistency, 20 cases): Fixed (Re-test)
-
-All 30 Default·Disable variants bind `color/text/disabled` + `color/icon/disabled`, matching the code. Evidence: `Button-figma-56-trailing-rounded-disable.png` vs `Button-state-Disable-Default-Rounded-56.png`.
-
-## Token notes (not findings)
-
-- `transparent` (Button.css lines 84 and 124) is the Outline background. Figma has no fill there and no token exists for "no fill", so this is a faithful translation.
-- Icon sizes 16, 24 and 32 are hard-coded in Button.tsx line 54. The PlusIcon stroke width 1.18182 is hard-coded in PlusIcon.tsx. The Figma icon frames and the vector stroke are unbound fixed values, so this is a **design gap**: there is no `size/icon/*` variable to bind. It is not an engineering defect.
-- Focus ring spread uses `calc(var(--borderwidth-2) * 2)`. Figma's effect spreads (2 and 4) are unbound, so this is another small design gap. The rendered values match.
-- Outline padding is `calc(--spacing-md - --borderwidth-1)`. That keeps the Figma inside stroke from changing the box, and widths match Figma for both types. Figma's 1px stroke weight is unbound, and the code uses `--borderwidth-1`.
-
-## Screenshots (all in `reports/`)
-
-| File | What | This run |
-|---|---|---|
-| Button-state-{Default,Hover,Press,Focus,Disable}-Default-Rounded-56.png | One state row each, all 5 icon styles | **Replaced** (were stale: 24px Icon only) |
-| Button-state-{Default,Hover,Press,Focus,Disable}-Outline-Pill-56.png | One state row each, all 5 icon styles | **Replaced** (were stale: 24px Icon only) |
-| Button-figma-56-iconOnly-default.png | Figma 101:1069, reference for F1 | **Replaced** (fresh render) |
-| Button-figma-56-leading-rounded-default.png, Button-figma-56-leading-pill-disable.png | Figma 101:1079, 101:1284, reference for G1 | **Replaced** (Figma changed) |
-| Button-figma-48-outline-press.png | Figma 132:7358, reference for G2 | **Replaced** (Figma changed) |
-| Button-figma-56-trailing-rounded-disable.png | Figma 101:1259, reference for G3 | **Replaced** (Figma changed) |
-| Button-real-hover-Outline-32.png, Button-real-tab-focus-Outline-32.png | Real hover and Tab focus, Playground, Size 32 | Kept from the previous run. The Size 32 Outline code is unchanged, and this run re-drove hover and focus on Size 56 Icon only (numbers above) |
+- **Tester:** QA agent. I did not build this component. I changed nothing in `src/`.
 
 ## Verdict
 
-All 300 cases pass. All four previous findings are Fixed (Re-test): F1 in code, and G1, G2, G3 in Figma. Nothing goes back to the engineer.
-Not covered: the real `:active` (Press) look, because the browser tools cannot hold the pointer down. The pinned Press rows pass.
-These are findings, not a final status. A human has the final say.
+| | Cases |
+|---|---|
+| Expected matrix, from Figma `get_metadata` on 66:459 | 300 |
+| Passed | 300 |
+| Failed | 0 |
+| Staging Testing rows written, linked to Button / Primary | 300 (all `Passed`) |
 
-## The matrix (all 300 Figma variants)
+No findings go back to the Engineer. These are test results, not a release decision. A human has the final say.
 
-Every row was measured in the browser against the per-variant Figma dump. "+ screenshot" means the row was also checked visually. Figma W×H comes from `get_metadata`; rendered W×H is the `getBoundingClientRect` size. "Previous run" gives the finding that row carried on 2026-10-16.
+## How each case was checked
 
-| State | Icon-style | Shape | Size | Type | Figma W×H | Rendered W×H | Icon px | Checked by | Result | Previous run |
+1. **The matrix came from Figma, not the story file.** `get_metadata` on 66:459 returned 300 variants: 5 State × 5 Icon-style × 2 Shape × 3 Size × 2 Type. I also ran a read-only `use_figma` script (no writes) over all 300 to read each variant's bindings. Every (Type, State) group binds the same fill, stroke, text and icon variables.
+   - **Default fill:** `color/bg/primary/idle`, `hovered`, `pressed`, `focused`, and `color/bg/disabled`. No stroke.
+   - **Outline fill:** none for Default and Disable, `color/bg/primary/light` for Hover and Focus, `color/bg/primary/lightHovered` for Press.
+   - **Outline stroke:** 1px inside, `color/border/brand/default`. Press uses `color/border/brand/bold` and Disable uses `color/border/secondary`.
+   - **Text and icons:** `color/text|icon/inverse` (Default type) or `/brand` (Outline type). Every Disable variant uses `/disabled`.
+   - **Radius:** `borderRadius/sm` (Rounded) or `borderRadius/circle` (Pill). Icon slots use `borderRadius/xs`.
+   - **Spacing:** padding `spacing/sm` × `spacing/md`, gap `spacing/sm`.
+   - **Height:** `size/button/sm|md|lg` for 32, 48 and 56. Icon only also binds its width to the same token.
+   - **Type:** Body small (Karla 400 14/22) at 32, Label large (Inter 500 16/26) at 48 and 56.
+   - **Icons:** 16px at 32 and 24px at 48 and 56. Icon only at 56 uses 32px.
+   - **Focus:** two drop shadows, spread 2 `color/bg/base` and spread 4 `color/border/focus`.
+2. **The stories were reconciled with Figma.** There are 12 sheet stories × 25 `[data-matrix]` cells = 300, matching the 300 variants one to one. No case is missing. Playground has no Figma row. It is a controls story, not dead code.
+3. **Fonts were confirmed before any width was measured.** I measured `Label Hamburgefonstiv` on a canvas against a bogus family:
+   - **Inter 500 16px:** 177.84 vs 152.12, so Inter was loaded.
+   - **Karla 400 14px:** the first read gave 133.10 vs 133.10, so Karla was *not yet loaded* on the 56 sheet, which never uses it. After `document.fonts.load('400 14px Karla')` it read 148.57 vs 133.10. The measuring script loads both fonts and awaits `document.fonts.ready` in every story frame before it reads anything.
+4. **All 300 cases were measured on staging.** One script opened each sheet story as a same-origin iframe from the staging host. For every cell it compared computed styles against the computed value of the CSS token named by the Figma binding:
+   - background, border width and colour, radius, `box-shadow` (the ring on Focus, `none` elsewhere)
+   - height (exact), width (±1.5px)
+   - padding-top, and padding-left plus border (= `--spacing-md`)
+   - label colour, family, weight, size, line height; container gap
+   - icon count, slot (leading/trailing), icon box size, slot radius, path stroke colour; Icon only centring (±0.5px)
+   - the `disabled` attribute; `aria-label` on Icon only
+
+   **Result: 0 mismatches in 300.** I checked that the comparisons were not vacuous. All 27 tokens used resolve on `:root` (for example `--color-border-brand-bold` = `#c1633d`, `--borderradius-circle` = 1000px, `--size-button-lg` = 56px), and the measured widths differ by Icon-style and Size as Figma says.
+5. **States were driven, not only rendered.** I used the unpinned cells of the Outline·Pill·56 sheet on staging.
+   - **Hover:** a real pointer on Default·Icon only gave `:hover` true and background `rgb(246,221,209)` = `--color-bg-primary-light`. Pass.
+   - **Focus:** I clicked blank page, then pressed Tab once. Focus landed on Default·Both icons with `:focus-visible` true and ring `rgb(251,243,231) 0 0 0 2px, rgb(193,99,61) 0 0 0 4px` (`--color-bg-base`, `--color-border-focus`). Pass.
+   - **Tab order:** Tab ×20 more visited 20 distinct enabled buttons and wrapped. 0 of the disabled buttons took focus. Pass.
+   - **Activation:** Enter and Space on the focused button each fired `click` once. Pass.
+   - **Disable:** a real click on Disable·Icon only fired 0 handlers. Under hover it stayed `transparent` with border `--color-border-secondary` and cursor `not-allowed`. Pass.
+   - **Press:** checked only through the pinned `state="Press"` rows. The browser tools cannot hold a pointer down, so the real `:active` look was **not driven**.
+   - **Loading:** Figma has no Loading state and the component has none, so there was nothing to test.
+6. **Tokens:** `Button.css` contains no raw hex, rgb or font values. The only `px` text is in a comment.
+
+**Width tolerance:** labelled buttons render 0.34px narrower than Figma at Size 32 and 0.55px narrower at 48 and 56, by the same amount on every case. That is Figma and Chrome measuring text differently, not a component defect.
+
+## Findings
+
+None. No case failed.
+
+## Notes for a human (not engineering findings)
+
+- **Registry gap: the `State` field has no option for Press.** Its options include `hovered`, `focus`, `disabled` and `idle`, but nothing for pressed. The 60 Press rows have `State` empty, and their `Context` says why. I did not add an option because I don't own the schema. If a human adds `pressed`, those 60 rows can be tagged.
+- **Registry Flag 5 still shows.** After this run, `Staging Passed Tests` reads `0` while all 300 rows are `Passed`. `Total Staging Tests` and `Staging Passed Count` both read 300, and `Synchronization %` reads 100%. These are Computed columns, so I am reporting this, not changing it.
+- **Hovered and focused look the same.** `color/bg/primary/focused` and `color/bg/primary/hovered` resolve to the same value (`#a45230`) in the shipped mode. Figma binds different variables and the code uses the matching tokens, so this is not a defect. It is a design choice to confirm.
+- **Design gaps carried from the previous report, unchanged:**
+  - the icon frame sizes (16/24/32) and the plus stroke width are unbound in Figma
+  - the focus-ring spreads (2 and 4) are unbound
+  - Outline has no fill token, so the code uses `transparent`
+
+## Screenshots (`reports/Button/`, all from the staging URL)
+
+| File | What |
+|---|---|
+| staging-{Default,Hover,Press,Focus,Disable}-Default-Rounded-56.png | One state row each, all 5 icon styles, Default type |
+| staging-{Default,Hover,Press,Focus,Disable}-Outline-Pill-56.png | One state row each, all 5 icon styles, Outline type |
+| staging-real-hover-IconOnly-Outline-Pill-56.png | Real pointer hover on Default·Icon only |
+| staging-real-tab-focus-Outline-Pill-56.png | Real Tab focus ring on Default·Both icons |
+
+No failure screenshots, because nothing failed. Screenshots from the 2026-10-17 run in `reports/*.png` are kept and were not re-used as evidence.
+
+## Matrix and registry rows (all 300)
+
+Figma W×H comes from `get_metadata`. Rendered W×H is `getBoundingClientRect` on staging. Each row's Expected Results cell names the tokens.
+
+| Type | Shape | Size | State | Icon-style | Figma node | Figma W×H | Rendered W×H | Icons | Result | Staging Testing record |
 |---|---|---|---|---|---|---|---|---|---|---|
-| Default | Both icons | Rounded | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Default | none | Rounded | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Default | leading icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | trailing icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | Icon only | Rounded | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Hover | Both icons | Rounded | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Hover | none | Rounded | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Hover | leading icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | trailing icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | Icon only | Rounded | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Press | Both icons | Rounded | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Press | none | Rounded | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Press | leading icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | trailing icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | Icon only | Rounded | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Focus | Both icons | Rounded | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Focus | none | Rounded | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Focus | leading icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | trailing icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | Icon only | Rounded | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Disable | Both icons | Rounded | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Disable | none | Rounded | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Disable | leading icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Disable | trailing icon | Rounded | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Disable | Icon only | Rounded | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | G3 → Fixed (Re-test) |
-| Default | Both icons | Rounded | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Default | none | Rounded | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Default | leading icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | trailing icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | Icon only | Rounded | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Hover | Both icons | Rounded | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Hover | none | Rounded | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Hover | leading icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | trailing icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | Icon only | Rounded | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Press | Both icons | Rounded | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Press | none | Rounded | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Press | leading icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Press | trailing icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Press | Icon only | Rounded | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Focus | Both icons | Rounded | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Focus | none | Rounded | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Focus | leading icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | trailing icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | Icon only | Rounded | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Disable | Both icons | Rounded | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Disable | none | Rounded | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Disable | leading icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Disable | trailing icon | Rounded | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | Icon only | Rounded | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Default | Both icons | Rounded | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Default | none | Rounded | 56 | Default | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Default | leading icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Default | trailing icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Default | Icon only | Rounded | 56 | Default | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Hover | Both icons | Rounded | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Hover | none | Rounded | 56 | Default | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Hover | leading icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Hover | trailing icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Hover | Icon only | Rounded | 56 | Default | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Press | Both icons | Rounded | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Press | none | Rounded | 56 | Default | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Press | leading icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Press | trailing icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Press | Icon only | Rounded | 56 | Default | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Focus | Both icons | Rounded | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Focus | none | Rounded | 56 | Default | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Focus | leading icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Focus | trailing icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Focus | Icon only | Rounded | 56 | Default | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Disable | Both icons | Rounded | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | G3 → Fixed (Re-test) |
-| Disable | none | Rounded | 56 | Default | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Disable | leading icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1, G3 → Fixed (Re-test) |
-| Disable | trailing icon | Rounded | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G3 → Fixed (Re-test) |
-| Disable | Icon only | Rounded | 56 | Default | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1, G3 → Fixed (Re-test) |
-| Default | Both icons | Pill | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Default | none | Pill | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Default | leading icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | trailing icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | Icon only | Pill | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Hover | Both icons | Pill | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Hover | none | Pill | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Hover | leading icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | trailing icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | Icon only | Pill | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Press | Both icons | Pill | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Press | none | Pill | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Press | leading icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | trailing icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | Icon only | Pill | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Focus | Both icons | Pill | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Focus | none | Pill | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Focus | leading icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | trailing icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | Icon only | Pill | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Disable | Both icons | Pill | 32 | Default | 106×32 | 105.66×32 | 2×16 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | none | Pill | 32 | Default | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Disable | leading icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | trailing icon | Pill | 32 | Default | 82×32 | 81.66×32 | 1×16 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | Icon only | Pill | 32 | Default | 32×32 | 32×32 | 1×16 | measured | PASS | G3 → Fixed (Re-test) |
-| Default | Both icons | Pill | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Default | none | Pill | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Default | leading icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | trailing icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | Icon only | Pill | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Hover | Both icons | Pill | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Hover | none | Pill | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Hover | leading icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | trailing icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | Icon only | Pill | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Press | Both icons | Pill | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Press | none | Pill | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Press | leading icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Press | trailing icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Press | Icon only | Pill | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Focus | Both icons | Pill | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Focus | none | Pill | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Focus | leading icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | trailing icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | Icon only | Pill | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Disable | Both icons | Pill | 48 | Default | 130×48 | 129.45×48 | 2×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | none | Pill | 48 | Default | 66×48 | 65.45×48 | – | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | leading icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | trailing icon | Pill | 48 | Default | 98×48 | 97.45×48 | 1×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | Icon only | Pill | 48 | Default | 48×48 | 48×48 | 1×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Default | Both icons | Pill | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Default | none | Pill | 56 | Default | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Default | leading icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Default | trailing icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Default | Icon only | Pill | 56 | Default | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Hover | Both icons | Pill | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Hover | none | Pill | 56 | Default | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Hover | leading icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Hover | trailing icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Hover | Icon only | Pill | 56 | Default | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Press | Both icons | Pill | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Press | none | Pill | 56 | Default | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Press | leading icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Press | trailing icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Press | Icon only | Pill | 56 | Default | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Focus | Both icons | Pill | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Focus | none | Pill | 56 | Default | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Focus | leading icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Focus | trailing icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Focus | Icon only | Pill | 56 | Default | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Disable | Both icons | Pill | 56 | Default | 130×56 | 129.45×56 | 2×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | none | Pill | 56 | Default | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Disable | leading icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1, G3 → Fixed (Re-test) |
-| Disable | trailing icon | Pill | 56 | Default | 98×56 | 97.45×56 | 1×24 | measured | PASS | G3 → Fixed (Re-test) |
-| Disable | Icon only | Pill | 56 | Default | 56×56 | 56×56 | 1×32 | measured | PASS | F1, G3 → Fixed (Re-test) |
-| Default | Both icons | Rounded | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Default | none | Rounded | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Default | leading icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | trailing icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | Icon only | Rounded | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Hover | Both icons | Rounded | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Hover | none | Rounded | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Hover | leading icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | trailing icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | Icon only | Rounded | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Press | Both icons | Rounded | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Press | none | Rounded | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Press | leading icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | trailing icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | Icon only | Rounded | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Focus | Both icons | Rounded | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Focus | none | Rounded | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Focus | leading icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | trailing icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | Icon only | Rounded | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Disable | Both icons | Rounded | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Disable | none | Rounded | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Disable | leading icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Disable | trailing icon | Rounded | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Disable | Icon only | Rounded | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Default | Both icons | Rounded | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Default | none | Rounded | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Default | leading icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | trailing icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | Icon only | Rounded | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Hover | Both icons | Rounded | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Hover | none | Rounded | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Hover | leading icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | trailing icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | Icon only | Rounded | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Press | Both icons | Rounded | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | none | Rounded | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | G2 → Fixed (Re-test) |
-| Press | leading icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | trailing icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | Icon only | Rounded | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Focus | Both icons | Rounded | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Focus | none | Rounded | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Focus | leading icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | trailing icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | Icon only | Rounded | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Disable | Both icons | Rounded | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Disable | none | Rounded | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Disable | leading icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Disable | trailing icon | Rounded | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Disable | Icon only | Rounded | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Default | Both icons | Rounded | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Default | none | Rounded | 56 | Outline | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Default | leading icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Default | trailing icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Default | Icon only | Rounded | 56 | Outline | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Hover | Both icons | Rounded | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Hover | none | Rounded | 56 | Outline | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Hover | leading icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Hover | trailing icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Hover | Icon only | Rounded | 56 | Outline | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Press | Both icons | Rounded | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | none | Rounded | 56 | Outline | 66×56 | 65.45×56 | – | measured | PASS | G2 → Fixed (Re-test) |
-| Press | leading icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1, G2 → Fixed (Re-test) |
-| Press | trailing icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | Icon only | Rounded | 56 | Outline | 56×56 | 56×56 | 1×32 | measured | PASS | F1, G2 → Fixed (Re-test) |
-| Focus | Both icons | Rounded | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Focus | none | Rounded | 56 | Outline | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Focus | leading icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Focus | trailing icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Focus | Icon only | Rounded | 56 | Outline | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Disable | Both icons | Rounded | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured | PASS | PASS |
-| Disable | none | Rounded | 56 | Outline | 66×56 | 65.45×56 | – | measured | PASS | PASS |
-| Disable | leading icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | G1 → Fixed (Re-test) |
-| Disable | trailing icon | Rounded | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured | PASS | PASS |
-| Disable | Icon only | Rounded | 56 | Outline | 56×56 | 56×56 | 1×32 | measured | PASS | F1 → Fixed (Re-test) |
-| Default | Both icons | Pill | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Default | none | Pill | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Default | leading icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | trailing icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Default | Icon only | Pill | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Hover | Both icons | Pill | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Hover | none | Pill | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Hover | leading icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | trailing icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Hover | Icon only | Pill | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Press | Both icons | Pill | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Press | none | Pill | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Press | leading icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | trailing icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Press | Icon only | Pill | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Focus | Both icons | Pill | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Focus | none | Pill | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Focus | leading icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | trailing icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Focus | Icon only | Pill | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Disable | Both icons | Pill | 32 | Outline | 106×32 | 105.66×32 | 2×16 | measured | PASS | PASS |
-| Disable | none | Pill | 32 | Outline | 58×32 | 57.66×32 | – | measured | PASS | PASS |
-| Disable | leading icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Disable | trailing icon | Pill | 32 | Outline | 82×32 | 81.66×32 | 1×16 | measured | PASS | PASS |
-| Disable | Icon only | Pill | 32 | Outline | 32×32 | 32×32 | 1×16 | measured | PASS | PASS |
-| Default | Both icons | Pill | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Default | none | Pill | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Default | leading icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | trailing icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Default | Icon only | Pill | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Hover | Both icons | Pill | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Hover | none | Pill | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Hover | leading icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | trailing icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Hover | Icon only | Pill | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Press | Both icons | Pill | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | none | Pill | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | G2 → Fixed (Re-test) |
-| Press | leading icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | trailing icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Press | Icon only | Pill | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | G2 → Fixed (Re-test) |
-| Focus | Both icons | Pill | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Focus | none | Pill | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Focus | leading icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | trailing icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Focus | Icon only | Pill | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Disable | Both icons | Pill | 48 | Outline | 130×48 | 129.45×48 | 2×24 | measured | PASS | PASS |
-| Disable | none | Pill | 48 | Outline | 66×48 | 65.45×48 | – | measured | PASS | PASS |
-| Disable | leading icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Disable | trailing icon | Pill | 48 | Outline | 98×48 | 97.45×48 | 1×24 | measured | PASS | PASS |
-| Disable | Icon only | Pill | 48 | Outline | 48×48 | 48×48 | 1×24 | measured | PASS | PASS |
-| Default | Both icons | Pill | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Default | none | Pill | 56 | Outline | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Default | leading icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Default | trailing icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Default | Icon only | Pill | 56 | Outline | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Hover | Both icons | Pill | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Hover | none | Pill | 56 | Outline | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Hover | leading icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Hover | trailing icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Hover | Icon only | Pill | 56 | Outline | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Press | Both icons | Pill | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | G2 → Fixed (Re-test) |
-| Press | none | Pill | 56 | Outline | 66×56 | 65.45×56 | – | measured + screenshot | PASS | G2 → Fixed (Re-test) |
-| Press | leading icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1, G2 → Fixed (Re-test) |
-| Press | trailing icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G2 → Fixed (Re-test) |
-| Press | Icon only | Pill | 56 | Outline | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1, G2 → Fixed (Re-test) |
-| Focus | Both icons | Pill | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Focus | none | Pill | 56 | Outline | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Focus | leading icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Focus | trailing icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Focus | Icon only | Pill | 56 | Outline | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
-| Disable | Both icons | Pill | 56 | Outline | 130×56 | 129.45×56 | 2×24 | measured + screenshot | PASS | PASS |
-| Disable | none | Pill | 56 | Outline | 66×56 | 65.45×56 | – | measured + screenshot | PASS | PASS |
-| Disable | leading icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | G1 → Fixed (Re-test) |
-| Disable | trailing icon | Pill | 56 | Outline | 98×56 | 97.45×56 | 1×24 | measured + screenshot | PASS | PASS |
-| Disable | Icon only | Pill | 56 | Outline | 56×56 | 56×56 | 1×32 | measured + screenshot | PASS | F1 → Fixed (Re-test) |
+| Default | Rounded | 32 | Default | Both icons | 66:458 | 106×32 | 105.66×32 | 2×16 | Passed | recmIjn88EEtuRh0Q |
+| Default | Rounded | 32 | Default | none | 67:522 | 58×32 | 57.66×32 | – | Passed | recGTrF2cYmqqxkgd |
+| Default | Rounded | 32 | Default | leading icon | 67:563 | 82×32 | 81.66×32 | 1×16 | Passed | recQEDIsl2Ku5FCa4 |
+| Default | Rounded | 32 | Default | trailing icon | 67:634 | 82×32 | 81.66×32 | 1×16 | Passed | recejBYcIjzHXYKZK |
+| Default | Rounded | 32 | Default | Icon only | 67:666 | 32×32 | 32×32 | 1×16 | Passed | recLRSBXjnaHwrmN2 |
+| Default | Rounded | 32 | Hover | Both icons | 66:480 | 106×32 | 105.66×32 | 2×16 | Passed | recq7nLFkvwlg7x9w |
+| Default | Rounded | 32 | Hover | none | 67:531 | 58×32 | 57.66×32 | – | Passed | rec8EThamOpm99tUp |
+| Default | Rounded | 32 | Hover | leading icon | 67:568 | 82×32 | 81.66×32 | 1×16 | Passed | recOCNMjB6kA1wI4f |
+| Default | Rounded | 32 | Hover | trailing icon | 67:629 | 82×32 | 81.66×32 | 1×16 | Passed | rec0NaDYpKTdpdAQh |
+| Default | Rounded | 32 | Hover | Icon only | 67:661 | 32×32 | 32×32 | 1×16 | Passed | recUhi3ma0wsliGsI |
+| Default | Rounded | 32 | Press | Both icons | 67:679 | 106×32 | 105.66×32 | 2×16 | Passed | recZkByqyjH5mdL0b |
+| Default | Rounded | 32 | Press | none | 67:684 | 58×32 | 57.66×32 | – | Passed | recyvxsRRMkvvASY3 |
+| Default | Rounded | 32 | Press | leading icon | 67:699 | 82×32 | 81.66×32 | 1×16 | Passed | recPc3Kz3wxeiu10k |
+| Default | Rounded | 32 | Press | trailing icon | 67:689 | 82×32 | 81.66×32 | 1×16 | Passed | recWgVzVS1bbUXTjS |
+| Default | Rounded | 32 | Press | Icon only | 67:694 | 32×32 | 32×32 | 1×16 | Passed | recyqCbTENQxr4qN6 |
+| Default | Rounded | 32 | Focus | Both icons | 66:490 | 106×32 | 105.66×32 | 2×16 | Passed | recOuIZ3kvycPgXjt |
+| Default | Rounded | 32 | Focus | none | 67:540 | 58×32 | 57.66×32 | – | Passed | recIju8D5NX0z3I9C |
+| Default | Rounded | 32 | Focus | leading icon | 67:573 | 82×32 | 81.66×32 | 1×16 | Passed | recv9TzrKJ8DHgkMg |
+| Default | Rounded | 32 | Focus | trailing icon | 67:624 | 82×32 | 81.66×32 | 1×16 | Passed | rechxKhLvwtBfoGdv |
+| Default | Rounded | 32 | Focus | Icon only | 67:656 | 32×32 | 32×32 | 1×16 | Passed | recUjz6Nd947Zal4A |
+| Default | Rounded | 32 | Disable | Both icons | 66:502 | 106×32 | 105.66×32 | 2×16 | Passed | recm4O288pN4XzEAK |
+| Default | Rounded | 32 | Disable | none | 67:549 | 58×32 | 57.66×32 | – | Passed | recHwvQmY0NYhB5Hr |
+| Default | Rounded | 32 | Disable | leading icon | 67:578 | 82×32 | 81.66×32 | 1×16 | Passed | recYhEsqDaX6dzC95 |
+| Default | Rounded | 32 | Disable | trailing icon | 67:619 | 82×32 | 81.66×32 | 1×16 | Passed | recWMZjhpH0hih0rd |
+| Default | Rounded | 32 | Disable | Icon only | 67:651 | 32×32 | 32×32 | 1×16 | Passed | recbfKWuGMwD4El3l |
+| Default | Rounded | 48 | Default | Both icons | 101:907 | 130×48 | 129.45×48 | 2×24 | Passed | recWwTfz5XkPPVDJE |
+| Default | Rounded | 48 | Default | none | 101:897 | 66×48 | 65.45×48 | – | Passed | recYsdnUFetrYs4F7 |
+| Default | Rounded | 48 | Default | leading icon | 101:867 | 98×48 | 97.45×48 | 1×24 | Passed | recjibCfNH8UZgkM6 |
+| Default | Rounded | 48 | Default | trailing icon | 101:887 | 98×48 | 97.45×48 | 1×24 | Passed | recwOwdZsFKUwB1oA |
+| Default | Rounded | 48 | Default | Icon only | 101:877 | 48×48 | 48×48 | 1×24 | Passed | rec3uBNLGGpPmNaac |
+| Default | Rounded | 48 | Hover | Both icons | 101:857 | 130×48 | 129.45×48 | 2×24 | Passed | recvOg1pVPgAcOdEH |
+| Default | Rounded | 48 | Hover | none | 101:837 | 66×48 | 65.45×48 | – | Passed | recH3rK3akLugnCVU |
+| Default | Rounded | 48 | Hover | leading icon | 101:777 | 98×48 | 97.45×48 | 1×24 | Passed | rec9n5aE1SRe0Ik6j |
+| Default | Rounded | 48 | Hover | trailing icon | 101:817 | 98×48 | 97.45×48 | 1×24 | Passed | recq4mV0fPlNmeIsE |
+| Default | Rounded | 48 | Hover | Icon only | 101:797 | 48×48 | 48×48 | 1×24 | Passed | rec0l0ARbtvctDxE3 |
+| Default | Rounded | 48 | Press | Both icons | 101:847 | 130×48 | 129.45×48 | 2×24 | Passed | recfQUqI6bq2cd3ta |
+| Default | Rounded | 48 | Press | none | 101:827 | 66×48 | 65.45×48 | – | Passed | recTkkXkAVcKDNEnH |
+| Default | Rounded | 48 | Press | leading icon | 101:767 | 98×48 | 97.45×48 | 1×24 | Passed | recNXCqEVDhBD5g8R |
+| Default | Rounded | 48 | Press | trailing icon | 101:807 | 98×48 | 97.45×48 | 1×24 | Passed | recKAOayEjCj66DSI |
+| Default | Rounded | 48 | Press | Icon only | 101:787 | 48×48 | 48×48 | 1×24 | Passed | rec8oS5VZrbqx1W6D |
+| Default | Rounded | 48 | Focus | Both icons | 101:757 | 130×48 | 129.45×48 | 2×24 | Passed | recGlUQ6koZVEmo9l |
+| Default | Rounded | 48 | Focus | none | 101:747 | 66×48 | 65.45×48 | – | Passed | recwf26GE3Aw112F7 |
+| Default | Rounded | 48 | Focus | leading icon | 101:717 | 98×48 | 97.45×48 | 1×24 | Passed | recT3SMvVzc226hk2 |
+| Default | Rounded | 48 | Focus | trailing icon | 101:737 | 98×48 | 97.45×48 | 1×24 | Passed | recESK3tVO2JMmVlB |
+| Default | Rounded | 48 | Focus | Icon only | 101:727 | 48×48 | 48×48 | 1×24 | Passed | recNhqftIWroOszWD |
+| Default | Rounded | 48 | Disable | Both icons | 101:707 | 130×48 | 129.45×48 | 2×24 | Passed | recoHpssPO2t7xzMX |
+| Default | Rounded | 48 | Disable | none | 101:697 | 66×48 | 65.45×48 | – | Passed | recImPKuWTzXkdRAi |
+| Default | Rounded | 48 | Disable | leading icon | 101:667 | 98×48 | 97.45×48 | 1×24 | Passed | rec4WeJQcYKbGBLyh |
+| Default | Rounded | 48 | Disable | trailing icon | 101:687 | 98×48 | 97.45×48 | 1×24 | Passed | rec7W7sdWWlEF87zj |
+| Default | Rounded | 48 | Disable | Icon only | 101:677 | 48×48 | 48×48 | 1×24 | Passed | recjiK3QejGDjVNYS |
+| Default | Rounded | 56 | Default | Both icons | 101:1039 | 130×56 | 129.45×56 | 2×24 | Passed | rec5Rw0joS5jeEF55 |
+| Default | Rounded | 56 | Default | none | 101:1049 | 66×56 | 65.45×56 | – | Passed | reckFdogG1lX4na0Q |
+| Default | Rounded | 56 | Default | leading icon | 101:1079 | 98×56 | 97.45×56 | 1×24 | Passed | recUCapJAOg8uzhXe |
+| Default | Rounded | 56 | Default | trailing icon | 101:1059 | 98×56 | 97.45×56 | 1×24 | Passed | recjnl6kouWpG6UCL |
+| Default | Rounded | 56 | Default | Icon only | 101:1069 | 56×56 | 56×56 | 1×32 | Passed | recXbcm9j6wmSL1LN |
+| Default | Rounded | 56 | Hover | Both icons | 101:1089 | 130×56 | 129.45×56 | 2×24 | Passed | recep0HcuuOh1pA1d |
+| Default | Rounded | 56 | Hover | none | 101:1109 | 66×56 | 65.45×56 | – | Passed | recO1ryaLdijnH5WK |
+| Default | Rounded | 56 | Hover | leading icon | 101:1169 | 98×56 | 97.45×56 | 1×24 | Passed | recUsZxuCNKoXDlzY |
+| Default | Rounded | 56 | Hover | trailing icon | 101:1129 | 98×56 | 97.45×56 | 1×24 | Passed | recn19zSj5v3NQHu2 |
+| Default | Rounded | 56 | Hover | Icon only | 101:1149 | 56×56 | 56×56 | 1×32 | Passed | recFX2Bc6RR8kRQLR |
+| Default | Rounded | 56 | Press | Both icons | 101:1099 | 130×56 | 129.45×56 | 2×24 | Passed | rec2CBZW6towZAZov |
+| Default | Rounded | 56 | Press | none | 101:1119 | 66×56 | 65.45×56 | – | Passed | recANWxOv3kyWB3uH |
+| Default | Rounded | 56 | Press | leading icon | 101:1179 | 98×56 | 97.45×56 | 1×24 | Passed | rec74ywfj0sx0jLD3 |
+| Default | Rounded | 56 | Press | trailing icon | 101:1139 | 98×56 | 97.45×56 | 1×24 | Passed | recF1BH38Sj8R91Kb |
+| Default | Rounded | 56 | Press | Icon only | 101:1159 | 56×56 | 56×56 | 1×32 | Passed | recVq7HmWeTMwVg0K |
+| Default | Rounded | 56 | Focus | Both icons | 101:1189 | 130×56 | 129.45×56 | 2×24 | Passed | rec8ZQZHZnSphIBfK |
+| Default | Rounded | 56 | Focus | none | 101:1199 | 66×56 | 65.45×56 | – | Passed | recELSJn6721ewrX7 |
+| Default | Rounded | 56 | Focus | leading icon | 101:1229 | 98×56 | 97.45×56 | 1×24 | Passed | reclPkU6E6IKS1Z6D |
+| Default | Rounded | 56 | Focus | trailing icon | 101:1209 | 98×56 | 97.45×56 | 1×24 | Passed | recIfeMPRxI7QMCoM |
+| Default | Rounded | 56 | Focus | Icon only | 101:1219 | 56×56 | 56×56 | 1×32 | Passed | recNyN8k21Hztddrp |
+| Default | Rounded | 56 | Disable | Both icons | 101:1239 | 130×56 | 129.45×56 | 2×24 | Passed | recedyAdhyefjP1ep |
+| Default | Rounded | 56 | Disable | none | 101:1249 | 66×56 | 65.45×56 | – | Passed | rect8uFrwGnoTi9Jd |
+| Default | Rounded | 56 | Disable | leading icon | 101:1279 | 98×56 | 97.45×56 | 1×24 | Passed | recTy9Gi8I9I7rQGA |
+| Default | Rounded | 56 | Disable | trailing icon | 101:1259 | 98×56 | 97.45×56 | 1×24 | Passed | recPtLwqTmdaVIllx |
+| Default | Rounded | 56 | Disable | Icon only | 101:1269 | 56×56 | 56×56 | 1×32 | Passed | recTtSWJiVjKUaTty |
+| Default | Pill | 32 | Default | Both icons | 79:833 | 106×32 | 105.66×32 | 2×16 | Passed | rec0FZO8Fnt9yiNOE |
+| Default | Pill | 32 | Default | none | 79:838 | 58×32 | 57.66×32 | – | Passed | recxIXATzIMFIVIax |
+| Default | Pill | 32 | Default | leading icon | 79:853 | 82×32 | 81.66×32 | 1×16 | Passed | rec04kVhksWyy5wfl |
+| Default | Pill | 32 | Default | trailing icon | 79:843 | 82×32 | 81.66×32 | 1×16 | Passed | recXPElOq2TRuHqM8 |
+| Default | Pill | 32 | Default | Icon only | 79:848 | 32×32 | 32×32 | 1×16 | Passed | recJD9Ae6FBcH0Chs |
+| Default | Pill | 32 | Hover | Both icons | 79:858 | 106×32 | 105.66×32 | 2×16 | Passed | recMN81WAvFUd8CDJ |
+| Default | Pill | 32 | Hover | none | 79:868 | 58×32 | 57.66×32 | – | Passed | recECZWWxOu3uSSKf |
+| Default | Pill | 32 | Hover | leading icon | 79:898 | 82×32 | 81.66×32 | 1×16 | Passed | recl0774zNACeK48K |
+| Default | Pill | 32 | Hover | trailing icon | 79:878 | 82×32 | 81.66×32 | 1×16 | Passed | recjhXWm5ZlBF0yPe |
+| Default | Pill | 32 | Hover | Icon only | 79:888 | 32×32 | 32×32 | 1×16 | Passed | recYXAWXtWc6Vjiri |
+| Default | Pill | 32 | Press | Both icons | 79:863 | 106×32 | 105.66×32 | 2×16 | Passed | reckfWuNHdnAOi4Qj |
+| Default | Pill | 32 | Press | none | 79:873 | 58×32 | 57.66×32 | – | Passed | recieNCcezDucJaTR |
+| Default | Pill | 32 | Press | leading icon | 79:903 | 82×32 | 81.66×32 | 1×16 | Passed | recHnLDfjiB3pHzrc |
+| Default | Pill | 32 | Press | trailing icon | 79:883 | 82×32 | 81.66×32 | 1×16 | Passed | rec9s6N806JTKMeMh |
+| Default | Pill | 32 | Press | Icon only | 79:893 | 32×32 | 32×32 | 1×16 | Passed | recBRFi7OIaLNM0bB |
+| Default | Pill | 32 | Focus | Both icons | 79:908 | 106×32 | 105.66×32 | 2×16 | Passed | rec4xVFUaVg3H8bjt |
+| Default | Pill | 32 | Focus | none | 79:913 | 58×32 | 57.66×32 | – | Passed | recCQSp9u7VVLRqjN |
+| Default | Pill | 32 | Focus | leading icon | 79:928 | 82×32 | 81.66×32 | 1×16 | Passed | recmfg6Zaa2oQqYdz |
+| Default | Pill | 32 | Focus | trailing icon | 79:918 | 82×32 | 81.66×32 | 1×16 | Passed | recORyMVm8toPPPcc |
+| Default | Pill | 32 | Focus | Icon only | 79:923 | 32×32 | 32×32 | 1×16 | Passed | recu3yF3O4Lv1BFUk |
+| Default | Pill | 32 | Disable | Both icons | 79:933 | 106×32 | 105.66×32 | 2×16 | Passed | rec27qufksymnumHQ |
+| Default | Pill | 32 | Disable | none | 79:938 | 58×32 | 57.66×32 | – | Passed | recdvGHaNEOG9xZds |
+| Default | Pill | 32 | Disable | leading icon | 79:953 | 82×32 | 81.66×32 | 1×16 | Passed | recyZSzYLgJGQJtLD |
+| Default | Pill | 32 | Disable | trailing icon | 79:943 | 82×32 | 81.66×32 | 1×16 | Passed | recd21xsDBW42T8Yg |
+| Default | Pill | 32 | Disable | Icon only | 79:948 | 32×32 | 32×32 | 1×16 | Passed | rechjMC4LWc1gd4sf |
+| Default | Pill | 48 | Default | Both icons | 101:902 | 130×48 | 129.45×48 | 2×24 | Passed | recOQ13dNVv7GLUPc |
+| Default | Pill | 48 | Default | none | 101:892 | 66×48 | 65.45×48 | – | Passed | rec2l33MNz9McGyIq |
+| Default | Pill | 48 | Default | leading icon | 101:862 | 98×48 | 97.45×48 | 1×24 | Passed | recI9PaGGTHoYj1uh |
+| Default | Pill | 48 | Default | trailing icon | 101:882 | 98×48 | 97.45×48 | 1×24 | Passed | recvMTmw8v79VXlqW |
+| Default | Pill | 48 | Default | Icon only | 101:872 | 48×48 | 48×48 | 1×24 | Passed | recAiBRRWosnEEEZK |
+| Default | Pill | 48 | Hover | Both icons | 101:852 | 130×48 | 129.45×48 | 2×24 | Passed | reciiz1hGxXniMxqU |
+| Default | Pill | 48 | Hover | none | 101:832 | 66×48 | 65.45×48 | – | Passed | recDYPXZg13CM184x |
+| Default | Pill | 48 | Hover | leading icon | 101:772 | 98×48 | 97.45×48 | 1×24 | Passed | recRwnrPZERkqviBm |
+| Default | Pill | 48 | Hover | trailing icon | 101:812 | 98×48 | 97.45×48 | 1×24 | Passed | rec4NSyFIQDyrhqDP |
+| Default | Pill | 48 | Hover | Icon only | 101:792 | 48×48 | 48×48 | 1×24 | Passed | reco8djym2quDiEDo |
+| Default | Pill | 48 | Press | Both icons | 101:842 | 130×48 | 129.45×48 | 2×24 | Passed | recLX3dB5T1amAlF9 |
+| Default | Pill | 48 | Press | none | 101:822 | 66×48 | 65.45×48 | – | Passed | recZ1kpqh2s7NHOhZ |
+| Default | Pill | 48 | Press | leading icon | 101:762 | 98×48 | 97.45×48 | 1×24 | Passed | recV3UdAU7HbFMg5z |
+| Default | Pill | 48 | Press | trailing icon | 101:802 | 98×48 | 97.45×48 | 1×24 | Passed | rec2sMmRdKbgzoQna |
+| Default | Pill | 48 | Press | Icon only | 101:782 | 48×48 | 48×48 | 1×24 | Passed | recm2lkE5hJno6HpN |
+| Default | Pill | 48 | Focus | Both icons | 101:752 | 130×48 | 129.45×48 | 2×24 | Passed | rec4ImhLcmVJhy96K |
+| Default | Pill | 48 | Focus | none | 101:742 | 66×48 | 65.45×48 | – | Passed | recL2uiRQMjaktRQi |
+| Default | Pill | 48 | Focus | leading icon | 101:712 | 98×48 | 97.45×48 | 1×24 | Passed | rectdn0WZr9CTI5Mo |
+| Default | Pill | 48 | Focus | trailing icon | 101:732 | 98×48 | 97.45×48 | 1×24 | Passed | recZMkcgT7fqAOu6C |
+| Default | Pill | 48 | Focus | Icon only | 101:722 | 48×48 | 48×48 | 1×24 | Passed | recEpf2fxLmvnBC1D |
+| Default | Pill | 48 | Disable | Both icons | 101:702 | 130×48 | 129.45×48 | 2×24 | Passed | recA0rIJ8u3FrliEL |
+| Default | Pill | 48 | Disable | none | 101:692 | 66×48 | 65.45×48 | – | Passed | rec3XeCZ7Zi6FuBnj |
+| Default | Pill | 48 | Disable | leading icon | 101:662 | 98×48 | 97.45×48 | 1×24 | Passed | rec93DRsoJr5xv27T |
+| Default | Pill | 48 | Disable | trailing icon | 101:682 | 98×48 | 97.45×48 | 1×24 | Passed | recrcLX0BImBRtoYp |
+| Default | Pill | 48 | Disable | Icon only | 101:672 | 48×48 | 48×48 | 1×24 | Passed | reccsaRtHQ4AKVQSd |
+| Default | Pill | 56 | Default | Both icons | 101:1044 | 130×56 | 129.45×56 | 2×24 | Passed | recTP12664urNPpw0 |
+| Default | Pill | 56 | Default | none | 101:1054 | 66×56 | 65.45×56 | – | Passed | rec2D9lmVsffL8AOz |
+| Default | Pill | 56 | Default | leading icon | 101:1084 | 98×56 | 97.45×56 | 1×24 | Passed | recogq0zrNxMJFFXP |
+| Default | Pill | 56 | Default | trailing icon | 101:1064 | 98×56 | 97.45×56 | 1×24 | Passed | rec9prcmpSipNFqXY |
+| Default | Pill | 56 | Default | Icon only | 101:1074 | 56×56 | 56×56 | 1×32 | Passed | recuQBNNH0A1MlFVR |
+| Default | Pill | 56 | Hover | Both icons | 101:1094 | 130×56 | 129.45×56 | 2×24 | Passed | recWsPMf8F9ZCB1Tm |
+| Default | Pill | 56 | Hover | none | 101:1114 | 66×56 | 65.45×56 | – | Passed | recSSyg2cvlbLUqAu |
+| Default | Pill | 56 | Hover | leading icon | 101:1174 | 98×56 | 97.45×56 | 1×24 | Passed | rectGm4cXcDDafe7R |
+| Default | Pill | 56 | Hover | trailing icon | 101:1134 | 98×56 | 97.45×56 | 1×24 | Passed | recjRcIay7A06YI4P |
+| Default | Pill | 56 | Hover | Icon only | 101:1154 | 56×56 | 56×56 | 1×32 | Passed | recblIOfAeAejd9s8 |
+| Default | Pill | 56 | Press | Both icons | 101:1104 | 130×56 | 129.45×56 | 2×24 | Passed | recDDiplATXBMbzlG |
+| Default | Pill | 56 | Press | none | 101:1124 | 66×56 | 65.45×56 | – | Passed | rec8E6tUZOu5Ayr9Q |
+| Default | Pill | 56 | Press | leading icon | 101:1184 | 98×56 | 97.45×56 | 1×24 | Passed | recfzlDLKIAqC8U8e |
+| Default | Pill | 56 | Press | trailing icon | 101:1144 | 98×56 | 97.45×56 | 1×24 | Passed | recolPCICV0EupKwW |
+| Default | Pill | 56 | Press | Icon only | 101:1164 | 56×56 | 56×56 | 1×32 | Passed | recNoaiesn3pDWZf0 |
+| Default | Pill | 56 | Focus | Both icons | 101:1194 | 130×56 | 129.45×56 | 2×24 | Passed | recgdoTHyuFGjhZlH |
+| Default | Pill | 56 | Focus | none | 101:1204 | 66×56 | 65.45×56 | – | Passed | recm4hyulVodYl3Dd |
+| Default | Pill | 56 | Focus | leading icon | 101:1234 | 98×56 | 97.45×56 | 1×24 | Passed | recrYagHlsetKegUX |
+| Default | Pill | 56 | Focus | trailing icon | 101:1214 | 98×56 | 97.45×56 | 1×24 | Passed | recLfsguHBnkGiZbu |
+| Default | Pill | 56 | Focus | Icon only | 101:1224 | 56×56 | 56×56 | 1×32 | Passed | rec1r9Yp9CWRIuTQ4 |
+| Default | Pill | 56 | Disable | Both icons | 101:1244 | 130×56 | 129.45×56 | 2×24 | Passed | recaoKB0Kc7fHvV6u |
+| Default | Pill | 56 | Disable | none | 101:1254 | 66×56 | 65.45×56 | – | Passed | reckoRriLcSU0CLnR |
+| Default | Pill | 56 | Disable | leading icon | 101:1284 | 98×56 | 97.45×56 | 1×24 | Passed | recvbtbPOUQlWVncT |
+| Default | Pill | 56 | Disable | trailing icon | 101:1264 | 98×56 | 97.45×56 | 1×24 | Passed | recfqhmOShk1DXMT7 |
+| Default | Pill | 56 | Disable | Icon only | 101:1274 | 56×56 | 56×56 | 1×32 | Passed | recuXcoKyklTHEnwM |
+| Outline | Rounded | 32 | Default | Both icons | 132:7068 | 106×32 | 105.66×32 | 2×16 | Passed | recB3gFxI6BOBy6cN |
+| Outline | Rounded | 32 | Default | none | 132:7078 | 58×32 | 57.66×32 | – | Passed | recds7iGG80ANyEwy |
+| Outline | Rounded | 32 | Default | leading icon | 132:7098 | 82×32 | 81.66×32 | 1×16 | Passed | recpPffnOuwPH6tok |
+| Outline | Rounded | 32 | Default | trailing icon | 132:7086 | 82×32 | 81.66×32 | 1×16 | Passed | rectFSj9ljrYZZFow |
+| Outline | Rounded | 32 | Default | Icon only | 132:7094 | 32×32 | 32×32 | 1×16 | Passed | recyV8Tnt8wmpSQqG |
+| Outline | Rounded | 32 | Hover | Both icons | 132:7106 | 106×32 | 105.66×32 | 2×16 | Passed | reclE2DrRu5B5SkRq |
+| Outline | Rounded | 32 | Hover | none | 132:7126 | 58×32 | 57.66×32 | – | Passed | recDWnOT3ICzQYXKQ |
+| Outline | Rounded | 32 | Hover | leading icon | 132:7166 | 82×32 | 81.66×32 | 1×16 | Passed | recgVdV9F8j00e1Xj |
+| Outline | Rounded | 32 | Hover | trailing icon | 132:7142 | 82×32 | 81.66×32 | 1×16 | Passed | reclQ7EW3Lwt2vuth |
+| Outline | Rounded | 32 | Hover | Icon only | 132:7158 | 32×32 | 32×32 | 1×16 | Passed | recMB3ugpq1xqhdaU |
+| Outline | Rounded | 32 | Press | Both icons | 132:7116 | 106×32 | 105.66×32 | 2×16 | Passed | rectN9sC1QxvoSYqD |
+| Outline | Rounded | 32 | Press | none | 132:7134 | 58×32 | 57.66×32 | – | Passed | recOkqlabBQyDsYSS |
+| Outline | Rounded | 32 | Press | leading icon | 132:7174 | 82×32 | 81.66×32 | 1×16 | Passed | recjPIsBHwgqqae4W |
+| Outline | Rounded | 32 | Press | trailing icon | 132:7150 | 82×32 | 81.66×32 | 1×16 | Passed | recapwW1Va0DTE8Ir |
+| Outline | Rounded | 32 | Press | Icon only | 132:7162 | 32×32 | 32×32 | 1×16 | Passed | recpzmxkWjKp3Gp7g |
+| Outline | Rounded | 32 | Focus | Both icons | 132:7182 | 106×32 | 105.66×32 | 2×16 | Passed | recnAoPmmO4TQGBzc |
+| Outline | Rounded | 32 | Focus | none | 132:7192 | 58×32 | 57.66×32 | – | Passed | rec3D8EXj9Hlw1m8R |
+| Outline | Rounded | 32 | Focus | leading icon | 132:7212 | 82×32 | 81.66×32 | 1×16 | Passed | rect9AgMpOmgPwSMG |
+| Outline | Rounded | 32 | Focus | trailing icon | 132:7200 | 82×32 | 81.66×32 | 1×16 | Passed | recmhY0MLcNR3ry0O |
+| Outline | Rounded | 32 | Focus | Icon only | 132:7208 | 32×32 | 32×32 | 1×16 | Passed | recdwWrSPt4HE4ypj |
+| Outline | Rounded | 32 | Disable | Both icons | 132:7220 | 106×32 | 105.66×32 | 2×16 | Passed | recegdbKKyYQzyDyh |
+| Outline | Rounded | 32 | Disable | none | 132:7230 | 58×32 | 57.66×32 | – | Passed | recE0OB5UUOF5bMEW |
+| Outline | Rounded | 32 | Disable | leading icon | 132:7250 | 82×32 | 81.66×32 | 1×16 | Passed | recozwEKIw97iI2p5 |
+| Outline | Rounded | 32 | Disable | trailing icon | 132:7238 | 82×32 | 81.66×32 | 1×16 | Passed | recqGRm71GJXM6ogS |
+| Outline | Rounded | 32 | Disable | Icon only | 132:7246 | 32×32 | 32×32 | 1×16 | Passed | recF4ZlxthJ4imTpg |
+| Outline | Rounded | 48 | Default | Both icons | 132:7258 | 130×48 | 129.45×48 | 2×24 | Passed | recnwUsdgi3t3So63 |
+| Outline | Rounded | 48 | Default | none | 132:7278 | 66×48 | 65.45×48 | – | Passed | recqhDYPvsOilkhvK |
+| Outline | Rounded | 48 | Default | leading icon | 132:7320 | 98×48 | 97.45×48 | 1×24 | Passed | recyq1pX7cuSaWFsc |
+| Outline | Rounded | 48 | Default | trailing icon | 132:7294 | 98×48 | 97.45×48 | 1×24 | Passed | rec8nrhMy39o19W4L |
+| Outline | Rounded | 48 | Default | Icon only | 132:7312 | 48×48 | 48×48 | 1×24 | Passed | rec6PUPxezmaTUSDA |
+| Outline | Rounded | 48 | Hover | Both icons | 132:7338 | 130×48 | 129.45×48 | 2×24 | Passed | recHctYmnuKKQvE3n |
+| Outline | Rounded | 48 | Hover | none | 132:7378 | 66×48 | 65.45×48 | – | Passed | recuP3KuIvnHehRJ6 |
+| Outline | Rounded | 48 | Hover | leading icon | 132:7462 | 98×48 | 97.45×48 | 1×24 | Passed | recNaBD3ILi78YBXN |
+| Outline | Rounded | 48 | Hover | trailing icon | 132:7410 | 98×48 | 97.45×48 | 1×24 | Passed | recAgIcjJPRx9iaMR |
+| Outline | Rounded | 48 | Hover | Icon only | 132:7446 | 48×48 | 48×48 | 1×24 | Passed | recOdu5TRsZrKb77t |
+| Outline | Rounded | 48 | Press | Both icons | 132:7358 | 130×48 | 129.45×48 | 2×24 | Passed | rec4QMxc53gUbi0sA |
+| Outline | Rounded | 48 | Press | none | 132:7394 | 66×48 | 65.45×48 | – | Passed | recXRPIxNKCfiLeE2 |
+| Outline | Rounded | 48 | Press | leading icon | 132:7480 | 98×48 | 97.45×48 | 1×24 | Passed | recVyRyn7nDLgt4oH |
+| Outline | Rounded | 48 | Press | trailing icon | 132:7428 | 98×48 | 97.45×48 | 1×24 | Passed | rec1D0jg28A0ILUBk |
+| Outline | Rounded | 48 | Press | Icon only | 132:7454 | 48×48 | 48×48 | 1×24 | Passed | recFBl4j2UlQ0vttJ |
+| Outline | Rounded | 48 | Focus | Both icons | 132:7498 | 130×48 | 129.45×48 | 2×24 | Passed | recdWcySlJZGp3RPE |
+| Outline | Rounded | 48 | Focus | none | 132:7518 | 66×48 | 65.45×48 | – | Passed | recrX7jevWUgHCM2t |
+| Outline | Rounded | 48 | Focus | leading icon | 132:7560 | 98×48 | 97.45×48 | 1×24 | Passed | recn9shpQQ7hQ6eKI |
+| Outline | Rounded | 48 | Focus | trailing icon | 132:7534 | 98×48 | 97.45×48 | 1×24 | Passed | rec1fghZrn4n4Y8q2 |
+| Outline | Rounded | 48 | Focus | Icon only | 132:7552 | 48×48 | 48×48 | 1×24 | Passed | recvHghxhxddD9sWp |
+| Outline | Rounded | 48 | Disable | Both icons | 132:7578 | 130×48 | 129.45×48 | 2×24 | Passed | rec3BsgG30e3b2CxB |
+| Outline | Rounded | 48 | Disable | none | 132:7598 | 66×48 | 65.45×48 | – | Passed | recWexuBCQfRzSvWK |
+| Outline | Rounded | 48 | Disable | leading icon | 132:7640 | 98×48 | 97.45×48 | 1×24 | Passed | recvZh4JWC01ie3T8 |
+| Outline | Rounded | 48 | Disable | trailing icon | 132:7614 | 98×48 | 97.45×48 | 1×24 | Passed | recyJwejrjNoxNfyr |
+| Outline | Rounded | 48 | Disable | Icon only | 132:7632 | 48×48 | 48×48 | 1×24 | Passed | rec142tjFLhN0yV8S |
+| Outline | Rounded | 56 | Default | Both icons | 132:7263 | 130×56 | 129.45×56 | 2×24 | Passed | recqhDKH2q8RHdYAv |
+| Outline | Rounded | 56 | Default | none | 132:7282 | 66×56 | 65.45×56 | – | Passed | recvN3Q6oO9j2skf2 |
+| Outline | Rounded | 56 | Default | leading icon | 132:7324 | 98×56 | 97.45×56 | 1×24 | Passed | receNEEvArKoVyLrI |
+| Outline | Rounded | 56 | Default | trailing icon | 132:7298 | 98×56 | 97.45×56 | 1×24 | Passed | reca9g0NoDL06LsMF |
+| Outline | Rounded | 56 | Default | Icon only | 132:7314 | 56×56 | 56×56 | 1×32 | Passed | recxkkCagYnRbvVIv |
+| Outline | Rounded | 56 | Hover | Both icons | 132:7343 | 130×56 | 129.45×56 | 2×24 | Passed | recYAgJp8YiOE88u5 |
+| Outline | Rounded | 56 | Hover | none | 132:7382 | 66×56 | 65.45×56 | – | Passed | recSvTMpRDTLJYji1 |
+| Outline | Rounded | 56 | Hover | leading icon | 132:7466 | 98×56 | 97.45×56 | 1×24 | Passed | rec0WFvlbI4ctE1Ib |
+| Outline | Rounded | 56 | Hover | trailing icon | 132:7414 | 98×56 | 97.45×56 | 1×24 | Passed | recAACXWhrgAfvVZl |
+| Outline | Rounded | 56 | Hover | Icon only | 132:7448 | 56×56 | 56×56 | 1×32 | Passed | recKf4n5sYVOcvFor |
+| Outline | Rounded | 56 | Press | Both icons | 132:7363 | 130×56 | 129.45×56 | 2×24 | Passed | recmz7kD5gnHlGzmx |
+| Outline | Rounded | 56 | Press | none | 132:7398 | 66×56 | 65.45×56 | – | Passed | rec5fDZhpwXhMGbY6 |
+| Outline | Rounded | 56 | Press | leading icon | 132:7484 | 98×56 | 97.45×56 | 1×24 | Passed | recC5IfTq5DE0vcRL |
+| Outline | Rounded | 56 | Press | trailing icon | 132:7432 | 98×56 | 97.45×56 | 1×24 | Passed | recjc64qFrPQJmU1s |
+| Outline | Rounded | 56 | Press | Icon only | 132:7456 | 56×56 | 56×56 | 1×32 | Passed | recG8pvKbx4riWH3P |
+| Outline | Rounded | 56 | Focus | Both icons | 132:7503 | 130×56 | 129.45×56 | 2×24 | Passed | rec8OGI9vSM13qjAH |
+| Outline | Rounded | 56 | Focus | none | 132:7522 | 66×56 | 65.45×56 | – | Passed | recU1StxFzlTnrXHJ |
+| Outline | Rounded | 56 | Focus | leading icon | 132:7564 | 98×56 | 97.45×56 | 1×24 | Passed | recy78ChhBjr5JIan |
+| Outline | Rounded | 56 | Focus | trailing icon | 132:7538 | 98×56 | 97.45×56 | 1×24 | Passed | recgOkbbjSB1Xrc4y |
+| Outline | Rounded | 56 | Focus | Icon only | 132:7554 | 56×56 | 56×56 | 1×32 | Passed | recQQnKKNWqtSpBFY |
+| Outline | Rounded | 56 | Disable | Both icons | 132:7583 | 130×56 | 129.45×56 | 2×24 | Passed | recAFzzSf4YadePbr |
+| Outline | Rounded | 56 | Disable | none | 132:7602 | 66×56 | 65.45×56 | – | Passed | recrKcLUaSgd3iEQq |
+| Outline | Rounded | 56 | Disable | leading icon | 132:7644 | 98×56 | 97.45×56 | 1×24 | Passed | recInlSbjcIe0FbDa |
+| Outline | Rounded | 56 | Disable | trailing icon | 132:7618 | 98×56 | 97.45×56 | 1×24 | Passed | rec11uB8EuZQxVQhN |
+| Outline | Rounded | 56 | Disable | Icon only | 132:7634 | 56×56 | 56×56 | 1×32 | Passed | rec9Z2pX2jvoA5b5U |
+| Outline | Pill | 32 | Default | Both icons | 132:7073 | 106×32 | 105.66×32 | 2×16 | Passed | recZD2WRTsMruIjZn |
+| Outline | Pill | 32 | Default | none | 132:7082 | 58×32 | 57.66×32 | – | Passed | recXWR6ruv0AIIgiz |
+| Outline | Pill | 32 | Default | leading icon | 132:7102 | 82×32 | 81.66×32 | 1×16 | Passed | recyZILIcxbrYohCK |
+| Outline | Pill | 32 | Default | trailing icon | 132:7090 | 82×32 | 81.66×32 | 1×16 | Passed | recSTYT2Nm1ygKci6 |
+| Outline | Pill | 32 | Default | Icon only | 132:7096 | 32×32 | 32×32 | 1×16 | Passed | rec5k0ZYreRe5scbB |
+| Outline | Pill | 32 | Hover | Both icons | 132:7111 | 106×32 | 105.66×32 | 2×16 | Passed | reck1olbuOLDuxxNk |
+| Outline | Pill | 32 | Hover | none | 132:7130 | 58×32 | 57.66×32 | – | Passed | recmxBZnELLhJ71gL |
+| Outline | Pill | 32 | Hover | leading icon | 132:7170 | 82×32 | 81.66×32 | 1×16 | Passed | recwjvZPxWKhHvtan |
+| Outline | Pill | 32 | Hover | trailing icon | 132:7146 | 82×32 | 81.66×32 | 1×16 | Passed | recRLJ6eaQ6NaYInj |
+| Outline | Pill | 32 | Hover | Icon only | 132:7160 | 32×32 | 32×32 | 1×16 | Passed | recdrzR76mNeEhhTr |
+| Outline | Pill | 32 | Press | Both icons | 132:7121 | 106×32 | 105.66×32 | 2×16 | Passed | reciOkKm0k6iiQ1oS |
+| Outline | Pill | 32 | Press | none | 132:7138 | 58×32 | 57.66×32 | – | Passed | recsKJgcQhWVrx0N4 |
+| Outline | Pill | 32 | Press | leading icon | 132:7178 | 82×32 | 81.66×32 | 1×16 | Passed | recne4RxKOOcpQQM2 |
+| Outline | Pill | 32 | Press | trailing icon | 132:7154 | 82×32 | 81.66×32 | 1×16 | Passed | reczFRgf4PGHv5vWH |
+| Outline | Pill | 32 | Press | Icon only | 132:7164 | 32×32 | 32×32 | 1×16 | Passed | recJNLFaliRm4ZpQi |
+| Outline | Pill | 32 | Focus | Both icons | 132:7187 | 106×32 | 105.66×32 | 2×16 | Passed | recMGN5uFQHrkE8ug |
+| Outline | Pill | 32 | Focus | none | 132:7196 | 58×32 | 57.66×32 | – | Passed | recp3PEsjZ7B4FFXv |
+| Outline | Pill | 32 | Focus | leading icon | 132:7216 | 82×32 | 81.66×32 | 1×16 | Passed | rec0dHJHUI90sX2S7 |
+| Outline | Pill | 32 | Focus | trailing icon | 132:7204 | 82×32 | 81.66×32 | 1×16 | Passed | recKhdlMnR1fa3x92 |
+| Outline | Pill | 32 | Focus | Icon only | 132:7210 | 32×32 | 32×32 | 1×16 | Passed | recZcgatFkb5ZudUY |
+| Outline | Pill | 32 | Disable | Both icons | 132:7225 | 106×32 | 105.66×32 | 2×16 | Passed | recQcfFgHXSPWigIk |
+| Outline | Pill | 32 | Disable | none | 132:7234 | 58×32 | 57.66×32 | – | Passed | reclVJMl988VoxlEf |
+| Outline | Pill | 32 | Disable | leading icon | 132:7254 | 82×32 | 81.66×32 | 1×16 | Passed | recEgJ59pj8orJPgX |
+| Outline | Pill | 32 | Disable | trailing icon | 132:7242 | 82×32 | 81.66×32 | 1×16 | Passed | recBzW64UGmHabt0k |
+| Outline | Pill | 32 | Disable | Icon only | 132:7248 | 32×32 | 32×32 | 1×16 | Passed | recFsoyfLGtOITLIb |
+| Outline | Pill | 48 | Default | Both icons | 132:7268 | 130×48 | 129.45×48 | 2×24 | Passed | rec7yoJfOSvrUqQaA |
+| Outline | Pill | 48 | Default | none | 132:7286 | 66×48 | 65.45×48 | – | Passed | recbP5Lt6qZJXt1lb |
+| Outline | Pill | 48 | Default | leading icon | 132:7329 | 98×48 | 97.45×48 | 1×24 | Passed | recPqbt50Zj5wflkc |
+| Outline | Pill | 48 | Default | trailing icon | 132:7303 | 98×48 | 97.45×48 | 1×24 | Passed | recnXuzojfOZDGSrF |
+| Outline | Pill | 48 | Default | Icon only | 132:7316 | 48×48 | 48×48 | 1×24 | Passed | recN4seb1K5G5n0ms |
+| Outline | Pill | 48 | Hover | Both icons | 132:7348 | 130×48 | 129.45×48 | 2×24 | Passed | recdLrlT5G3SCFLVc |
+| Outline | Pill | 48 | Hover | none | 132:7386 | 66×48 | 65.45×48 | – | Passed | recBj0FzcW1nwg2Rd |
+| Outline | Pill | 48 | Hover | leading icon | 132:7471 | 98×48 | 97.45×48 | 1×24 | Passed | rec9cyrwY2QK0mw3n |
+| Outline | Pill | 48 | Hover | trailing icon | 132:7419 | 98×48 | 97.45×48 | 1×24 | Passed | recOI9HFNMfFoXmhu |
+| Outline | Pill | 48 | Hover | Icon only | 132:7450 | 48×48 | 48×48 | 1×24 | Passed | recjQDrrbnlYXG7RY |
+| Outline | Pill | 48 | Press | Both icons | 132:7368 | 130×48 | 129.45×48 | 2×24 | Passed | recQQ43CWs3m2GkBG |
+| Outline | Pill | 48 | Press | none | 132:7402 | 66×48 | 65.45×48 | – | Passed | recT6TzzvOXwB51AL |
+| Outline | Pill | 48 | Press | leading icon | 132:7489 | 98×48 | 97.45×48 | 1×24 | Passed | recGIa5BEZ4qb0NFH |
+| Outline | Pill | 48 | Press | trailing icon | 132:7437 | 98×48 | 97.45×48 | 1×24 | Passed | recbaJkRadKuzAGrg |
+| Outline | Pill | 48 | Press | Icon only | 132:7458 | 48×48 | 48×48 | 1×24 | Passed | recSa56LxggahXCcw |
+| Outline | Pill | 48 | Focus | Both icons | 132:7508 | 130×48 | 129.45×48 | 2×24 | Passed | reckwfOYTYvpKeLVW |
+| Outline | Pill | 48 | Focus | none | 132:7526 | 66×48 | 65.45×48 | – | Passed | recOE02Z8nt568i5V |
+| Outline | Pill | 48 | Focus | leading icon | 132:7569 | 98×48 | 97.45×48 | 1×24 | Passed | rec1AacjL4A4GSJN8 |
+| Outline | Pill | 48 | Focus | trailing icon | 132:7543 | 98×48 | 97.45×48 | 1×24 | Passed | reciUMsOnQN7u8oRx |
+| Outline | Pill | 48 | Focus | Icon only | 132:7556 | 48×48 | 48×48 | 1×24 | Passed | recJuvZexnsrucbce |
+| Outline | Pill | 48 | Disable | Both icons | 132:7588 | 130×48 | 129.45×48 | 2×24 | Passed | recMgOo93eOIHAZKw |
+| Outline | Pill | 48 | Disable | none | 132:7606 | 66×48 | 65.45×48 | – | Passed | recGlRThm6t1IW6Co |
+| Outline | Pill | 48 | Disable | leading icon | 132:7649 | 98×48 | 97.45×48 | 1×24 | Passed | recmYwa2P7g1csUMv |
+| Outline | Pill | 48 | Disable | trailing icon | 132:7623 | 98×48 | 97.45×48 | 1×24 | Passed | rec17hJBiMxtqndwQ |
+| Outline | Pill | 48 | Disable | Icon only | 132:7636 | 48×48 | 48×48 | 1×24 | Passed | recQV2J2HNN0h6iG6 |
+| Outline | Pill | 56 | Default | Both icons | 132:7273 | 130×56 | 129.45×56 | 2×24 | Passed | recxVt0jhN0rnJpxm |
+| Outline | Pill | 56 | Default | none | 132:7290 | 66×56 | 65.45×56 | – | Passed | recVuHLxfd0Y6NlWR |
+| Outline | Pill | 56 | Default | leading icon | 132:7333 | 98×56 | 97.45×56 | 1×24 | Passed | rec6EFxt2HGGVmpRI |
+| Outline | Pill | 56 | Default | trailing icon | 132:7307 | 98×56 | 97.45×56 | 1×24 | Passed | rec1L7hw4LmuXkRdC |
+| Outline | Pill | 56 | Default | Icon only | 132:7318 | 56×56 | 56×56 | 1×32 | Passed | recLe341mD7OAbpTk |
+| Outline | Pill | 56 | Hover | Both icons | 132:7353 | 130×56 | 129.45×56 | 2×24 | Passed | reczLaKZX0IZ5pSlz |
+| Outline | Pill | 56 | Hover | none | 132:7390 | 66×56 | 65.45×56 | – | Passed | recK7lVNGoIlnYOOv |
+| Outline | Pill | 56 | Hover | leading icon | 132:7475 | 98×56 | 97.45×56 | 1×24 | Passed | recr57TFU4Xbo8U7O |
+| Outline | Pill | 56 | Hover | trailing icon | 132:7423 | 98×56 | 97.45×56 | 1×24 | Passed | recjsihIOVUi4kME5 |
+| Outline | Pill | 56 | Hover | Icon only | 132:7452 | 56×56 | 56×56 | 1×32 | Passed | recsj8IYHvlcgItfI |
+| Outline | Pill | 56 | Press | Both icons | 132:7373 | 130×56 | 129.45×56 | 2×24 | Passed | recC8wcMRTaIvvonk |
+| Outline | Pill | 56 | Press | none | 132:7406 | 66×56 | 65.45×56 | – | Passed | recQsXZGEaA2vZ5Y3 |
+| Outline | Pill | 56 | Press | leading icon | 132:7493 | 98×56 | 97.45×56 | 1×24 | Passed | recp1Rjfev7Kx9lAU |
+| Outline | Pill | 56 | Press | trailing icon | 132:7441 | 98×56 | 97.45×56 | 1×24 | Passed | rec05xk54CjKlVNVX |
+| Outline | Pill | 56 | Press | Icon only | 132:7460 | 56×56 | 56×56 | 1×32 | Passed | recLbx3sxcoqeFswy |
+| Outline | Pill | 56 | Focus | Both icons | 132:7513 | 130×56 | 129.45×56 | 2×24 | Passed | rec42qm9P4hrtoSzx |
+| Outline | Pill | 56 | Focus | none | 132:7530 | 66×56 | 65.45×56 | – | Passed | rec4lYKwiGDuKPdtI |
+| Outline | Pill | 56 | Focus | leading icon | 132:7573 | 98×56 | 97.45×56 | 1×24 | Passed | rec04BX3mBqS859o9 |
+| Outline | Pill | 56 | Focus | trailing icon | 132:7547 | 98×56 | 97.45×56 | 1×24 | Passed | recr5NcfLNANLgTcX |
+| Outline | Pill | 56 | Focus | Icon only | 132:7558 | 56×56 | 56×56 | 1×32 | Passed | recz580Ssswu0I37k |
+| Outline | Pill | 56 | Disable | Both icons | 132:7593 | 130×56 | 129.45×56 | 2×24 | Passed | recQUxtHY6SzLwmLO |
+| Outline | Pill | 56 | Disable | none | 132:7610 | 66×56 | 65.45×56 | – | Passed | rec9yZDj4cX8aP2z1 |
+| Outline | Pill | 56 | Disable | leading icon | 132:7653 | 98×56 | 97.45×56 | 1×24 | Passed | rechmr4a8wWpD3o6q |
+| Outline | Pill | 56 | Disable | trailing icon | 132:7627 | 98×56 | 97.45×56 | 1×24 | Passed | recSTlD6No3Q2AGvB |
+| Outline | Pill | 56 | Disable | Icon only | 132:7638 | 56×56 | 56×56 | 1×32 | Passed | reci2YUf1FAaRrjo4 |
