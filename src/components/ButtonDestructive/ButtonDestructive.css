@@ -1,0 +1,47 @@
+/* Button / Destructive — Figma 444:4114.
+   Layered on Button (src/components/Button/Button.css): only the colour
+   custom properties change. Disabled is left to Button, because Figma binds
+   Destructive's Disable to the same tokens as Primary's (bg-disabled,
+   text/icon-disabled, border-secondary). Every value is a semantic token. */
+
+/* ---- Type=Default ---- */
+.cc-button.cc-button--destructive[data-type='Default']:not(:disabled) {
+  --cc-button-bg: var(--color-bg-negative-idle);
+  --cc-button-border: var(--color-bg-negative-idle);
+  /* text and icon stay color-text-inverse / color-icon-inverse from Button */
+}
+.cc-button.cc-button--destructive[data-type='Default']:hover:not(:disabled),
+.cc-button.cc-button--destructive[data-type='Default'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-negative-hovered);
+}
+/* Figma binds Press to color-bg-negative-focused (there is no negative-pressed token) */
+.cc-button.cc-button--destructive[data-type='Default']:active:not(:disabled),
+.cc-button.cc-button--destructive[data-type='Default'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-negative-focused);
+}
+.cc-button.cc-button--destructive[data-type='Default']:focus-visible:not(:disabled),
+.cc-button.cc-button--destructive[data-type='Default'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-negative-focused);
+}
+
+/* ---- Type=Outline ---- */
+.cc-button.cc-button--destructive[data-type='Outline']:not(:disabled) {
+  --cc-button-text: var(--color-text-negative);
+  --cc-button-icon: var(--color-icon-negative);
+  --cc-button-border: var(--color-border-negative-default);
+}
+.cc-button.cc-button--destructive[data-type='Outline']:hover:not(:disabled),
+.cc-button.cc-button--destructive[data-type='Outline'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-negative-light);
+  --cc-button-border: var(--color-border-negative-default);
+}
+.cc-button.cc-button--destructive[data-type='Outline']:active:not(:disabled),
+.cc-button.cc-button--destructive[data-type='Outline'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-negative-lighthovered);
+  --cc-button-border: var(--color-border-negative-bold);
+}
+.cc-button.cc-button--destructive[data-type='Outline']:focus-visible:not(:disabled),
+.cc-button.cc-button--destructive[data-type='Outline'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-negative-light);
+  --cc-button-border: var(--color-border-negative-default);
+}
