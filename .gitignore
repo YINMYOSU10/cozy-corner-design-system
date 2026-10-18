@@ -4,3 +4,4 @@ node_modules/
 storybook-static/
 *storybook.log
 .claude/launch.json
+.claude/registry.local.json

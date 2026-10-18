@@ -35,6 +35,15 @@ Stack facts and commands only. Rules about how we work live in `CLAUDE.md`.
 - Agents: `.claude/agents/`
 - Skills: `.claude/skills/`
 
+## Deployment
+
+- Host: Vercel (Hobby, free), project `cozy-corner-design-system`, connected to GitHub
+- Preset: Storybook · Build command: `npm run build-storybook` · Output: `storybook-static`
+- Production: `main` → https://cozy-corner-design-system.vercel.app
+- Staging: the `staging` branch gets a Vercel preview URL. Branch previews may sit behind
+  Vercel login — check before writing one to the registry.
+- Verify a deploy by fetching `<url>/index.json` and parsing it. A 200 alone is not proof.
+
 ## Fonts and icons
 
 - Fonts: Fraunces, Karla, Inter, Fredoka, loaded from Google Fonts.

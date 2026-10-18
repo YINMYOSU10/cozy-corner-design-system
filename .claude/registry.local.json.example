@@ -1,0 +1,11 @@
+{
+  "baseId": "appXXXXXXXXXXXXXX",
+  "tables": {
+    "Components": "tblXXXXXXXXXXXXXX",
+    "Staging Testing": "tblXXXXXXXXXXXXXX",
+    "DS Feedback": "tblXXXXXXXXXXXXXX",
+    "GitHub Commits": "tblXXXXXXXXXXXXXX",
+    "One-Off Components": "tblXXXXXXXXXXXXXX"
+  },
+  "asanaProjectId": ""
+}
