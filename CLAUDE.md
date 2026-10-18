@@ -55,3 +55,8 @@ and what to avoid. Stack facts and commands live in `tools.md`.
 - Copying a component's styles instead of importing the component.
 - Adding a dependency when the existing stack already solves the problem.
 - Editing generated or plugin-owned files (`build/`, `tokens/`).
+
+
+## Git
+A component branch never merges into main.
+Main accepts PRs from staging only.

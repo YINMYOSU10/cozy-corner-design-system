@@ -144,6 +144,11 @@ Settled by the human on 2026-10-18, where the crew board and this contract disag
 5. **PM writes Asana, not Airtable.** It reads every table on a schedule and owns no column.
 6. **`To-do` follows the formula**: Figma set and Design = Done. The board's "Figma link
    exists" is shorthand for it.
+7. **Group Staging Testing rows.** The Airtable free plan caps the base at 1,000 rows.
+   QA writes one row per *State × Type* (or the closest equivalent for components
+   without those properties), not one per variant. Each row lists every variant it
+   covers in `Variants`, and its `Testing Results` is `Failed` if any covered variant
+   fails. Per-variant detail stays in `reports/<Component>.md`.
 
 ## The loop — who each status wakes
 
