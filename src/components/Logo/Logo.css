@@ -1,0 +1,43 @@
+/* Logo (Figma 4:484). Every value is a semantic token Figma binds.
+   Auto-layout: horizontal, centred, gap spacing/sm, radius borderRadius/sm. */
+.cc-logo {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  border-radius: var(--borderradius-sm);
+}
+
+.cc-logo__glyph {
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Wordmark: cozy corner/typography/Logo. Website reads the default mode;
+   Dashboard reads the same tokens under [data-mode="dashboard"] (20/24),
+   which are the values Figma binds on 4:496. */
+.cc-logo__wordmark {
+  font-family: var(--typography-logo-fontfamily);
+  font-size: var(--typography-logo-fontsize);
+  line-height: var(--typography-logo-lineheight);
+  font-weight: var(--typography-logo-fontweight);
+  letter-spacing: var(--typography-logo-letterspacing);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+/* Glyph paint. Unbound roles stay unpainted: design gap, reported. */
+.cc-logo__glyph path {
+  fill: none;
+  stroke: none;
+}
+
+.cc-logo__glyph path[data-paint='spine'][data-bound='true'] {
+  fill: var(--color-bg-inverse);
+  stroke: var(--color-icon-primary);
+}
+
+.cc-logo__glyph path[data-paint='line'][data-bound='true'] {
+  stroke: var(--color-icon-primary);
+}
