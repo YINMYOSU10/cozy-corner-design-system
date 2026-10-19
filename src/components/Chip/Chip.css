@@ -37,11 +37,11 @@
   --cc-chip-bg: var(--color-bg-primary-idle);
   --cc-chip-text: var(--color-text-inverse);
 }
-.cc-chip[data-selected='True']:hover,
+.cc-chip[data-selected='True']:not(:disabled):hover,
 .cc-chip[data-selected='True'][data-state='Hover'] {
   --cc-chip-bg: var(--color-bg-primary-hovered);
 }
-.cc-chip[data-selected='True']:focus-visible,
+.cc-chip[data-selected='True']:not(:disabled):focus-visible,
 .cc-chip[data-selected='True'][data-state='Focused'] {
   --cc-chip-bg: var(--color-bg-primary-focused);
 }
@@ -51,11 +51,11 @@
   --cc-chip-bg: var(--color-bg-primary-light);
   --cc-chip-text: var(--color-text-primary);
 }
-.cc-chip[data-selected='False']:hover,
+.cc-chip[data-selected='False']:not(:disabled):hover,
 .cc-chip[data-selected='False'][data-state='Hover'] {
   --cc-chip-bg: var(--color-bg-primary-lighthovered);
 }
-.cc-chip[data-selected='False']:focus-visible,
+.cc-chip[data-selected='False']:not(:disabled):focus-visible,
 .cc-chip[data-selected='False'][data-state='Focused'] {
   --cc-chip-bg: var(--color-bg-primary-lightfocused);
 }
