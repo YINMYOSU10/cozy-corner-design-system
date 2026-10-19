@@ -1,0 +1,39 @@
+/* Detail Row (Figma 554:25). Semantic tokens only. */
+.cc-detail-row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  inline-size: 100%; /* Figma widths 390 / 560 are unbound: fills its container */
+  background: var(--color-bg-base);
+}
+
+.cc-detail-row__row {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--spacing-md);
+}
+
+.cc-detail-row--website .cc-detail-row__row {
+  padding-block: var(--spacing-lg);
+}
+
+.cc-detail-row__label,
+.cc-detail-row__value {
+  font-family: var(--typography-body-fontfamily);
+  font-size: var(--typography-body-fontsize);
+  font-weight: var(--typography-body-fontweight);
+  line-height: var(--typography-body-lineheight);
+  letter-spacing: var(--typography-body-letterspacing);
+}
+
+.cc-detail-row__label {
+  color: var(--color-text-secondary);
+}
+
+.cc-detail-row__value {
+  color: var(--color-text-primary);
+  text-align: end;
+}
