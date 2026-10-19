@@ -1,0 +1,47 @@
+/* Button / Info — Figma 445:5037.
+   Layered on Button (src/components/Button/Button.css): only the colour
+   custom properties change. Disable is left to Button, because Figma binds
+   Info's Disable to the same tokens as Primary's (bg-disabled,
+   text/icon-disabled, border-secondary). Every value is a semantic token. */
+
+/* ---- Type=Default ---- */
+.cc-button.cc-button--info[data-type='Default']:not(:disabled) {
+  --cc-button-bg: var(--color-bg-info-idle);
+  --cc-button-border: var(--color-bg-info-idle);
+  /* text and icon stay color-text-inverse / color-icon-inverse from Button */
+}
+.cc-button.cc-button--info[data-type='Default']:hover:not(:disabled),
+.cc-button.cc-button--info[data-type='Default'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-info-hovered);
+}
+/* Figma binds Press to color-bg-info-focused (there is no info-pressed token) */
+.cc-button.cc-button--info[data-type='Default']:active:not(:disabled),
+.cc-button.cc-button--info[data-type='Default'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-info-focused);
+}
+.cc-button.cc-button--info[data-type='Default']:focus-visible:not(:disabled),
+.cc-button.cc-button--info[data-type='Default'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-info-focused);
+}
+
+/* ---- Type=Outline ---- */
+.cc-button.cc-button--info[data-type='Outline']:not(:disabled) {
+  --cc-button-text: var(--color-text-info);
+  --cc-button-icon: var(--color-icon-info);
+  --cc-button-border: var(--color-border-info-default);
+}
+.cc-button.cc-button--info[data-type='Outline']:hover:not(:disabled),
+.cc-button.cc-button--info[data-type='Outline'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-info-light);
+  --cc-button-border: var(--color-border-info-default);
+}
+.cc-button.cc-button--info[data-type='Outline']:active:not(:disabled),
+.cc-button.cc-button--info[data-type='Outline'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-info-lighthovered);
+  --cc-button-border: var(--color-border-info-bold);
+}
+.cc-button.cc-button--info[data-type='Outline']:focus-visible:not(:disabled),
+.cc-button.cc-button--info[data-type='Outline'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-info-light);
+  --cc-button-border: var(--color-border-info-default);
+}
