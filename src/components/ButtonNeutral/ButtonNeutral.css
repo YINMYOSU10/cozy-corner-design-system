@@ -2,7 +2,7 @@
    Layered on Button (src/components/Button/Button.css): only the colour
    custom properties change. Disabled is left to Button (bg-disabled,
    text/icon-disabled, border-secondary), which is what Figma binds on every
-   Disable / Outline cell and on the consistent Disable / Default cells.
+   Disable cell.
    Every value is a semantic token. */
 
 /* ---- Type=Default ---- */
@@ -42,12 +42,6 @@
 .cc-button.cc-button--neutral[data-type='Outline']:active:not(:disabled),
 .cc-button.cc-button--neutral[data-type='Outline'][data-state='Press'] {
   --cc-button-bg: var(--color-bg-neutral-lighthovered);
-  --cc-button-border: var(--color-border-neutral-default);
-}
-/* Figma binds Press / Outline border to border-neutral-bold at Size 32 only;
-   48 and 56 keep border-neutral-default (suspected design slip, reported). */
-.cc-button.cc-button--neutral[data-type='Outline'][data-size='32']:active:not(:disabled),
-.cc-button.cc-button--neutral[data-type='Outline'][data-size='32'][data-state='Press'] {
   --cc-button-border: var(--color-border-neutral-bold);
 }
 .cc-button.cc-button--neutral[data-type='Outline']:focus-visible:not(:disabled),
