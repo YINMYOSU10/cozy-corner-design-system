@@ -1,0 +1,43 @@
+/* Badge — Figma 385:14. Every value is a token from build/tokens/css/tokens.css.
+   Figma: horizontal auto-layout, centred, padding spacing/md x spacing/base,
+   radius borderRadius/circle, text style "Label" (Inter Medium 14/22). */
+
+.cc-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  white-space: nowrap;
+  padding: var(--spacing-base) var(--spacing-md);
+  border-radius: var(--borderradius-circle);
+  font-family: var(--typography-label-fontfamily);
+  font-size: var(--typography-label-fontsize);
+  font-weight: var(--typography-label-fontweight);
+  line-height: var(--typography-label-lineheight);
+  letter-spacing: var(--typography-label-letterspacing);
+}
+
+.cc-badge[data-type='Warning'] {
+  background: var(--color-bg-warning-light);
+  color: var(--color-text-warning);
+}
+.cc-badge[data-type='Positive'] {
+  background: var(--color-bg-positive-light);
+  color: var(--color-text-positive);
+}
+.cc-badge[data-type='Negative'] {
+  background: var(--color-bg-negative-light);
+  color: var(--color-text-negative);
+}
+.cc-badge[data-type='Info'] {
+  background: var(--color-bg-info-light);
+  color: var(--color-text-info);
+}
+.cc-badge[data-type='Update'] {
+  background: var(--color-bg-update-light);
+  color: var(--color-text-update);
+}
+.cc-badge[data-type='Neutral'] {
+  background: var(--color-bg-gray-light);
+  color: var(--color-text-gray-default);
+}
