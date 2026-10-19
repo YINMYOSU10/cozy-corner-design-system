@@ -1,15 +1,13 @@
 /* Toggle — Figma 299:317.
    Every value is a semantic token, bound exactly as Figma binds it per variant.
-
-   DESIGN GAP: Figma binds no token to the geometry (track 36×18, thumb 16,
-   thumb inset 1). The stand-ins below are existing tokens with those values,
-   kept in one place so the binding can be swapped once design sets it:
-     track width  -> spacing-4xl, thumb -> spacing-lg, inset -> borderwidth-1. */
+   Geometry: size/toggle/width|height on the variant and track, size/toggle/thumb
+   on the thumb; the thumb's 1 offset is positional in Figma, so it uses
+   size/toggle/inset here. */
 .cc-toggle {
-  --cc-toggle-width: var(--spacing-4xl);
-  --cc-toggle-thumb: var(--spacing-lg);
-  --cc-toggle-inset: var(--borderwidth-1);
-  --cc-toggle-height: calc(var(--cc-toggle-thumb) + 2 * var(--cc-toggle-inset));
+  --cc-toggle-width: var(--size-toggle-width);
+  --cc-toggle-height: var(--size-toggle-height);
+  --cc-toggle-thumb: var(--size-toggle-thumb);
+  --cc-toggle-inset: var(--size-toggle-inset);
   --cc-toggle-travel: calc(var(--cc-toggle-width) - var(--cc-toggle-thumb) - 2 * var(--cc-toggle-inset));
 
   --cc-toggle-elevation-1:
@@ -66,23 +64,25 @@
   transform: translateX(var(--cc-toggle-travel));
 }
 
-/* ---- State=Default ---- */
-/* Checked?=False: track bg/positive/light, elevation level 1 */
+/* ---- State=Default ----
+   Track bg/positive/light (False) or bg/positive/idle (True).
+   Variant: elevation level 1 on both. Default/False's track also carries its
+   own level 1 shadow in Figma, so it stacks twice (reported as a slip). */
 .cc-toggle[data-checked='False'] {
   --cc-toggle-bg: var(--color-bg-positive-light);
-  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1), var(--cc-toggle-elevation-1);
 }
-/* Checked?=True: track bg/positive/idle, no elevation (as Figma) */
 .cc-toggle[data-checked='True'] {
   --cc-toggle-bg: var(--color-bg-positive-idle);
-  --cc-toggle-shadow: 0 0 0 0 transparent;
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
 }
 
 /* ---- State=Focus (keyboard focus, or forced by state="Focus") ----
-   0.5 stroke outside, border/positive/light; elevation 1 (False) / 2 (True). */
+   borderWidth/2 stroke outside in border/focus; variant elevation level 1
+   (False) or level 2 (True). The track itself has no shadow here. */
 .cc-toggle:focus-visible:not(:disabled),
 .cc-toggle[data-state='Focus'] {
-  --cc-toggle-ring: 0 0 0 var(--borderwidth-05) var(--color-border-positive-light);
+  --cc-toggle-ring: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
 }
 .cc-toggle[data-checked='False']:focus-visible:not(:disabled),
 .cc-toggle[data-checked='False'][data-state='Focus'] {
@@ -93,19 +93,11 @@
   --cc-toggle-shadow: var(--cc-toggle-elevation-2);
 }
 
-/* ---- State=Disabled ---- */
+/* ---- State=Disabled ----
+   Track bg/gray/lightHovered on both, no shadow, no stroke. */
 .cc-toggle:disabled {
-  cursor: not-allowed;
-}
-/* Checked?=False: track bg/gray/lightHovered, no elevation, and a 1 stroke
-   inside the component frame in border/positive/light (as Figma). */
-.cc-toggle[data-checked='False']:disabled {
   --cc-toggle-bg: var(--color-bg-gray-lighthovered);
+  --cc-toggle-ring: 0 0 0 0 transparent;
   --cc-toggle-shadow: 0 0 0 0 transparent;
-  box-shadow: inset 0 0 0 var(--borderwidth-1) var(--color-border-positive-light);
-}
-/* Checked?=True: track bg/gray/lightFocused, elevation level 1 */
-.cc-toggle[data-checked='True']:disabled {
-  --cc-toggle-bg: var(--color-bg-gray-lightfocused);
-  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+  cursor: not-allowed;
 }
