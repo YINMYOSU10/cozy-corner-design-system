@@ -1,0 +1,60 @@
+/* Status Bar — Figma 525:49. Every value is a token from build/tokens/css/tokens.css.
+   Bar height (44) and indicator size (22) have no tokens in Figma; they are
+   carried by the sizer SVGs in StatusBar.tsx. */
+
+.cc-status-bar {
+  --cc-status-bar-bg: var(--color-bg-base);
+  --cc-status-bar-fg: var(--color-text-bold);
+
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-inline: var(--spacing-xl);
+  background: var(--cc-status-bar-bg);
+  color: var(--cc-status-bar-fg);
+}
+
+.cc-status-bar[data-mode='Dark'] {
+  --cc-status-bar-bg: var(--color-bg-inverse);
+  --cc-status-bar-fg: var(--color-text-inverse);
+}
+
+.cc-status-bar__time {
+  font-family: var(--typography-labellarge-fontfamily);
+  font-size: var(--typography-labellarge-fontsize);
+  line-height: var(--typography-labellarge-lineheight);
+  font-weight: var(--typography-labellarge-fontweight);
+  letter-spacing: var(--typography-labellarge-letterspacing);
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cc-status-bar__indicators {
+  display: inline-flex;
+  align-items: center;
+}
+
+.cc-status-bar__indicator {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.cc-status-bar__sizer { display: block; }
+
+.cc-status-bar__slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cc-status-bar__slot > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
