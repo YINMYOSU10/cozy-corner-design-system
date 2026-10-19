@@ -8,8 +8,12 @@ const TYPE = (mode) => T + `cozy.corner.semantic.typography.${mode}.tokens.json`
 const STYLES = [T + 'typography.styles.tokens.json', T + 'effects.styles.tokens.json'];
 
 // Figma writes font weight as a style NAME. CSS needs a number.
-const WEIGHTS = { Thin:100, ExtraLight:200, Light:300, Regular:400, Medium:500,
-                  SemiBold:600, Bold:700, ExtraBold:800, Black:900 };
+// Names arrive in any casing ("SemiBold", "semibold", "Semi Bold"), so match
+// on the name with case and spaces removed.
+const WEIGHTS = { thin:100, extralight:200, light:300, regular:400, medium:500,
+                  semibold:600, bold:700, extrabold:800, black:900 };
+const weight = (v) =>
+  typeof v === 'string' ? WEIGHTS[v.toLowerCase().replace(/[\s_-]/g, '')] ?? v : v;
 
 // Figma exports some semantic tokens with the same name as the core token
 // they alias (e.g. color-logo-orange: "{color-logo-orange}"). Merged, that
@@ -38,11 +42,13 @@ StyleDictionary.registerPreprocessor({
           const v = t.$value;
           t.$value = {
             ...v,
-            fontWeight: WEIGHTS[v.fontWeight] ?? v.fontWeight,
+            fontWeight: weight(v.fontWeight),
             lineHeight: typeof v.lineHeight === 'number'
               ? { value: v.lineHeight, unit: 'px' }
               : v.lineHeight,
           };
+        } else if (t.$type === 'fontWeight' && '$value' in t) {
+          t.$value = weight(t.$value);
         } else {
           walk(t);
         }
