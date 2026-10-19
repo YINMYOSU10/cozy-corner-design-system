@@ -7,7 +7,7 @@ import './Footer.css';
 export interface FooterColumnProps extends Omit<HTMLAttributes<HTMLElement>, 'children'> {
   /** Figma text property "Heading". */
   heading?: string;
-  /** Figma slot "Items": normally `Link` instances. Each becomes a list item. */
+  /** Figma slot "Items": `Link` instances, or plain text strings (address, hours). Each becomes a list item. */
   children?: ReactNode;
 }
 
@@ -27,7 +27,11 @@ export function FooterColumn({ heading = 'EXPLORE', children, className, ...rest
         <ul className="cc-footer-column__items">
           {items.map((item, i) => (
             <li key={i} className="cc-footer-column__item">
-              {item}
+              {typeof item === 'string' ? (
+                <span className="cc-footer-column__text">{item}</span>
+              ) : (
+                item
+              )}
             </li>
           ))}
         </ul>
