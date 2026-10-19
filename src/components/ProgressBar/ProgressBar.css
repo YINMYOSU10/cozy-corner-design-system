@@ -1,0 +1,41 @@
+/* Progress Bar (Figma 416:46) + segment (416:5). Semantic tokens only. */
+.cc-progress-bar {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-sm);
+  inline-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.cc-progress-bar__label {
+  color: var(--color-twotone-gold-foreground);
+  font-family: var(--typography-bodysmall-fontfamily);
+  font-size: var(--typography-bodysmall-fontsize);
+  font-weight: var(--typography-bodysmall-fontweight);
+  line-height: var(--typography-bodysmall-lineheight);
+  letter-spacing: var(--typography-bodysmall-letterspacing);
+}
+
+.cc-progress-bar__track {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-base);
+  inline-size: 100%;
+}
+
+.cc-progress-bar-segment {
+  display: block;
+  flex: 1 1 0;
+  min-inline-size: 0;
+  block-size: var(--cc-progress-bar-segment-height);
+  border-radius: var(--borderradius-circle);
+  background-color: var(--color-bg-primary-light);
+}
+
+.cc-progress-bar-segment--filled {
+  background-color: var(--color-bg-primary-idle);
+}

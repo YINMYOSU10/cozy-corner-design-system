@@ -1,0 +1,78 @@
+/* Chip — Figma 391:37. Every value is a token from build/tokens/css/tokens.css.
+   Horizontal auto-layout, centred both ways, no gap, padding-inline spacing/lg,
+   radius borderRadius/circle. Height 40 is unbound in Figma (see sizer in Chip.tsx). */
+
+.cc-chip {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+  padding-inline: var(--spacing-lg);
+  border-radius: var(--borderradius-circle);
+  background: var(--cc-chip-bg);
+  color: var(--cc-chip-text);
+}
+
+.cc-chip__sizer {
+  display: block;
+  flex: none;
+}
+
+/* Label style: typography/label (Inter, Medium) */
+.cc-chip__label {
+  white-space: nowrap;
+  font-family: var(--typography-label-fontfamily);
+  font-size: var(--typography-label-fontsize);
+  font-weight: var(--typography-label-fontweight);
+  line-height: var(--typography-label-lineheight);
+  letter-spacing: var(--typography-label-letterspacing);
+}
+
+/* ---- Selected=True: fill color/bg/primary/idle, text color/text/inverse ---- */
+.cc-chip[data-selected='True'] {
+  --cc-chip-bg: var(--color-bg-primary-idle);
+  --cc-chip-text: var(--color-text-inverse);
+}
+.cc-chip[data-selected='True']:not(:disabled):hover,
+.cc-chip[data-selected='True'][data-state='Hover'] {
+  --cc-chip-bg: var(--color-bg-primary-hovered);
+}
+.cc-chip[data-selected='True']:not(:disabled):focus-visible,
+.cc-chip[data-selected='True'][data-state='Focused'] {
+  --cc-chip-bg: var(--color-bg-primary-focused);
+}
+
+/* ---- Selected=False: fill color/bg/primary/light, text color/text/primary ---- */
+.cc-chip[data-selected='False'] {
+  --cc-chip-bg: var(--color-bg-primary-light);
+  --cc-chip-text: var(--color-text-primary);
+}
+.cc-chip[data-selected='False']:not(:disabled):hover,
+.cc-chip[data-selected='False'][data-state='Hover'] {
+  --cc-chip-bg: var(--color-bg-primary-lighthovered);
+}
+.cc-chip[data-selected='False']:not(:disabled):focus-visible,
+.cc-chip[data-selected='False'][data-state='Focused'] {
+  --cc-chip-bg: var(--color-bg-primary-lightfocused);
+}
+
+/* ---- Focus ring (Figma effects): 2px color/bg/base gap, then 4px color/border/focus ---- */
+.cc-chip:focus-visible,
+.cc-chip[data-state='Focused'] {
+  outline: none;
+  box-shadow:
+    0 0 0 var(--borderwidth-2) var(--color-bg-base),
+    0 0 0 calc(var(--borderwidth-2) * 2) var(--color-border-focus);
+}
+
+/* ---- Disabled (both Selected values): color/bg/disabled + color/text/disabled ---- */
+.cc-chip:disabled {
+  --cc-chip-bg: var(--color-bg-disabled);
+  --cc-chip-text: var(--color-text-disabled);
+  cursor: not-allowed;
+  box-shadow: none;
+}

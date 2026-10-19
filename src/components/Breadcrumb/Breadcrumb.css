@@ -1,0 +1,72 @@
+/* Breadcrumb — Figma 431:68 (+ item/link 431:26, item/current 431:27, item/separator 430:15).
+   Every value is a token from build/tokens/css/tokens.css. */
+
+.cc-breadcrumb__list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-base);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-breadcrumb__item {
+  display: flex;
+}
+
+/* Shared item frame: padding spacing/base, radius borderRadius/sm */
+.cc-breadcrumb-link,
+.cc-breadcrumb-current {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: var(--spacing-base);
+  border-radius: var(--borderradius-sm);
+  font: var(--cozy-corner-typography-dashboard-body-large);
+  white-space: nowrap;
+}
+
+/* item/link — State=Default */
+.cc-breadcrumb-link {
+  color: var(--color-text-gray-default);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cc-breadcrumb-link__underline {
+  display: none;
+  height: var(--borderwidth-1);
+  background: var(--color-text-gray-bold);
+}
+
+/* State=Hover: bold-grey text and a 1px underline */
+.cc-breadcrumb-link:hover,
+.cc-breadcrumb-link[data-state='Hover'] {
+  color: var(--color-text-gray-bold);
+}
+.cc-breadcrumb-link:hover .cc-breadcrumb-link__underline,
+.cc-breadcrumb-link[data-state='Hover'] .cc-breadcrumb-link__underline {
+  display: block;
+}
+
+/* State=Focused: 2px outside stroke (strokeAlign OUTSIDE, Figma 431:23) in border/focus */
+.cc-breadcrumb-link:focus-visible,
+.cc-breadcrumb-link[data-state='Focused'] {
+  outline: none;
+  box-shadow: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
+}
+
+/* item/current: semibold, bold-grey */
+.cc-breadcrumb-current {
+  color: var(--color-text-gray-bold);
+  font: var(--cozy-corner-typography-dashboard-body-large-semibold);
+}
+
+/* item/separator */
+.cc-breadcrumb-separator {
+  display: flex;
+  padding: 0 var(--spacing-base);
+  color: var(--color-text-gray-default);
+  font: var(--cozy-corner-typography-dashboard-body-large);
+}
