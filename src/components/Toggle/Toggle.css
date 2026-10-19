@@ -17,13 +17,7 @@
     var(--elevation-level1-shadow2-offsetx) var(--elevation-level1-shadow2-offsety)
       var(--elevation-level1-shadow2-blur) var(--elevation-level1-shadow2-spread)
       var(--elevation-level1-shadow2-color);
-  --cc-toggle-elevation-2:
-    var(--elevation-level2-shadow1-offsetx) var(--elevation-level2-shadow1-offsety)
-      var(--elevation-level2-shadow1-blur) var(--elevation-level2-shadow1-spread)
-      var(--elevation-level2-shadow1-color),
-    var(--elevation-level2-shadow2-offsetx) var(--elevation-level2-shadow2-offsety)
-      var(--elevation-level2-shadow2-blur) var(--elevation-level2-shadow2-spread)
-      var(--elevation-level2-shadow2-color);
+
 
   /* per-variant slots, set below */
   --cc-toggle-bg: var(--color-bg-positive-light);
@@ -37,7 +31,9 @@
   padding: var(--borderwidth-0);
   margin: var(--borderwidth-0);
   border: none;
+  border-radius: var(--borderradius-lg);
   background: none;
+  box-shadow: var(--cc-toggle-shadow);
   cursor: pointer;
   outline: none;
   vertical-align: middle;
@@ -48,7 +44,7 @@
   inset: var(--borderwidth-0);
   border-radius: var(--borderradius-lg);
   background-color: var(--cc-toggle-bg);
-  box-shadow: var(--cc-toggle-ring), var(--cc-toggle-shadow);
+  box-shadow: var(--cc-toggle-ring);
 }
 
 .cc-toggle__thumb {
@@ -66,31 +62,23 @@
 
 /* ---- State=Default ----
    Track bg/positive/light (False) or bg/positive/idle (True).
-   Variant: elevation level 1 on both. Default/False's track also carries its
-   own level 1 shadow in Figma, so it stacks twice (reported as a slip). */
+   Elevation level 1 sits on the variant (the toggle), never on the track. */
+.cc-toggle {
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+}
 .cc-toggle[data-checked='False'] {
   --cc-toggle-bg: var(--color-bg-positive-light);
-  --cc-toggle-shadow: var(--cc-toggle-elevation-1), var(--cc-toggle-elevation-1);
 }
 .cc-toggle[data-checked='True'] {
   --cc-toggle-bg: var(--color-bg-positive-idle);
-  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
 }
 
 /* ---- State=Focus (keyboard focus, or forced by state="Focus") ----
-   borderWidth/2 stroke outside in border/focus; variant elevation level 1
-   (False) or level 2 (True). The track itself has no shadow here. */
+   Same level 1 elevation; the track gets a borderWidth/2 stroke outside in
+   border/focus. */
 .cc-toggle:focus-visible:not(:disabled),
 .cc-toggle[data-state='Focus'] {
   --cc-toggle-ring: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
-}
-.cc-toggle[data-checked='False']:focus-visible:not(:disabled),
-.cc-toggle[data-checked='False'][data-state='Focus'] {
-  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
-}
-.cc-toggle[data-checked='True']:focus-visible:not(:disabled),
-.cc-toggle[data-checked='True'][data-state='Focus'] {
-  --cc-toggle-shadow: var(--cc-toggle-elevation-2);
 }
 
 /* ---- State=Disabled ----
