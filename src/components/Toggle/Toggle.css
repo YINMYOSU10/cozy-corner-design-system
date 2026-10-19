@@ -1,0 +1,111 @@
+/* Toggle — Figma 299:317.
+   Every value is a semantic token, bound exactly as Figma binds it per variant.
+
+   DESIGN GAP: Figma binds no token to the geometry (track 36×18, thumb 16,
+   thumb inset 1). The stand-ins below are existing tokens with those values,
+   kept in one place so the binding can be swapped once design sets it:
+     track width  -> spacing-4xl, thumb -> spacing-lg, inset -> borderwidth-1. */
+.cc-toggle {
+  --cc-toggle-width: var(--spacing-4xl);
+  --cc-toggle-thumb: var(--spacing-lg);
+  --cc-toggle-inset: var(--borderwidth-1);
+  --cc-toggle-height: calc(var(--cc-toggle-thumb) + 2 * var(--cc-toggle-inset));
+  --cc-toggle-travel: calc(var(--cc-toggle-width) - var(--cc-toggle-thumb) - 2 * var(--cc-toggle-inset));
+
+  --cc-toggle-elevation-1:
+    var(--elevation-level1-shadow1-offsetx) var(--elevation-level1-shadow1-offsety)
+      var(--elevation-level1-shadow1-blur) var(--elevation-level1-shadow1-spread)
+      var(--elevation-level1-shadow1-color),
+    var(--elevation-level1-shadow2-offsetx) var(--elevation-level1-shadow2-offsety)
+      var(--elevation-level1-shadow2-blur) var(--elevation-level1-shadow2-spread)
+      var(--elevation-level1-shadow2-color);
+  --cc-toggle-elevation-2:
+    var(--elevation-level2-shadow1-offsetx) var(--elevation-level2-shadow1-offsety)
+      var(--elevation-level2-shadow1-blur) var(--elevation-level2-shadow1-spread)
+      var(--elevation-level2-shadow1-color),
+    var(--elevation-level2-shadow2-offsetx) var(--elevation-level2-shadow2-offsety)
+      var(--elevation-level2-shadow2-blur) var(--elevation-level2-shadow2-spread)
+      var(--elevation-level2-shadow2-color);
+
+  /* per-variant slots, set below */
+  --cc-toggle-bg: var(--color-bg-positive-light);
+  --cc-toggle-ring: 0 0 0 0 transparent;
+  --cc-toggle-shadow: 0 0 0 0 transparent;
+
+  display: inline-block;
+  position: relative;
+  inline-size: var(--cc-toggle-width);
+  block-size: var(--cc-toggle-height);
+  padding: var(--borderwidth-0);
+  margin: var(--borderwidth-0);
+  border: none;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  vertical-align: middle;
+}
+
+.cc-toggle__track {
+  position: absolute;
+  inset: var(--borderwidth-0);
+  border-radius: var(--borderradius-lg);
+  background-color: var(--cc-toggle-bg);
+  box-shadow: var(--cc-toggle-ring), var(--cc-toggle-shadow);
+}
+
+.cc-toggle__thumb {
+  position: absolute;
+  inset-block-start: var(--cc-toggle-inset);
+  inset-inline-start: var(--cc-toggle-inset);
+  inline-size: var(--cc-toggle-thumb);
+  block-size: var(--cc-toggle-thumb);
+  border-radius: var(--borderradius-circle);
+  background-color: var(--color-bg-surfaceprimary);
+}
+.cc-toggle[data-checked='True'] .cc-toggle__thumb {
+  transform: translateX(var(--cc-toggle-travel));
+}
+
+/* ---- State=Default ---- */
+/* Checked?=False: track bg/positive/light, elevation level 1 */
+.cc-toggle[data-checked='False'] {
+  --cc-toggle-bg: var(--color-bg-positive-light);
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+}
+/* Checked?=True: track bg/positive/idle, no elevation (as Figma) */
+.cc-toggle[data-checked='True'] {
+  --cc-toggle-bg: var(--color-bg-positive-idle);
+  --cc-toggle-shadow: 0 0 0 0 transparent;
+}
+
+/* ---- State=Focus (keyboard focus, or forced by state="Focus") ----
+   0.5 stroke outside, border/positive/light; elevation 1 (False) / 2 (True). */
+.cc-toggle:focus-visible:not(:disabled),
+.cc-toggle[data-state='Focus'] {
+  --cc-toggle-ring: 0 0 0 var(--borderwidth-05) var(--color-border-positive-light);
+}
+.cc-toggle[data-checked='False']:focus-visible:not(:disabled),
+.cc-toggle[data-checked='False'][data-state='Focus'] {
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+}
+.cc-toggle[data-checked='True']:focus-visible:not(:disabled),
+.cc-toggle[data-checked='True'][data-state='Focus'] {
+  --cc-toggle-shadow: var(--cc-toggle-elevation-2);
+}
+
+/* ---- State=Disabled ---- */
+.cc-toggle:disabled {
+  cursor: not-allowed;
+}
+/* Checked?=False: track bg/gray/lightHovered, no elevation, and a 1 stroke
+   inside the component frame in border/positive/light (as Figma). */
+.cc-toggle[data-checked='False']:disabled {
+  --cc-toggle-bg: var(--color-bg-gray-lighthovered);
+  --cc-toggle-shadow: 0 0 0 0 transparent;
+  box-shadow: inset 0 0 0 var(--borderwidth-1) var(--color-border-positive-light);
+}
+/* Checked?=True: track bg/gray/lightFocused, elevation level 1 */
+.cc-toggle[data-checked='True']:disabled {
+  --cc-toggle-bg: var(--color-bg-gray-lightfocused);
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+}
