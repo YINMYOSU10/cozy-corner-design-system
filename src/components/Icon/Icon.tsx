@@ -1,5 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import { PlusGlyph } from './PlusGlyph';
+import { PlusGlyph } from './glyphs';
 import './Icon.css';
 
 // Icon (Figma component set 48:1251). Figma properties:
