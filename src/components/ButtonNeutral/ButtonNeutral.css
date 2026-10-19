@@ -1,0 +1,51 @@
+/* Button / Neutral — Figma 444:6334.
+   Layered on Button (src/components/Button/Button.css): only the colour
+   custom properties change. Disabled is left to Button (bg-disabled,
+   text/icon-disabled, border-secondary), which is what Figma binds on every
+   Disable cell.
+   Every value is a semantic token. */
+
+/* ---- Type=Default ---- */
+.cc-button.cc-button--neutral[data-type='Default']:not(:disabled) {
+  --cc-button-bg: var(--color-bg-neutral-light);
+  --cc-button-border: var(--color-bg-neutral-light);
+  --cc-button-text: var(--color-text-bold);
+  --cc-button-icon: var(--color-icon-bold);
+}
+.cc-button.cc-button--neutral[data-type='Default']:hover:not(:disabled),
+.cc-button.cc-button--neutral[data-type='Default'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-neutral-lighthovered);
+  --cc-button-border: var(--color-bg-neutral-lighthovered);
+}
+.cc-button.cc-button--neutral[data-type='Default']:active:not(:disabled),
+.cc-button.cc-button--neutral[data-type='Default'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-neutral-lightfocused);
+  --cc-button-border: var(--color-bg-neutral-lightfocused);
+}
+.cc-button.cc-button--neutral[data-type='Default']:focus-visible:not(:disabled),
+.cc-button.cc-button--neutral[data-type='Default'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-neutral-lightfocused);
+  --cc-button-border: var(--color-bg-neutral-lightfocused);
+}
+
+/* ---- Type=Outline ---- */
+.cc-button.cc-button--neutral[data-type='Outline']:not(:disabled) {
+  --cc-button-text: var(--color-text-bold);
+  --cc-button-icon: var(--color-icon-bold);
+  --cc-button-border: var(--color-border-neutral-default);
+}
+.cc-button.cc-button--neutral[data-type='Outline']:hover:not(:disabled),
+.cc-button.cc-button--neutral[data-type='Outline'][data-state='Hover'] {
+  --cc-button-bg: var(--color-bg-neutral-light);
+  --cc-button-border: var(--color-border-neutral-default);
+}
+.cc-button.cc-button--neutral[data-type='Outline']:active:not(:disabled),
+.cc-button.cc-button--neutral[data-type='Outline'][data-state='Press'] {
+  --cc-button-bg: var(--color-bg-neutral-lighthovered);
+  --cc-button-border: var(--color-border-neutral-bold);
+}
+.cc-button.cc-button--neutral[data-type='Outline']:focus-visible:not(:disabled),
+.cc-button.cc-button--neutral[data-type='Outline'][data-state='Focus'] {
+  --cc-button-bg: var(--color-bg-neutral-light);
+  --cc-button-border: var(--color-border-neutral-default);
+}
