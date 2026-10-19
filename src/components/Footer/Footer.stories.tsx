@@ -37,7 +37,10 @@ const meta = {
         <Link href="#about" labelText="About" />
         <Link href="#visit" labelText="Visit" />
       </FooterColumn>
-      <FooterColumn heading="VISIT US" />
+      <FooterColumn heading="VISIT US">
+        {'14 Mercer Lane'}
+        {'Tue–Sun, 10am–7pm'}
+      </FooterColumn>
     </Footer>
   ),
 } satisfies Meta<typeof Footer>;

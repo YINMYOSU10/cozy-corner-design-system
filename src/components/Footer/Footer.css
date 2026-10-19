@@ -129,3 +129,13 @@
   margin: 0;
   padding: 0;
 }
+
+/* Plain text items in the Items slot (VISIT US: address, hours): Body small, text/secondary. */
+.cc-footer-column__text {
+  color: var(--color-text-secondary);
+  font-family: var(--typography-bodysmall-fontfamily);
+  font-size: var(--typography-bodysmall-fontsize);
+  font-weight: var(--typography-bodysmall-fontweight);
+  line-height: var(--typography-bodysmall-lineheight);
+  letter-spacing: var(--typography-bodysmall-letterspacing);
+}
