@@ -8,10 +8,10 @@
  *   Show Wordmark  true · false            (2)  boolean
  * Logo is not interactive: no hover, press, focus, disabled or loading states.
  *
+ * Every visible paint is bound to a semantic token in Figma.
  * Design gaps (unbound in Figma, reported, not filled in):
- *   - Glyph page fill and heart fill, both platforms
- *   - Every Dashboard glyph paint (page, spine, lines, heart)
- *   - Glyph frame size (48 / 32) and the fixed component frames (265×74 / 185×45)
+ *   - Glyph frame size (48 / 32) and the fixed component frames (265×74 / 185×45);
+ *     the build hugs its content.
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Logo } from './Logo';

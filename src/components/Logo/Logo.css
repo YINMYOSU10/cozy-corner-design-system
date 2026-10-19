@@ -27,17 +27,25 @@
   white-space: nowrap;
 }
 
-/* Glyph paint. Unbound roles stay unpainted: design gap, reported. */
+/* Glyph paint: every role bound in Figma, identical on both platforms. */
 .cc-logo__glyph path {
   fill: none;
   stroke: none;
 }
 
-.cc-logo__glyph path[data-paint='spine'][data-bound='true'] {
+.cc-logo__glyph path[data-paint='page'] {
+  fill: var(--color-accent-gold-default);
+}
+
+.cc-logo__glyph path[data-paint='spine'] {
   fill: var(--color-bg-inverse);
   stroke: var(--color-icon-primary);
 }
 
-.cc-logo__glyph path[data-paint='line'][data-bound='true'] {
+.cc-logo__glyph path[data-paint='line'] {
   stroke: var(--color-icon-primary);
+}
+
+.cc-logo__glyph path[data-paint='heart'] {
+  fill: var(--color-bg-negative-lightfocused);
 }

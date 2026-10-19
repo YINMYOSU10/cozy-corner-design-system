@@ -4,12 +4,13 @@ import type { LogoPlatform } from './Logo';
 // Figma vectors (Website 4:447, Dashboard 4:486). Numbers here are vector
 // geometry in the artwork's own viewBox units, not visual design values.
 //
-// Paint is NOT set here. Every path carries a data-paint role and the CSS
-// paints only the roles Figma binds to a variable. Roles Figma leaves unbound
-// (data-bound="false") render unpainted on purpose: that is a design gap,
-// reported, not filled in with a guessed colour.
-
-type Paint = { role: 'page' | 'spine' | 'line' | 'heart'; bound: boolean };
+// Paint is NOT set here. Every path carries a data-paint role and Logo.css
+// paints each role with the semantic token Figma binds (same on both
+// platforms):
+//   page  4:448 / 4:487  fill   color/accent/gold/default
+//   spine 4:449 / 4:488  fill   color/bg/inverse, stroke color/icon/primary
+//   line  4:450–455 / 4:489–494  stroke color/icon/primary
+//   heart 4:456 / 4:495  fill   color/bg/negative/lightFocused
 
 type Geometry = {
   /** Artwork frame size, taken from the Figma vector frame (unbound in Figma). */
@@ -20,7 +21,6 @@ type Geometry = {
   spine: string;
   lines: string[];
   heart: string;
-  paint: { page: Paint; spine: Paint; line: Paint; heart: Paint };
 };
 
 const GEOMETRY: Record<LogoPlatform, Geometry> = {
@@ -39,12 +39,6 @@ const GEOMETRY: Record<LogoPlatform, Geometry> = {
       'M26.7429 27.4286C30.1715 24.6857 36.0001 24 40.4572 25.7143',
     ],
     heart: 'M24 6.17142C22.9714 4.11428 19.8857 4.11428 19.8857 6.85713C19.8857 8.91428 24 10.9714 24 10.9714C24 10.9714 28.1143 8.91428 28.1143 6.85713C28.1143 4.11428 25.0286 4.11428 24 6.17142Z',
-    paint: {
-      page: { role: 'page', bound: false }, // 4:448 fill unbound
-      spine: { role: 'spine', bound: true }, // 4:449 fill color/bg/inverse, stroke color/icon/primary
-      line: { role: 'line', bound: true }, // 4:450–4:455 stroke color/icon/primary
-      heart: { role: 'heart', bound: false }, // 4:456 fill unbound
-    },
   },
   Dashboard: {
     frame: 32,
@@ -61,18 +55,8 @@ const GEOMETRY: Record<LogoPlatform, Geometry> = {
       'M17.8286 18.2857C20.1143 16.4571 24.0001 16 26.9715 17.1428',
     ],
     heart: 'M16 4.11428C15.3143 2.74285 13.2571 2.74285 13.2571 4.57142C13.2571 5.94285 16 7.31428 16 7.31428C16 7.31428 18.7429 5.94285 18.7429 4.57142C18.7429 2.74285 16.6857 2.74285 16 4.11428Z',
-    paint: {
-      page: { role: 'page', bound: false }, // 4:487 fill unbound
-      spine: { role: 'spine', bound: false }, // 4:488 fill + stroke unbound
-      line: { role: 'line', bound: false }, // 4:489–4:494 stroke unbound
-      heart: { role: 'heart', bound: false }, // 4:495 fill unbound
-    },
   },
 };
-
-function paintAttrs(p: Paint) {
-  return { 'data-paint': p.role, 'data-bound': String(p.bound) };
-}
 
 export type LogoGlyphProps = { platform: LogoPlatform };
 
@@ -87,12 +71,12 @@ export function LogoGlyph({ platform }: LogoGlyphProps) {
       aria-hidden="true"
       focusable="false"
     >
-      <path d={g.page} opacity={0.9} {...paintAttrs(g.paint.page)} />
-      <path d={g.spine} strokeWidth={g.spineWidth} strokeLinecap="round" {...paintAttrs(g.paint.spine)} />
+      <path d={g.page} opacity={0.9} data-paint="page" />
+      <path d={g.spine} strokeWidth={g.spineWidth} strokeLinecap="round" data-paint="spine" />
       {g.lines.map((d) => (
-        <path key={d} d={d} opacity={0.6} strokeWidth={g.lineWidth} strokeLinecap="round" {...paintAttrs(g.paint.line)} />
+        <path key={d} d={d} opacity={0.6} strokeWidth={g.lineWidth} strokeLinecap="round" data-paint="line" />
       ))}
-      <path d={g.heart} {...paintAttrs(g.paint.heart)} />
+      <path d={g.heart} data-paint="heart" />
     </svg>
   );
 }
