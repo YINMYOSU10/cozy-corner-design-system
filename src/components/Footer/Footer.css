@@ -1,0 +1,131 @@
+/* Footer (Figma 500:261) and Footer/item/column (500:96).
+   Every value is a semantic token Figma binds. Auto-layout becomes flex. */
+.cc-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  margin: 0;
+  background: var(--color-bg-base);
+}
+
+.cc-footer__content {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  /* spacing/5xl top and bottom, spacing/jumbo sides */
+  padding: var(--spacing-5xl) var(--spacing-jumbo);
+}
+
+.cc-footer__brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xl);
+  /* Figma: Brand is 470 fixed, Columns fills the remaining 842. Neither width
+     is bound to a token, so they are carried as a flex ratio, not a length. */
+  flex: 470 1 0;
+  min-width: 0;
+}
+
+.cc-footer__tagline {
+  margin: 0;
+  /* Figma: 320 fixed width, unbound. 20em is 320 at the 16 body size. */
+  max-width: 20em;
+  color: var(--color-text-secondary);
+  font-family: var(--typography-body-fontfamily);
+  font-size: var(--typography-body-fontsize);
+  font-weight: var(--typography-body-fontweight);
+  line-height: var(--typography-body-lineheight);
+  letter-spacing: var(--typography-body-letterspacing);
+}
+
+.cc-footer__columns {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--spacing-xxl);
+  flex: 842 1 0;
+  min-width: 0;
+}
+
+/* Website columns: Figma 230 / 230 / fill (334). Carried as a flex ratio. */
+.cc-footer__columns > .cc-footer-column {
+  flex: 230 1 0;
+  min-width: 0;
+}
+.cc-footer__columns > .cc-footer-column:last-child {
+  flex: 334 1 0;
+}
+
+.cc-footer__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+  padding: 0 var(--spacing-jumbo) var(--spacing-xxl);
+}
+
+.cc-footer__copyright {
+  color: var(--color-text-secondary);
+  font-family: var(--typography-bodysmall-fontfamily);
+  font-size: var(--typography-bodysmall-fontsize);
+  font-weight: var(--typography-bodysmall-fontweight);
+  line-height: var(--typography-bodysmall-lineheight);
+  letter-spacing: var(--typography-bodysmall-letterspacing);
+}
+
+/* Platform=Mobile (500:183): single stacked column of content. */
+.cc-footer[data-platform='Mobile'] .cc-footer__content {
+  flex-direction: column;
+  gap: var(--spacing-3xl);
+  padding: var(--spacing-3xl) var(--spacing-xl) var(--spacing-xl);
+}
+.cc-footer[data-platform='Mobile'] .cc-footer__brand {
+  flex: none;
+  align-self: stretch;
+}
+.cc-footer[data-platform='Mobile'] .cc-footer__columns {
+  flex: none;
+  flex-direction: column;
+  align-self: flex-start;
+}
+.cc-footer[data-platform='Mobile'] .cc-footer__columns > .cc-footer-column,
+.cc-footer[data-platform='Mobile'] .cc-footer__columns > .cc-footer-column:last-child {
+  flex: none;
+}
+.cc-footer[data-platform='Mobile'] .cc-footer__bottom {
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
+}
+
+/* Footer/item/column */
+.cc-footer-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-xxl);
+}
+
+.cc-footer-column__heading {
+  margin: 0;
+  color: var(--color-text-brand);
+  font-family: var(--typography-label-fontfamily);
+  font-size: var(--typography-label-fontsize);
+  font-weight: var(--typography-label-fontweight);
+  line-height: var(--typography-label-lineheight);
+  letter-spacing: var(--typography-label-letterspacing);
+}
+
+.cc-footer-column__items {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cc-footer-column__item {
+  margin: 0;
+  padding: 0;
+}
