@@ -1400,5 +1400,33 @@
       "value": 56,
       "unit": "px"
     }
+  },
+  "size-36": {
+    "$type": "dimension",
+    "$value": {
+      "value": 36,
+      "unit": "px"
+    }
+  },
+  "size-18": {
+    "$type": "dimension",
+    "$value": {
+      "value": 18,
+      "unit": "px"
+    }
+  },
+  "size-16": {
+    "$type": "dimension",
+    "$value": {
+      "value": 16,
+      "unit": "px"
+    }
+  },
+  "size-1": {
+    "$type": "dimension",
+    "$value": {
+      "value": 1,
+      "unit": "px"
+    }
   }
 }

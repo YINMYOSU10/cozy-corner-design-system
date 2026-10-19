@@ -1107,5 +1107,25 @@
     "$type": "dimension",
     "$value": "{size-56}",
     "$description": "Large button height (Button Size=56)."
+  },
+  "size-toggle-width": {
+    "$type": "dimension",
+    "$value": "{size-36}",
+    "$description": "Toggle track width."
+  },
+  "size-toggle-height": {
+    "$type": "dimension",
+    "$value": "{size-18}",
+    "$description": "Toggle track height."
+  },
+  "size-toggle-thumb": {
+    "$type": "dimension",
+    "$value": "{size-16}",
+    "$description": "Toggle thumb diameter."
+  },
+  "size-toggle-inset": {
+    "$type": "dimension",
+    "$value": "{size-1}",
+    "$description": "Gap between the toggle thumb and the track edge."
   }
 }
