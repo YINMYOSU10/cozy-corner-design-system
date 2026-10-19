@@ -34,7 +34,7 @@ const meta = {
     docs: {
       description: {
         component:
-          'Button / Info. A blue button for neutral, informational actions. Same options as the Primary button. Some Disable variants carry suspected Figma binding slips, built as designed (see ButtonInfo.css).',
+          'Button / Info. A blue button for neutral, informational actions. Same options as the Primary button.',
       },
     },
   },

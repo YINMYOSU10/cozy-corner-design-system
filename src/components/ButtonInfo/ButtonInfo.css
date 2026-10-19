@@ -2,8 +2,7 @@
    Layered on Button (src/components/Button/Button.css): only the colour
    custom properties change. Disable is left to Button, because Figma binds
    Info's Disable to the same tokens as Primary's (bg-disabled,
-   text/icon-disabled, border-secondary) — except the suspected slips at the
-   bottom of this file. Every value is a semantic token. */
+   text/icon-disabled, border-secondary). Every value is a semantic token. */
 
 /* ---- Type=Default ---- */
 .cc-button.cc-button--info[data-type='Default']:not(:disabled) {
@@ -45,49 +44,4 @@
 .cc-button.cc-button--info[data-type='Outline'][data-state='Focus'] {
   --cc-button-bg: var(--color-bg-info-light);
   --cc-button-border: var(--color-border-info-default);
-}
-
-/* =====================================================================
-   SUSPECTED DESIGN SLIPS — built exactly as Figma binds them today.
-   Each one disagrees with its own siblings. Delete the rule when the
-   Figma binding is corrected.
-   ===================================================================== */
-
-/* Slip 1: Press + Outline uses border-info-bold at Size 32 but
-   border-info-default at Sizes 48 and 56. */
-.cc-button.cc-button--info[data-type='Outline'][data-size='48']:active:not(:disabled),
-.cc-button.cc-button--info[data-type='Outline'][data-size='48'][data-state='Press'],
-.cc-button.cc-button--info[data-type='Outline'][data-size='56']:active:not(:disabled),
-.cc-button.cc-button--info[data-type='Outline'][data-size='56'][data-state='Press'] {
-  --cc-button-border: var(--color-border-info-default);
-}
-
-/* Slip 2: Disable + Default — label AND icons bound to inverse
-   (white on the disabled grey) instead of text/icon-disabled. */
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Rounded'][data-size='56'][data-icon-style='Both icons'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='48'][data-icon-style='Both icons'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='56'][data-icon-style='Both icons'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Rounded'][data-size='48'][data-icon-style='trailing icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Rounded'][data-size='56'][data-icon-style='trailing icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='48'][data-icon-style='trailing icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='56'][data-icon-style='trailing icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Rounded'][data-size='56'][data-icon-style='leading icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='48'][data-icon-style='leading icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='56'][data-icon-style='leading icon'] {
-  --cc-button-text: var(--color-text-inverse);
-  --cc-button-icon: var(--color-icon-inverse);
-}
-
-/* Slip 3: Disable + Default + Pill + 48 + none — label bound to text-inverse. */
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='48'][data-icon-style='none'] {
-  --cc-button-text: var(--color-text-inverse);
-}
-
-/* Slip 4: Disable + Default — icons only bound to icon-inverse
-   (label stays text-disabled): every Icon only variant, and Pill 32 with icons. */
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-icon-style='Icon only'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='32'][data-icon-style='Both icons'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='32'][data-icon-style='leading icon'],
-.cc-button.cc-button--info[data-type='Default'][data-state='Disable'][data-shape='Pill'][data-size='32'][data-icon-style='trailing icon'] {
-  --cc-button-icon: var(--color-icon-inverse);
 }
