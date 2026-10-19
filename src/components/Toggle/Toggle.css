@@ -1,0 +1,91 @@
+/* Toggle — Figma 299:317.
+   Every value is a semantic token, bound exactly as Figma binds it per variant.
+   Geometry: size/toggle/width|height on the variant and track, size/toggle/thumb
+   on the thumb; the thumb's 1 offset is positional in Figma, so it uses
+   size/toggle/inset here. */
+.cc-toggle {
+  --cc-toggle-width: var(--size-toggle-width);
+  --cc-toggle-height: var(--size-toggle-height);
+  --cc-toggle-thumb: var(--size-toggle-thumb);
+  --cc-toggle-inset: var(--size-toggle-inset);
+  --cc-toggle-travel: calc(var(--cc-toggle-width) - var(--cc-toggle-thumb) - 2 * var(--cc-toggle-inset));
+
+  --cc-toggle-elevation-1:
+    var(--elevation-level1-shadow1-offsetx) var(--elevation-level1-shadow1-offsety)
+      var(--elevation-level1-shadow1-blur) var(--elevation-level1-shadow1-spread)
+      var(--elevation-level1-shadow1-color),
+    var(--elevation-level1-shadow2-offsetx) var(--elevation-level1-shadow2-offsety)
+      var(--elevation-level1-shadow2-blur) var(--elevation-level1-shadow2-spread)
+      var(--elevation-level1-shadow2-color);
+
+
+  /* per-variant slots, set below */
+  --cc-toggle-bg: var(--color-bg-positive-light);
+  --cc-toggle-ring: 0 0 0 0 transparent;
+  --cc-toggle-shadow: 0 0 0 0 transparent;
+
+  display: inline-block;
+  position: relative;
+  inline-size: var(--cc-toggle-width);
+  block-size: var(--cc-toggle-height);
+  padding: var(--borderwidth-0);
+  margin: var(--borderwidth-0);
+  border: none;
+  border-radius: var(--borderradius-lg);
+  background: none;
+  box-shadow: var(--cc-toggle-shadow);
+  cursor: pointer;
+  outline: none;
+  vertical-align: middle;
+}
+
+.cc-toggle__track {
+  position: absolute;
+  inset: var(--borderwidth-0);
+  border-radius: var(--borderradius-lg);
+  background-color: var(--cc-toggle-bg);
+  box-shadow: var(--cc-toggle-ring);
+}
+
+.cc-toggle__thumb {
+  position: absolute;
+  inset-block-start: var(--cc-toggle-inset);
+  inset-inline-start: var(--cc-toggle-inset);
+  inline-size: var(--cc-toggle-thumb);
+  block-size: var(--cc-toggle-thumb);
+  border-radius: var(--borderradius-circle);
+  background-color: var(--color-bg-surfaceprimary);
+}
+.cc-toggle[data-checked='True'] .cc-toggle__thumb {
+  transform: translateX(var(--cc-toggle-travel));
+}
+
+/* ---- State=Default ----
+   Track bg/positive/light (False) or bg/positive/idle (True).
+   Elevation level 1 sits on the variant (the toggle), never on the track. */
+.cc-toggle {
+  --cc-toggle-shadow: var(--cc-toggle-elevation-1);
+}
+.cc-toggle[data-checked='False'] {
+  --cc-toggle-bg: var(--color-bg-positive-light);
+}
+.cc-toggle[data-checked='True'] {
+  --cc-toggle-bg: var(--color-bg-positive-idle);
+}
+
+/* ---- State=Focus (keyboard focus, or forced by state="Focus") ----
+   Same level 1 elevation; the track gets a borderWidth/2 stroke outside in
+   border/focus. */
+.cc-toggle:focus-visible:not(:disabled),
+.cc-toggle[data-state='Focus'] {
+  --cc-toggle-ring: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
+}
+
+/* ---- State=Disabled ----
+   Track bg/gray/lightHovered on both, no shadow, no stroke. */
+.cc-toggle:disabled {
+  --cc-toggle-bg: var(--color-bg-gray-lighthovered);
+  --cc-toggle-ring: 0 0 0 0 transparent;
+  --cc-toggle-shadow: 0 0 0 0 transparent;
+  cursor: not-allowed;
+}

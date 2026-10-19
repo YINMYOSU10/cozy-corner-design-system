@@ -1,0 +1,67 @@
+/* Avatar — Figma 576:24. Every value is a token from build/tokens/css/tokens.css.
+   The circle is sized by the .cc-avatar__sizer SVG (Size has no bound token
+   in Figma); the content is laid over it and centred, as Figma's
+   horizontal auto-layout centres it (no padding, no gap). */
+
+.cc-avatar {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  vertical-align: middle;
+  overflow: clip;
+  /* color/bg/primary/light, bound on every variant */
+  background: var(--color-bg-primary-light);
+  /* borderRadius/circle, bound on every variant */
+  border-radius: var(--borderradius-circle);
+  /* color/text/brand: Initials fill and Icon/User stroke both bind it */
+  color: var(--color-text-brand);
+}
+
+.cc-avatar__sizer,
+.cc-avatar__icon-sizer {
+  display: block;
+}
+
+.cc-avatar__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Initials: Inter SemiBold. Size 32 = fontSize/12 + lineHeight/16;
+   40 and 48 = fontSize/14 + lineHeight/20. */
+.cc-avatar__initials {
+  font-family: var(--fontfamily-inter);
+  font-weight: var(--fontweight-semibold);
+  font-size: var(--fontsize-12);
+  line-height: var(--lineheight-16);
+  white-space: nowrap;
+}
+
+.cc-avatar[data-size='40'] .cc-avatar__initials,
+.cc-avatar[data-size='48'] .cc-avatar__initials {
+  font-size: var(--fontsize-14);
+  line-height: var(--lineheight-20);
+}
+
+/* Icon: box sized by .cc-avatar__icon-sizer; Icon/User fills it and strokes
+   with currentColor (color/text/brand from .cc-avatar). */
+.cc-avatar__icon {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.cc-avatar__icon-slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+}
+
+.cc-avatar__icon-slot > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

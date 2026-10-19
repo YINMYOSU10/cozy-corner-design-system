@@ -1,0 +1,30 @@
+// Every glyph from the Figma "Icons" page (frame 34:423), one export each.
+// Export name = the Figma name after "Icon/" + "Glyph". Names Figma repeats
+// carry their node id (e.g. TableGlyph_34_1199); see Icon.stories.tsx.
+export { glyph } from './glyph';
+export type { Glyph, GlyphPath } from './glyph';
+export * from './A';
+export * from './B';
+export * from './C';
+export * from './D';
+export * from './E';
+export * from './F';
+export * from './G';
+export * from './H';
+export * from './I';
+export * from './J';
+export * from './K';
+export * from './L';
+export * from './M';
+export * from './N';
+export * from './O';
+export * from './P';
+export * from './Q';
+export * from './R';
+export * from './S';
+export * from './T';
+export * from './U';
+export * from './V';
+export * from './W';
+export * from './X';
+export * from './Y';

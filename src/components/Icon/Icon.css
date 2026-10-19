@@ -1,0 +1,52 @@
+/* Icon — Figma 48:1251. Every value is a token from build/tokens/css/tokens.css.
+   The frame is sized by the .cc-icon__sizer SVG (Size has no token in Figma);
+   the glyph slot is laid over it and fills it. */
+
+.cc-icon {
+  /* Glyph paint: Figma binds color/icon/secondary on every variant.
+     A parent component may point this at another semantic icon token. */
+  --cc-icon-color: var(--color-icon-secondary);
+  --cc-icon-bg: transparent;
+  --cc-icon-ring: transparent;
+
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  overflow: clip;
+  color: var(--cc-icon-color);
+  background: var(--cc-icon-bg);
+  /* Figma strokes sit inside the frame, so the ring is drawn inside too */
+  box-shadow: inset 0 0 0 var(--borderwidth-1) var(--cc-icon-ring);
+  border-radius: var(--borderradius-xs);
+}
+
+.cc-icon__sizer {
+  display: block;
+}
+
+.cc-icon__slot {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The glyph (default Icon/Plus or a swapped one) fills the frame */
+.cc-icon__slot > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Shape */
+.cc-icon[data-shape='Rounded'] { border-radius: var(--borderradius-xs); }
+.cc-icon[data-shape='Circle'] { border-radius: var(--borderradius-circle); }
+
+/* Type: Standard Circle has a color/bg/base fill; Standard Rounded has none */
+.cc-icon[data-type='Standard'][data-shape='Circle'] { --cc-icon-bg: var(--color-bg-base); }
+
+/* Type: Outlined has a color/border/neutral/default ring and no visible fill */
+.cc-icon[data-type='Outlined'] { --cc-icon-ring: var(--color-border-neutral-default); }
