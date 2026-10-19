@@ -1,0 +1,68 @@
+/* Tag — Figma 448:13. Every value is a token from build/tokens/css/tokens.css.
+   Horizontal auto-layout, items centred, gap spacing/base. */
+
+.cc-tag {
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--spacing-base);
+  vertical-align: middle;
+  padding-inline: var(--spacing-sm);
+  /* color/bg/gray/light, bound on both sizes */
+  background: var(--color-bg-gray-light);
+  /* borderRadius/circle, bound on both sizes */
+  border-radius: var(--borderradius-circle);
+}
+
+.cc-tag__sizer {
+  display: block;
+  flex: none;
+  margin-inline-end: calc(-1 * var(--spacing-base));
+}
+
+/* Label: Inter SemiBold, color/text/gray/default.
+   Small = fontSize/12 + lineHeight/16; Medium = fontSize/14 + lineHeight/20. */
+.cc-tag__label {
+  white-space: nowrap;
+  font-family: var(--fontfamily-inter);
+  font-weight: var(--fontweight-semibold);
+  font-size: var(--fontsize-12);
+  line-height: var(--lineheight-16);
+  color: var(--color-text-gray-default);
+}
+
+/* Size=Medium: height spacing/3xl, horizontal padding spacing/md */
+.cc-tag[data-size='Medium'] {
+  height: var(--spacing-3xl);
+  padding-inline: var(--spacing-md);
+}
+.cc-tag[data-size='Medium'] .cc-tag__label {
+  font-size: var(--fontsize-14);
+  line-height: var(--lineheight-20);
+}
+
+/* Remove button: a real button around Icon/X. Resets the native chrome. */
+.cc-tag__remove {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: var(--borderradius-circle);
+}
+/* Icon/X paint in the Remove instance renders color/icon/gray (binding
+   unconfirmed, see stories). Icon sets its own --cc-icon-color, so the
+   override targets the Icon itself. */
+.cc-tag__remove .cc-icon {
+  --cc-icon-color: var(--color-icon-gray);
+}
+.cc-tag__remove:focus-visible {
+  box-shadow: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
+}
+.cc-tag__remove:disabled {
+  cursor: not-allowed;
+}
+.cc-tag__remove:disabled .cc-icon {
+  --cc-icon-color: var(--color-icon-disabled);
+}

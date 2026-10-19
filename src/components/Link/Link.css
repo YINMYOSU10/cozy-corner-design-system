@@ -1,0 +1,70 @@
+/* Link — Figma 33:382. Every value is a token from build/tokens/css/tokens.css. */
+
+.cc-link {
+  /* Size=L, State=Default */
+  --cc-link-text: var(--color-text-brand);
+  --cc-link-icon: var(--color-icon-brand);
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-sm);
+  box-sizing: border-box;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  border-radius: var(--borderradius-xs);
+  color: var(--cc-link-text);
+  font: var(--cozy-corner-typography-link);
+  letter-spacing: var(--typography-link-letterspacing);
+}
+
+.cc-link__label {
+  text-decoration: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-underline-position: from-font;
+}
+
+.cc-link__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--cc-link-icon);
+}
+
+.cc-link__icon .cc-icon {
+  --cc-icon-color: var(--cc-link-icon);
+}
+
+/* Size=S uses the Link small text style */
+.cc-link[data-size='S'] {
+  font: var(--cozy-corner-typography-link-small);
+  letter-spacing: var(--typography-linksmall-letterspacing);
+}
+
+/* State=Visited */
+.cc-link:visited,
+.cc-link[data-state='Visited'] {
+  --cc-link-text: var(--color-text-secondary);
+  --cc-link-icon: var(--color-icon-secondary);
+}
+
+/* State=Hover */
+.cc-link:hover:not([aria-disabled='true']),
+.cc-link[data-state='Hover'] {
+  --cc-link-text: var(--color-text-primary);
+  --cc-link-icon: var(--color-icon-primary);
+}
+
+/* State=Disable */
+.cc-link[data-state='Disable'] {
+  --cc-link-text: var(--color-text-disabled);
+  --cc-link-icon: var(--color-icon-disabled);
+  cursor: not-allowed;
+}
+
+/* Focus ring: Figma defines no Link focus state; uses the shared focus token */
+.cc-link:focus-visible {
+  outline: var(--borderwidth-2) solid var(--color-border-focus);
+  outline-offset: var(--borderwidth-2);
+}
