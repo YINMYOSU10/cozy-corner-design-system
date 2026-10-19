@@ -42,24 +42,18 @@
   letter-spacing: var(--typography-linksmall-letterspacing);
 }
 
-/* State=Visited (Figma binds the same colours as Default) */
+/* State=Visited */
 .cc-link:visited,
 .cc-link[data-state='Visited'] {
-  --cc-link-text: var(--color-text-brand);
-  --cc-link-icon: var(--color-icon-brand);
+  --cc-link-text: var(--color-text-secondary);
+  --cc-link-icon: var(--color-icon-secondary);
 }
 
 /* State=Hover */
 .cc-link:hover:not([aria-disabled='true']),
 .cc-link[data-state='Hover'] {
-  --cc-link-text: var(--color-accent-terracotta-foreground);
+  --cc-link-text: var(--color-text-primary);
   --cc-link-icon: var(--color-icon-primary);
-}
-
-/* Figma: Hover + L + With icon is 4px taller (padding-bottom spacing/base).
-   Applied to the pinned state only so a real hover does not shift layout. */
-.cc-link[data-state='Hover'][data-size='L'][data-type='With icon'] {
-  padding-bottom: var(--spacing-base);
 }
 
 /* State=Disable */

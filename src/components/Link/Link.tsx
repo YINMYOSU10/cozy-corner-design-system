@@ -1,5 +1,5 @@
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from 'react';
-import { ArrowSquareOutGlyph, Icon } from '../Icon';
+import { ArrowSquareOutGlyph, Icon, type IconSize } from '../Icon';
 import './Link.css';
 
 // Prop names and values match the Figma component set "Link" (33:382).
@@ -45,9 +45,13 @@ export function Link({
   const isDisabled = state === 'Disable';
   const withIcon = type === 'With icon';
   const glyph = swapIcon ?? <ArrowSquareOutGlyph />;
+  // Figma icon slots: 12 at Size L, 10 at Size S. Icon has no 10 size and the
+  // value has no token (gap), so 10 is carried as the frame size, as Icon
+  // itself carries its sizes; the cast only widens the type.
+  const iconSize = (size === 'S' ? '10' : '12') as IconSize;
   const icon = (slot: string) => (
     <span className="cc-link__icon" data-slot={slot}>
-      <Icon size="12" swapIcon={glyph} />
+      <Icon size={iconSize} swapIcon={glyph} />
     </span>
   );
 
