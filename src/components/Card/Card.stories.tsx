@@ -32,7 +32,7 @@
  *                         (Tag Size=Small, imported); Clue mobile/H2 text/bold;
  *                         Caption dashboard/Body small text/secondary
  *
- * Gaps (unbound in Figma): variant frame fill raw #FFFFFF; container sizes 275x146 (H fixed),
+ * Gaps (unbound in Figma): variant frames are bound to color/bg/surfacePrimary; container sizes 275x146 (H fixed),
  * 390x177, 567x180, 374 wide; CardSlot/CardText widths 235, 358, 527, 335, 386; Clue stroke
  * weight 1 (rendered with borderWidth/1); Twine height 2 (rendered with borderWidth/2).
  */
