@@ -114,6 +114,7 @@
   background: var(--cc-sidebar-item-count-bg);
   color: var(--color-text-brand);
   font: var(--cozy-corner-typography-dashboard-body-small-semibold);
+  letter-spacing: var(--typography-bodysmallsemibold-letterspacing);
   white-space: nowrap;
 }
 
@@ -188,6 +189,7 @@
   flex-shrink: 0;
   color: var(--color-text-secondary);
   font: var(--cozy-corner-typography-dashboard-body-small-semibold);
+  letter-spacing: var(--typography-bodysmallsemibold-letterspacing);
 }
 
 .cc-sidebar-sub-item:hover .cc-sidebar-sub-item__pill,
@@ -224,6 +226,7 @@
   padding: var(--spacing-md) 0 var(--spacing-base) var(--spacing-md);
   color: var(--color-text-secondary);
   font: var(--cozy-corner-typography-dashboard-body-small-semibold);
+  letter-spacing: var(--typography-bodysmallsemibold-letterspacing);
   white-space: nowrap;
 }
 
@@ -258,4 +261,5 @@
   width: 100%;
   color: var(--color-text-secondary);
   font: var(--cozy-corner-typography-dashboard-body-small);
+  letter-spacing: var(--typography-bodysmall-letterspacing);
 }
