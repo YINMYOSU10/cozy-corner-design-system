@@ -27,14 +27,14 @@
  *   placeholder              color/text/secondary (Active color/text/disabled, Disable color/text/gray/light)
  *                            Karla regular 14/22 (sm), 16/26 (Lg)
  *   typed text / cursor      color/text/bold / color/bg/inverse
- *   helper                   color/text/disabled; Success color/text/positive; Disable color/text/gray/light
+ *   helper                   color/text/disabled; Success color/text/positive; Error color/text/negative; Disable color/text/gray/light
  *                            typography Label small
  *   icons                    Icon Size=16 Standard Rounded; color/icon/secondary (Disable color/icon/disabled)
  *   Search button            Button / Primary, Size=32, Label text "Search"
  *
  * Design gaps (raised, not guessed): see the Engineer card. In short: no height
  * or width is bound (box 40/48/36/32/76/100, frame 398/676, box 390 inside a 398
- * frame); Error helper text is bound to color/text/positive; Form Input Lg label
+ * frame); Form Input Lg label
  * and helper typography differ between Default and the other states; placeholder
  * text binds core fontSize/lineHeight variables rather than a typography token;
  * the Resize Icon sits outside the box; trailing-icon paint is unbound (hidden).

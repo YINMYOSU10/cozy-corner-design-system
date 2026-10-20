@@ -142,11 +142,10 @@
   --cc-field-border: var(--color-border-positive-bold);
   --cc-field-helper: var(--color-text-positive);
 }
-/* Figma binds the Error helper text to color/text/positive (green). Mirrored, and raised as a design gap. */
 .cc-field[data-state='Error'] {
   --cc-field-bg: var(--color-bg-negative-light);
   --cc-field-border: var(--color-border-negative-bold);
-  --cc-field-helper: var(--color-text-positive);
+  --cc-field-helper: var(--color-text-negative);
 }
 .cc-field[data-state='Disable'] {
   --cc-field-bg: var(--color-bg-gray-light);
