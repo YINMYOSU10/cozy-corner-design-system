@@ -1,6 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { PlusGlyph } from './glyphs';
-import './Icon.css';
 
 // Icon (Figma component set 48:1251). Figma properties:
 //   Size      VARIANT        12 | 16 | 24 | 32 (default 12)      -> size

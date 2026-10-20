@@ -1,5 +1,4 @@
 import type { AnchorHTMLAttributes } from 'react';
-import './Sidebar.css';
 
 // Sidebar/item/sub-item (Figma component set 453:148). Figma properties:
 //   Label       TEXT     default "Fiction"                  -> label

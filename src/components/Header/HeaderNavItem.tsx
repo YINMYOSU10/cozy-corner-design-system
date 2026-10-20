@@ -1,7 +1,6 @@
 import type { AnchorHTMLAttributes, ReactNode } from 'react';
 import { Icon } from '../Icon/Icon';
 import { HouseGlyph } from '../Icon/glyphs';
-import './Header.css';
 
 // Header/item/nav-item (Figma component set 500:20). Figma properties:
 //   Label     TEXT           default "Home"                             -> label

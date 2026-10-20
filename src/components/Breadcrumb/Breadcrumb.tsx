@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { BreadcrumbItemCurrent } from './BreadcrumbItemCurrent';
 import { BreadcrumbItemLink } from './BreadcrumbItemLink';
 import { BreadcrumbItemSeparator } from './BreadcrumbItemSeparator';
-import './Breadcrumb.css';
 
 // Prop names and values match the Figma component set "Breadcrumb" (431:68).
 export type BreadcrumbLevels = 2 | 3 | 4;

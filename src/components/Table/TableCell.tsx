@@ -4,7 +4,6 @@ import { Tag } from '../Tag';
 import { Toggle } from '../Toggle/Toggle';
 import { ButtonInfo } from '../ButtonInfo/ButtonInfo';
 import { DotsThreeGlyph } from '../Icon';
-import './Table.css';
 
 // Table/item/cell (Figma 437:59). Figma properties:
 //   Type         VARIANT  Text | Number | Badge | Tags | Toggle | Action | Custom | More (default Text)

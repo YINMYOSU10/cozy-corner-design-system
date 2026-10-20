@@ -1,5 +1,4 @@
 import { Tag } from '../Tag';
-import './Card.css';
 
 // Card/item/text (Figma component set 366:1953). Figma properties:
 //   Type       VARIANT  ReportText | BookDescription | Clue

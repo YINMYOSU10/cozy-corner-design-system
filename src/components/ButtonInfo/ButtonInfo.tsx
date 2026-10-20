@@ -1,5 +1,4 @@
 import { Button, type ButtonProps } from '../Button/Button';
-import './ButtonInfo.css';
 
 // Button / Info (Figma 445:5037). The Figma properties (Label text, State,
 // Icon-style, Shape, Size, Type) are identical to Button / Primary (66:459),

@@ -1,7 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { CheckGlyph } from '../Icon';
-import '../Icon/Icon.css';
-import './ProgressLoadingMobile.css';
 
 // Progress Loading / App (Figma component set 215:983; registry name "Progress Loading / Mobile").
 // Property: Step (1-5). A ring drawn in halves across the steps (Figma uses Smart Animate

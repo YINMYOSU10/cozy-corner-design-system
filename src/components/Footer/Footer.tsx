@@ -1,6 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Logo } from '../Logo/Logo';
-import './Footer.css';
 
 // Footer (Figma component set 500:261). Figma properties:
 //   Platform         VARIANT  Website | Mobile (default Website) -> platform

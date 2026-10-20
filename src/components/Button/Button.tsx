@@ -1,6 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
 import { PlusIcon } from './PlusIcon';
-import './Button.css';
 
 // Prop names and values match the Figma component set "Button / Primary" (66:459).
 export type ButtonState = 'Default' | 'Hover' | 'Press' | 'Focus' | 'Disable';

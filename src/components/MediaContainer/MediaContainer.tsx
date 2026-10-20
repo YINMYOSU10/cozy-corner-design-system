@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import './MediaContainer.css';
 
 // Prop names and values match the Figma component set "Media Container" (304:2006).
 export type MediaContainerRatio = '5:3' | '1:1';

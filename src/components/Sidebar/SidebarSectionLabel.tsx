@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react';
-import './Sidebar.css';
 
 // Sidebar/item/section-label (Figma component 453:149). Figma properties:
 //   Label  TEXT  default "MAIN"  -> label

@@ -1,6 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { LogoGlyph } from './LogoGlyph';
-import './Logo.css';
 
 // Logo (Figma component set 4:484). Figma properties:
 //   Platform       VARIANT  Dashboard | Website (default Website)  -> platform

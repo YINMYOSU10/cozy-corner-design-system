@@ -1,19 +1,46 @@
 {
-  "name": "cozy-corner-design-system",
-  "version": "1.0.0",
+  "name": "@cozy-corner/cozy-corner-design-system",
+  "version": "0.1.0",
+  "private": true,
   "description": "",
-  "main": "index.js",
+  "type": "module",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./tokens.css": "./dist/tokens.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build:tokens": "node build-tokens.js",
     "storybook": "npm run build:tokens && storybook dev -p 6006",
     "build-storybook": "npm run build:tokens && storybook build",
     "test": "vitest run --passWithNoTests",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "build:lib": "tsup && tsc -p tsconfig.build.json",
+    "build:css": "node scripts/build-css.js",
+    "build:package": "npm run build:tokens && npm run build:lib && npm run build:css",
+    "prepublishOnly": "npm run build:package && npm test",
+    "release:publish": "node scripts/release-publish.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "module",
+  "peerDependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
   "devDependencies": {
     "@storybook/addon-a11y": "^10.6.2",
     "@storybook/addon-docs": "^10.6.2",
@@ -21,14 +48,13 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "storybook": "^10.6.2",
     "style-dictionary": "^5.6.1",
+    "tsup": "^9.0.0",
     "typescript": "^7.0.2",
     "vite": "^8.3.4",
     "vitest": "^5.0.5"
-  },
-  "dependencies": {
-    "react": "^19.3.1",
-    "react-dom": "^19.3.1"
   }
 }

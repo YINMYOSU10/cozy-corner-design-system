@@ -1,6 +1,5 @@
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from 'react';
 import { ArrowSquareOutGlyph, Icon, type IconSize } from '../Icon';
-import './Link.css';
 
 // Prop names and values match the Figma component set "Link" (33:382).
 export type LinkSize = 'S' | 'L';

@@ -1,5 +1,4 @@
 import type { ButtonHTMLAttributes } from 'react';
-import './Chip.css';
 
 // Chip (Figma component set 391:37). Figma properties:
 //   Label     TEXT     default "Chip"                                  -> label

@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react';
-import './Table.css';
 
 // Table/item/header-cell (Figma 437:27). Figma properties:
 //   Align  VARIANT  Left | Right (default Left)  -> align
