@@ -64,19 +64,19 @@
 }
 
 /* Clue Card: vertical, spacing/xl all round, color/border/secondary stroke
-   (inside), no shadow at rest. */
+   (takes layout space), no shadow at rest. */
 .cc-card-container[data-type='clue'] {
   flex-direction: column;
   align-items: stretch;
   gap: 0;
   padding: var(--spacing-xl);
-  box-shadow: inset 0 0 0 var(--borderwidth-1) var(--color-border-secondary);
+  /* Figma strokesIncludedInLayout = true: the stroke takes layout space. */
+  border: var(--borderwidth-1) solid var(--color-border-secondary);
 }
 
 .cc-card-container[data-type='clue']:hover,
 .cc-card-container[data-type='clue'][data-state='Hover'] {
   box-shadow:
-    inset 0 0 0 var(--borderwidth-1) var(--color-border-secondary),
     var(--elevation-level2-shadow1-offsetx) var(--elevation-level2-shadow1-offsety)
       var(--elevation-level2-shadow1-blur) var(--elevation-level2-shadow1-spread)
       var(--elevation-level2-shadow1-color),
