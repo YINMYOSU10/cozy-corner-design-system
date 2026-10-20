@@ -36,8 +36,13 @@ build** instead of vanishing from the navigation:
 A splash page.
 - The hero line is the first paragraph of the README.
 - Buttons: **Start designing**, **Start coding**, **Open Storybook**.
-- Then the latest release with its install command, then link cards to Designing,
-  Developing, Components and Tokens.
+- Then the latest release: its version as the heading, one summary line (published
+  date, how many components are on the public surface, how many semantic tokens, how
+  many Figma modes — each counted from `src/index.ts`, `tokens/` and
+  `tokens/manifest.json`, never typed in), and its install command. Then link cards to
+  Designing, Developing, Components and Tokens.
+- Calm and spacious: one large title, one short paragraph, three buttons, plenty of
+  white space. No walls of text on the home page.
 
 ## A component page
 A **header strip**: status and the version it shipped in, then links to Storybook, the
@@ -52,6 +57,23 @@ Then **five tabs, in this order**:
 | **Code** | the import; props with defaults and doc comments; union types; the tokens it needs with light and dark values; Storybook's own props table embedded | the component's types and CSS, `tokens.css` |
 | **Design** | the Figma node embedded; the variant matrix with every matrix story linked; both themes; every value Figma never bound; the design gaps recorded against it | live Figma reads, stories |
 | **Changelog** | `git log` for the component and its subcomponents, each commit marked with the version it shipped in | git |
+
+### Keep every tab tidy
+Every component page uses **the same headings, in the same order**, so a reader always
+knows where to look. A section with no source keeps its heading and shows the missing
+notice (see "A missing source"); it never disappears and never moves.
+
+| Tab | Headings, in this order |
+|---|---|
+| Usage | When to use · Where it goes · When not to use · Best practice · Variants · Accessibility · Composition · What this version promises |
+| Examples | Usage example · Stories |
+| Code | Import · Props · Types · Tokens · Storybook props |
+| Design | Figma · Variant matrix · Themes · Unbound values · Design gaps |
+| Changelog | Commits, newest first |
+
+Short blocks, not long prose: bullet lists for rules, a table for variants and props,
+one line per accessibility fact. Each tab fits one screen's worth of reading before it
+needs a scroll, where the source allows.
 
 ## Generated, never edited by hand
 Home, All components, every component page, Tokens, Changelog, Roadmap, News.
@@ -116,7 +138,7 @@ links in your report and write nothing.
 - [ ] The sidebar is written out in `astro.config.mjs` in the listed order
 - [ ] Every generated page came from `generate.mjs`; none was hand-edited
 - [ ] The pinned commit is recorded; `board.json` holds no record IDs
-- [ ] Every component page has the header strip and all five tabs, in order
+- [ ] Every component page has the header strip and all five tabs, in order, with the same headings on every page
 - [ ] No hex of its own in the stylesheet; fonts are self-hosted
 - [ ] Missing sources show a notice; nothing was invented
 - [ ] Build had zero broken internal links; home, one component page and Tokens were opened in light and dark
