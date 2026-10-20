@@ -21,3 +21,9 @@ and moves the clashing one aside; the suggestion is for the design team.
 | `State` value `Disable` | The usual word in code and ARIA is `disabled` | Kept as `Disable`; maps to the HTML `disabled` attribute | Rename to `Disabled` (same suggestion as Button) |
 | `State` value `Active` | In CSS `:active` means pressed; this state is the focused, typing look | Kept as `Active`; matches `:focus-within` | Rename to `Focused` |
 | Box layer named `Button / primary` | The real `Button / Primary` component | Built as the `FieldBox` subcomponent | Rename the layer to `Input box` |
+
+## Progress Loading / App (215:983)
+
+| Figma name | Clashes with | What code does now | Suggestion |
+|---|---|---|---|
+| Component set `Progress Loading / App`, registry row `Progress Loading / Mobile` | Registry, folder and Storybook title say Mobile | Built as `ProgressLoadingMobile`; story file records the Figma name | Rename the Figma set to `Progress Loading / Mobile` (sibling is `Progress Loading / Website`), or the registry row to `App` |
