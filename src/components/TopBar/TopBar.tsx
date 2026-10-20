@@ -40,7 +40,11 @@ export function TopBar({
 }: TopBarProps) {
   return (
     <header {...rest} className={['cc-top-bar', className].filter(Boolean).join(' ')}>
-      <Breadcrumb levels={2} {...breadcrumb} />
+      <div className="cc-top-bar__start">
+        {/* Sizer: Figma's bar height (56, FIXED) is unbound (design gap), so it is carried as SVG geometry. */}
+        <svg className="cc-top-bar__height-sizer" width="0" height="56" aria-hidden="true" focusable="false" />
+        <Breadcrumb levels={2} {...breadcrumb} />
+      </div>
       <div className="cc-top-bar__actions">
         {showSearch && (
           <div className="cc-top-bar__search">
