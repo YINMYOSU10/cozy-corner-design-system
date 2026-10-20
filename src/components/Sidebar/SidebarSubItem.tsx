@@ -35,6 +35,7 @@ export function SidebarSubItem({
     <a
       {...rest}
       className={['cc-sidebar-sub-item', className].filter(Boolean).join(' ')}
+      data-mode="dashboard"
       data-state={state}
       aria-current={state === 'Active' ? 'page' : rest['aria-current']}
     >

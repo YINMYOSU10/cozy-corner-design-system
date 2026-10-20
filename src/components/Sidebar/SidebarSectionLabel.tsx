@@ -11,7 +11,7 @@ export type SidebarSectionLabelProps = Omit<HTMLAttributes<HTMLDivElement>, 'chi
 
 export function SidebarSectionLabel({ label = 'MAIN', className, ...rest }: SidebarSectionLabelProps) {
   return (
-    <div {...rest} className={['cc-sidebar-section-label', className].filter(Boolean).join(' ')}>
+    <div {...rest} data-mode="dashboard" className={['cc-sidebar-section-label', className].filter(Boolean).join(' ')}>
       {label}
     </div>
   );
