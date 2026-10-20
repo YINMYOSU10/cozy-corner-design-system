@@ -11,7 +11,8 @@
  *   - Sidebar width 237 and height 900: no size tokens; width carried as SVG geometry,
  *     height fills its container.
  *   - Nav icon box 20 and min height 40: no tokens.
- *   - Letter-spacing 0.32px on small text: no token.
+ *   (Letter-spacing 0.32px on small text is NOT a gap: --typography-bodysmall-letterspacing and
+ *   --typography-bodysmallsemibold-letterspacing exist and are used in Sidebar.css.)
  *   - Sub-item has no Focused variant.
  */
 import { useState } from 'react';
