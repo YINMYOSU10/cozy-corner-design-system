@@ -1,0 +1,261 @@
+/* Sidebar (Figma 453:4975) and its items: nav-item 453:135, sub-item 453:148,
+   section-label 453:149, user 453:151. Every value is a semantic token Figma
+   binds; auto-layout becomes flex. Unbound geometry is carried as SVG sizers. */
+
+/* ---- Sidebar ---- */
+.cc-sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: fit-content;
+  height: 100%;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+  background: var(--color-bg-surfaceprimary);
+  /* right stroke only, borderWidth/1 in color/border/secondary, drawn inside */
+  border-right: var(--borderwidth-1) solid var(--color-border-secondary);
+}
+
+/* width sizer: first child, its trailing flex gap is cancelled */
+.cc-sidebar__sizer {
+  display: block;
+  flex-shrink: 0;
+  margin-bottom: calc(-1 * var(--spacing-lg));
+}
+
+/* Header frame 453:4976: pl/pb spacing/sm, clips its content */
+.cc-sidebar__header {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  flex-shrink: 0;
+  overflow: clip;
+  padding: 0 0 var(--spacing-sm) var(--spacing-sm);
+}
+
+/* Navigation slot 453:4989: column, gap spacing/base, fills the height */
+.cc-sidebar__navigation {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  align-self: stretch;
+  flex: 1 1 0;
+  min-height: 0;
+  gap: var(--spacing-base);
+  overflow: auto;
+  /* Width comes from the Sidebar (the sizer), never from the longest label. */
+  contain: inline-size;
+}
+
+/* Sub-item group 456:5309: column, no gap */
+.cc-sidebar__sub-items {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-shrink: 0;
+  overflow: clip;
+}
+
+/* ---- Sidebar/item/nav-item ---- */
+.cc-sidebar-item {
+  --cc-sidebar-item-icon: var(--color-icon-bold);
+  --cc-sidebar-item-chevron: var(--color-icon-secondary);
+  --cc-sidebar-item-count-bg: var(--color-bg-primary-light);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 0;
+  border-radius: var(--borderradius-sm);
+  background: transparent;
+  color: var(--color-text-primary);
+  font: var(--cozy-corner-typography-dashboard-body-large-medium);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* min-height 40 carrier: zero width, trailing flex gap cancelled */
+.cc-sidebar-item__height-sizer {
+  display: block;
+  flex-shrink: 0;
+  margin-right: calc(-1 * var(--spacing-md));
+}
+
+.cc-sidebar-item__icon {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--cc-sidebar-item-icon);
+}
+.cc-sidebar-item__icon-sizer { display: block; }
+.cc-sidebar-item__icon-slot { position: absolute; inset: 0; display: flex; }
+.cc-sidebar-item__icon-slot > svg { display: block; width: 100%; height: 100%; }
+
+.cc-sidebar-item__label {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Count pill: px spacing/sm, py spacing/base, radius circle, Body small semibold */
+.cc-sidebar-item__count {
+  display: inline-flex;
+  flex-shrink: 0;
+  overflow: clip;
+  padding: var(--spacing-base) var(--spacing-sm);
+  border-radius: var(--borderradius-circle);
+  background: var(--cc-sidebar-item-count-bg);
+  color: var(--color-text-brand);
+  font: var(--cozy-corner-typography-dashboard-body-small-semibold);
+  white-space: nowrap;
+}
+
+.cc-sidebar-item__chevron { --cc-icon-color: var(--cc-sidebar-item-chevron); }
+
+/* State=Hover */
+.cc-sidebar-item:hover,
+.cc-sidebar-item[data-state='Hover'] {
+  background: var(--color-bg-neutral-light);
+}
+
+/* State=Active: primary/light fill, brand text, brand icon, surface count */
+.cc-sidebar-item[data-state='Active'] {
+  --cc-sidebar-item-icon: var(--color-icon-brand);
+  --cc-sidebar-item-chevron: var(--color-icon-brand);
+  --cc-sidebar-item-count-bg: var(--color-bg-surfaceprimary);
+  background: var(--color-bg-primary-light);
+  color: var(--color-text-brand);
+}
+
+/* State=Focused: surface fill, 2px base ring then 2px focus ring (4px total) */
+.cc-sidebar-item:focus-visible,
+.cc-sidebar-item[data-state='Focused'] {
+  outline: none;
+  background: var(--color-bg-surfaceprimary);
+  box-shadow:
+    0 0 0 var(--borderwidth-2) var(--color-bg-base),
+    0 0 0 calc(2 * var(--borderwidth-2)) var(--color-border-focus);
+}
+
+/* ---- Sidebar/item/sub-item ---- */
+.cc-sidebar-sub-item {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  padding-left: var(--spacing-xl);
+  color: var(--color-text-primary);
+  font: var(--cozy-corner-typography-dashboard-body);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Tree line: 2px wide, full height, color/border/secondary (Active: text/brand) */
+.cc-sidebar-sub-item__tree-line {
+  flex-shrink: 0;
+  width: var(--borderwidth-2);
+  background: var(--color-border-secondary);
+}
+
+.cc-sidebar-sub-item__pill {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+  overflow: clip;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--borderradius-sm);
+  white-space: nowrap;
+}
+
+.cc-sidebar-sub-item__label {
+  flex: 1 1 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cc-sidebar-sub-item__count {
+  flex-shrink: 0;
+  color: var(--color-text-secondary);
+  font: var(--cozy-corner-typography-dashboard-body-small-semibold);
+}
+
+.cc-sidebar-sub-item:hover .cc-sidebar-sub-item__pill,
+.cc-sidebar-sub-item[data-state='Hover'] .cc-sidebar-sub-item__pill {
+  background: var(--color-bg-neutral-light);
+}
+
+.cc-sidebar-sub-item[data-state='Active'] .cc-sidebar-sub-item__tree-line {
+  background: var(--color-text-brand);
+}
+.cc-sidebar-sub-item[data-state='Active'] .cc-sidebar-sub-item__pill {
+  background: var(--color-bg-primary-light);
+  color: var(--color-text-brand);
+}
+.cc-sidebar-sub-item[data-state='Active'] .cc-sidebar-sub-item__count {
+  color: var(--color-text-brand);
+}
+
+/* Figma has no Focused sub-item; keyboard users still get a visible ring (design gap). */
+.cc-sidebar-sub-item:focus-visible {
+  outline: none;
+}
+.cc-sidebar-sub-item:focus-visible .cc-sidebar-sub-item__pill {
+  box-shadow: inset 0 0 0 var(--borderwidth-2) var(--color-border-focus);
+}
+
+/* ---- Sidebar/item/section-label ---- */
+.cc-sidebar-section-label {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 100%;
+  padding: var(--spacing-md) 0 var(--spacing-base) var(--spacing-md);
+  color: var(--color-text-secondary);
+  font: var(--cozy-corner-typography-dashboard-body-small-semibold);
+  white-space: nowrap;
+}
+
+/* ---- Sidebar/item/user ---- */
+.cc-sidebar-user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  align-self: stretch;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.cc-sidebar-user__text {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  overflow: clip;
+}
+
+.cc-sidebar-user__name {
+  width: 100%;
+  color: var(--color-text-bold);
+  font: var(--cozy-corner-typography-dashboard-body-semibold);
+}
+
+.cc-sidebar-user__role {
+  width: 100%;
+  color: var(--color-text-secondary);
+  font: var(--cozy-corner-typography-dashboard-body-small);
+}
