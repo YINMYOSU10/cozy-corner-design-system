@@ -1,0 +1,123 @@
+/* Header (Figma 500:95) and Header/item/nav-item (500:20).
+   Every value is a semantic token Figma binds. Auto-layout becomes flex. */
+
+/* Platform=Website (500:21): row, space-between, centred. */
+.cc-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: var(--spacing-md) var(--spacing-jumbo);
+  background: var(--color-bg-base);
+}
+
+/* Navigation slot (500:34): row, gap spacing/lg. */
+.cc-header__navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+/* Platform=Mobile (500:45): top-aligned bar, borderWidth/05 top stroke drawn inside. */
+.cc-header[data-platform='Mobile'] {
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-xxl);
+  box-shadow: inset 0 var(--borderwidth-05) 0 0 var(--color-border-neutral-light);
+}
+
+/* Mobile Navigation slot (500:46): fills the width, items spread apart. */
+.cc-header[data-platform='Mobile'] .cc-header__navigation {
+  flex: 1 1 0;
+  min-width: 0;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0;
+}
+
+/* ---- Header/item/nav-item ---- */
+.cc-header-nav-item {
+  display: inline-flex;
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Website (500:2 / 500:4 / 500:6): pill, Label large. */
+.cc-header-nav-item[data-platform='Website'] {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-md) var(--spacing-3xl);
+  border-radius: var(--borderradius-circle);
+  background: var(--color-bg-surfaceprimary);
+  color: var(--color-text-primary);
+  font-family: var(--typography-labellarge-fontfamily);
+  font-size: var(--typography-labellarge-fontsize);
+  font-weight: var(--typography-labellarge-fontweight);
+  line-height: var(--typography-labellarge-lineheight);
+  letter-spacing: var(--typography-labellarge-letterspacing);
+}
+
+/* State=Hover (500:4): color/bg/primary/light; label stays color/text/primary. */
+.cc-header-nav-item[data-platform='Website'][data-state='Hover'],
+.cc-header-nav-item[data-platform='Website'][data-state='Default']:hover {
+  background: var(--color-bg-primary-light);
+}
+
+/* State=Active (500:6): color/bg/primary/idle with color/text/inverse. */
+.cc-header-nav-item[data-platform='Website'][data-state='Active'] {
+  background: var(--color-bg-primary-idle);
+  color: var(--color-text-inverse);
+}
+
+/* Mobile (500:8 / 500:14): icon above label. */
+.cc-header-nav-item[data-platform='Mobile'] {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: var(--spacing-base);
+  padding: var(--spacing-sm);
+  /* Default label: text style mobile/Body small (Karla 400 14/22), color/text/secondary. */
+  color: var(--color-text-secondary);
+  font-family: var(--typography-bodysmall-fontfamily);
+  font-size: var(--typography-bodysmall-fontsize);
+  font-weight: var(--typography-bodysmall-fontweight);
+  line-height: var(--typography-bodysmall-lineheight);
+  letter-spacing: var(--typography-bodysmall-letterspacing);
+}
+
+/* Icon container (500:9): borderRadius/sm. Its 40 square is unbound in Figma;
+   here it is the 24 glyph plus spacing/sm on each side. */
+.cc-header-nav-item__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--spacing-sm);
+  border-radius: var(--borderradius-sm);
+}
+
+/* Glyph stroke: Default color/text/secondary (500:10). */
+.cc-header-nav-item[data-platform='Mobile'] .cc-icon {
+  --cc-icon-color: var(--color-text-secondary);
+}
+
+/* State=Active (500:14): container color/bg/primary/idle, glyph color/text/inverse,
+   label text style Label (Inter 500 14/22) in color/text/brand. */
+.cc-header-nav-item[data-platform='Mobile'][data-state='Active'] {
+  color: var(--color-text-brand);
+  font-family: var(--typography-label-fontfamily);
+  font-size: var(--typography-label-fontsize);
+  font-weight: var(--typography-label-fontweight);
+  line-height: var(--typography-label-lineheight);
+  letter-spacing: var(--typography-label-letterspacing);
+}
+.cc-header-nav-item[data-platform='Mobile'][data-state='Active'] .cc-header-nav-item__icon {
+  background: var(--color-bg-primary-idle);
+}
+.cc-header-nav-item[data-platform='Mobile'][data-state='Active'] .cc-icon {
+  --cc-icon-color: var(--color-text-inverse);
+}

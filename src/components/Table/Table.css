@@ -1,0 +1,168 @@
+/* Table (Figma 438:14) and its parts. Semantic tokens only. */
+
+.cc-table {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: clip;
+  width: 100%;
+  background: var(--color-bg-surfaceprimary);
+  border: var(--borderwidth-1) solid var(--color-border-gray-light);
+  border-radius: var(--borderradius-md);
+}
+
+.cc-table__columns {
+  display: flex;
+  align-items: flex-start;
+  overflow: clip;
+  width: 100%;
+}
+
+.cc-table-column {
+  display: flex;
+  flex: 1 0 0;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  overflow: clip;
+}
+
+/* ---------- Table/item/title-bar ---------- */
+.cc-table-title-bar {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--spacing-xl);
+  width: 100%;
+  min-height: var(--spacing-jumbo);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-bottom: var(--borderwidth-1) solid var(--color-border-gray-light);
+  white-space: nowrap;
+}
+
+.cc-table-title-bar__title {
+  margin: 0;
+  flex-shrink: 0;
+  color: var(--color-text-gray-bold);
+  font-family: var(--fontfamily-inter);
+  font-size: var(--fontsize-18);
+  font-weight: var(--fontweight-semibold);
+  line-height: var(--lineheight-24);
+}
+
+.cc-table-title-bar__helper {
+  margin: 0;
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  text-align: right;
+  text-overflow: ellipsis;
+  color: var(--color-text-gray-default);
+  font-family: var(--fontfamily-inter);
+  font-size: var(--fontsize-14);
+  font-weight: var(--fontweight-regular);
+  line-height: var(--lineheight-20);
+}
+
+/* ---------- Table/item/header-cell ---------- */
+.cc-table-header-cell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--spacing-sm);
+  width: 100%;
+  height: var(--spacing-6xl);
+  padding-inline: var(--spacing-lg);
+}
+
+.cc-table-header-cell[data-align='Right'] { justify-content: flex-end; }
+
+.cc-table-header-cell__label {
+  margin: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  color: var(--color-text-gray-default);
+  font-family: var(--fontfamily-inter);
+  font-size: var(--fontsize-12);
+  font-weight: var(--fontweight-semibold);
+  line-height: var(--lineheight-16);
+}
+
+/* ---------- Table/item/cell ---------- */
+.cc-table-cell {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: var(--spacing-sm);
+  width: 100%;
+  padding-inline: var(--spacing-lg);
+  border-top: var(--borderwidth-1) solid var(--color-border-gray-light);
+}
+
+.cc-table-cell__sizer {
+  display: block;
+  flex: none;
+  margin-inline-end: calc(-1 * var(--spacing-sm));
+}
+
+.cc-table-cell[data-type='Number'],
+.cc-table-cell[data-type='More'] { justify-content: flex-end; }
+
+.cc-table-cell__text,
+.cc-table-cell__number {
+  margin: 0;
+  color: var(--color-text-gray-bold);
+  font-family: var(--fontfamily-inter);
+  font-size: var(--fontsize-16);
+  font-weight: var(--fontweight-regular);
+  line-height: var(--lineheight-22);
+}
+
+.cc-table-cell__text {
+  flex: 1 0 0;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cc-table-cell__text[data-emphasis='Muted'] { color: var(--color-text-gray-default); }
+.cc-table-cell__text--strong { font-weight: var(--fontweight-semibold); }
+
+.cc-table-cell__number { flex-shrink: 0; white-space: nowrap; }
+
+/* Custom: the Content slot (168 x 57 in Figma, unbound; hugs its content here). */
+.cc-table-cell__content { flex-shrink: 0; }
+
+/* More: 32 square outlined button holding a 20 square Icon/DotsThree. */
+.cc-table-cell__more {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--spacing-3xl);
+  height: var(--spacing-3xl);
+  padding: 0;
+  overflow: clip;
+  cursor: pointer;
+  background: transparent;
+  color: var(--color-icon-bold);
+  border: var(--borderwidth-1) solid var(--color-border-gray-light);
+  border-radius: var(--borderradius-sm);
+}
+
+.cc-table-cell__more:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
+}
+
+.cc-table-cell__more-icon {
+  display: block;
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+}

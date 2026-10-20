@@ -1,0 +1,211 @@
+/* Card (Figma 381:1660), Card/item/container (366:1973), Card/item/text (366:1953).
+   Semantic tokens only. */
+
+/* ---------- Card/item/container ---------- */
+.cc-card-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  border-radius: var(--borderradius-md);
+  background: var(--color-bg-surfaceprimary);
+  /* elevation/level1: two drop shadows */
+  box-shadow:
+    var(--elevation-level1-shadow1-offsetx) var(--elevation-level1-shadow1-offsety)
+      var(--elevation-level1-shadow1-blur) var(--elevation-level1-shadow1-spread)
+      var(--elevation-level1-shadow1-color),
+    var(--elevation-level1-shadow2-offsetx) var(--elevation-level1-shadow2-offsety)
+      var(--elevation-level1-shadow2-blur) var(--elevation-level1-shadow2-spread)
+      var(--elevation-level1-shadow2-color);
+}
+
+/* State=Hover (ON_HOVER reaction in Figma): elevation/level2 */
+.cc-card-container:hover,
+.cc-card-container[data-state='Hover'] {
+  box-shadow:
+    var(--elevation-level2-shadow1-offsetx) var(--elevation-level2-shadow1-offsety)
+      var(--elevation-level2-shadow1-blur) var(--elevation-level2-shadow1-spread)
+      var(--elevation-level2-shadow1-color),
+    var(--elevation-level2-shadow2-offsetx) var(--elevation-level2-shadow2-offsety)
+      var(--elevation-level2-shadow2-blur) var(--elevation-level2-shadow2-spread)
+      var(--elevation-level2-shadow2-color);
+}
+
+.cc-card-container__slot {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+/* Dashboard Card: hugs its content (Figma width HUG) */
+.cc-card-container[data-type='dashboard'] {
+  inline-size: fit-content;
+}
+
+/* Book cards and Clue card: Figma widths 390 / 567 / 374 are unbound, so the
+   card fills its container. */
+.cc-card-container[data-type='left'],
+.cc-card-container[data-type='center'],
+.cc-card-container[data-type='clue'] {
+  inline-size: 100%;
+}
+
+.cc-card-container[data-type='left'] .cc-card-container__slot {
+  align-items: flex-start;
+}
+
+.cc-card-container[data-type='center'],
+.cc-card-container[data-type='center'] .cc-card-container__slot {
+  justify-content: center;
+}
+
+/* Clue Card: vertical, spacing/xl all round, color/border/secondary stroke
+   (takes layout space), no shadow at rest. */
+.cc-card-container[data-type='clue'] {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: var(--spacing-xl);
+  /* Figma strokesIncludedInLayout = true: the stroke takes layout space. */
+  border: var(--borderwidth-1) solid var(--color-border-secondary);
+  box-shadow: none;
+}
+
+.cc-card-container[data-type='clue']:hover,
+.cc-card-container[data-type='clue'][data-state='Hover'] {
+  box-shadow:
+    var(--elevation-level2-shadow1-offsetx) var(--elevation-level2-shadow1-offsety)
+      var(--elevation-level2-shadow1-blur) var(--elevation-level2-shadow1-spread)
+      var(--elevation-level2-shadow1-color),
+    var(--elevation-level2-shadow2-offsetx) var(--elevation-level2-shadow2-offsety)
+      var(--elevation-level2-shadow2-blur) var(--elevation-level2-shadow2-spread)
+      var(--elevation-level2-shadow2-color);
+}
+
+.cc-card-container[data-type='clue'] .cc-card-container__slot {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* ---------- Card/item/text ---------- */
+.cc-card-text {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1 1 auto;
+  min-inline-size: 0;
+}
+
+.cc-card-text p,
+.cc-card-text h3 {
+  margin: 0;
+}
+
+.cc-card-text__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+/* ReportText */
+.cc-card-text[data-type='report'] {
+  gap: var(--spacing-md);
+}
+.cc-card-text[data-type='report'] .cc-card-text__group {
+  gap: var(--spacing-sm);
+}
+.cc-card-text__label {
+  font: var(--cozy-corner-typography-dashboard-body-large);
+  color: var(--color-text-primary);
+}
+.cc-card-text__value {
+  font: var(--cozy-corner-typography-dashboard-display);
+  color: var(--color-text-bold);
+}
+.cc-card-text__trend {
+  font: var(--cozy-corner-typography-dashboard-body-large-medium);
+}
+.cc-card-text__trend[data-trend='up'] {
+  color: var(--color-text-positive);
+}
+.cc-card-text__trend[data-trend='down'] {
+  color: var(--color-text-negative);
+}
+.cc-card-text__trend[data-trend='none'] {
+  color: var(--color-text-secondary);
+}
+
+/* BookDescription */
+.cc-card-text[data-type='book'] .cc-card-text__group {
+  gap: var(--spacing-base);
+}
+.cc-card-text__title {
+  color: var(--color-text-bold);
+}
+.cc-card-text__author {
+  color: var(--color-text-secondary);
+}
+.cc-card-text__description {
+  color: var(--color-text-primary);
+}
+
+.cc-card-text[data-type='book'][data-platform='mobile'] {
+  gap: var(--spacing-lg);
+}
+.cc-card-text[data-platform='mobile'] .cc-card-text__title {
+  font: var(--cozy-corner-typography-mobile-h2);
+}
+.cc-card-text[data-platform='mobile'] .cc-card-text__author {
+  font: var(--cozy-corner-typography-mobile-body-small);
+}
+.cc-card-text[data-platform='mobile'] .cc-card-text__description {
+  font: var(--cozy-corner-typography-mobile-body);
+}
+
+.cc-card-text[data-type='book'][data-platform='website'] {
+  gap: var(--spacing-xxl);
+  align-items: center;
+  text-align: center;
+}
+.cc-card-text[data-platform='website'] .cc-card-text__group {
+  align-items: center;
+}
+.cc-card-text[data-platform='website'] .cc-card-text__title {
+  font: var(--cozy-corner-typography-website-h2);
+}
+.cc-card-text[data-platform='website'] .cc-card-text__author,
+.cc-card-text[data-platform='website'] .cc-card-text__description {
+  font: var(--cozy-corner-typography-website-body);
+}
+
+/* Clue */
+.cc-card-text[data-type='clue'] {
+  gap: var(--spacing-md);
+  align-items: flex-start;
+}
+.cc-card-text__twine {
+  display: block;
+  align-self: stretch;
+  block-size: var(--borderwidth-2);
+  background: var(--color-border-secondary);
+}
+.cc-card-text__moods {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-sm);
+}
+.cc-card-text__clue {
+  align-self: stretch;
+  font: var(--cozy-corner-typography-mobile-h2);
+  color: var(--color-text-bold);
+}
+.cc-card-text__caption {
+  font: var(--cozy-corner-typography-dashboard-body-small);
+  color: var(--color-text-secondary);
+}

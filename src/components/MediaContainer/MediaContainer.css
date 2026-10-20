@@ -1,0 +1,97 @@
+/* Media Container — Figma 304:2006. Every value is a token from build/tokens/css/tokens.css.
+   Root: vertical auto-layout, centred, no padding, no gap, clips content,
+   radius borderRadius-sm, stroke borderWidth/05. */
+
+.cc-media-container {
+  /* Stroke colour per variant, as bound in Figma:
+     Default uses color/border/primary, except Ratio=5:3 Device=Website,
+     which uses color/border/neutral/light. Hover and Focus always use neutral/light. */
+  --cc-media-container-stroke: var(--color-border-primary);
+  /* Stroke weight: borderWidth/05, except State=Focus (borderWidth/1). */
+  --cc-media-container-stroke-width: var(--borderwidth-05);
+  /* Stroke sits INSIDE the frame, except State=Focus (strokeAlign OUTSIDE). */
+  --cc-media-container-stroke-inset: calc(var(--borderwidth-05) * 0);
+
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  gap: 0;
+  border-radius: var(--borderradius-sm);
+  outline: none;
+  cursor: pointer;
+}
+
+.cc-media-container[data-ratio='5:3'][data-device='Website'] {
+  --cc-media-container-stroke: var(--color-border-neutral-light);
+}
+
+.cc-media-container__frame {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--borderradius-sm);
+}
+
+.cc-media-container__sizer {
+  display: block;
+}
+
+/* "Slide Image": image fill, scale mode FILL (cover). */
+.cc-media-container__media {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.cc-media-container__media > img,
+.cc-media-container__media > video,
+.cc-media-container__media > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* "Overlay": linear gradient top to bottom, from transparent (stop 0, unbound
+   in Figma) to color/bg/overlay (stop 1). Radius borderRadius/sm. Hidden except Hover. */
+.cc-media-container__overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--borderradius-sm);
+  background: linear-gradient(to bottom, transparent, var(--color-bg-overlay));
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The stroke is drawn on top of the media, as Figma paints strokes above content. */
+.cc-media-container::after {
+  content: '';
+  position: absolute;
+  inset: calc(-1 * var(--cc-media-container-stroke-inset));
+  border: var(--cc-media-container-stroke-width) solid var(--cc-media-container-stroke);
+  border-radius: calc(var(--borderradius-sm) + var(--cc-media-container-stroke-inset));
+  pointer-events: none;
+}
+
+/* State=Hover: overlay shown, stroke color/border/neutral/light */
+.cc-media-container[data-state='Default']:hover,
+.cc-media-container[data-state='Hover'] {
+  --cc-media-container-stroke: var(--color-border-neutral-light);
+}
+
+.cc-media-container[data-state='Default']:hover .cc-media-container__overlay,
+.cc-media-container[data-state='Hover'] .cc-media-container__overlay {
+  opacity: 1;
+}
+
+/* State=Focus (313:2276, 313:2280, 318:2388, 318:2404): stroke borderWidth/1
+   in color/border/neutral/light, drawn OUTSIDE the frame */
+.cc-media-container[data-state='Default']:focus-visible,
+.cc-media-container[data-state='Focus'] {
+  --cc-media-container-stroke: var(--color-border-neutral-light);
+  --cc-media-container-stroke-width: var(--borderwidth-1);
+  --cc-media-container-stroke-inset: var(--borderwidth-1);
+}

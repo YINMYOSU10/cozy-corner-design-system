@@ -1,0 +1,210 @@
+/* Fields — Figma 275:141. Every value is a token from build/tokens/css/tokens.css.
+   Heights and widths are unbound in Figma (design gap), so the box is sized by
+   its bound padding, line height and border, and the field fills its container. */
+
+.cc-field {
+  /* Type=Form Input, State=Default */
+  --cc-field-bg: var(--color-bg-surfacesecondary);
+  --cc-field-border: var(--color-border-secondary);
+  --cc-field-border-width: var(--borderwidth-1);
+  --cc-field-label: var(--color-text-primary);
+  --cc-field-placeholder: var(--color-text-secondary);
+  --cc-field-value: var(--color-text-bold);
+  --cc-field-helper: var(--color-text-disabled);
+  --cc-field-icon: var(--color-icon-secondary);
+  /* Size=sm text: typography mobile/Body small */
+  --cc-field-text: var(--cozy-corner-typography-mobile-body-small);
+  --cc-field-line: var(--typography-bodysmall-lineheight);
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--spacing-base);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* ---- Label (Figma "Label") ---- */
+.cc-field__label {
+  display: block;
+  margin: 0;
+  color: var(--cc-field-label);
+  font: var(--cozy-corner-typography-label);
+  letter-spacing: var(--typography-label-letterspacing);
+}
+
+/* ---- Helper (Figma "Helper Label" / "Success text" / "Error text") ---- */
+.cc-field__helper {
+  margin: 0;
+  color: var(--cc-field-helper);
+  font: var(--cozy-corner-typography-label-small);
+  letter-spacing: var(--typography-labelsmall-letterspacing);
+}
+
+/* ---- Box (Figma "Button / primary") ---- */
+.cc-field__box {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-width: 0;
+  /* Figma strokes sit inside the frame, so the border eats into the side padding */
+  padding: var(--spacing-sm) calc(var(--spacing-lg) - var(--cc-field-border-width));
+  background: var(--cc-field-bg);
+  border: var(--cc-field-border-width) solid var(--cc-field-border);
+  border-radius: var(--borderradius-sm);
+  cursor: text;
+}
+
+/* Figma "Frame 13323": leading icon + text, gap spacing/sm */
+.cc-field__lead {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-sm);
+  min-width: 0;
+}
+
+.cc-field__icon-slot {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  min-height: var(--cc-field-line);
+}
+
+/* Icon's documented colour hook */
+.cc-icon.cc-field__icon {
+  --cc-icon-color: var(--cc-field-icon);
+}
+
+/* ---- Control (input / textarea) ---- */
+.cc-field__control {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  appearance: none;
+  color: var(--cc-field-value);
+  caret-color: var(--color-bg-inverse);
+  font: var(--cc-field-text);
+}
+.cc-field__control::placeholder {
+  color: var(--cc-field-placeholder);
+  opacity: 1;
+}
+.cc-field__control::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+/* ---- Size=Lg ---- */
+.cc-field[data-size='Lg'] {
+  /* typography mobile/Body */
+  --cc-field-text: var(--cozy-corner-typography-mobile-body);
+  --cc-field-line: var(--typography-body-lineheight);
+}
+/* Form Input Lg: Figma's label is mobile/Body on Hover, Active, Success, Error
+   and Disable, and Label large only on Default; the helper is Label on Default
+   and Label small elsewhere. Mirrored per state; see the Engineer card. */
+.cc-field[data-type='Form Input'][data-size='Lg'] .cc-field__label {
+  font: var(--cozy-corner-typography-mobile-body);
+  letter-spacing: normal;
+}
+.cc-field[data-type='Form Input'][data-size='Lg'][data-state='Default'] .cc-field__label {
+  font: var(--cozy-corner-typography-label-large);
+  letter-spacing: var(--typography-labellarge-letterspacing);
+}
+.cc-field[data-type='Form Input'][data-size='Lg'][data-state='Default'] .cc-field__helper {
+  font: var(--cozy-corner-typography-label);
+  letter-spacing: var(--typography-label-letterspacing);
+}
+
+/* ---- States ---- */
+/* Live hover and focus only on State=Default; Hover/Active pin the look. */
+.cc-field[data-state='Default'] .cc-field__box:hover,
+.cc-field[data-state='Hover'] .cc-field__box {
+  --cc-field-border: var(--color-border-primary);
+}
+/* Figma "Active": focused, with typed text in text/bold and the placeholder in text/disabled */
+.cc-field[data-state='Default'] .cc-field__box:focus-within,
+.cc-field[data-state='Active'] .cc-field__box {
+  --cc-field-border: var(--color-border-primary);
+  --cc-field-placeholder: var(--color-text-disabled);
+}
+.cc-field[data-state='Success'] {
+  --cc-field-bg: var(--color-bg-positive-light);
+  --cc-field-border: var(--color-border-positive-bold);
+  --cc-field-helper: var(--color-text-positive);
+}
+.cc-field[data-state='Error'] {
+  --cc-field-bg: var(--color-bg-negative-light);
+  --cc-field-border: var(--color-border-negative-bold);
+  --cc-field-helper: var(--color-text-negative);
+}
+.cc-field[data-state='Disable'] {
+  --cc-field-bg: var(--color-bg-gray-light);
+  --cc-field-border: var(--color-border-gray-light);
+  --cc-field-placeholder: var(--color-text-gray-light);
+  --cc-field-value: var(--color-text-gray-light);
+  --cc-field-helper: var(--color-text-gray-light);
+  --cc-field-icon: var(--color-icon-disabled);
+}
+.cc-field[data-state='Disable'] .cc-field__box,
+.cc-field[data-state='Disable'] .cc-field__control {
+  cursor: not-allowed;
+}
+
+/* ---- Type=Text Input: a resizable textarea ---- */
+.cc-field[data-type='Text Input'] .cc-field__box {
+  align-items: stretch;
+  /* The box is the resizable element, so its corner carries Figma's Resize Icon */
+  resize: vertical;
+  overflow: auto;
+}
+.cc-field[data-type='Text Input'] .cc-field__lead {
+  align-items: flex-start;
+}
+.cc-field[data-type='Text Input'] .cc-field__control {
+  align-self: stretch;
+  resize: none;
+}
+.cc-field[data-type='Text Input'] .cc-field__box::-webkit-resizer {
+  background: transparent;
+}
+.cc-field__resize {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  pointer-events: none;
+}
+.cc-field[data-state='Disable'][data-type='Text Input'] .cc-field__box {
+  resize: none;
+}
+
+/* ---- Type=Search Input / Search Input with Button ---- */
+.cc-field[data-type='Search Input'],
+.cc-field[data-type='Search Input with Button'] {
+  --cc-field-bg: var(--color-bg-surfaceprimary);
+  --cc-field-border-width: var(--borderwidth-05);
+}
+.cc-field[data-type='Search Input'] {
+  gap: var(--spacing-sm);
+}
+/* Figma "Frame 13333": box and Button / Primary side by side, gap spacing/sm */
+.cc-field__with-button {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--spacing-sm);
+  row-gap: var(--spacing-base);
+}
+.cc-field__with-button > .cc-field__helper {
+  grid-column: 1;
+}

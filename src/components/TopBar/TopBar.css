@@ -1,0 +1,55 @@
+/* Top Bar (Figma 576:22718). Every value is a semantic token Figma binds.
+   Auto-layout becomes flex. */
+
+/* Row, space-between, centred; padding spacing/xl left and right;
+   fill color/bg/surfacePrimary; bottom stroke 1 (strokeBottomWeight; not
+   bound to a variable) in color/border/secondary, drawn inside, so it uses
+   borderwidth-1. Height is FIXED 56 in Figma but unbound (design gap), so it
+   is carried by the .cc-top-bar__height-sizer SVG; content stays centred. */
+.cc-top-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 var(--spacing-xl);
+  background: var(--color-bg-surfaceprimary);
+  box-shadow: inset 0 calc(-1 * var(--borderwidth-1)) 0 0 var(--color-border-secondary);
+}
+
+/* Actions (576:22727): row, gap spacing/md, centred. */
+.cc-top-bar__actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-md);
+  min-width: 0;
+}
+
+.cc-top-bar__search {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 0 1 auto;
+}
+.cc-top-bar__sizer {
+  display: block;
+  max-width: 100%;
+  flex: none;
+}
+
+/* Start slot: sizer + breadcrumb, so the bar keeps two space-between children. */
+.cc-top-bar__start {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 0;
+}
+
+/* Height sizer: 0-wide SVG, 56 tall, in the row's flow. */
+.cc-top-bar__height-sizer {
+  display: block;
+  flex: none;
+  width: 0;
+}
