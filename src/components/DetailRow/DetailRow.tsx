@@ -1,6 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Divider } from '../Divider/Divider';
-import './DetailRow.css';
 
 // Detail Row (Figma 554:25). Properties: Platform (Mobile | Website),
 // Label (text), Value (text), Show divider (boolean).

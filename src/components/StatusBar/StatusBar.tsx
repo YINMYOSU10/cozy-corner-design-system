@@ -1,6 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { StatusBatteryGlyph, StatusCellularGlyph, StatusWifiGlyph } from '../Icon';
-import './StatusBar.css';
 
 // Status Bar (Figma component set 525:49). Figma properties:
 //   Mode     VARIANT        Light | Dark (default Light)               -> mode

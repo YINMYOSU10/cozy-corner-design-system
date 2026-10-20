@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react';
-import './Divider.css';
 
 // Divider (Figma 17:3671). One property: IsDashed (False / True).
 // Both variants bind stroke colour to color/border/secondary and stroke

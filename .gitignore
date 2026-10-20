@@ -5,3 +5,5 @@ storybook-static/
 *storybook.log
 .claude/launch.json
 .claude/registry.local.json
+reports/*-staging-rows-backup.json
+/dist/

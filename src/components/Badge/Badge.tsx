@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react';
-import './Badge.css';
 
 // Badge (Figma component set 385:14). Figma properties:
 //   Type   VARIANT  Warning | Positive | Negative | Info | Update | Neutral (default Warning) -> type

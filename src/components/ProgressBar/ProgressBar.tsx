@@ -1,6 +1,5 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
 import { ProgressBarSegment } from './ProgressBarSegment';
-import './ProgressBar.css';
 
 // Progress Bar (Figma 416:46). Properties: Step (1-5), Label (text), Show label (boolean).
 // Always five segments; segments 1..step are filled.

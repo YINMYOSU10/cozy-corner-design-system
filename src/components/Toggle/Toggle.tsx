@@ -1,5 +1,4 @@
 import { useState, type ButtonHTMLAttributes, type MouseEvent } from 'react';
-import './Toggle.css';
 
 // Toggle (Figma 299:317). Turns a setting on or off.
 // Figma properties: State (Default · Focus · Disabled) × Checked? (True · False).

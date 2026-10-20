@@ -1,6 +1,5 @@
 import type { HTMLAttributes, MouseEventHandler } from 'react';
 import { Icon, XGlyph } from '../Icon';
-import './Tag.css';
 
 // Tag (Figma component set 448:13). Figma properties:
 //   size        VARIANT  Small | Medium (default Small)   -> size

@@ -1,6 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { Avatar } from '../Avatar/Avatar';
-import './Sidebar.css';
 
 // Sidebar/item/user (Figma component 453:151). Figma properties:
 //   Name  TEXT  default "Su"           -> name

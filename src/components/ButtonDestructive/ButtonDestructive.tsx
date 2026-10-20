@@ -1,5 +1,4 @@
 import { Button, type ButtonProps } from '../Button/Button';
-import './ButtonDestructive.css';
 
 // Button / Destructive (Figma 444:4114). "Same options as the Primary button":
 // the Figma properties (State, Icon-style, Shape, Size, Type, Label) are identical

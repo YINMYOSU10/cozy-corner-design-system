@@ -3,7 +3,6 @@ import { TableTitleBar } from './TableTitleBar';
 import { TableColumn } from './TableColumn';
 import { TableHeaderCell } from './TableHeaderCell';
 import { TableCell } from './TableCell';
-import './Table.css';
 
 // Table (Figma 438:14). Figma properties:
 //   Show title  BOOLEAN  default true  -> showTitle (the "Title bar" instance)

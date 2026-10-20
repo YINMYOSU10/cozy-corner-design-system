@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react';
-import './Table.css';
 
 // Table/item/title-bar (Figma 437:20). Figma properties:
 //   Title        TEXT     default "Recent activity"  -> title

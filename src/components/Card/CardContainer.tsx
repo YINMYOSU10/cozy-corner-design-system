@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import './Card.css';
 
 // Card/item/container (Figma component set 366:1973). Figma properties:
 //   State     VARIANT  Default | Hover

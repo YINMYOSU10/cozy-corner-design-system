@@ -1,7 +1,6 @@
 import type { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from 'react';
 import { Icon } from '../Icon/Icon';
 import { CaretDownGlyph, CaretRightGlyph, SquaresFourGlyph } from '../Icon/glyphs';
-import './Sidebar.css';
 
 // Sidebar/item/nav-item (Figma component set 453:135). Figma properties:
 //   Label       TEXT           default "Overview"                      -> label

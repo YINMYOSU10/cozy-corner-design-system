@@ -1,5 +1,4 @@
 import { Children, useId, type HTMLAttributes, type ReactNode } from 'react';
-import './Footer.css';
 
 // Footer/item/column (Figma component 500:96). Figma properties:
 //   Heading  TEXT  default "EXPLORE"  -> heading
