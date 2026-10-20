@@ -44,6 +44,15 @@ Stack facts and commands only. Rules about how we work live in `CLAUDE.md`.
   Vercel login — check before writing one to the registry.
 - Verify a deploy by fetching `<url>/index.json` and parsing it. A 200 alone is not proof.
 
+## Docs site
+
+- Folder: `docs-site/` (own npm package: Astro + Starlight, own lockfile). It lives on the `astro` branch only.
+- Vercel project: `cozy-corner-docs` (Hobby, free). Root directory `docs-site`, production branch `astro`,
+  install command `npm install` (set in `docs-site/vercel.json`).
+- Production URL: https://cozy-corner-docs.vercel.app
+- `main` and `staging` carry a `docs-site/vercel.json` with `{"git": {"deploymentEnabled": false}}`
+  so the docs project does not try (and fail) to build branches that have no `docs-site/`.
+
 ## Fonts and icons
 
 - Fonts: Fraunces, Karla, Inter, Fredoka, loaded from Google Fonts.
