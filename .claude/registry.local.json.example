@@ -1,5 +1,6 @@
 {
   "baseId": "appXXXXXXXXXXXXXX",
+  "baseName": "Cozy Corner DS",
   "tables": {
     "Components": "tblXXXXXXXXXXXXXX",
     "Staging Testing": "tblXXXXXXXXXXXXXX",
