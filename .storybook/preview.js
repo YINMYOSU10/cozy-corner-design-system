@@ -1,6 +1,7 @@
 import '../build/tokens/css/tokens.css';
 import '../build/tokens/css/tokens-dashboard.css';
 import '../stories/docs.css';
+import '../src/styles.css';
 
 /** @type { import('@storybook/react-vite').Preview } */
 export default {

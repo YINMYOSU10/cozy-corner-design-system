@@ -1,6 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { UserGlyph } from '../Icon';
-import './Avatar.css';
 
 // Avatar (Figma component set 576:24). Figma properties:
 //   Size      VARIANT  32 | 40 | 48 (default 32)          -> size

@@ -5,7 +5,6 @@ import { Breadcrumb } from '../Breadcrumb';
 import type { BreadcrumbProps } from '../Breadcrumb';
 import { SearchInput } from '../Fields';
 import type { FieldsProps } from '../Fields';
-import './TopBar.css';
 
 // Top Bar (Figma component 576:22718). Figma properties:
 //   Show search#576:7  BOOLEAN (default true)  -> showSearch

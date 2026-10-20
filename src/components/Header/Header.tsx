@@ -1,6 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Logo } from '../Logo/Logo';
-import './Header.css';
 
 // Header (Figma component set 500:95). Figma properties:
 //   Platform    VARIANT  Website | Mobile (default Website)          -> platform

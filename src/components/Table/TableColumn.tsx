@@ -1,5 +1,4 @@
 import type { HTMLAttributes, ReactNode } from 'react';
-import './Table.css';
 
 // "Column: Column" (Figma 438:19): a header cell stacked over body cells, one flexible
 // column of the Table's Columns slot. It is a plain frame in Figma, with no properties.

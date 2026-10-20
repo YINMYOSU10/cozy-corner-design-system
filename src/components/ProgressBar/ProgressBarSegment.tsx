@@ -1,5 +1,4 @@
 import type { HTMLAttributes } from 'react';
-import './ProgressBar.css';
 
 // Progress Bar/item/segment (Figma 416:5). One property: Filled (True / False).
 // Radius binds to borderRadius/circle. Fill binds to color/bg/primary/idle

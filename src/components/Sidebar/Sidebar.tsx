@@ -1,7 +1,6 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Logo } from '../Logo/Logo';
 import { SidebarUser } from './SidebarUser';
-import './Sidebar.css';
 
 // Sidebar (Figma component 453:4975). Figma properties:
 //   Navigation  SLOT     (nav-item, sub-item group, section-label)  -> children

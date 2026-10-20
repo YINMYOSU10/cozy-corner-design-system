@@ -82,6 +82,22 @@ Outside the registry:
 - `reports/<Component>.md`: the matrix, every finding, the verdict
 - Screenshots, one per state, in `reports/<Component>/`
 
+**How to word the Airtable cells (the teacher's format).** Short bullet points, never
+paragraphs. This applies to `Expected Results` and `Suggestion for Improvement`:
+
+```
+Passed row      This variant passed.
+Failed row      - Issue Type: Visual | Interaction | Property Coverage
+                - Expected: <what Figma says, with the node id>
+                - Actual: <what staging shows>
+                - Suggested fix: <the token or prop to change>
+Re-test row     REGRESSION <date> — previously Passed (<what triggered it>)
+                then the same bullets
+```
+
+Keep each bullet to one line where you can. Put the long detail in `reports/<Component>.md`,
+not in the cell.
+
 A finding is paired evidence — the story showing the defect and the Figma node showing what it
 should be — and names the token or the prop:
 

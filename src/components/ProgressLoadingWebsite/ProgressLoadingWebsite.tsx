@@ -1,7 +1,5 @@
 import type { HTMLAttributes } from 'react';
 import { CheckGlyph } from '../Icon';
-import '../Icon/Icon.css';
-import './ProgressLoadingWebsite.css';
 
 // Progress Loading / Website (Figma component set 173:4829). Property: Step (1-5).
 // A ring that is drawn in halves across the steps (Figma uses Smart Animate between

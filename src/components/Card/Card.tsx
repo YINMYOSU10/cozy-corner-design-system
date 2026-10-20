@@ -1,7 +1,6 @@
 import type { HTMLAttributes } from 'react';
 import { CardContainer, type CardContainerState, type CardContainerType } from './CardContainer';
 import { CardText, type CardTextContent, type CardTrend } from './CardText';
-import './Card.css';
 
 // Card (Figma component set 381:1660). Figma properties:
 //   Platform  VARIANT  Dashboard | Mobile | Website   (default Dashboard)

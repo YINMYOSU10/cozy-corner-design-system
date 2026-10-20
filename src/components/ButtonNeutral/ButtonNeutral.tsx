@@ -1,5 +1,4 @@
 import { Button, type ButtonProps } from '../Button/Button';
-import './ButtonNeutral.css';
 
 // Button / Neutral (Figma 444:6334). The Figma properties (State, Icon-style,
 // Shape, Size, Type, Label) are identical to Button / Primary (66:459), so this

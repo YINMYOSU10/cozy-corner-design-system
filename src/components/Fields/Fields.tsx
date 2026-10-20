@@ -9,7 +9,6 @@ import {
   resize_windowGlyph as ResizeWindowGlyph,
 } from '../Icon';
 import { FieldBox, FieldHelper, FieldLabel } from './FieldParts';
-import './Fields.css';
 
 // Fields — Figma component set 275:141. Figma properties, in code:
 //   Type                VARIANT  Form Input | Text Input | Search Input | Search Input with Button -> type

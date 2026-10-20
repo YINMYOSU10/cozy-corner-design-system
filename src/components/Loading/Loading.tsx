@@ -1,5 +1,4 @@
 import type { CSSProperties, HTMLAttributes } from 'react';
-import './Loading.css';
 
 // Loading Animation (Figma 212:690). One property: Step (1-7).
 // Three dots; the dark dot is: steps 1-3 = first, 4-5 = second, 6-7 = third.
