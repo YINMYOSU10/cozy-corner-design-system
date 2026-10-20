@@ -23,7 +23,9 @@
  * gap spacing/sm / spacing/xl, text colour color/text/gray/{bold,default}, Inter type tokens.
  *
  * Design gaps (built as Figma says, reported): cell height 56, Custom content 168x57, Action button
- * width 130 and More icon 20 have no size token; header-cell letterSpacing 0.32 is unbound.
+ * width 130 and More icon 20 have no size token; header-cell letterSpacing 0.32 is unbound
+ * (no token), so it is not applied. The More button has no Figma focus state; it uses the repo
+ * focus ring (2px color/border/focus via borderWidth/2) as Tag and Toggle do.
  */
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import { Table } from './Table';

@@ -89,7 +89,6 @@
   font-size: var(--fontsize-12);
   font-weight: var(--fontweight-semibold);
   line-height: var(--lineheight-16);
-  letter-spacing: 0.32px;
 }
 
 /* ---------- Table/item/cell ---------- */
@@ -155,6 +154,11 @@
   color: var(--color-icon-bold);
   border: var(--borderwidth-1) solid var(--color-border-gray-light);
   border-radius: var(--borderradius-sm);
+}
+
+.cc-table-cell__more:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 var(--borderwidth-2) var(--color-border-focus);
 }
 
 .cc-table-cell__more-icon {
