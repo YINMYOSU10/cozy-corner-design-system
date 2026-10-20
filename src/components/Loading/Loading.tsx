@@ -2,11 +2,12 @@ import type { CSSProperties, HTMLAttributes } from 'react';
 import './Loading.css';
 
 // Loading Animation (Figma 212:690). One property: Step (1-7).
-// Three dots; the raised dot is: steps 1-3 = first, 4-5 = second, 6-7 = third.
+// Three dots; the dark dot is: steps 1-3 = first, 4-5 = second, 6-7 = third.
+// It is lifted only on steps 2, 4, 6 and rests on steps 1, 3, 5, 7.
 export type LoadingStep = 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
-/** Which dot (0-2) is raised in each Step, read from the Figma variants. */
-const RAISED_DOT: Record<LoadingStep, 0 | 1 | 2> = { 1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 2, 7: 2 };
+/** Which dot (0-2) is dark in each Step, read from the Figma variants. */
+const ACTIVE_DOT: Record<LoadingStep, 0 | 1 | 2> = { 1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 2, 7: 2 };
 
 export interface LoadingProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   /** Figma property `Step` (1-7). Ignored visually while `autoPlay` runs. */
@@ -37,7 +38,8 @@ export function Loading({
   style,
   ...props
 }: LoadingProps) {
-  const raised = RAISED_DOT[step];
+  const active = ACTIVE_DOT[step];
+  const lifted = step % 2 === 0;
   const animated = autoPlay && stepDuration !== undefined;
   return (
     <div
@@ -58,7 +60,12 @@ export function Loading({
       {([0, 1, 2] as const).map((i) => (
         <span
           key={i}
-          className={['cc-loading__dot', `cc-loading__dot--${i + 1}`, !animated && raised === i ? 'cc-loading__dot--raised' : '']
+          className={[
+            'cc-loading__dot',
+            `cc-loading__dot--${i + 1}`,
+            !animated && active === i ? 'cc-loading__dot--active' : '',
+            !animated && active === i && lifted ? 'cc-loading__dot--raised' : '',
+          ]
             .filter(Boolean)
             .join(' ')}
         />
