@@ -72,6 +72,7 @@
   padding: var(--spacing-xl);
   /* Figma strokesIncludedInLayout = true: the stroke takes layout space. */
   border: var(--borderwidth-1) solid var(--color-border-secondary);
+  box-shadow: none;
 }
 
 .cc-card-container[data-type='clue']:hover,
