@@ -4,9 +4,11 @@
 
 .cc-media-container {
   /* Stroke colour per variant, as bound in Figma:
-     Default and Focus use color/border/primary, except Ratio=5:3 Device=Website,
-     which uses color/border/neutral/light. Hover always uses neutral/light. */
+     Default uses color/border/primary, except Ratio=5:3 Device=Website,
+     which uses color/border/neutral/light. Hover and Focus always use neutral/light. */
   --cc-media-container-stroke: var(--color-border-primary);
+  /* Stroke weight: borderWidth/05, except State=Focus (borderWidth/1). */
+  --cc-media-container-stroke-width: var(--borderwidth-05);
   /* Stroke sits INSIDE the frame, except State=Focus (strokeAlign OUTSIDE). */
   --cc-media-container-stroke-inset: calc(var(--borderwidth-05) * 0);
 
@@ -69,7 +71,7 @@
   content: '';
   position: absolute;
   inset: calc(-1 * var(--cc-media-container-stroke-inset));
-  border: var(--borderwidth-05) solid var(--cc-media-container-stroke);
+  border: var(--cc-media-container-stroke-width) solid var(--cc-media-container-stroke);
   border-radius: calc(var(--borderradius-sm) + var(--cc-media-container-stroke-inset));
   pointer-events: none;
 }
@@ -85,8 +87,11 @@
   opacity: 1;
 }
 
-/* State=Focus: same stroke colour and weight, drawn OUTSIDE the frame */
+/* State=Focus (313:2276, 313:2280, 318:2388, 318:2404): stroke borderWidth/1
+   in color/border/neutral/light, drawn OUTSIDE the frame */
 .cc-media-container[data-state='Default']:focus-visible,
 .cc-media-container[data-state='Focus'] {
-  --cc-media-container-stroke-inset: var(--borderwidth-05);
+  --cc-media-container-stroke: var(--color-border-neutral-light);
+  --cc-media-container-stroke-width: var(--borderwidth-1);
+  --cc-media-container-stroke-inset: var(--borderwidth-1);
 }
