@@ -18,9 +18,9 @@
  *   - Overlay sits below "Slide Image" in the Figma layer order, so Figma's own
  *     render hides it; built above the image, as the visible Hover fill intends.
  *   - Default stroke colour differs by variant: 5:3 Website uses
- *     color/border/neutral/light, every other Default/Focus uses color/border/primary.
- *   - Focus is only the same 0.5 stroke moved outside, in the same colour: a very
- *     weak focus indicator (no color/border/focus binding).
+ *     color/border/neutral/light, every other Default uses color/border/primary.
+ *   - Focus is a borderWidth/1 stroke outside in color/border/neutral/light (all four
+ *     Focus variants): a light, low-contrast focus indicator (no color/border/focus).
  *   - "Supporting Icons" instance (type=video) is hidden in all 12 variants and no
  *     component property exposes it, so it is not part of the API.
  */
