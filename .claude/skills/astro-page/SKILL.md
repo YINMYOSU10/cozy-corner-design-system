@@ -113,7 +113,11 @@ If either fails, fix the cause, not the check. Do not push a build you have not 
 
 ## After deploying
 Fetch the live site (`tools.md` has the URL; verify a deploy by fetching, not by a 200
-alone).
+alone). **Do it in parallel, not one page at a time:** build the page list from the
+built `dist/` (not by crawling), fetch about ten at a time, and check header links the
+same way. A component page's five tabs live in one HTML file, so one fetch per page
+covers all five tabs. Wait for the deployment to read `success` *first*; a page that
+answers 404 right after that gets one short retry for CDN propagation, not a long wait.
 
 1. **Every page returns 200.**
 2. **Every component page has all five tabs, and each tab has content.**
