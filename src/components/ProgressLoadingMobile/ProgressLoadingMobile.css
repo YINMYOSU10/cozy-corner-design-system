@@ -1,0 +1,33 @@
+.cc-progress-loading-mobile {
+  display: inline-block;
+  line-height: 0;
+}
+
+.cc-progress-loading-mobile__art {
+  display: block;
+  overflow: hidden;
+}
+
+/* Steps 1-4: ring in color/bg/primary/idle; Step 5: color/bg/positive/idle */
+.cc-progress-loading-mobile__ring {
+  fill: var(--color-bg-primary-idle);
+}
+
+.cc-progress-loading-mobile[data-step='5'] .cc-progress-loading-mobile__ring {
+  fill: var(--color-bg-positive-idle);
+}
+
+/* Rectangle 1: hides the left half on Steps 1-2 */
+.cc-progress-loading-mobile__cover {
+  fill: var(--color-bg-base);
+}
+
+/* Icon/Check stroke is bound to color/icon/positive */
+.cc-progress-loading-mobile__check {
+  color: var(--color-icon-positive);
+}
+
+/* Figma scales the glyph stroke with the instance, unlike the framed Icon */
+.cc-progress-loading-mobile__check path {
+  vector-effect: none;
+}
