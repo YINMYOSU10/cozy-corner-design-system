@@ -34,7 +34,7 @@ export function Sidebar({
   ...rest
 }: SidebarProps) {
   return (
-    <aside {...rest} className={['cc-sidebar', className].filter(Boolean).join(' ')}>
+    <aside {...rest} data-mode="dashboard" className={['cc-sidebar', className].filter(Boolean).join(' ')}>
       {/* Sizer: Figma fixes the Sidebar at 237 wide = 204 content + 2x spacing/lg padding
           + 1px stroke (unbound, design gap), carried as SVG geometry. */}
       <svg className="cc-sidebar__sizer" width="204" height="0" aria-hidden="true" focusable="false" />

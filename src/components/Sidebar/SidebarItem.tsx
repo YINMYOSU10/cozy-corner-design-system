@@ -74,7 +74,8 @@ export function SidebarItem({
       <a
         {...(rest as AnchorHTMLAttributes<HTMLAnchorElement>)}
         className={classes}
-        data-state={state}
+        data-mode="dashboard"
+      data-state={state}
         data-expand={expand}
         aria-current={active ? 'page' : rest['aria-current']}
       >
@@ -87,6 +88,7 @@ export function SidebarItem({
       type="button"
       {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}
       className={classes}
+      data-mode="dashboard"
       data-state={state}
       data-expand={expand}
       aria-expanded={expand === 'Expanded'}

@@ -16,7 +16,7 @@ export type SidebarUserProps = Omit<HTMLAttributes<HTMLDivElement>, 'children'> 
 
 export function SidebarUser({ name = 'Su', role = 'Store Admin', className, ...rest }: SidebarUserProps) {
   return (
-    <div {...rest} className={['cc-sidebar-user', className].filter(Boolean).join(' ')}>
+    <div {...rest} data-mode="dashboard" className={['cc-sidebar-user', className].filter(Boolean).join(' ')}>
       <Avatar size="40" type="Initials" />
       <div className="cc-sidebar-user__text">
         <span className="cc-sidebar-user__name">{name}</span>
