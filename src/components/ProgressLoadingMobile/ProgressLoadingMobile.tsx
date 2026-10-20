@@ -16,14 +16,16 @@ export interface ProgressLoadingMobileProps extends Omit<HTMLAttributes<HTMLDivE
 }
 
 // Geometry in the 160 x 160 drawing space of the Figma frame (drawing units, not CSS).
-// Arc nodes: startingAngle 270deg -> endingAngle 90deg (right half), innerRadius 0.95.
+// Arc nodes: startingAngle 270deg -> endingAngle 90deg, innerRadius 0.95.
 const SIZE = 160;
 const C = 80;
 const INNER_RATIO = 0.95;
 
-function rightHalf(cx: number, cy: number, outer: number) {
+// The base arc, drawn at rotation 0, is the LEFT half (verified against Figma's render:
+// Step 1 rotation 0 sits behind the cover and shows no ring; rotation 180 shows the right half).
+function baseHalf(cx: number, cy: number, outer: number) {
   const inner = outer * INNER_RATIO;
-  return `M${cx} ${cy - outer}A${outer} ${outer} 0 0 1 ${cx} ${cy + outer}V${cy + inner}A${inner} ${inner} 0 0 0 ${cx} ${cy - inner}Z`;
+  return `M${cx} ${cy - outer}A${outer} ${outer} 0 0 0 ${cx} ${cy + outer}V${cy + inner}A${inner} ${inner} 0 0 1 ${cx} ${cy - inner}Z`;
 }
 
 type Half = { cx: number; cy: number; r: number; rotate?: number };
@@ -64,7 +66,7 @@ export function ProgressLoadingMobile({
           <path
             key={i}
             className="cc-progress-loading-mobile__ring"
-            d={rightHalf(h.cx, h.cy, h.r)}
+            d={baseHalf(h.cx, h.cy, h.r)}
             transform={h.rotate ? `rotate(${h.rotate} ${h.cx} ${h.cy})` : undefined}
           />
         ))}
