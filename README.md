@@ -10,10 +10,14 @@ The system is built from Figma and shipped as React components styled entirely b
 ## Install
 
 ```bash
-npm install @cozy-corner-design-system/components react react-dom
+npm install @cozy-corner-design-system/components
 ```
 
-`react` and `react-dom` (19) are peer dependencies: you bring your own copy.
+React 19 is a peer dependency. If your app does not already have them:
+
+```bash
+npm install react@^19 react-dom@^19
+```
 
 ## Use
 
