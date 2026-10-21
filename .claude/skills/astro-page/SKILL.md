@@ -62,6 +62,7 @@ Then **five tabs, in this order**:
 Every component page uses **the same headings, in the same order**, so a reader always
 knows where to look. A section with no source keeps its heading and shows the missing
 notice (see "A missing source"); it never disappears and never moves.
+The one exception: "Where it goes" is omitted (heading and notice) when no source states a placement.
 
 | Tab | Headings, in this order |
 |---|---|
