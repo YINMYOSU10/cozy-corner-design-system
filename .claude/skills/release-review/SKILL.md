@@ -67,10 +67,12 @@ does not block. A waiver covers only the version it names. You never write a wai
 
 ### 5 · Write the reports
 Write **one report per component**, at the reviewed commit, at
-`reports/<component>/release-review-<short-commit>.md`. `<component>` is the component's
-folder name in lower case with words joined by hyphens (`Card` becomes `card`,
-`ButtonNeutral` becomes `button-neutral`). Each file starts with the title
-`# Release review — <component>` and a two-column table with these rows:
+`reports/<ComponentName>/release-review-<short-commit>.md`. `<ComponentName>` is the
+component's folder name in `src/components` (PascalCase: `Card`, `ButtonNeutral`), the same
+folder that holds its QA reports. Never lower-case it or add hyphens: on a case-insensitive
+filesystem (macOS) `card/` and `Card/` are the same folder, so a lower-case path writes into
+the existing folder while the board link points at a path that returns 404 on GitHub. Each file starts with the title
+`# Release review — <ComponentName>` and a two-column table with these rows:
 
 | Row | Holds |
 |---|---|
