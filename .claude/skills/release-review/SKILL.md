@@ -41,7 +41,7 @@ A gate is pass or fail. Any failed gate makes the verdict Blocked.
 ### 3 · The 6 checks
 Checks look at the intent files. They run across every component.
 
-1. **Fields present** — all seven fields exist in every intent file. An empty
+1. **Fields present** — all eight fields exist in every intent file. An empty
    `use_when` / `dont_use_when` on a component that has no Figma usage region is a
    recorded gap, not a hidden pass.
 2. **Alternatives named** — every `dont_use_when` entry names an alternative. A miss is a

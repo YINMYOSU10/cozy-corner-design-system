@@ -1,6 +1,6 @@
 ---
 name: component-intent
-description: Write {Component}.intent.json beside a component — when to use it, when not to, what each variant is for, where it goes, what it pairs with, which tokens it needs, and its accessibility facts. Transposed from Figma and the code, never invented.
+description: Write {Component}.intent.json beside a component — when to use it, when not to, best practice, what each variant is for, where it goes, what it pairs with, which tokens it needs, and its accessibility facts. Transposed from Figma and the code, never invented.
 ---
 
 # Write a component's intent file
@@ -19,6 +19,7 @@ The output is `src/components/<Name>/<Name>.intent.json`.
 {
   "use_when": ["…"],
   "dont_use_when": [{ "when": "…", "use_instead": "…" }],
+  "best_practice": ["…"],
   "variant_intent": { "<prop>=<value>": "what this variant is for" },
   "placement": ["…"],
   "pairs_with": ["<ComponentName>"],
@@ -27,10 +28,12 @@ The output is `src/components/<Name>/<Name>.intent.json`.
 }
 ```
 
-- `use_when`, `dont_use_when`: from Figma only (source 1).
+- `use_when`, `dont_use_when`, `best_practice`: from Figma only (source 1).
 - `dont_use_when` entries each name the alternative in `use_instead`, a component or a
   plain-words action. If the Figma text names none, leave `use_instead` empty. Do not
   make one up.
+- `best_practice`: every line of the Figma page's Best Practice list, in its own words
+  (source 1). Layout-position lines also stay in `placement`; do not drop them there.
 - `variant_intent`: one entry per variant value the component's props allow.
 - `placement`: where it goes in a layout.
 - `pairs_with`: component names that exist in `src/components/`.
@@ -42,7 +45,7 @@ The output is `src/components/<Name>/<Name>.intent.json`.
 
 ### 1 · The component's documentation page in Figma
 Read it over the Figma MCP connection. Its usage region already carries when to use,
-when not to, and best practice. Transpose it faithfully: keep its meaning and its
+when not to, and best practice (the `best_practice` list). Transpose it faithfully: keep its meaning and its
 wording where it is clear. Do not paraphrase it into something vaguer, and do not
 tidy it into something firmer.
 
@@ -79,7 +82,7 @@ team, not something to fill in here.
 - Rules: `CLAUDE.md`, `tools.md`
 
 ## Self-check
-- [ ] `use_when` and `dont_use_when` came from the Figma usage region, in its own words
+- [ ] `use_when`, `dont_use_when` and `best_practice` came from the Figma usage region, in its own words
 - [ ] Every `dont_use_when` has a `use_instead`, or an empty one because Figma named none
 - [ ] Every `required_tokens` entry appears in the component's CSS and in `tokens.css`
 - [ ] Every `variant_intent` key is a real prop value
