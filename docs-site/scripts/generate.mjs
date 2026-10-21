@@ -298,7 +298,7 @@ function componentPage(name) {
   const readme = read('README.md');
   const readmeEx = /```tsx\n([\s\S]*?)```/.exec(readme)?.[1].trim();
   const storyBlock = (e) =>
-    `#### ${esc(e.name)}\n\n<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="${esc(c.name)} ${esc(e.name)} (light)" src="${sbEmbed(e.id)}"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: ${hasDarkMode ? '' : 'the Figma token export has no dark mode.'}</p></figure></div>\n\n[Open in Storybook](${sbStoryUrl(e.id)})`;
+    `<section class="example-panel">\n<h4 class="example-title">${esc(e.name)}</h4>\n<iframe loading="lazy" title="${esc(c.name)} ${esc(e.name)}" src="${sbEmbed(e.id)}"></iframe>\n<p class="example-caption">Rendered live from Storybook · <a href="${sbStoryUrl(e.id)}" target="_blank" rel="noopener">open it there</a> to change the props or the theme.</p>\n</section>`;
   const examples = [
     '### Usage example',
     readmeEx
