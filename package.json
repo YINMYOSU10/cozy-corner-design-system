@@ -17,7 +17,9 @@
     "./tokens.css": "./dist/tokens.css"
   },
   "files": [
-    "dist"
+    "dist",
+    "CHANGELOG.md",
+    "VERSIONING.md"
   ],
   "publishConfig": {
     "access": "public"
