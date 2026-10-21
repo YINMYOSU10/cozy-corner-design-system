@@ -39,3 +39,26 @@ export const Dashed: Story = {
   name: 'IsDashed=True',
   args: { isDashed: true },
 };
+
+/** A solid Divider between two groups of text, with a dashed one inside the second group. */
+export const BetweenGroups: Story = {
+  name: 'Between Groups',
+  parameters: { controls: { disable: true } },
+  render: () => {
+    const text = { font: 'var(--cozy-corner-typography-body-small)', color: 'var(--color-text-primary)', margin: 0 } as const;
+    return (
+      <div style={{ maxWidth: 360, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-sm)' }}>
+          <p style={text}>Home</p>
+          <p style={text}>Date</p>
+        </div>
+        <Divider isDashed={false} />
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-sm)' }}>
+          <p style={text}>Shelf</p>
+          <Divider isDashed />
+          <p style={text}>About</p>
+        </div>
+      </div>
+    );
+  },
+};
