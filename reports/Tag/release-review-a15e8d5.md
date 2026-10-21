@@ -1,4 +1,4 @@
-# Release review — tag
+# Release review — Tag
 
 | Row | Value |
 |---|---|

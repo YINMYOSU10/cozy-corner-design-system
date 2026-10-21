@@ -1,4 +1,4 @@
-# Release review — sidebar
+# Release review — Sidebar
 
 | Row | Value |
 |---|---|

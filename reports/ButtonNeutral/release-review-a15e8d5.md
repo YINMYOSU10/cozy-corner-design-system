@@ -1,4 +1,4 @@
-# Release review — button-neutral
+# Release review — ButtonNeutral
 
 | Row | Value |
 |---|---|

@@ -1,4 +1,4 @@
-# Release review — button-destructive
+# Release review — ButtonDestructive
 
 | Row | Value |
 |---|---|

@@ -1,4 +1,4 @@
-# Release review — avatar
+# Release review — Avatar
 
 | Row | Value |
 |---|---|

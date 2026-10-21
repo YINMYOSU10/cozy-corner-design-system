@@ -1,4 +1,4 @@
-# Release review — progress-loading-mobile
+# Release review — ProgressLoadingMobile
 
 | Row | Value |
 |---|---|

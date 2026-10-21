@@ -1,4 +1,4 @@
-# Release review — chip
+# Release review — Chip
 
 | Row | Value |
 |---|---|

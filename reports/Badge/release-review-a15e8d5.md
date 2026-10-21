@@ -1,4 +1,4 @@
-# Release review — badge
+# Release review — Badge
 
 | Row | Value |
 |---|---|

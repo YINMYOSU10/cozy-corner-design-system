@@ -1,4 +1,4 @@
-# Release review — card
+# Release review — Card
 
 | Row | Value |
 |---|---|

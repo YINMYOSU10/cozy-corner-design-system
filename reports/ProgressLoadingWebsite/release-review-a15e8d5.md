@@ -1,4 +1,4 @@
-# Release review — progress-loading-website
+# Release review — ProgressLoadingWebsite
 
 | Row | Value |
 |---|---|
