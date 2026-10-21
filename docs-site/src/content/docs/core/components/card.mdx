@@ -1,0 +1,295 @@
+---
+title: "Card"
+description: "Card: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-card--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=381-1660&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Card">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to group related information about one thing, such as a stat or a book.
+- Use the Dashboard card for one number with a short label and a trend.
+- Use the Clue card (Type = Clue) to preview a blind date clue with its mood tags, such as on the Clue cards screen.
+- Use the Mobile book card in the app and the Website book card on the website.
+- Use the Hover state only when the whole card is clickable.
+
+### Where it goes
+
+- Stat cards sit in an equal-width row at the top of a page.
+- Clue cards wrap in a 3-column grid with a 24px gap.
+- Keep cards in the same row the same width.
+
+### When not to use
+
+- for a single line of text. Use instead: Badge or plain text.
+- inside another card. *(Figma names no alternative.)*
+- for long articles or forms. Use instead: a page section.
+- Do not add borders or extra shadows. Only the Clue card has a border, so it reads like a wrapped book. *(Figma names no alternative.)*
+- Do not mix dashboard and book content in the same card. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep cards in the same row the same width.
+- Put the most important content first: the number, or the book title.
+- For a Down trend, edit the text to match, such as "−3 today".
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `platform=Dashboard` | Figma: the Dashboard card, one number with a short label and a trend. |
+| `platform=Mobile` | Figma: the Mobile book card, used in the app. |
+| `platform=Website` | Figma: the Website book card, used on the website. |
+| `type=Default` | Renders the platform's default card (code). |
+| `type=Clue` | Figma: previews a blind date clue with its mood tags. Code: always renders the Clue card, whatever platform says. |
+| `state=Default` | Resting card. |
+| `state=Hover` | Figma: use the Hover state only when the whole card is clickable. |
+| `trend=Up` | Dashboard card trend going up (code default). |
+| `trend=None` | Dashboard card with no trend. |
+| `trend=Down` | Dashboard card trend going down. Figma: edit the text to match, such as "−3 today". |
+
+### Accessibility
+
+- The title renders as an &lt;h3&gt; heading. ([src/components/Card/CardText.tsx:137](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Card/CardText.tsx#L137))
+
+### Composition
+
+- [Badge](/core/components/badge/)
+- [Button](/core/components/button/)
+- [Divider](/core/components/divider/)
+- [Tag](/core/components/tag/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 45 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Card } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Dashboard Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Dashboard Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--dashboard-default&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--dashboard-default)
+
+#### Dashboard Default Hover
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Dashboard Default Hover (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--dashboard-default-hover&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--dashboard-default-hover)
+
+#### Dashboard Trend Down
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Dashboard Trend Down (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--dashboard-trend-down&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--dashboard-trend-down)
+
+#### Dashboard Trend None
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Dashboard Trend None (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--dashboard-trend-none&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--dashboard-trend-none)
+
+#### Mobile Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Mobile Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--mobile-default&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--mobile-default)
+
+#### Mobile Default Hover
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Mobile Default Hover (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--mobile-default-hover&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--mobile-default-hover)
+
+#### Website Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Website Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--website-default&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--website-default)
+
+#### Website Default Hover
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Website Default Hover (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--website-default-hover&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--website-default-hover)
+
+#### Dashboard Clue
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Dashboard Clue (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--dashboard-clue&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--dashboard-clue)
+
+#### Dashboard Clue Hover
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Card Dashboard Clue Hover (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--dashboard-clue-hover&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-card--dashboard-clue-hover)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Card } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `CardContainer`, `CardText`. Source: [src/components/Card](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Card).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `platform?` <small>(Card)</small> | `CardPlatform` | `'Dashboard'` | Figma property `Platform`. |
+| `type?` <small>(Card)</small> | `CardType` | `'Default'` | Figma property `Type`. `Clue` is defined for Platform=Dashboard only. |
+| `state?` <small>(Card)</small> | `CardContainerState` | `'Default'` | Nested container `State`. Hover also happens on real pointer hover. |
+| `trend?` <small>(Card)</small> | `CardTrend` | `'Up'` | Nested text `Trend` (Dashboard Default only): Up = positive, Down = negative, None = secondary. |
+| `type?` <small>(CardContainer)</small> | `CardContainerType` | `'Dashboard Card'` | Figma property `Type`. |
+| `state?` <small>(CardContainer)</small> | `CardContainerState` | `'Default'` | Figma property `State`. Hover also happens for real on pointer hover. |
+| `children?` <small>(CardContainer)</small> | `ReactNode` |  | Figma slot `CardSlot`. |
+| `type?` <small>(CardText)</small> | `CardTextType` | `'ReportText'` | Figma property `Type`. |
+| `platform?` <small>(CardText)</small> | `CardTextPlatform` | `'Mobile'` | Figma property `Platform`. |
+| `trend?` <small>(CardText)</small> | `CardTrend` | `'Up'` | Figma property `Trend`. |
+| `className?` <small>(CardText)</small> | `string` |  |  |
+
+- `CardProps` also accepts: `CardTextContent, Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'title' | 'children'&gt;`
+- `CardContainerProps` also accepts: `HTMLAttributes&lt;HTMLDivElement&gt;`
+- `CardTextProps` also accepts: `CardTextContent`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `CardPlatform` | `'Dashboard' &#124; 'Mobile' &#124; 'Website'` |
+| `CardType` | `'Default' &#124; 'Clue'` |
+| `CardContainerType` | `&#124; 'Dashboard Card' &#124; 'Left-aligned Book Card' &#124; 'Center-aligned Book Card' &#124; 'Clue Card'` |
+| `CardContainerState` | `'Default' &#124; 'Hover'` |
+| `CardTextType` | `'ReportText' &#124; 'BookDescription' &#124; 'Clue'` |
+| `CardTextPlatform` | `'Mobile' &#124; 'Website'` |
+| `CardTrend` | `'Up' &#124; 'None' &#124; 'Down'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-md` | 16px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--color-bg-surfaceprimary` | #fffdf9 | no dark mode in the Figma export |
+| `--color-border-secondary` | #cdbb9f | no dark mode in the Figma export |
+| `--color-text-bold` | #2b211b | no dark mode in the Figma export |
+| `--color-text-negative` | #7e271d | no dark mode in the Figma export |
+| `--color-text-positive` | #2f5a3e | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--color-text-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-large` | 400 16px/22px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-large-medium` | 500 16px/22px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-small` | 400 12px/16px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-display` | 600 28px/34px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-mobile-body` | 400 16px/26px Karla | no dark mode in the Figma export |
+| `--cozy-corner-typography-mobile-body-small` | 400 14px/22px Karla | no dark mode in the Figma export |
+| `--cozy-corner-typography-mobile-h2` | 600 20px/26px Fraunces | no dark mode in the Figma export |
+| `--cozy-corner-typography-website-body` | 400 16px/26px Karla | no dark mode in the Figma export |
+| `--cozy-corner-typography-website-h2` | 600 24px/32px Fraunces | no dark mode in the Figma export |
+| `--elevation-level1-shadow1-blur` | 3px | no dark mode in the Figma export |
+| `--elevation-level1-shadow1-color` | rgba(43, 33, 27, 0.07999999821186066) | no dark mode in the Figma export |
+| `--elevation-level1-shadow1-offsetx` | 0px | no dark mode in the Figma export |
+| `--elevation-level1-shadow1-offsety` | 1px | no dark mode in the Figma export |
+| `--elevation-level1-shadow1-spread` | 0px | no dark mode in the Figma export |
+| `--elevation-level1-shadow2-blur` | 2px | no dark mode in the Figma export |
+| `--elevation-level1-shadow2-color` | rgba(43, 33, 27, 0.05999999865889549) | no dark mode in the Figma export |
+| `--elevation-level1-shadow2-offsetx` | 0px | no dark mode in the Figma export |
+| `--elevation-level1-shadow2-offsety` | 1px | no dark mode in the Figma export |
+| `--elevation-level1-shadow2-spread` | 0px | no dark mode in the Figma export |
+| `--elevation-level2-shadow1-blur` | 12px | no dark mode in the Figma export |
+| `--elevation-level2-shadow1-color` | rgba(43, 33, 27, 0.10000000149011612) | no dark mode in the Figma export |
+| `--elevation-level2-shadow1-offsetx` | 0px | no dark mode in the Figma export |
+| `--elevation-level2-shadow1-offsety` | 4px | no dark mode in the Figma export |
+| `--elevation-level2-shadow1-spread` | 0px | no dark mode in the Figma export |
+| `--elevation-level2-shadow2-blur` | 4px | no dark mode in the Figma export |
+| `--elevation-level2-shadow2-color` | rgba(43, 33, 27, 0.05999999865889549) | no dark mode in the Figma export |
+| `--elevation-level2-shadow2-offsetx` | 0px | no dark mode in the Figma export |
+| `--elevation-level2-shadow2-offsety` | 2px | no dark mode in the Figma export |
+| `--elevation-level2-shadow2-spread` | 0px | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--spacing-xl` | 20px | no dark mode in the Figma export |
+| `--spacing-xxl` | 24px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Card props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-card--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-card--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Card in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D381-1660%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=381-1660&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+<p class="missing"><strong>Not available.</strong> No variant-matrix story exists for this component.</p>
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`4c6476b`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/4c6476ba9a8050c677bfb1781d3328cfae41b97e) 2026-10-20 · Card Clue: no shadow at rest (Figma Clue has no elevation at idle) · *unreleased (next: 0.1.0)*
+- [`86ae52a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/86ae52a8a4f85814f91bb07216be387c56ac1300) 2026-10-20 · Fix Card Clue: stroke takes layout space (374x172), correct story header · *unreleased (next: 0.1.0)*
+- [`f187c70`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/f187c7089e40f087ee0c3b007a7a6ed55dd374fd) 2026-10-20 · Add Card component (Figma 381:1660) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

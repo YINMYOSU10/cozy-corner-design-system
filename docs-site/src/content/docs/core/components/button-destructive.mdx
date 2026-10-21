@@ -1,0 +1,192 @@
+---
+title: "Button / Destructive"
+description: "Button / Destructive: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-button-destructive--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=444-4114&t=m14RF1dhOS9VJMpn-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ButtonDestructive">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- when the meaning of the action matters as much as the action itself.
+- Use Default (solid) for the main action and Two-Tone for a quieter option beside it
+- Pair a semantic button with an Outline button for the safe choice, such as Cancel next to Delete.
+- Negative: delete, remove or hard to undo (Figma semantic-button colour meaning; this component is the Button / Destructive node).
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> ButtonDestructive.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- for everyday actions. If everything has a color, nothing stands out. *(Figma names no alternative.)*
+- Do not put more than one semantic color in the same group of buttons. *(Figma names no alternative.)*
+- Do not choose a color because it looks nice. *(Figma names no alternative.)*
+
+### Best practice
+
+- Match the label to the color: "Delete account" for Negative, "Confirm order" for Positive.
+- Add an icon when it helps people understand the meaning faster.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `type=Default` | Figma semantic buttons: Default (solid) for the main action. |
+| `type=Outline` | Renders the outline style (code). Figma names the quieter option Two-Tone, not Outline. |
+| `shape=Rounded` | Renders the rounded shape. Figma: do not mix Rounded and Pill shapes on one screen. |
+| `shape=Pill` | Renders the pill shape. Figma: do not mix Rounded and Pill shapes on one screen. |
+| `size=32` | Button height of 32px. |
+| `size=48` | Button height of 48px. |
+| `size=56` | Button height of 56px. |
+| `iconStyle=none` | Renders the label only. |
+| `iconStyle=leading icon` | Renders an icon before the label. |
+| `iconStyle=trailing icon` | Renders an icon after the label. |
+| `iconStyle=Both icons` | Renders an icon before and after the label. |
+| `iconStyle=Icon only` | Renders the icon alone; labelText becomes the accessible name. Figma: use icon-only buttons only for icons that are easy to recognize. |
+| `state=Default` | Lets hover, press and focus happen naturally (code). |
+| `state=Hover` | Pins the hover look, for docs and QA (code). |
+| `state=Press` | Pins the pressed look, for docs and QA (code). |
+| `state=Focus` | Pins the focus look, for docs and QA (code). |
+| `state=Disable` | Disables the button. Figma: use Disabled only when the action is temporarily unavailable. |
+
+### Accessibility
+
+- Composes Button, so it renders a native &lt;button&gt; that takes keyboard focus. ([src/components/ButtonDestructive/ButtonDestructive.tsx:12](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ButtonDestructive/ButtonDestructive.tsx#L12))
+- Native &lt;button&gt; element, disabled natively when disabled. ([src/components/Button/Button.tsx:64](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L64))
+- An icon-only button gets aria-label from labelText unless aria-label is passed. ([src/components/Button/Button.tsx:68](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L68))
+
+### Composition
+
+- [Button](/core/components/button/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 9 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { ButtonDestructive } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Playground
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="ButtonDestructive Playground (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-button-destructive--playground&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--playground)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { ButtonDestructive } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/ButtonDestructive](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ButtonDestructive).
+
+### Props
+
+<p><code>ButtonDestructiveProps</code> is the same type as [Button](/core/components/button/)'s <code>ButtonProps</code>. See that page for the props.</p>
+
+### Types
+
+<p class="missing"><strong>Not available.</strong> This component exports no union types.</p>
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--color-bg-negative-focused` | #9a3226 | no dark mode in the Figma export |
+| `--color-bg-negative-hovered` | #9a3226 | no dark mode in the Figma export |
+| `--color-bg-negative-idle` | #b03a2e | no dark mode in the Figma export |
+| `--color-bg-negative-light` | #f8e1de | no dark mode in the Figma export |
+| `--color-bg-negative-lighthovered` | #eba9a1 | no dark mode in the Figma export |
+| `--color-border-negative-bold` | #c9554a | no dark mode in the Figma export |
+| `--color-border-negative-default` | #dc7d72 | no dark mode in the Figma export |
+| `--color-icon-negative` | #9a3226 | no dark mode in the Figma export |
+| `--color-text-negative` | #7e271d | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="ButtonDestructive props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-button-destructive--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-button-destructive--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Button / Destructive in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D444-4114%26t%3Dm14RF1dhOS9VJMpn-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=444-4114&t=m14RF1dhOS9VJMpn-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+12 matrix stories:
+
+- [Default Rounded 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--default-rounded-32)
+- [Default Rounded 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--default-rounded-48)
+- [Default Rounded 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--default-rounded-56)
+- [Default Pill 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--default-pill-32)
+- [Default Pill 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--default-pill-48)
+- [Default Pill 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--default-pill-56)
+- [Outline Rounded 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--outline-rounded-32)
+- [Outline Rounded 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--outline-rounded-48)
+- [Outline Rounded 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--outline-rounded-56)
+- [Outline Pill 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--outline-pill-32)
+- [Outline Pill 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--outline-pill-48)
+- [Outline Pill 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button-destructive--outline-pill-56)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`c30f5ed`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/c30f5edc65464ae31319d95a08b4c23d005b88c5) 2026-10-18 · Add Button / Destructive (Figma 444:4114) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

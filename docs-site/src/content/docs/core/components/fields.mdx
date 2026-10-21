@@ -1,0 +1,281 @@
+---
+title: "Fields"
+description: "Fields: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-fields--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=275-141&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- To collect short text such as a name, email, or phone number
+- Form Input for forms with a label and helper text
+- Text Input for longer answers like notes or messages
+- Search to let people look up books or content
+- When input needs clear success or error feedback
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> Fields.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- When there are only a few fixed choices. Use instead: a selection component.
+- To display information that can't be edited. Use instead: plain text.
+- For dates or numbers where a picker is easier. Use instead: a picker.
+
+### Best practice
+
+- Show a label in forms. Don't use the placeholder as a replacement for it.
+- Keep the placeholder as a short example, not an instruction.
+- Use helper text to explain the format before people type, and error text to explain how to fix a problem after.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `type=Form Input` | Figma: forms with a label and helper text. |
+| `type=Text Input` | Figma: longer answers like notes or messages. |
+| `type=Search Input` | Figma: Search, to let people look up books or content. |
+| `type=Search Input with Button` | Renders the search input with a button (code). |
+| `size=sm` | Renders the small size (code). |
+| `size=Lg` | Renders the large size (code). |
+| `state=Default` | Resting field. |
+| `state=Hover` | Pins the hover look (code). |
+| `state=Active` | Figma "Active": focused, with typed text. |
+| `state=Success` | Figma: Success tint; needs helper text, and ideally an icon, to say what happened. |
+| `state=Error` | Figma: Error tint; needs helper text, and ideally an icon, to say what happened. Code also sets aria-invalid. |
+| `state=Disable` | Disables the control. Figma: disabled fields are skipped by the keyboard, so do not use them for important information. |
+
+### Accessibility
+
+- The label is a &lt;label&gt; tied to the control with htmlFor. ([src/components/Fields/FieldParts.tsx:12](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields/FieldParts.tsx#L12))
+- The Error state sets aria-invalid on the control. ([src/components/Fields/Fields.tsx:123](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields/Fields.tsx#L123))
+- The control points at its helper text with aria-describedby. ([src/components/Fields/Fields.tsx:124](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields/Fields.tsx#L124))
+- When the label is hidden the control gets an aria-label. ([src/components/Fields/Fields.tsx:125](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields/Fields.tsx#L125))
+- Search types are wrapped in role="search". ([src/components/Fields/Fields.tsx:163](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields/Fields.tsx#L163))
+- The Disable state disables the control natively. ([src/components/Fields/Fields.tsx:122](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields/Fields.tsx#L122))
+
+### Composition
+
+- [Button](/core/components/button/)
+- [Link](/core/components/link/)
+- [Icon](/core/components/icon/)
+- [TopBar](/core/components/top-bar/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 36 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Fields } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Text Input / sm / Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Fields Text Input / sm / Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-fields--text-input-sm&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--text-input-sm)
+
+#### Text Input / Lg / Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Fields Text Input / Lg / Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-fields--text-input-lg&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--text-input-lg)
+
+#### Search Input / sm / Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Fields Search Input / sm / Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-fields--search-input&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--search-input)
+
+#### Search Input with Button / sm / Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Fields Search Input with Button / sm / Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-fields--search-input-with-button&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--search-input-with-button)
+
+#### Behaviour / Trailing icon per state
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Fields Behaviour / Trailing icon per state (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-fields--trailing-icons&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--trailing-icons)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Fields } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `FieldParts`. Source: [src/components/Fields](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Fields).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type?` | `FieldsType` | `'Form Input'` | Figma "Type". |
+| `size?` | `FieldsSize` | `'sm'` | Figma "Size". |
+| `state?` | `FieldsState` | `'Default'` | Figma "State". `Default` lets hover and focus (Figma "Active") happen naturally. `Hover` and `Active` pin that look (for docs and QA). `Success` and `Error` colour the box and helper; `Error` also sets `aria-invalid`. `Disable` disables the control. |
+| `formLabel?` | `string` | `'Label'` | Figma "Form Label". Also the accessible name when the label is hidden. |
+| `placeholderText?` | `string` |  | Figma "Placeholder Text". Defaults to "Placeholder", or "Search" on Search Input. |
+| `helperText?` | `string` | `'Helper Label'` | Figma "Helper Text". |
+| `showLeadingIcon?` | `boolean` | `true` | Figma "Show Leading Icon". |
+| `showTrailingIcon?` | `boolean` | `false` | Figma "Show Trailing Icon". |
+| `showLabel?` | `boolean` |  | Figma "Show Label". Defaults per Type, as in Figma. |
+| `showHelper?` | `boolean` |  | Figma "Show Helper". Defaults per Type, as in Figma. |
+| `leadingIcon?` | `ReactNode` |  | Replaces the default Icon/MagnifyingGlass glyph in the leading icon. |
+| `trailingIcon?` | `ReactNode` |  | Replaces the default trailing glyph (EnvelopeSimple; CheckCircle on Success; XCircle on Error). |
+| `htmlType?` | `InputHTMLAttributes&lt;HTMLInputElement&gt;['type']` |  | The HTML input type. Renamed because Figma's "Type" owns `type`; see docs/naming-suggestions.md. |
+| `rows?` | `number` |  | Text Input only: visible rows of the textarea. |
+| `buttonLabel?` | `string` | `'Search'` | Search Input with Button: the button's "Label text". |
+| `onButtonClick?` | `MouseEventHandler&lt;HTMLButtonElement&gt;` |  | Search Input with Button: called when the button is clicked. |
+| `className?` | `string` |  | Class name for the root element. |
+
+- `FieldsProps` also accepts: `ControlAttributes`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `FieldsType` | `'Form Input' &#124; 'Text Input' &#124; 'Search Input' &#124; 'Search Input with Button'` |
+| `FieldsSize` | `'sm' &#124; 'Lg'` |
+| `FieldsState` | `'Default' &#124; 'Hover' &#124; 'Active' &#124; 'Success' &#124; 'Error' &#124; 'Disable'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderwidth-05` | 0.5px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--color-bg-gray-light` | #f3f4f6 | no dark mode in the Figma export |
+| `--color-bg-inverse` | #2b211b | no dark mode in the Figma export |
+| `--color-bg-negative-light` | #f8e1de | no dark mode in the Figma export |
+| `--color-bg-positive-light` | #e4eee6 | no dark mode in the Figma export |
+| `--color-bg-surfaceprimary` | #fffdf9 | no dark mode in the Figma export |
+| `--color-bg-surfacesecondary` | #f3e8d6 | no dark mode in the Figma export |
+| `--color-border-gray-light` | #d1d5dc | no dark mode in the Figma export |
+| `--color-border-negative-bold` | #c9554a | no dark mode in the Figma export |
+| `--color-border-positive-bold` | #5b9a6e | no dark mode in the Figma export |
+| `--color-border-primary` | #948067 | no dark mode in the Figma export |
+| `--color-border-secondary` | #cdbb9f | no dark mode in the Figma export |
+| `--color-icon-disabled` | #a8967d | no dark mode in the Figma export |
+| `--color-icon-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--color-text-bold` | #2b211b | no dark mode in the Figma export |
+| `--color-text-disabled` | #a8967d | no dark mode in the Figma export |
+| `--color-text-gray-light` | #99a1af | no dark mode in the Figma export |
+| `--color-text-negative` | #7e271d | no dark mode in the Figma export |
+| `--color-text-positive` | #2f5a3e | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--color-text-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--cozy-corner-typography-label` | 500 14px/22px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-label-large` | 500 16px/26px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-label-small` | 500 12px/18px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-mobile-body` | 400 16px/26px Karla | no dark mode in the Figma export |
+| `--cozy-corner-typography-mobile-body-small` | 400 14px/22px Karla | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--typography-body-lineheight` | 26px | no dark mode in the Figma export |
+| `--typography-bodysmall-lineheight` | 22px | no dark mode in the Figma export |
+| `--typography-label-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-labellarge-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-labelsmall-letterspacing` | 0.3199999928474426px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Fields props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-fields--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-fields--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Fields in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D275-141%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=275-141&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+12 matrix stories:
+
+- [Form Input / sm / Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-sm-default)
+- [Form Input / sm / Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-sm-hover)
+- [Form Input / sm / Active](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-sm-active)
+- [Form Input / sm / Success](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-sm-success)
+- [Form Input / sm / Error](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-sm-error)
+- [Form Input / sm / Disable](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-sm-disable)
+- [Form Input / Lg / Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-lg-default)
+- [Form Input / Lg / Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-lg-hover)
+- [Form Input / Lg / Active](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-lg-active)
+- [Form Input / Lg / Success](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-lg-success)
+- [Form Input / Lg / Error](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-lg-error)
+- [Form Input / Lg / Disable](https://cozy-corner-design-system.vercel.app/?path=/story/components-fields--form-input-lg-disable)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+Recorded in [docs/naming-suggestions.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/docs/naming-suggestions.md), section "Fields (275:141)":
+
+Status: Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
+| Figma property | Clashes with | What code does now | Suggestion |
+|---|---|---|---|
+| `Type` (Form Input / Text Input / …) | The HTML `&#60;input type&#62;` attribute | The `type` prop is Figma's Type; the HTML attribute is `htmlType` (as on Button) | Rename the Figma property to `Variant` |
+| `Size` (sm / Lg) | The HTML `&#60;input size&#62;` attribute (a number of characters) | `size` is Figma's Size; the HTML attribute is not exposed | Keep, but pick one casing: `sm` / `lg` (or `Sm` / `Lg`) |
+| `Size` value `Lg` | Its partner value `sm` is lower case | Kept as `Lg` | Use `lg` to match `sm` |
+| `State` value `Disable` | The usual word in code and ARIA is `disabled` | Kept as `Disable`; maps to the HTML `disabled` attribute | Rename to `Disabled` (same suggestion as Button) |
+| `State` value `Active` | In CSS `:active` means pressed; this state is the focused, typing look | Kept as `Active`; matches `:focus-within` | Rename to `Focused` |
+| Box layer named `Button / primary` | The real `Button / Primary` component | Built as the `FieldBox` subcomponent | Rename the layer to `Input box` |
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`4cd5aaf`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/4cd5aafa35ca17ccb4dce11802e62dfbeb9dfc54) 2026-10-20 · Fix Fields: Error helper text uses color/text/negative (Figma Error text layer) · *unreleased (next: 0.1.0)*
+- [`48aeec0`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/48aeec0f96515fc25567d968c20db3da9d7df7de) 2026-10-20 · Add Fields: Form Input, Text Input, Search Input, Search Input with Button (Figma 275:141) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

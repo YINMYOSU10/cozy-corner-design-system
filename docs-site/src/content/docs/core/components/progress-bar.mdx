@@ -1,0 +1,189 @@
+---
+title: "Progress Bar"
+description: "Progress Bar: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressbar--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=416-46&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressBar">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to show where someone is in a flow with a fixed number of steps.
+- Fill the completed steps and the current step. Leave upcoming steps light.
+- Pair the bar with a text label, such as "Step 2 of 5".
+- Place it at the top of the content, right under the header.
+
+### Where it goes
+
+- Place it at the top of the content, right under the header.
+
+### When not to use
+
+- for loading or waiting. Use instead: [Loading](/core/components/loading/).
+- when the number of steps is unknown or can change. *(Figma names no alternative.)*
+- for more than about 7 steps. Group the steps instead. *(Figma names no alternative.)*
+- Do not make the segments clickable. A progress bar is not navigation. *(Figma names no alternative.)*
+- Do not hide the label when the bar is the only progress cue. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep the same total number of steps across the whole flow.
+- Write the label as "Step X of Y", then a short task.
+- Stretch the bar to the width of the content column.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `step=1` | Current step 1 of 5; segment 1 is filled. |
+| `step=2` | Current step 2 of 5; segments 1 to 2 are filled. |
+| `step=3` | Current step 3 of 5; segments 1 to 3 are filled. |
+| `step=4` | Current step 4 of 5; segments 1 to 4 are filled. |
+| `step=5` | Current step 5 of 5; all segments are filled. |
+
+### Accessibility
+
+- Has role="progressbar" with aria-valuemin, aria-valuemax and aria-valuenow for the current and total steps. ([src/components/ProgressBar/ProgressBar.tsx:36](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressBar/ProgressBar.tsx#L36))
+- The label is exposed as aria-label and aria-valuetext. ([src/components/ProgressBar/ProgressBar.tsx:37](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressBar/ProgressBar.tsx#L37))
+- The text label is rendered visibly unless showLabel is false. ([src/components/ProgressBar/ProgressBar.tsx:45](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressBar/ProgressBar.tsx#L45))
+
+### Composition
+
+- [Chip](/core/components/chip/)
+- [Button](/core/components/button/)
+- [Loading](/core/components/loading/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 12 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { ProgressBar } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { ProgressBar } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `ProgressBarSegment`. Source: [src/components/ProgressBar](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressBar).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `step?` <small>(ProgressBar)</small> | `ProgressBarStep` | `1` | Figma property `Step` (1-5). |
+| `label?` <small>(ProgressBar)</small> | `string` | `'Step 1 of 5'` | Figma property `Label`. |
+| `showLabel?` <small>(ProgressBar)</small> | `boolean` | `true` | Figma property `Show label`. |
+| `segmentHeight` <small>(ProgressBar)</small> | `string` |  | Segment height as a CSS length. The Figma segment height (4) is not bound to any variable, so it is carried from the consumer instead of being guessed. |
+| `filled?` <small>(ProgressBarSegment)</small> | `boolean` |  | Figma property `Filled`. |
+
+- `ProgressBarProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt;`
+- `ProgressBarSegmentProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt;`
+
+### Types
+
+<p class="missing"><strong>Not available.</strong> This component exports no union types.</p>
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--cc-progress-bar-segment-height` | not in tokens.css | |
+| `--color-bg-primary-idle` | #c1633d | no dark mode in the Figma export |
+| `--color-bg-primary-light` | #f6ddd1 | no dark mode in the Figma export |
+| `--color-twotone-gold-foreground` | #8f6822 | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--typography-bodysmall-fontfamily` | Karla | no dark mode in the Figma export |
+| `--typography-bodysmall-fontsize` | 14px | no dark mode in the Figma export |
+| `--typography-bodysmall-fontweight` | 400 | no dark mode in the Figma export |
+| `--typography-bodysmall-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-bodysmall-lineheight` | 22px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="ProgressBar props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-progressbar--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressbar--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Progress Bar in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D416-46%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=416-46&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+8 matrix stories:
+
+- [Step=1](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--step-1)
+- [Step=2](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--step-2)
+- [Step=3](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--step-3)
+- [Step=4](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--step-4)
+- [Step=5](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--step-5)
+- [Show label=false](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--label-hidden)
+- [Segment Filled=True](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--segment-filled)
+- [Segment Filled=False](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressbar--segment-unfilled)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`afa1204`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/afa120461b9063f7c60158b9b4163ebd18fb9495) 2026-10-20 · Add ProgressBar component and segment sub-component (Figma 416:46) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

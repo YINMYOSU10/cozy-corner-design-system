@@ -1,0 +1,208 @@
+---
+title: "Tag"
+description: "Tag: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-tag--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=448-13&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Tag">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to describe an item with keywords, such as cozy or mystery.
+- when an item can have several labels at once.
+- Use Small tags in tables and lists, and Medium tags in forms and filters.
+- Turn on Show remove when people can delete the tag, such as an applied filter.
+
+### Where it goes
+
+- Keep 8px between tags in a row.
+
+### When not to use
+
+- to show a status. Use instead: [Badge](/core/components/badge/).
+- as a selectable option. Use instead: [Chip](/core/components/chip/).
+- to start an action. Use instead: [Button](/core/components/button/).
+- Do not give tags colors. Tags are always neutral. *(Figma names no alternative.)*
+- Do not show more than 3 tags in a table cell. *(Figma names no alternative.)*
+
+### Best practice
+
+- Write tags in lowercase, one or two words.
+- Use the same word for the same idea everywhere, such as always “cozy”, never “cosy”.
+- Keep 8px between tags in a row.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `size=Small` | Figma: tags in tables and lists. |
+| `size=Medium` | Figma: tags in forms and filters. |
+| `showRemove=true` | Figma: when people can delete the tag, such as an applied filter. |
+| `showRemove=false` | Renders the label only (code default). |
+
+### Accessibility
+
+- The remove control is a native &lt;button&gt; labelled "Remove &lt;label&gt;". ([src/components/Tag/Tag.tsx:47](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Tag/Tag.tsx#L47))
+- The remove button can be disabled natively (removeDisabled). ([src/components/Tag/Tag.tsx:51](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Tag/Tag.tsx#L51))
+- The remove button shows a focus ring on keyboard focus. ([src/components/Tag/Tag.css:60](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Tag/Tag.css#L60))
+
+### Composition
+
+- [Badge](/core/components/badge/)
+- [Chip](/core/components/chip/)
+- [Table](/core/components/table/)
+- [Card](/core/components/card/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 17 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Tag } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Remove button disabled
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Tag Remove button disabled (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-tag--remove-disabled&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--remove-disabled)
+
+#### Remove via keyboard
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Tag Remove via keyboard (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-tag--remove-keyboard&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--remove-keyboard)
+
+#### Removable list
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Tag Removable list (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-tag--removable-list&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--removable-list)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Tag } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/Tag](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Tag).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size?` | `TagSize` | `'Small'` | Figma "size". |
+| `label?` | `string` | `'cozy'` | Figma "label": the text shown in the tag. |
+| `showRemove?` | `boolean` | `false` | Figma "showRemove": shows the remove button after the label. |
+| `onRemove?` | `MouseEventHandler&lt;HTMLButtonElement&gt;` |  | Called when the remove button is activated (click, Enter or Space). |
+| `removeDisabled?` | `boolean` | `false` | Disables the remove button (no Figma state; behaviour only). |
+
+- `TagProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `TagSize` | `'Small' &#124; 'Medium'` |
+| `TagProps` | `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp; &#123; /** Figma "size". */ size?: TagSize` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--color-bg-gray-light` | #f3f4f6 | no dark mode in the Figma export |
+| `--color-border-focus` | #c1633d | no dark mode in the Figma export |
+| `--color-icon-disabled` | #a8967d | no dark mode in the Figma export |
+| `--color-icon-gray` | #364153 | no dark mode in the Figma export |
+| `--color-text-gray-default` | #4a5565 | no dark mode in the Figma export |
+| `--fontfamily-inter` | Inter | no dark mode in the Figma export |
+| `--fontsize-12` | 12px | no dark mode in the Figma export |
+| `--fontsize-14` | 14px | no dark mode in the Figma export |
+| `--fontweight-semibold` | 600 | no dark mode in the Figma export |
+| `--lineheight-16` | 16px | no dark mode in the Figma export |
+| `--lineheight-20` | 20px | no dark mode in the Figma export |
+| `--spacing-3xl` | 32px | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Tag props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-tag--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-tag--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Tag in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D448-13%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=448-13&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+4 matrix stories:
+
+- [Size=Small, showRemove=false](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--small-default)
+- [Size=Small, showRemove=true](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--small-remove)
+- [Size=Medium, showRemove=false](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--medium-default)
+- [Size=Medium, showRemove=true](https://cozy-corner-design-system.vercel.app/?path=/story/components-tag--medium-remove)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`2a6ce60`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/2a6ce60a8c9ca26ce063b1e6cf93578baa12d459) 2026-10-19 · Add Tag component (Figma 448:13) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

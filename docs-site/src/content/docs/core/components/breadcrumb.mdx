@@ -1,0 +1,204 @@
+---
+title: "Breadcrumb"
+description: "Breadcrumb: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-breadcrumb--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=431-68&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to show where a page sits in a hierarchy, such as Dashboard / Inventory.
+- on pages two or more levels deep.
+- Make every level a link, except the current page.
+- Place it at the top of the page, above the page title.
+
+### Where it goes
+
+- Place it at the top of the page, above the page title.
+
+### When not to use
+
+- on a top-level page, such as the dashboard home. *(Figma names no alternative.)*
+- as the main navigation. Use instead: Header or Sidebar.
+- to show steps in a flow. Use instead: [ProgressBar](/core/components/progress-bar/).
+- Do not make the current page a link. *(Figma names no alternative.)*
+- Do not show more than 4 levels. Shorten the middle levels instead. *(Figma names no alternative.)*
+
+### Best practice
+
+- Use the same page names as the navigation and page titles.
+- Keep labels short, one or two words.
+- Keep the breadcrumb on one line.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `levels=2` | Shows two levels, the last being the current page (Figma default: Dashboard / Inventory). |
+| `levels=3` | Shows three levels, the last being the current page. |
+| `levels=4` | Shows four levels, the last being the current page. Figma: no more than 4 levels. |
+
+### Accessibility
+
+- Wrapped in a &lt;nav&gt; landmark labelled "Breadcrumb" by default. ([src/components/Breadcrumb/Breadcrumb.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/Breadcrumb.tsx#L43))
+- The current page is marked aria-current="page". ([src/components/Breadcrumb/BreadcrumbItemCurrent.tsx:9](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/BreadcrumbItemCurrent.tsx#L9))
+- The separators are hidden from screen readers. ([src/components/Breadcrumb/BreadcrumbItemSeparator.tsx:4](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/BreadcrumbItemSeparator.tsx#L4))
+- Every level except the last renders as an &lt;a&gt; link. ([src/components/Breadcrumb/BreadcrumbItemLink.tsx:25](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/BreadcrumbItemLink.tsx#L25))
+- Links show a focus ring on keyboard focus. ([src/components/Breadcrumb/Breadcrumb.css:54](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/Breadcrumb.css#L54))
+
+### Composition
+
+- [Header](/core/components/header/)
+- [Sidebar](/core/components/sidebar/)
+- [Link](/core/components/link/)
+- [TopBar](/core/components/top-bar/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 9 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Breadcrumb } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Playground
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Breadcrumb Playground (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-breadcrumb--playground&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--playground)
+
+#### Item/current
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Breadcrumb Item/current (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-breadcrumb--item-current&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-current)
+
+#### Item/separator
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Breadcrumb Item/separator (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-breadcrumb--item-separator&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-separator)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Breadcrumb } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `BreadcrumbItemCurrent`, `BreadcrumbItemLink`, `BreadcrumbItemSeparator`. Source: [src/components/Breadcrumb](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `levels?` <small>(Breadcrumb)</small> | `BreadcrumbLevels` | `2` | Figma variant "Levels": how many items are shown. The last one is the current page. |
+| `items?` <small>(Breadcrumb)</small> | `BreadcrumbItem[]` |  | Trail from root to current page. The first `levels` entries are shown. |
+| `className?` <small>(Breadcrumb)</small> | `string` |  |  |
+| `label?` <small>(BreadcrumbItemCurrent)</small> | `string` | `'Inventory'` | Figma text property "Label". |
+| `label?` <small>(BreadcrumbItemLink)</small> | `string` | `'Dashboard'` | Figma text property "Label". |
+| `state?` <small>(BreadcrumbItemLink)</small> | `BreadcrumbItemLinkState` | `'Default'` | Figma "State". `Default` lets hover and focus happen naturally. `Hover` and `Focused` pin that look (for docs and QA). |
+
+- `BreadcrumbItemLinkProps` also accepts: `Omit&lt;AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;, 'children'&gt;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `BreadcrumbItemLinkState` | `'Default' &#124; 'Hover' &#124; 'Focused'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--color-border-focus` | #c1633d | no dark mode in the Figma export |
+| `--color-text-gray-bold` | #1e2939 | no dark mode in the Figma export |
+| `--color-text-gray-default` | #4a5565 | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-large` | 400 16px/22px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-large-semibold` | 600 16px/22px Inter | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Breadcrumb props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-breadcrumb--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-breadcrumb--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Breadcrumb in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D431-68%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=431-68&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+6 matrix stories:
+
+- [Matrix/Levels=2](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--levels-2)
+- [Matrix/Levels=3](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--levels-3)
+- [Matrix/Levels=4](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--levels-4)
+- [Item/link/State=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-link-default)
+- [Item/link/State=Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-link-hover)
+- [Item/link/State=Focused](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-link-focused)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`37f1e49`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/37f1e49c5e83394a3f1d750a96c5230baf8fd7b6) 2026-10-20 · Breadcrumb: draw Focused ring outside (Figma 431:23 strokeAlign OUTSIDE) · *unreleased (next: 0.1.0)*
+- [`7fa721a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/7fa721aace9dc1a89c64f49e2a03651fc3e897a1) 2026-10-20 · Add Breadcrumb component (Figma 431:68) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

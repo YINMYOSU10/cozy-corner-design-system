@@ -1,6 +1,38 @@
 ---
 title: Cozy Corner Design System
-description: Documentation for the Cozy Corner design system. Release notes will be published here.
+description: "A component can tell you how to call it, but not when you should, or when to reach for a different one. Every Cozy Corner component comes with that answer next "
+template: splash
+hero:
+  tagline: "A component can tell you how to call it, but not when you should, or when to reach for a different one. Every Cozy Corner component comes with that answer next to it: when to use it, when not to (and what to use instead), where it goes, and what each variant is for."
+  actions:
+    - text: Start designing
+      link: /designing/introduction/
+      icon: right-arrow
+    - text: Start coding
+      link: /developing/introduction/
+      variant: secondary
+    - text: Open Storybook
+      link: https://cozy-corner-design-system.vercel.app
+      variant: minimal
 ---
 
-Welcome to the Cozy Corner Design System docs. Each release of the system will be published to this site.
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+<div class="latest">
+
+## 0.1.0 <small>(not published yet)</small>
+
+Publish date: not published yet · 28 components on the public surface · 464 semantic tokens · 5 Figma modes.
+
+`npm install @cozy-corner-design-system/components react react-dom`
+
+</div>
+
+<CardGrid>
+  <LinkCard title="Designing" href="/designing/introduction/" />
+  <LinkCard title="Developing" href="/developing/introduction/" />
+  <LinkCard title="Components" href="/core/components/" />
+  <LinkCard title="Tokens" href="/core/tokens/" />
+</CardGrid>
+
+<p class="provenance">Built from commit <code>4fab5eb</code>.</p>

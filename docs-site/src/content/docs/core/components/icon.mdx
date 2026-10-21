@@ -1,0 +1,209 @@
+---
+title: "Icon"
+description: "Icon: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-icon--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=48-1251&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Icon">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to show an icon at a consistent size and shape
+- Standard for light, everyday icons
+- Outlined when the icon should stand out as its own element
+- Size 12 or 16 in tight spaces, 24 for everyday use, 32 for emphasis
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> Icon.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- for an action people can press. Use instead: an icon-only Button.
+- to hold text or more than one icon. *(Figma names no alternative.)*
+- Do not stretch it or draw a custom size. *(Figma names no alternative.)*
+
+### Best practice
+
+- Use the swapIcon property to change the icon. Don't detach.
+- Use the same Type and Shape within one group of icons.
+- Put one icon in each container.
+- Pair the icon with a visible label when the meaning isn't obvious.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `size=12` | Figma: tight spaces. |
+| `size=16` | Figma: tight spaces. |
+| `size=24` | Figma: everyday use. |
+| `size=32` | Figma: emphasis. |
+| `type=Standard` | Figma: light, everyday icons. |
+| `type=Outlined` | Figma: when the icon should stand out as its own element. |
+| `shape=Rounded` | Renders the rounded-corner frame (code). |
+| `shape=Circle` | Renders the circular frame (code). |
+
+### Accessibility
+
+- Without a label the icon is hidden from assistive tech (aria-hidden). ([src/components/Icon/Icon.tsx:45](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Icon/Icon.tsx#L45))
+- With a label the icon is announced as an image named by the label (role="img", aria-label). ([src/components/Icon/Icon.tsx:45](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Icon/Icon.tsx#L45))
+
+### Composition
+
+- [Button](/core/components/button/)
+- [Header](/core/components/header/)
+- [Sidebar](/core/components/sidebar/)
+- [Card](/core/components/card/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 6 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Icon } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### swapIcon
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Icon swapIcon (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-icon--swap-icon&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--swap-icon)
+
+#### All Glyphs
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Icon All Glyphs (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-icon--all-glyphs&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--all-glyphs)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Icon } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/Icon](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Icon).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size?` | `IconSize` | `'12'` | Figma "Size": the square frame, in px. |
+| `type?` | `IconType` | `'Standard'` | Figma "Type": Standard has no border; Outlined draws a color/border/neutral/default ring. |
+| `shape?` | `IconShape` | `'Rounded'` | Figma "Shape": Rounded uses borderRadius/xs; Circle uses borderRadius/circle (and, on Standard, a color/bg/base fill). |
+| `swapIcon?` | `ReactNode` |  | Figma "swapIcon": the glyph inside the frame. Defaults to Icon/Plus. The glyph is stretched to fill the frame and painted with `currentColor`, so an SVG that strokes or fills with `currentColor` takes the icon colour. |
+| `label?` | `string` |  | Accessible name. Without it the icon is decorative (`aria-hidden`); with it the icon is announced as an image. |
+
+- `IconProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `IconSize` | `'12' &#124; '16' &#124; '24' &#124; '32'` |
+| `IconType` | `'Standard' &#124; 'Outlined'` |
+| `IconShape` | `'Rounded' &#124; 'Circle'` |
+| `IconProps` | `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp; &#123; /** Figma "Size": the square frame, in px. */ size?: IconSize` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--borderradius-xs` | 4px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-border-neutral-default` | #a8967d | no dark mode in the Figma export |
+| `--color-icon-secondary` | #7a6a58 | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Icon props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-icon--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-icon--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Icon in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D48-1251%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=48-1251&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+17 matrix stories:
+
+- [Size=12 · Type=Standard · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-12-standard-rounded)
+- [Size=12 · Type=Standard · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-12-standard-circle)
+- [Size=12 · Type=Outlined · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-12-outlined-rounded)
+- [Size=12 · Type=Outlined · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-12-outlined-circle)
+- [Size=16 · Type=Standard · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-16-standard-rounded)
+- [Size=16 · Type=Standard · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-16-standard-circle)
+- [Size=16 · Type=Outlined · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-16-outlined-rounded)
+- [Size=16 · Type=Outlined · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-16-outlined-circle)
+- [Size=24 · Type=Standard · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-24-standard-rounded)
+- [Size=24 · Type=Standard · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-24-standard-circle)
+- [Size=24 · Type=Outlined · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-24-outlined-rounded)
+- [Size=24 · Type=Outlined · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-24-outlined-circle)
+- [Size=32 · Type=Standard · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-32-standard-rounded)
+- [Size=32 · Type=Standard · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-32-standard-circle)
+- [Size=32 · Type=Outlined · Shape=Rounded](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-32-outlined-rounded)
+- [Size=32 · Type=Outlined · Shape=Circle](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--size-32-outlined-circle)
+- [All variants](https://cozy-corner-design-system.vercel.app/?path=/story/components-icon--all-variants)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`e67edc5`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/e67edc5fbb3471b019ae9832f32d2e12f547ebee) 2026-10-19 · Add every Figma Icons-page glyph to Icon (frame 34:423) · *unreleased (next: 0.1.0)*
+- [`3c85cf8`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/3c85cf8b1ae67c9c7b6fdc94a0131adced3d4c16) 2026-10-19 · Add Icon component (Figma 48:1251) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,252 @@
+---
+title: "Button / Primary"
+description: "Button / Primary: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-button--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=66-459&t=Z3xlh9o7gLQZaqP1-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to start an action, such as saving, continuing or submitting.
+- Use a Default button for the main action, once per section.
+- Use an Outline button for secondary actions, such as Cancel or Back.
+- Use a Semantic button when color should support the meaning, such as Positive to confirm or Negative to delete.
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> Button.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- to move to another page from inside a sentence. Use instead: [Link](/core/components/link/).
+- as decoration or as a label. *(Figma names no alternative.)*
+- Do not place two Default buttons side by side. *(Figma names no alternative.)*
+- Do not mix Rounded and Pill shapes on one screen. *(Figma names no alternative.)*
+- Do not write a long sentence as the label. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep labels short and start with a verb, for example "Save changes".
+- Use icon-only buttons only for icons that are easy to recognize.
+- Use Disabled only when the action is temporarily unavailable.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `type=Default` | Figma: the main action, once per section. |
+| `type=Outline` | Figma: secondary actions, such as Cancel or Back. |
+| `shape=Rounded` | Renders the rounded shape. Figma: do not mix Rounded and Pill shapes on one screen. |
+| `shape=Pill` | Renders the pill shape. Figma: do not mix Rounded and Pill shapes on one screen. |
+| `size=32` | Button height of 32px. |
+| `size=48` | Button height of 48px. |
+| `size=56` | Button height of 56px. |
+| `iconStyle=none` | Renders the label only. |
+| `iconStyle=leading icon` | Renders an icon before the label. |
+| `iconStyle=trailing icon` | Renders an icon after the label. |
+| `iconStyle=Both icons` | Renders an icon before and after the label. |
+| `iconStyle=Icon only` | Renders the icon alone; labelText becomes the accessible name. Figma: use icon-only buttons only for icons that are easy to recognize. |
+| `state=Default` | Lets hover, press and focus happen naturally (code). |
+| `state=Hover` | Pins the hover look, for docs and QA (code). |
+| `state=Press` | Pins the pressed look, for docs and QA (code). |
+| `state=Focus` | Pins the focus look, for docs and QA (code). |
+| `state=Disable` | Disables the button. Figma: use Disabled only when the action is temporarily unavailable. |
+
+### Accessibility
+
+- Renders a native &lt;button&gt; element, so it takes keyboard focus and Enter/Space activate it. ([src/components/Button/Button.tsx:64](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L64))
+- A disabled button (state="Disable" or the disabled prop) is natively disabled. ([src/components/Button/Button.tsx:67](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L67))
+- An icon-only button gets aria-label from labelText unless aria-label is passed. ([src/components/Button/Button.tsx:68](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L68))
+- Shows a focus ring (2px page-colour gap, then 2px focus colour) on keyboard focus. ([src/components/Button/Button.css:105](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.css#L105))
+
+### Composition
+
+- [Link](/core/components/link/)
+- [Icon](/core/components/icon/)
+- [ButtonDestructive](/core/components/button-destructive/)
+- [ButtonInfo](/core/components/button-info/)
+- [ButtonNeutral](/core/components/button-neutral/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 34 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Button } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Playground
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Button Playground (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-button--playground&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--playground)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Button } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `PlusIcon`. Source: [src/components/Button](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `labelText?` | `string` | `'Label'` | Figma text property "Label". For `Icon only` it becomes the accessible name. |
+| `state?` | `ButtonState` | `'Default'` | Figma "State". `Default` lets hover, press and focus happen naturally. `Hover`, `Press` and `Focus` pin that look (for docs and QA). `Disable` disables the button. |
+| `iconStyle?` | `ButtonIconStyle` | `'none'` | Figma "Icon-style". |
+| `shape?` | `ButtonShape` | `'Rounded'` | Figma "Shape". |
+| `size?` | `ButtonSize` | `'32'` | Figma "Size": the button height in px. |
+| `type?` | `ButtonType` | `'Default'` | Figma "Type": solid fill or outline. |
+| `leadingIcon?` | `ReactNode` |  | Replaces the default plus in the "Leading Icon" slot (also used for `Icon only`). |
+| `trailingIcon?` | `ReactNode` |  | Replaces the default plus in the "Trailing Icon" slot. |
+| `htmlType?` | `'button' &#124; 'submit' &#124; 'reset'` | `'button'` | The HTML button type. Renamed because Figma's "Type" owns `type`; see docs/naming-suggestions.md. |
+
+- `ButtonProps` also accepts: `Omit&lt;ButtonHTMLAttributes&lt;HTMLButtonElement&gt;, 'type' | 'children'&gt;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `ButtonState` | `'Default' &#124; 'Hover' &#124; 'Press' &#124; 'Focus' &#124; 'Disable'` |
+| `ButtonIconStyle` | `'Both icons' &#124; 'none' &#124; 'leading icon' &#124; 'trailing icon' &#124; 'Icon only'` |
+| `ButtonShape` | `'Rounded' &#124; 'Pill'` |
+| `ButtonSize` | `'32' &#124; '48' &#124; '56'` |
+| `ButtonType` | `'Default' &#124; 'Outline'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderradius-xs` | 4px | no dark mode in the Figma export |
+| `--borderwidth-0` | 0px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--cc-button-size` | not in tokens.css | |
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-bg-disabled` | #e6d9c3 | no dark mode in the Figma export |
+| `--color-bg-primary-focused` | #a45230 | no dark mode in the Figma export |
+| `--color-bg-primary-hovered` | #a45230 | no dark mode in the Figma export |
+| `--color-bg-primary-idle` | #c1633d | no dark mode in the Figma export |
+| `--color-bg-primary-light` | #f6ddd1 | no dark mode in the Figma export |
+| `--color-bg-primary-lighthovered` | #e19a79 | no dark mode in the Figma export |
+| `--color-bg-primary-pressed` | #834026 | no dark mode in the Figma export |
+| `--color-border-brand-bold` | #c1633d | no dark mode in the Figma export |
+| `--color-border-brand-default` | #d27c56 | no dark mode in the Figma export |
+| `--color-border-focus` | #c1633d | no dark mode in the Figma export |
+| `--color-border-secondary` | #cdbb9f | no dark mode in the Figma export |
+| `--color-icon-brand` | #a45230 | no dark mode in the Figma export |
+| `--color-icon-disabled` | #a8967d | no dark mode in the Figma export |
+| `--color-icon-inverse` | #fffdf9 | no dark mode in the Figma export |
+| `--color-text-brand` | #834026 | no dark mode in the Figma export |
+| `--color-text-disabled` | #a8967d | no dark mode in the Figma export |
+| `--color-text-inverse` | #fffdf9 | no dark mode in the Figma export |
+| `--cozy-corner-typography-body-small` | 400 14px/22px Karla | no dark mode in the Figma export |
+| `--cozy-corner-typography-label-large` | 500 16px/26px Inter | no dark mode in the Figma export |
+| `--size-button-lg` | 56px | no dark mode in the Figma export |
+| `--size-button-md` | 48px | no dark mode in the Figma export |
+| `--size-button-sm` | 32px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--typography-bodysmall-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-labellarge-letterspacing` | 0px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Button props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-button--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-button--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Button / Primary in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D66-459%26t%3DZ3xlh9o7gLQZaqP1-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=66-459&t=Z3xlh9o7gLQZaqP1-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+12 matrix stories:
+
+- [Default Rounded 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--default-rounded-32)
+- [Default Rounded 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--default-rounded-48)
+- [Default Rounded 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--default-rounded-56)
+- [Default Pill 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--default-pill-32)
+- [Default Pill 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--default-pill-48)
+- [Default Pill 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--default-pill-56)
+- [Outline Rounded 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-rounded-32)
+- [Outline Rounded 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-rounded-48)
+- [Outline Rounded 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-rounded-56)
+- [Outline Pill 32](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-pill-32)
+- [Outline Pill 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-pill-48)
+- [Outline Pill 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-pill-56)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+Recorded in [docs/naming-suggestions.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/docs/naming-suggestions.md), section "Button / Primary (66:459)":
+
+Status: Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
+| Figma property | Clashes with | What code does now | Suggestion |
+|---|---|---|---|
+| `Type` (Default / Outline) | The HTML `&#60;button type&#62;` attribute (button / submit / reset) | The `type` prop is Figma's Type; the HTML attribute is `htmlType` | Rename the Figma property to `Variant` or `Appearance`, so `type` can mean the HTML button type, as developers expect |
+| `State` value `Disable` | The usual word in code and ARIA is `disabled` | The prop value stays `Disable` and maps to the HTML `disabled` attribute | Rename the value to `Disabled` |
+| `Icon-style` value `none` | The other values are capitalised (`Both icons`, `Icon only`) | Kept as `none` | Use `None`, and capitalise `leading icon` / `trailing icon` to match |
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`57a6d65`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/57a6d65f34bafd423d5088d9030646dbb3b15660) 2026-10-17 · Button: 32px icon for Icon only at Size 56 (QA finding F1) · *unreleased (next: 0.1.0)*
+- [`74cca7f`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/74cca7f7e8c7e33ff48d6c254eacdb5d76165b53) 2026-10-16 · Button: use size-button tokens for height, match Figma inside strokes · *unreleased (next: 0.1.0)*
+- [`9d1822b`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/9d1822b46cb3b3a23ee666a8fc9d3dcabc0e664e) 2026-10-16 · Add Button component from Figma Button / Primary (66:459) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,192 @@
+---
+title: "Top Bar"
+description: "Top Bar: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-top-bar--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=576-22718&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/TopBar">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- at the top of every dashboard page, to the right of the Sidebar.
+- Change the breadcrumb to match the page, such as Blind date with a book / Matches.
+- Keep search on so staff can find orders, readers or books from any page.
+
+### Where it goes
+
+- The Top Bar spans the content area to the right of the Sidebar: breadcrumb on the left, search and avatar on the right. Page content starts below it.
+
+### When not to use
+
+- on the reader website or app. Use instead: [Header](/core/components/header/).
+- for page actions such as Add book. Use instead: put those under the page title.
+- as a second navigation menu. *(Figma names no alternative.)*
+- Do not show more than 4 breadcrumb levels. *(Figma names no alternative.)*
+
+### Best practice
+
+- Use the same top bar on every page so it feels familiar.
+- Write the search placeholder as what staff can find.
+- Use Avatar size 32 here and 40 in the Sidebar.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `showSearch=true` | Figma: keep search on so staff can find orders, readers or books from any page. |
+| `showSearch=false` | Hides the search field (code). |
+| `showAvatar=true` | Shows the Avatar (code default). |
+| `showAvatar=false` | Hides the Avatar (code). |
+
+### Accessibility
+
+- Renders a native &lt;header&gt; element. ([src/components/TopBar/TopBar.tsx:41](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/TopBar/TopBar.tsx#L41))
+- The breadcrumb inside is a &lt;nav&gt; landmark named "Breadcrumb" by default. ([src/components/Breadcrumb/Breadcrumb.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/Breadcrumb.tsx#L43))
+
+### Composition
+
+- [Sidebar](/core/components/sidebar/)
+- [Breadcrumb](/core/components/breadcrumb/)
+- [Avatar](/core/components/avatar/)
+- [Fields](/core/components/fields/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 5 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { TopBar } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="TopBar Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-top-bar--default&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-top-bar--default)
+
+#### Without Search
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="TopBar Without Search (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-top-bar--without-search&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-top-bar--without-search)
+
+#### Without Avatar
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="TopBar Without Avatar (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-top-bar--without-avatar&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-top-bar--without-avatar)
+
+#### Breadcrumb Only
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="TopBar Breadcrumb Only (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-top-bar--breadcrumb-only&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-top-bar--breadcrumb-only)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { TopBar } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/TopBar](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/TopBar).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `showSearch?` | `boolean` | `true` | Figma boolean "Show search". |
+| `showAvatar?` | `boolean` | `true` | Figma boolean "Show avatar". |
+| `breadcrumb?` | `BreadcrumbProps` |  | Props passed through to the composed Breadcrumb. |
+| `search?` | `Omit&lt;FieldsProps, 'type'&gt;` |  | Props passed through to the composed Fields SearchInput. |
+| `avatar?` | `AvatarProps` |  | Props passed through to the composed Avatar. |
+
+- `TopBarProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLElement&gt;, 'children'&gt;`
+
+### Types
+
+<p class="missing"><strong>Not available.</strong> This component exports no union types.</p>
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--color-bg-surfaceprimary` | #fffdf9 | no dark mode in the Figma export |
+| `--color-border-secondary` | #cdbb9f | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--spacing-xl` | 20px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="TopBar props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-top-bar--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-top-bar--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Top Bar in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D576-22718%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=576-22718&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+<p class="missing"><strong>Not available.</strong> No variant-matrix story exists for this component.</p>
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`11b9682`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/11b96823d81ca7530119b54349254683734560f7) 2026-10-20 · Fix Top Bar: fixed 56 height via SVG sizer, 1px bottom border (Figma 576:22718) · *unreleased (next: 0.1.0)*
+- [`38e4d46`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/38e4d46f5438661053f0ff85a50fa714aa181b46) 2026-10-20 · Add Top Bar: Breadcrumb + SearchInput + Avatar (Figma 576:22718) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

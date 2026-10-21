@@ -1,0 +1,511 @@
+:root {
+  --color-terracotta-100: #f6ddd1;
+  --color-terracotta-200: #ecbba4;
+  --color-terracotta-300: #e19a79;
+  --color-terracotta-400: #d27c56;
+  --color-terracotta-500: #c1633d;
+  --color-terracotta-600: #a45230;
+  --color-terracotta-700: #834026;
+  --color-terracotta-800: #62301d;
+  --color-terracotta-900: #412014;
+  --color-terracotta-1000: #21100a;
+  --color-red-100: #f8e1de;
+  --color-red-200: #f2c5bf;
+  --color-red-300: #eba9a1;
+  --color-red-400: #dc7d72;
+  --color-red-500: #c9554a;
+  --color-red-600: #b03a2e;
+  --color-red-700: #9a3226;
+  --color-red-800: #7e271d;
+  --color-red-900: #611d15;
+  --color-red-1000: #44130d;
+  --color-green-100: #e4eee6;
+  --color-green-200: #c7dbcc;
+  --color-green-300: #a9c9b2;
+  --color-green-400: #7fae8e;
+  --color-green-500: #5b9a6e;
+  --color-green-600: #3f7e55;
+  --color-green-700: #35684a;
+  --color-green-800: #2f5a3e;
+  --color-green-900: #294c33;
+  --color-green-1000: #223f29;
+  --color-gold-100: #f6e7bf;
+  --color-gold-200: #efd491;
+  --color-gold-300: #e7bf63;
+  --color-gold-400: #deb04e;
+  --color-gold-500: #d9a441;
+  --color-gold-600: #b8862e;
+  --color-gold-700: #8f6822;
+  --color-gold-800: #684b19;
+  --color-gold-900: #412f10;
+  --color-gold-1000: #1a1307;
+  --color-blue-100: #dbeafe;
+  --color-blue-200: #bedbff;
+  --color-blue-300: #8ec5ff;
+  --color-blue-400: #51a2ff;
+  --color-blue-500: #2b7fff;
+  --color-blue-600: #155dfc;
+  --color-blue-700: #1447e6;
+  --color-blue-800: #193cb8;
+  --color-blue-900: #1c398e;
+  --color-blue-1000: #162456; /** Source step 950. */
+  --color-plum-100: #f1e3ee;
+  --color-plum-200: #e2c6db;
+  --color-plum-300: #d3a9c8;
+  --color-plum-400: #b77faa;
+  --color-plum-500: #9e5c90;
+  --color-plum-600: #86447a;
+  --color-plum-700: #6e3563;
+  --color-plum-800: #57284e;
+  --color-plum-900: #3f1c39;
+  --color-plum-1000: #271023;
+  --color-neutral-0: #fffdf9;
+  --color-neutral-50: #fbf3e7;
+  --color-neutral-100: #f3e8d6;
+  --color-neutral-200: #e6d9c3;
+  --color-neutral-300: #cdbb9f;
+  --color-neutral-400: #a8967d;
+  --color-neutral-500: #948067;
+  --color-neutral-600: #7a6a58;
+  --color-neutral-700: #625344;
+  --color-neutral-800: #4a3c31;
+  --color-neutral-900: #3b2e26;
+  --color-neutral-1000: #2b211b;
+  --color-neutral-50a: rgba(43, 33, 27, 0.03999999910593033);
+  --color-neutral-100a: rgba(43, 33, 27, 0.07999999821186066);
+  --color-neutral-200a: rgba(43, 33, 27, 0.1599999964237213);
+  --color-neutral-300a: rgba(43, 33, 27, 0.23999999463558197);
+  --color-neutral-500a: rgba(43, 33, 27, 0.4000000059604645);
+  --color-neutral-1000a: rgba(43, 33, 27, 0.30000001192092896); /** neutral-1000 at 30% opacity (was 56%). Used by bg/overlay. */
+  --spacing-base: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-xxl: 24px;
+  --spacing-2xl: 28px;
+  --spacing-3xl: 32px;
+  --spacing-4xl: 36px;
+  --spacing-5xl: 40px;
+  --spacing-6xl: 48px;
+  --spacing-jumbo: 64px;
+  --borderradius-default: 0px;
+  --borderradius-xs: 4px;
+  --borderradius-sm: 8px;
+  --borderradius-md: 16px;
+  --borderradius-lg: 32px;
+  --borderradius-circle: 1000px;
+  --borderwidth-0: 0px; /** From hierarchy board borderWidth scale; not on Border foundation page. */
+  --borderwidth-1: 1px;
+  --borderwidth-2: 2px;
+  --borderwidth-05: 0.5px;
+  --fontfamily-fraunces: Fraunces;
+  --fontfamily-karla: Karla;
+  --fontsize-12: 12px;
+  --fontsize-14: 14px;
+  --fontsize-16: 16px;
+  --fontsize-20: 20px;
+  --fontsize-24: 24px;
+  --fontsize-28: 28px;
+  --fontsize-32: 32px;
+  --fontsize-48: 48px;
+  --lineheight-16: 16px;
+  --lineheight-18: 18px;
+  --lineheight-20: 20px;
+  --lineheight-22: 22px;
+  --lineheight-26: 26px;
+  --lineheight-30: 30px;
+  --lineheight-32: 32px;
+  --lineheight-34: 34px;
+  --lineheight-38: 38px;
+  --lineheight-40: 40px;
+  --lineheight-56: 56px;
+  --fontweight-regular: 400; /** Font style name as used by Figma/the font file. */
+  --fontweight-medium: 500; /** Font style name as used by Figma/the font file. */
+  --fontweight-semibold: 600; /** Font style name as used by Figma/the font file. */
+  --fontfamily-inter: Inter;
+  --fontsize-18: 18px;
+  --lineheight-24: 24px;
+  --color-gray-0: #ffffff; /** Added: pure white, pairs with warm neutral/0 for card surfaces. */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5dc;
+  --color-gray-400: #99a1af;
+  --color-gray-500: #6a7282;
+  --color-gray-600: #4a5565;
+  --color-gray-700: #364153;
+  --color-gray-800: #1e2939;
+  --color-gray-900: #101828;
+  --color-gray-1000: #030712; /** Source step 950. */
+  --fontfamily-fredoka: Fredoka;
+  --fontweight-bold: 700;
+  --color-logo-orange: #f4a261;
+  --color-logo-pink: #e8927c;
+  --color-logo-brown: #5b3a29;
+  --color-logo-ink: #000000;
+  --size-32: 32px;
+  --size-48: 48px;
+  --size-56: 56px;
+  --size-36: 36px;
+  --size-18: 18px;
+  --size-16: 16px;
+  --size-1: 1px;
+  --color-bg-base: #fbf3e7; /** Page background behind every screen. */
+  --color-bg-surfaceprimary: #fffdf9;
+  --color-bg-surfacesecondary: #f3e8d6;
+  --color-bg-inverse: #2b211b;
+  --color-bg-overlay: rgba(43, 33, 27, 0.30000001192092896);
+  --color-bg-disabled: #e6d9c3; /** Single disabled background for every interaction, including terracotta. */
+  --color-text-primary: #4a3c31;
+  --color-icon-primary: #4a3c31;
+  --color-text-secondary: #7a6a58;
+  --color-icon-secondary: #7a6a58;
+  --color-text-bold: #2b211b;
+  --color-icon-bold: #2b211b;
+  --color-text-disabled: #a8967d;
+  --color-icon-disabled: #a8967d;
+  --color-text-inverse: #fffdf9;
+  --color-icon-inverse: #fffdf9;
+  --color-text-inversesecondary: #e6d9c3;
+  --color-icon-inversesecondary: #e6d9c3;
+  --color-text-disabledondark: #cdbb9f;
+  --color-icon-disabledondark: #cdbb9f;
+  --color-text-brand: #834026;
+  --color-icon-brand: #a45230;
+  --color-text-negative: #7e271d;
+  --color-icon-negative: #9a3226;
+  --color-text-positive: #2f5a3e;
+  --color-icon-positive: #35684a;
+  --color-text-warning: #684b19;
+  --color-icon-warning: #8f6822;
+  --color-text-info: #193cb8;
+  --color-icon-info: #1447e6;
+  --color-text-update: #57284e;
+  --color-icon-update: #6e3563;
+  --color-text-onselected: #2b211b;
+  --color-border-primary: #948067; /** Changed from neutral-200 to neutral-500 at user request. */
+  --color-border-secondary: #cdbb9f;
+  --color-border-inverse: #2b211b;
+  --color-border-focus: #c1633d;
+  --color-bg-primary-light: #f6ddd1;
+  --color-bg-primary-lighthovered: #e19a79; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-primary-lightfocused: #e19a79; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-primary-idle: #c1633d;
+  --color-bg-primary-hovered: #a45230;
+  --color-bg-primary-focused: #a45230;
+  --color-bg-primary-pressed: #834026;
+  --color-bg-negative-light: #f8e1de;
+  --color-bg-negative-lighthovered: #eba9a1; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-negative-lightfocused: #eba9a1; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-negative-idle: #b03a2e;
+  --color-bg-negative-hovered: #9a3226;
+  --color-bg-negative-focused: #9a3226;
+  --color-bg-positive-light: #e4eee6;
+  --color-bg-positive-lighthovered: #a9c9b2; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-positive-lightfocused: #a9c9b2; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-positive-idle: #3f7e55;
+  --color-bg-positive-hovered: #35684a;
+  --color-bg-positive-focused: #35684a;
+  --color-bg-warning-light: #f6e7bf;
+  --color-bg-warning-lighthovered: #e7bf63; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-warning-lightfocused: #e7bf63; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-warning-idle: #d9a441;
+  --color-bg-warning-hovered: #b8862e;
+  --color-bg-warning-focused: #b8862e;
+  --color-bg-info-light: #dbeafe;
+  --color-bg-info-lighthovered: #8ec5ff; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-info-lightfocused: #8ec5ff; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-info-idle: #155dfc;
+  --color-bg-info-hovered: #1447e6;
+  --color-bg-info-focused: #1447e6;
+  --color-bg-update-light: #f1e3ee;
+  --color-bg-update-lighthovered: #d3a9c8; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-update-lightfocused: #d3a9c8; /** Added from Interactive Backgrounds page (standard bg hover/focus = 300); not in the semantic table. */
+  --color-bg-update-idle: #86447a;
+  --color-bg-update-hovered: #6e3563;
+  --color-bg-update-focused: #6e3563;
+  --color-bg-selected-default: #d9a441; /** Labelled "light" in the semantic table; renamed since light = 100 everywhere else. */
+  --color-bg-selected-selectedhovered: #deb04e; /** Table label said gold-500 but hex was DEB04E (= gold-400). Using the hex value — confirm. */
+  --color-bg-selected-unselected: #fbf3e7;
+  --color-bg-selected-unselectedhovered: #f3e8d6;
+  --color-bg-accent-terracotta: #f6ddd1;
+  --color-bg-accent-gold: #f6e7bf;
+  --color-bg-accent-blue: #dbeafe;
+  --color-bg-accent-green: #e4eee6;
+  --color-bg-accent-red: #f8e1de;
+  --color-bg-accent-plum: #f1e3ee;
+  --color-bg-accent-sand: #f3e8d6;
+  --color-border-brand-light: #e19a79;
+  --color-border-brand-default: #d27c56;
+  --color-border-brand-bold: #c1633d; /** Table said primary-100 with hex C1633D (= 500). Using 500. */
+  --color-border-negative-light: #eba9a1;
+  --color-border-negative-default: #dc7d72;
+  --color-border-negative-bold: #c9554a;
+  --color-border-positive-light: #a9c9b2;
+  --color-border-positive-default: #7fae8e;
+  --color-border-positive-bold: #5b9a6e;
+  --color-border-warning-light: #e7bf63;
+  --color-border-warning-default: #deb04e;
+  --color-border-warning-bold: #d9a441;
+  --color-border-info-light: #8ec5ff;
+  --color-border-info-default: #51a2ff;
+  --color-border-info-bold: #2b7fff;
+  --color-border-update-light: #d3a9c8;
+  --color-border-update-default: #b77faa; /** Table said plum-500 with hex B77FAA (= plum-400). Using 400 per hex + Border Color page. */
+  --color-border-update-bold: #9e5c90; /** Table said plum-300 with hex 9E5C90 (= plum-500). Using 500. */
+  --color-accent-terracotta-light: #f6ddd1;
+  --color-accent-terracotta-default: #c1633d;
+  --color-accent-terracotta-foreground: #62301d;
+  --color-accent-red-light: #f8e1de;
+  --color-accent-red-default: #b03a2e;
+  --color-accent-red-foreground: #7e271d;
+  --color-accent-green-light: #e4eee6;
+  --color-accent-green-default: #3f7e55;
+  --color-accent-green-foreground: #2f5a3e;
+  --color-accent-gold-light: #f6e7bf;
+  --color-accent-gold-default: #d9a441;
+  --color-accent-gold-foreground: #684b19;
+  --color-accent-blue-light: #dbeafe;
+  --color-accent-blue-default: #155dfc;
+  --color-accent-blue-foreground: #193cb8;
+  --color-accent-plum-light: #f1e3ee;
+  --color-accent-plum-default: #86447a;
+  --color-accent-plum-foreground: #57284e;
+  --color-twotone-terracotta-bg: #f6ddd1;
+  --color-twotone-terracotta-foreground: #834026;
+  --color-twotone-red-bg: #f8e1de;
+  --color-twotone-red-foreground: #9a3226;
+  --color-twotone-green-bg: #e4eee6;
+  --color-twotone-green-foreground: #35684a;
+  --color-twotone-gold-bg: #f6e7bf;
+  --color-twotone-gold-foreground: #8f6822;
+  --color-twotone-blue-bg: #dbeafe;
+  --color-twotone-blue-foreground: #1447e6;
+  --color-twotone-plum-bg: #f1e3ee;
+  --color-twotone-plum-foreground: #6e3563; /** Page labelled plum-100 with hex 6E3563 (= plum-700). Using 700. */
+  --elevation-level1-shadow1-offsetx: 0px;
+  --elevation-level1-shadow1-offsety: 1px;
+  --elevation-level1-shadow1-blur: 3px;
+  --elevation-level1-shadow1-spread: 0px;
+  --elevation-level1-shadow1-color: rgba(43, 33, 27, 0.07999999821186066);
+  --elevation-level1-shadow2-offsetx: 0px;
+  --elevation-level1-shadow2-offsety: 1px;
+  --elevation-level1-shadow2-blur: 2px;
+  --elevation-level1-shadow2-spread: 0px;
+  --elevation-level1-shadow2-color: rgba(43, 33, 27, 0.05999999865889549);
+  --elevation-level2-shadow1-offsetx: 0px;
+  --elevation-level2-shadow1-offsety: 4px;
+  --elevation-level2-shadow1-blur: 12px;
+  --elevation-level2-shadow1-spread: 0px;
+  --elevation-level2-shadow1-color: rgba(43, 33, 27, 0.10000000149011612);
+  --elevation-level2-shadow2-offsetx: 0px;
+  --elevation-level2-shadow2-offsety: 2px;
+  --elevation-level2-shadow2-blur: 4px;
+  --elevation-level2-shadow2-spread: 0px;
+  --elevation-level2-shadow2-color: rgba(43, 33, 27, 0.05999999865889549);
+  --elevation-level3-shadow1-offsetx: 0px;
+  --elevation-level3-shadow1-offsety: 12px;
+  --elevation-level3-shadow1-blur: 24px;
+  --elevation-level3-shadow1-spread: 0px;
+  --elevation-level3-shadow1-color: rgba(43, 33, 27, 0.11999999731779099);
+  --elevation-level3-shadow2-offsetx: 0px;
+  --elevation-level3-shadow2-offsety: 4px;
+  --elevation-level3-shadow2-blur: 8px;
+  --elevation-level3-shadow2-spread: 0px;
+  --elevation-level3-shadow2-color: rgba(43, 33, 27, 0.05999999865889549);
+  --elevation-level4-shadow1-offsetx: 0px;
+  --elevation-level4-shadow1-offsety: 24px;
+  --elevation-level4-shadow1-blur: 48px;
+  --elevation-level4-shadow1-spread: 0px;
+  --elevation-level4-shadow1-color: rgba(43, 33, 27, 0.1599999964237213);
+  --elevation-level4-shadow2-offsetx: 0px;
+  --elevation-level4-shadow2-offsety: 8px;
+  --elevation-level4-shadow2-blur: 16px;
+  --elevation-level4-shadow2-spread: 0px;
+  --elevation-level4-shadow2-color: rgba(43, 33, 27, 0.07999999821186066);
+  --elevation-level5-shadow1-offsetx: 0px;
+  --elevation-level5-shadow1-offsety: 32px;
+  --elevation-level5-shadow1-blur: 64px;
+  --elevation-level5-shadow1-spread: 0px;
+  --elevation-level5-shadow1-color: rgba(43, 33, 27, 0.20000000298023224);
+  --elevation-level5-shadow2-offsetx: 0px;
+  --elevation-level5-shadow2-offsety: 12px;
+  --elevation-level5-shadow2-blur: 24px;
+  --elevation-level5-shadow2-spread: 0px;
+  --elevation-level5-shadow2-color: rgba(43, 33, 27, 0.10000000149011612);
+  --color-border-neutral-light: #cdbb9f;
+  --color-border-neutral-default: #a8967d;
+  --color-border-neutral-bold: #948067;
+  --color-bg-neutral-light: #f3e8d6;
+  --color-bg-neutral-lighthovered: #cdbb9f;
+  --color-bg-neutral-lightfocused: #cdbb9f;
+  --color-bg-neutral-idle: #7a6a58;
+  --color-bg-neutral-hovered: #625344;
+  --color-bg-neutral-focused: #625344;
+  --color-text-trend-up: #5b9a6e; /** Dashboard trend text (e.g. "+6 today"). ~3.3:1 on white — below 4.5:1 AA for body text. */
+  --color-text-trend-down: #c9554a; /** Dashboard trend text (e.g. "+6 today"). ~4.3:1 on white — below 4.5:1 AA for body text. */
+  --color-bg-gray-light: #f3f4f6;
+  --color-bg-gray-lighthovered: #d1d5dc;
+  --color-bg-gray-lightfocused: #d1d5dc;
+  --color-bg-gray-idle: #4a5565;
+  --color-bg-gray-hovered: #364153;
+  --color-bg-gray-focused: #364153;
+  --color-border-gray-light: #d1d5dc;
+  --color-border-gray-default: #99a1af;
+  --color-border-gray-bold: #6a7282;
+  --color-icon-gray: #364153;
+  --color-bg-accent-gray: #f3f4f6;
+  --color-accent-gray-light: #f3f4f6;
+  --color-accent-gray-default: #4a5565;
+  --color-accent-gray-foreground: #1e2939;
+  --color-twotone-gray-bg: #f3f4f6;
+  --color-twotone-gray-foreground: #364153;
+  --color-text-gray-light: #99a1af; /** Disabled text, placeholders, very low-emphasis hints. Not for readable content. */
+  --color-text-gray-default: #4a5565; /** Secondary grey text: tag labels, captions, metadata. */
+  --color-text-gray-bold: #1e2939; /** Primary grey text: headings and values on grey UI. */
+  --size-button-sm: 32px; /** Small button height (Button Size=32). */
+  --size-button-md: 48px; /** Medium button height (Button Size=48). */
+  --size-button-lg: 56px; /** Large button height (Button Size=56). */
+  --size-toggle-width: 36px; /** Toggle track width. */
+  --size-toggle-height: 18px; /** Toggle track height. */
+  --size-toggle-thumb: 16px; /** Toggle thumb diameter. */
+  --size-toggle-inset: 1px; /** Gap between the toggle thumb and the track edge. */
+  --typography-display-fontfamily: Fraunces;
+  --typography-display-fontsize: 48px;
+  --typography-display-lineheight: 56px;
+  --typography-display-letterspacing: -0.3199999928474426px;
+  --typography-h1-fontfamily: Fraunces;
+  --typography-h1-fontsize: 32px;
+  --typography-h1-lineheight: 40px;
+  --typography-h1-letterspacing: -0.1599999964237213px;
+  --typography-h2-fontfamily: Fraunces;
+  --typography-h2-fontsize: 24px;
+  --typography-h2-lineheight: 32px;
+  --typography-h2-letterspacing: -0.07999999821186066px;
+  --typography-bodysemibold-fontfamily: Karla; /** Same as body, weight SemiBold. */
+  --typography-bodysemibold-fontsize: 16px; /** Same as body, weight SemiBold. */
+  --typography-bodysemibold-lineheight: 26px; /** Same as body, weight SemiBold. */
+  --typography-bodysemibold-fontweight: 600; /** Same as body, weight SemiBold. */
+  --typography-bodysemibold-letterspacing: 0px; /** Same as body, weight SemiBold. */
+  --typography-body-fontfamily: Karla;
+  --typography-body-fontsize: 16px;
+  --typography-body-lineheight: 26px;
+  --typography-body-letterspacing: 0px;
+  --typography-bodysmallsemibold-fontfamily: Karla; /** Same as bodySmall, weight SemiBold. */
+  --typography-bodysmallsemibold-fontsize: 14px; /** Same as bodySmall, weight SemiBold. */
+  --typography-bodysmallsemibold-lineheight: 22px; /** Same as bodySmall, weight SemiBold. */
+  --typography-bodysmallsemibold-fontweight: 600; /** Same as bodySmall, weight SemiBold. */
+  --typography-bodysmallsemibold-letterspacing: 0px; /** Same as bodySmall, weight SemiBold. */
+  --typography-bodysmall-fontfamily: Karla; /** Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm. */
+  --typography-bodysmall-fontsize: 14px; /** Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm. */
+  --typography-bodysmall-lineheight: 22px; /** Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm. */
+  --typography-bodysmall-letterspacing: 0px; /** Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm. */
+  --typography-label-fontfamily: Inter;
+  --typography-label-fontsize: 14px;
+  --typography-label-lineheight: 22px;
+  --typography-label-letterspacing: 0px;
+  --typography-labelsmall-fontfamily: Inter;
+  --typography-labelsmall-fontsize: 12px;
+  --typography-labelsmall-lineheight: 18px;
+  --typography-labelsmall-letterspacing: 0.3199999928474426px;
+  --typography-display-fontweight: 600;
+  --typography-h1-fontweight: 600;
+  --typography-h2-fontweight: 600;
+  --typography-body-fontweight: 400;
+  --typography-bodysmall-fontweight: 400; /** Body small is only defined for Website. Mobile and Dashboard use the Website value as a placeholder — confirm. */
+  --typography-label-fontweight: 500;
+  --typography-labelsmall-fontweight: 500;
+  --typography-labellarge-fontfamily: Inter;
+  --typography-labellarge-fontsize: 16px;
+  --typography-labellarge-lineheight: 26px;
+  --typography-labellarge-fontweight: 500;
+  --typography-labellarge-letterspacing: 0px;
+  --typography-link-fontfamily: Inter; /** Same as label; text styles add underline. */
+  --typography-link-fontsize: 14px; /** Same as label; text styles add underline. */
+  --typography-link-lineheight: 22px; /** Same as label; text styles add underline. */
+  --typography-link-fontweight: 500; /** Same as label; text styles add underline. */
+  --typography-link-letterspacing: 0px; /** Same as label; text styles add underline. */
+  --typography-linksmall-fontfamily: Inter; /** Same as labelSmall; text styles add underline. */
+  --typography-linksmall-fontsize: 12px; /** Same as labelSmall; text styles add underline. */
+  --typography-linksmall-lineheight: 18px; /** Same as labelSmall; text styles add underline. */
+  --typography-linksmall-fontweight: 500; /** Same as labelSmall; text styles add underline. */
+  --typography-linksmall-letterspacing: 0.3199999928474426px; /** Same as labelSmall; text styles add underline. */
+  --typography-bodylarge-fontfamily: Karla; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylarge-fontsize: 16px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylarge-lineheight: 26px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylarge-fontweight: 400; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylarge-letterspacing: 0px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargemedium-fontfamily: Karla; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargemedium-fontsize: 16px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargemedium-lineheight: 26px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargemedium-fontweight: 500; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargemedium-letterspacing: 0px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargesemibold-fontfamily: Karla; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargesemibold-fontsize: 16px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargesemibold-lineheight: 26px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargesemibold-fontweight: 600; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-bodylargesemibold-letterspacing: 0px; /** Website/Mobile: placeholder = that platform's Body. Only Dashboard defines Body large. */
+  --typography-logo-fontfamily: Fredoka;
+  --typography-logo-fontsize: 32px;
+  --typography-logo-lineheight: 40px;
+  --typography-logo-fontweight: 700;
+  --typography-logo-letterspacing: 0px;
+  --cozy-corner-typography-display: 600 48px/56px Fraunces;
+  --cozy-corner-typography-h1: 600 32px/40px Fraunces;
+  --cozy-corner-typography-h2: 600 24px/32px Fraunces;
+  --cozy-corner-typography-body-semibold: 600 16px/26px Karla;
+  --cozy-corner-typography-body: 400 16px/26px Karla;
+  --cozy-corner-typography-body-small-semibold: 600 14px/22px Karla;
+  --cozy-corner-typography-body-small: 400 14px/22px Karla;
+  --cozy-corner-typography-label-large: 500 16px/26px Inter;
+  --cozy-corner-typography-label: 500 14px/22px Inter;
+  --cozy-corner-typography-label-small: 500 12px/18px Inter;
+  --cozy-corner-typography-link: 500 14px/22px Inter;
+  --cozy-corner-typography-link-small: 500 12px/18px Inter;
+  --cozy-corner-typography-body-large: 400 16px/26px Karla;
+  --cozy-corner-typography-body-large-medium: 500 16px/26px Karla;
+  --cozy-corner-typography-body-large-semibold: 600 16px/26px Karla;
+  --cozy-corner-typography-logo: 700 32px/40px Fredoka; /** Brand wordmark. Size follows the platform mode: Website 32, Mobile 24, Dashboard 20. */
+  --cozy-corner-typography-website-display: 600 48px/56px Fraunces;
+  --cozy-corner-typography-website-h1: 600 32px/40px Fraunces;
+  --cozy-corner-typography-website-h2: 600 24px/32px Fraunces;
+  --cozy-corner-typography-website-body-semibold: 600 16px/26px Karla;
+  --cozy-corner-typography-website-body: 400 16px/26px Karla;
+  --cozy-corner-typography-website-body-small-semibold: 600 14px/22px Karla;
+  --cozy-corner-typography-website-body-small: 400 14px/22px Karla;
+  --cozy-corner-typography-website-label-large: 500 16px/26px Inter;
+  --cozy-corner-typography-website-label: 500 14px/22px Inter;
+  --cozy-corner-typography-website-label-small: 500 12px/18px Inter;
+  --cozy-corner-typography-website-link: 500 14px/22px Inter;
+  --cozy-corner-typography-website-link-small: 500 12px/18px Inter;
+  --cozy-corner-typography-website-logo: 700 32px/40px Fredoka; /** Brand wordmark for the Website Logo. Fredoka Bold 32/40. */
+  --cozy-corner-typography-mobile-display: 600 32px/38px Fraunces;
+  --cozy-corner-typography-mobile-h1: 600 24px/30px Fraunces;
+  --cozy-corner-typography-mobile-h2: 600 20px/26px Fraunces;
+  --cozy-corner-typography-mobile-body: 400 16px/26px Karla;
+  --cozy-corner-typography-mobile-body-small: 400 14px/22px Karla; /** Placeholder: Body small is only defined for Website in the foundations file. */
+  --cozy-corner-typography-mobile-label-large: 500 16px/26px Inter;
+  --cozy-corner-typography-mobile-label: 500 14px/22px Inter;
+  --cozy-corner-typography-mobile-label-small: 500 12px/16px Inter;
+  --cozy-corner-typography-mobile-link: 500 14px/22px Inter;
+  --cozy-corner-typography-mobile-link-small: 500 12px/16px Inter;
+  --cozy-corner-typography-mobile-body-semibold: 600 16px/26px Karla;
+  --cozy-corner-typography-mobile-body-small-semibold: 600 14px/22px Karla; /** Placeholder: Body small is only defined for Website in the foundations file. */
+  --cozy-corner-typography-dashboard-display: 600 28px/34px Inter;
+  --cozy-corner-typography-dashboard-h1: 600 24px/30px Inter;
+  --cozy-corner-typography-dashboard-h2: 600 18px/24px Inter;
+  --cozy-corner-typography-dashboard-body-large-semibold: 600 16px/22px Inter;
+  --cozy-corner-typography-dashboard-body-large-medium: 500 16px/22px Inter;
+  --cozy-corner-typography-dashboard-body-large: 400 16px/22px Inter;
+  --cozy-corner-typography-dashboard-body-semibold: 600 14px/20px Inter;
+  --cozy-corner-typography-dashboard-body: 400 14px/20px Inter;
+  --cozy-corner-typography-dashboard-body-small-semibold: 600 12px/16px Inter;
+  --cozy-corner-typography-dashboard-body-small: 400 12px/16px Inter;
+  --cozy-corner-typography-dashboard-logo: 700 20px/24px Fredoka; /** Brand wordmark for the Dashboard Logo. Fredoka Bold 20/24. */
+  --cozy-corner-elevation-level-1: 0px 1px 3px 0px rgba(43, 33, 27, 0.07999999821186066), 0px 1px 2px 0px rgba(43, 33, 27, 0.05999999865889549); /** key + ambient layers bound to horizon-core/elevation/level-1 */
+  --cozy-corner-elevation-level-2: 0px 4px 12px 0px rgba(43, 33, 27, 0.10000000149011612), 0px 2px 4px 0px rgba(43, 33, 27, 0.05999999865889549); /** key + ambient layers bound to horizon-core/elevation/level-2 */
+  --cozy-corner-elevation-level-3: 0px 12px 24px 0px rgba(43, 33, 27, 0.11999999731779099), 0px 4px 8px 0px rgba(43, 33, 27, 0.05999999865889549); /** key + ambient layers bound to horizon-core/elevation/level-3 */
+  --cozy-corner-elevation-level-4: 0px 24px 48px 0px rgba(43, 33, 27, 0.1599999964237213), 0px 8px 16px 0px rgba(43, 33, 27, 0.07999999821186066); /** key + ambient layers bound to horizon-core/elevation/level-3 */
+  --cozy-corner-elevation-level-5: 0px 32px 64px 0px rgba(43, 33, 27, 0.20000000298023224), 0px 12px 24px 0px rgba(43, 33, 27, 0.10000000149011612); /** key + ambient layers bound to horizon-core/elevation/level-3 */
+}

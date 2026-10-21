@@ -1,0 +1,187 @@
+---
+title: "Logo"
+description: "Logo: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-logo--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=4-484&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Logo">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to identify the Cozy Corner brand on a page or screen.
+- Use the full logo (glyph and wordmark) wherever there is room, such as the Header and Footer.
+- Use the glyph only in tight spaces, such as a collapsed Sidebar.
+- Use the wordmark only when the glyph already appears nearby.
+- Use the Website platform for customer-facing pages and the Dashboard platform for dashboard screens.
+- Use the logo on light backgrounds.
+
+### Where it goes
+
+- Header and Footer (full logo); a collapsed Sidebar (glyph only).
+
+### When not to use
+
+- as a decoration or a repeating background pattern. *(Figma names no alternative.)*
+- if it needs to be stretched, rotated or recolored. *(Figma names no alternative.)*
+- with both the glyph and the wordmark turned off. *(Figma names no alternative.)*
+- on dark or busy backgrounds. *(Figma names no alternative.)*
+- Do not place other elements inside the clear space. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep the clear space free on every side.
+- Use one logo per screen.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `platform=Website` | Figma: customer-facing pages. |
+| `platform=Dashboard` | Figma: dashboard screens. |
+
+### Accessibility
+
+- With the wordmark hidden, the glyph alone is exposed as an image named "Cozy Corner" (role="img", aria-label). ([src/components/Logo/Logo.tsx:34](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Logo/Logo.tsx#L34))
+- The glyph SVG is hidden from assistive tech. ([src/components/Logo/LogoGlyph.tsx:71](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Logo/LogoGlyph.tsx#L71))
+
+### Composition
+
+- [Sidebar](/core/components/sidebar/)
+- [Header](/core/components/header/)
+- [Footer](/core/components/footer/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 12 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Logo } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Logo } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `LogoGlyph`. Source: [src/components/Logo](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Logo).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `platform?` <small>(Logo)</small> | `LogoPlatform` | `'Website'` |  |
+| `showGlyph?` <small>(Logo)</small> | `boolean` | `true` |  |
+| `showWordmark?` <small>(Logo)</small> | `boolean` | `true` |  |
+
+- `LogoProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `LogoPlatform` | `'Dashboard' &#124; 'Website'` |
+| `LogoProps` | `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp; &#123; platform?: LogoPlatform` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--color-accent-gold-default` | #d9a441 | no dark mode in the Figma export |
+| `--color-bg-inverse` | #2b211b | no dark mode in the Figma export |
+| `--color-bg-negative-lightfocused` | #eba9a1 | no dark mode in the Figma export |
+| `--color-icon-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--typography-logo-fontfamily` | Fredoka | no dark mode in the Figma export |
+| `--typography-logo-fontsize` | 32px | no dark mode in the Figma export |
+| `--typography-logo-fontweight` | 700 | no dark mode in the Figma export |
+| `--typography-logo-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-logo-lineheight` | 40px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Logo props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-logo--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-logo--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Logo in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D4-484%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=4-484&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+8 matrix stories:
+
+- [Platform=Website · Glyph · Wordmark](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--website-glyph-and-wordmark)
+- [Platform=Website · Glyph only](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--website-glyph-only)
+- [Platform=Website · Wordmark only](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--website-wordmark-only)
+- [Platform=Website · Neither](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--website-neither)
+- [Platform=Dashboard · Glyph · Wordmark](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--dashboard-glyph-and-wordmark)
+- [Platform=Dashboard · Glyph only](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--dashboard-glyph-only)
+- [Platform=Dashboard · Wordmark only](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--dashboard-wordmark-only)
+- [Platform=Dashboard · Neither](https://cozy-corner-design-system.vercel.app/?path=/story/components-logo--dashboard-neither)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`76878a7`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/76878a7fdf3746ed16b84e413831352f93a2859b) 2026-10-19 · Bind every Logo glyph paint to its Figma token · *unreleased (next: 0.1.0)*
+- [`b880f02`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/b880f027f1c45daf364e3382846abc611ef489ed) 2026-10-19 · Add Logo component (Figma 4:484) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

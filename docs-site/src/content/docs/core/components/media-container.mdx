@@ -1,0 +1,209 @@
+---
+title: "Media Container"
+description: "Media Container: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-media-container--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=304-2006&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/MediaContainer">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- To show one image or video in a fixed frame, landscape (5:3) or square (1:1)
+- When the media should fill the frame, cropped to cover
+- When the frame should be focusable and respond to hover, such as a clickable media tile
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> MediaContainer.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- For a person's photo or initials. Use instead: [Avatar](/core/components/avatar/).
+- For an icon. Use instead: [Icon](/core/components/icon/).
+- For the brand mark. Use instead: [Logo](/core/components/logo/).
+- When the whole image must stay visible, since edges get cropped. Use instead: a plain, uncropped image.
+
+### Best practice
+
+- Pick the ratio to suit the subject: 5:3 for scenes, 1:1 for objects or portraits
+- Use the Website size on web and the Mobile size on mobile
+- Keep the key part of the image away from the edges, because they are cropped
+- Write alt text that describes the image, or leave it empty if it is purely decorative
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `ratio=5:3` | Renders the landscape frame (code). |
+| `ratio=1:1` | Renders the square frame (code). |
+| `device=Website` | Renders the Website frame size (code). |
+| `device=Mobile` | Renders the Mobile frame size (code). |
+| `type=Landscape` | Descriptive; defaults from ratio 5:3 (code). |
+| `type=Square` | Descriptive; defaults from ratio 1:1 (code). |
+| `state=Default` | Lets hover and keyboard focus happen for real (code). |
+| `state=Hover` | Pins the hover look, for docs and QA (code). |
+| `state=Focus` | Pins the focus look, for docs and QA (code). |
+
+### Accessibility
+
+- The container takes keyboard focus (tabIndex defaults to 0). ([src/components/MediaContainer/MediaContainer.tsx:60](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/MediaContainer/MediaContainer.tsx#L60))
+- The image takes its alternative text from the alt prop; an empty alt marks it decorative. ([src/components/MediaContainer/MediaContainer.tsx:70](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/MediaContainer/MediaContainer.tsx#L70))
+- Shows a focus stroke on keyboard focus. ([src/components/MediaContainer/MediaContainer.css:92](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/MediaContainer/MediaContainer.css#L92))
+
+### Composition
+
+- [Card](/core/components/card/)
+- [Avatar](/core/components/avatar/)
+- [Logo](/core/components/logo/)
+- [Icon](/core/components/icon/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 6 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { MediaContainer } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Playground
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="MediaContainer Playground (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-media-container--playground&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--playground)
+
+#### Interactive
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="MediaContainer Interactive (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-media-container--interactive&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--interactive)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { MediaContainer } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/MediaContainer](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/MediaContainer).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `ratio?` | `MediaContainerRatio` | `'5:3'` | Figma "Ratio". `5:3` is the landscape frame, `1:1` the square one. |
+| `device?` | `MediaContainerDevice` | `'Website'` | Figma "Device". Website and Mobile use different frame sizes. |
+| `type?` | `MediaContainerType` |  | Figma "Type". Figma pairs it with Ratio (5:3 = Landscape, 1:1 = Square), so it defaults from `ratio`. Ratio sets the geometry; Type is descriptive. |
+| `state?` | `MediaContainerState` | `'Default'` | Figma "State". `Default` lets hover and keyboard focus happen for real. `Hover` and `Focus` pin that look (for docs and QA). |
+| `src?` | `string` |  | Image source for the "Slide Image" layer (Figma image fill, scale mode FILL = cover). |
+| `alt?` | `string` | `''` | Alternative text for the image. Empty string marks it decorative. |
+| `media?` | `ReactNode` |  | Custom media (e.g. a `&lt;video&gt;`) in place of `src`. Fills the frame and is cropped to cover. |
+
+- `MediaContainerProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `MediaContainerRatio` | `'5:3' &#124; '1:1'` |
+| `MediaContainerDevice` | `'Website' &#124; 'Mobile'` |
+| `MediaContainerType` | `'Landscape' &#124; 'Square'` |
+| `MediaContainerState` | `'Default' &#124; 'Hover' &#124; 'Focus'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderwidth-05` | 0.5px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--color-bg-overlay` | rgba(43, 33, 27, 0.30000001192092896) | no dark mode in the Figma export |
+| `--color-border-neutral-light` | #cdbb9f | no dark mode in the Figma export |
+| `--color-border-primary` | #948067 | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="MediaContainer props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-media-container--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-media-container--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Media Container in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D304-2006%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=304-2006&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+12 matrix stories:
+
+- [Matrix 53 Website Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-53-website-default)
+- [Matrix 53 Website Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-53-website-hover)
+- [Matrix 53 Website Focus](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-53-website-focus)
+- [Matrix 53 Mobile Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-53-mobile-default)
+- [Matrix 53 Mobile Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-53-mobile-hover)
+- [Matrix 53 Mobile Focus](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-53-mobile-focus)
+- [Matrix 11 Website Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-11-website-default)
+- [Matrix 11 Website Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-11-website-hover)
+- [Matrix 11 Website Focus](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-11-website-focus)
+- [Matrix 11 Mobile Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-11-mobile-default)
+- [Matrix 11 Mobile Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-11-mobile-hover)
+- [Matrix 11 Mobile Focus](https://cozy-corner-design-system.vercel.app/?path=/story/components-media-container--matrix-11-mobile-focus)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`1d9ace4`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/1d9ace40542db477358a6548315e8b01c96cd50d) 2026-10-21 · Fill the MediaContainer and ButtonNeutral intent files from their new Figma Guidelines pages · *unreleased (next: 0.1.0)*
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`0ab8073`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/0ab8073c06431b8ced06c2f7b43edee50829d301) 2026-10-20 · Fix Media Container Focus: borderWidth/1 outside in neutral/light (Figma 313:2276) · *unreleased (next: 0.1.0)*
+- [`301a369`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/301a369c66a865135e016b363a70c5700811641e) 2026-10-20 · Add Media Container component (Figma 304:2006) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

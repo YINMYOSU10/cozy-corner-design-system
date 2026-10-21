@@ -1,0 +1,175 @@
+---
+title: "Progress Loading / Mobile"
+description: "Progress Loading / Mobile: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressloadingmobile--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=215-983&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressLoadingMobile">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- Progress Loading after the user chooses a mood, while their result is found. It ends on the green check when the result is ready
+- When submitting a form or saving changes
+- When fetching data or moving between screens
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> ProgressLoadingMobile.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- For instant actions that finish in under a second, including a mood result that appears right away. *(Figma names no alternative.)*
+- To decorate a screen when nothing is actually loading. *(Figma names no alternative.)*
+- As a stack of several loaders on the same screen. *(Figma names no alternative.)*
+- For errors or empty states. Use instead: a message.
+- For a wait with no end. Use instead: an error or retry state.
+
+### Best practice
+
+- Show loading only when the wait is noticeable (roughly over 1 second).
+- Use Progress Loading when the wait has a clear start and finish, and let it end on the green check so users know it worked.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `step=1` | First of five steps; the ring has not started (code). |
+| `step=2` | Ring drawn partway across the steps (code). |
+| `step=3` | Ring drawn partway across the steps (code). |
+| `step=4` | Ring drawn partway across the steps (code). |
+| `step=5` | Ring turns positive green with a check mark. Figma: it ends on the green check so users know it worked. |
+
+### Accessibility
+
+- Has role="progressbar" with aria-valuemin, aria-valuemax (5) and aria-valuenow for the step. ([src/components/ProgressLoadingMobile/ProgressLoadingMobile.tsx:53](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressLoadingMobile/ProgressLoadingMobile.tsx#L53))
+- Named by the label prop, or "Step n of 5" by default (aria-label, aria-valuetext). ([src/components/ProgressLoadingMobile/ProgressLoadingMobile.tsx:54](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressLoadingMobile/ProgressLoadingMobile.tsx#L54))
+
+### Composition
+
+- [Card](/core/components/card/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 4 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { ProgressLoadingMobile } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { ProgressLoadingMobile } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/ProgressLoadingMobile](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/ProgressLoadingMobile).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `step?` | `ProgressLoadingMobileStep` | `1` | Figma property `Step` (1-5). |
+| `label?` | `string` |  | Accessible name; defaults to "Step n of 5". |
+
+- `ProgressLoadingMobileProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt;`
+
+### Types
+
+<p class="missing"><strong>Not available.</strong> This component exports no union types.</p>
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-bg-positive-idle` | #3f7e55 | no dark mode in the Figma export |
+| `--color-bg-primary-idle` | #c1633d | no dark mode in the Figma export |
+| `--color-icon-positive` | #35684a | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="ProgressLoadingMobile props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-progressloadingmobile--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressloadingmobile--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Progress Loading / Mobile in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D215-983%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=215-983&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+5 matrix stories:
+
+- [Step=1](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressloadingmobile--step-1)
+- [Step=2](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressloadingmobile--step-2)
+- [Step=3](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressloadingmobile--step-3)
+- [Step=4](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressloadingmobile--step-4)
+- [Step=5](https://cozy-corner-design-system.vercel.app/?path=/story/components-progressloadingmobile--step-5)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+Recorded in [docs/naming-suggestions.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/docs/naming-suggestions.md), section "Progress Loading / App (215:983)":
+
+Status: Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
+| Figma name | Clashes with | What code does now | Suggestion |
+|---|---|---|---|
+| Component set `Progress Loading / App`, registry row `Progress Loading / Mobile` | Registry, folder and Storybook title say Mobile | Built as `ProgressLoadingMobile`; story file records the Figma name | Rename the Figma set to `Progress Loading / Mobile` (sibling is `Progress Loading / Website`), or the registry row to `App` |
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`4c11e92`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/4c11e92cd701c79f00ebe7b503c4e3e3703199cc) 2026-10-20 · Fix ProgressLoadingMobile: base half-ring is the left half (Figma 215:983 steps 1-3 were mirrored) · *unreleased (next: 0.1.0)*
+- [`f871bad`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/f871bad0d942f41b6d4e05e28a4ba08c73f84949) 2026-10-20 · Add ProgressLoadingMobile (Figma 215:983, Step 1-5) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

@@ -1,0 +1,191 @@
+---
+title: "Detail Row"
+description: "Detail Row: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-detailrow--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=554-25&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/DetailRow">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to list short facts about one thing, such as the shop’s address, hours and restock day.
+- in Read drawers and order details, where each fact has a name and a value.
+- Stack rows in a list and turn off Show divider on the last row.
+
+### Where it goes
+
+- Stack rows in a list and turn off Show divider on the last row.
+
+### When not to use
+
+- for data people sort or compare across many items. Use instead: [Table](/core/components/table/).
+- for values people can edit. Use instead: [Fields](/core/components/fields/).
+- for long paragraphs. Keep values to one short line. *(Figma names no alternative.)*
+- Do not mix Mobile and Website rows in one list. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep labels to one or two words, such as Address or Hours.
+- Pick Platform to match the screen: Mobile in the app, Website on the website.
+- Write values the way readers say them, such as “Tue–Sun, 10–7”.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `platform=Mobile` | Figma: Mobile in the app. Code: spacing/md vertical padding. |
+| `platform=Website` | Figma: Website on the website. Code: spacing/lg vertical padding. |
+
+### Accessibility
+
+<p class="missing"><strong>Not available.</strong> DetailRow.intent.json has no a11y (no source states it; nothing was invented).</p>
+
+### Composition
+
+- [Footer](/core/components/footer/)
+- [Table](/core/components/table/)
+- [Divider](/core/components/divider/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 10 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { DetailRow } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Mobile With Divider
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="DetailRow Mobile With Divider (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-detailrow--mobile-with-divider&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-detailrow--mobile-with-divider)
+
+#### Mobile No Divider
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="DetailRow Mobile No Divider (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-detailrow--mobile-no-divider&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-detailrow--mobile-no-divider)
+
+#### Website With Divider
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="DetailRow Website With Divider (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-detailrow--website-with-divider&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-detailrow--website-with-divider)
+
+#### Website No Divider
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="DetailRow Website No Divider (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-detailrow--website-no-divider&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-detailrow--website-no-divider)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { DetailRow } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/DetailRow](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/DetailRow).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `platform?` | `'Mobile' &#124; 'Website'` | `'Mobile'` | Figma property `Platform`. Mobile = spacing/md vertical padding, Website = spacing/lg. |
+| `label?` | `ReactNode` | `'Address'` | Figma property `Label`. |
+| `value?` | `ReactNode` | `'14 Mercer Lane'` | Figma property `Value`. |
+| `showDivider?` | `boolean` | `true` | Figma property `Show divider`. |
+
+- `DetailRowProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt;`
+
+### Types
+
+<p class="missing"><strong>Not available.</strong> This component exports no union types.</p>
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--color-text-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--typography-body-fontfamily` | Karla | no dark mode in the Figma export |
+| `--typography-body-fontsize` | 16px | no dark mode in the Figma export |
+| `--typography-body-fontweight` | 400 | no dark mode in the Figma export |
+| `--typography-body-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-body-lineheight` | 26px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="DetailRow props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-detailrow--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-detailrow--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Detail Row in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D554-25%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=554-25&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+<p class="missing"><strong>Not available.</strong> No variant-matrix story exists for this component.</p>
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`050f6dc`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/050f6dc347d3c5a3ff892266e332936555436985) 2026-10-20 · Add Detail Row component (Figma 554:25) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

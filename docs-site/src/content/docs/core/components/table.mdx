@@ -1,0 +1,250 @@
+---
+title: "Table"
+description: "Table: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-table--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=438-14&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Table">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to show many records with the same fields, such as orders or stock.
+- when people need to compare values across rows.
+- Put the most important column first, such as the order ID or book title.
+- Use Badge cells for status, and Toggle or Action cells for quick changes.
+
+### Where it goes
+
+- Use one table per page, placed under the Top Bar.
+- Search and the main action live in the title bar; row actions sit in the last column.
+
+### When not to use
+
+- for one or two records. Use instead: [Card](/core/components/card/).
+- for page layout. *(Figma names no alternative.)*
+- with text that wraps. Keep rows on one line; long text ends with "…". *(Figma names no alternative.)*
+- Do not show a status with color alone. Badges always include text. *(Figma names no alternative.)*
+- Do not put more than one button in a row. Use instead: a menu for more actions.
+
+### Best practice
+
+- Right-align numbers and their headers, so the digits line up.
+- Use Muted text for secondary information, such as times and authors.
+- Keep column headers to one or two words.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `cell type=Text` | Text cell (TableCell, code). |
+| `cell type=Number` | Number cell (TableCell, code). Figma: right-align numbers and their headers. |
+| `cell type=Badge` | Figma: Badge cells for status. |
+| `cell type=Tags` | Cell that renders Tags (code). |
+| `cell type=Toggle` | Figma: Toggle cells for quick changes. |
+| `cell type=Action` | Figma: Action cells for quick changes. |
+| `cell type=Custom` | Slot for custom content (code). |
+| `cell type=More` | Renders a More button (code). |
+| `cell emphasis=Default` | Default text weight. |
+| `cell emphasis=Muted` | Figma: Muted text for secondary information, such as times and authors. |
+| `cell emphasis=Strong` | Strong text (code). |
+
+### Accessibility
+
+- The More action is a native &lt;button&gt; with aria-label "More". ([src/components/Table/TableCell.tsx:83](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Table/TableCell.tsx#L83))
+- The Toggle cell passes an aria-label to its Toggle. ([src/components/Table/TableCell.tsx:72](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Table/TableCell.tsx#L72))
+- The More button shows a focus ring on keyboard focus. ([src/components/Table/Table.css:159](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Table/Table.css#L159))
+
+### Composition
+
+- [Badge](/core/components/badge/)
+- [Toggle](/core/components/toggle/)
+- [Card](/core/components/card/)
+- [Tag](/core/components/tag/)
+- [TopBar](/core/components/top-bar/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 27 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Table } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Mixed cell types
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Table Mixed cell types (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-table--mixed-cells&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--mixed-cells)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Table } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `TableCell`, `TableColumn`, `TableHeaderCell`, `TableTitleBar`. Source: [src/components/Table](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Table).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `showTitle?` <small>(Table)</small> | `boolean` |  | Shows the "Title bar" instance above the columns. |
+| `titleBar?` <small>(Table)</small> | `ReactNode` |  | The "Title bar" instance; defaults to a bar titled "Table title". |
+| `children?` <small>(Table)</small> | `ReactNode` |  | The "Columns" slot: TableColumn elements. Defaults to Figma's three columns of three cells. |
+| `type?` <small>(TableCell)</small> | `TableCellType` | `'Text'` | Figma "Type". |
+| `emphasis?` <small>(TableCell)</small> | `TableCellEmphasis` | `'Default'` | Figma "Emphasis". Muted and Strong apply to Type=Text. |
+| `text?` <small>(TableCell)</small> | `string` | `'Order placed'` | Figma "Text". |
+| `strongText?` <small>(TableCell)</small> | `string` | `'BD-1042'` | Figma "Strong text". |
+| `number?` <small>(TableCell)</small> | `string` | `'4'` | Figma "Number". |
+| `showTag2?` <small>(TableCell)</small> | `boolean` | `true` | Figma "Show tag 2". |
+| `showTag3?` <small>(TableCell)</small> | `boolean` | `false` | Figma "Show tag 3". |
+| `children?` <small>(TableCell)</small> | `ReactNode` |  | Figma "Content" slot (Type=Custom). For Badge, Tags, Toggle, Action and More it replaces the default content. |
+| `header?` <small>(TableColumn)</small> | `ReactNode` |  | The column's Table/item/header-cell. |
+| `children?` <small>(TableColumn)</small> | `ReactNode` |  | The column's Table/item/cell instances. |
+| `align?` <small>(TableHeaderCell)</small> | `TableHeaderCellAlign` |  | Figma "Align". |
+| `label?` <small>(TableHeaderCell)</small> | `string` |  | Figma "Label". |
+| `title?` <small>(TableTitleBar)</small> | `string` | `'Recent activity'` | Figma "Title". |
+| `showHelper?` <small>(TableTitleBar)</small> | `boolean` | `false` | Figma "Show helper": shows the right-aligned helper text. |
+| `helperText?` <small>(TableTitleBar)</small> | `string` | `'Helper text'` | Figma "Helper text". |
+
+- `TableProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'title'&gt; &amp;`
+- `TableCellProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp;`
+- `TableColumnProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp;`
+- `TableHeaderCellProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp;`
+- `TableTitleBarProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'title'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `TableProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'title'&gt; &amp; &#123; /** Shows the "Title bar" instance above the columns. */ showTitle?: boolean` |
+| `TableCellType` | `'Text' &#124; 'Number' &#124; 'Badge' &#124; 'Tags' &#124; 'Toggle' &#124; 'Action' &#124; 'Custom' &#124; 'More'` |
+| `TableCellEmphasis` | `'Default' &#124; 'Muted' &#124; 'Strong'` |
+| `TableCellProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp; &#123; /** Figma "Type". */ type?: TableCellType` |
+| `TableColumnProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp; &#123; /** The column's Table/item/header-cell. */ header?: ReactNode` |
+| `TableHeaderCellAlign` | `'Left' &#124; 'Right'` |
+| `TableHeaderCellProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp; &#123; /** Figma "Align". */ align?: TableHeaderCellAlign` |
+| `TableTitleBarProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'title'&gt; &amp; &#123; /** Figma "Title". */ title?: string` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-md` | 16px | no dark mode in the Figma export |
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--color-bg-surfaceprimary` | #fffdf9 | no dark mode in the Figma export |
+| `--color-border-focus` | #c1633d | no dark mode in the Figma export |
+| `--color-border-gray-light` | #d1d5dc | no dark mode in the Figma export |
+| `--color-icon-bold` | #2b211b | no dark mode in the Figma export |
+| `--color-text-gray-bold` | #1e2939 | no dark mode in the Figma export |
+| `--color-text-gray-default` | #4a5565 | no dark mode in the Figma export |
+| `--fontfamily-inter` | Inter | no dark mode in the Figma export |
+| `--fontsize-12` | 12px | no dark mode in the Figma export |
+| `--fontsize-14` | 14px | no dark mode in the Figma export |
+| `--fontsize-16` | 16px | no dark mode in the Figma export |
+| `--fontsize-18` | 18px | no dark mode in the Figma export |
+| `--fontweight-regular` | 400 | no dark mode in the Figma export |
+| `--fontweight-semibold` | 600 | no dark mode in the Figma export |
+| `--lineheight-16` | 16px | no dark mode in the Figma export |
+| `--lineheight-20` | 20px | no dark mode in the Figma export |
+| `--lineheight-22` | 22px | no dark mode in the Figma export |
+| `--lineheight-24` | 24px | no dark mode in the Figma export |
+| `--spacing-3xl` | 32px | no dark mode in the Figma export |
+| `--spacing-6xl` | 48px | no dark mode in the Figma export |
+| `--spacing-jumbo` | 64px | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--spacing-xl` | 20px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Table props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-table--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-table--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Table in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D438-14%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=438-14&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+15 matrix stories:
+
+- [Show title=true](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--default)
+- [Show title=false](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--no-title)
+- [Title bar: Show helper=true](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--with-helper)
+- [Header cell: Align=Left](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--header-cell-left)
+- [Header cell: Align=Right](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--header-cell-right)
+- [Cell: Type=Text, Emphasis=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-text-default)
+- [Cell: Type=Text, Emphasis=Muted](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-text-muted)
+- [Cell: Type=Text, Emphasis=Strong](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-text-strong)
+- [Cell: Type=Number](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-number)
+- [Cell: Type=Badge](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-badge)
+- [Cell: Type=Tags (Show tag 2, Show tag 3)](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-tags)
+- [Cell: Type=Toggle](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-toggle)
+- [Cell: Type=Action](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-action)
+- [Cell: Type=Custom (Content slot)](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-custom)
+- [Cell: Type=More](https://cozy-corner-design-system.vercel.app/?path=/story/components-table--cell-more)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`d7c3d9b`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d7c3d9b2ad8d362e436014fbfc688f5c618f7331) 2026-10-20 · Fix Table: More button focus ring, drop raw header letter-spacing · *unreleased (next: 0.1.0)*
+- [`e95b9e5`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/e95b9e56e3db6a82907677642db4def4b016b75f) 2026-10-20 · Add Table with TableTitleBar, TableColumn, TableHeaderCell, TableCell (Figma 438:14) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

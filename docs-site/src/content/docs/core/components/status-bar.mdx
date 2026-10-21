@@ -1,0 +1,177 @@
+---
+title: "Status Bar"
+description: "Status Bar: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-statusbar--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=525-49&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/StatusBar">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- at the very top of every mobile app screen and mockup.
+- Use Light mode on light screens and Dark mode on dark screens, such as the Blind Date flow.
+- Keep the time at 9:41 in mockups so screens look consistent.
+
+### Where it goes
+
+- At the very top of every mobile app screen and mockup.
+
+### When not to use
+
+- on website or dashboard screens. *(Figma names no alternative.)*
+- inside cards, dialogs or drawers. *(Figma names no alternative.)*
+- as a place for app content or buttons. *(Figma names no alternative.)*
+- Do not change the order of the indicators. *(Figma names no alternative.)*
+
+### Best practice
+
+- Match the status bar background to the screen behind it.
+- Keep 20px of space on both sides, the same as the app screens.
+- Swap the icons only to show special states, such as low battery.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `mode=Light` | Figma: on light screens. |
+| `mode=Dark` | Figma: on dark screens, such as the Blind Date flow. |
+
+### Accessibility
+
+- The whole bar is hidden from assistive tech (aria-hidden). ([src/components/StatusBar/StatusBar.tsx:40](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/StatusBar/StatusBar.tsx#L40))
+
+### Composition
+
+- [Header](/core/components/header/)
+- [Icon](/core/components/icon/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 10 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { StatusBar } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { StatusBar } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/StatusBar](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/StatusBar).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `mode?` | `StatusBarMode` | `'Light'` | Figma "Mode": Light (color/bg/base) or Dark (color/bg/inverse). |
+| `time?` | `string` | `'9:41'` | Figma "Time": the clock text. |
+| `signal?` | `ReactNode` |  | Figma "Signal": glyph swapped into the signal slot. |
+| `wifi?` | `ReactNode` |  | Figma "Wifi": glyph swapped into the wifi slot. |
+| `battery?` | `ReactNode` |  | Figma "Battery": glyph swapped into the battery slot. |
+
+- `StatusBarProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `StatusBarMode` | `'Light' &#124; 'Dark'` |
+| `StatusBarProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp; &#123; /** Figma "Mode": Light (color/bg/base) or Dark (color/bg/inverse). */ mode?: StatusBarMode` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-bg-inverse` | #2b211b | no dark mode in the Figma export |
+| `--color-text-bold` | #2b211b | no dark mode in the Figma export |
+| `--color-text-inverse` | #fffdf9 | no dark mode in the Figma export |
+| `--spacing-xl` | 20px | no dark mode in the Figma export |
+| `--typography-labellarge-fontfamily` | Inter | no dark mode in the Figma export |
+| `--typography-labellarge-fontsize` | 16px | no dark mode in the Figma export |
+| `--typography-labellarge-fontweight` | 500 | no dark mode in the Figma export |
+| `--typography-labellarge-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-labellarge-lineheight` | 26px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="StatusBar props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-statusbar--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-statusbar--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Status Bar in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D525-49%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=525-49&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+4 matrix stories:
+
+- [Mode=Light](https://cozy-corner-design-system.vercel.app/?path=/story/components-statusbar--light)
+- [Mode=Dark](https://cozy-corner-design-system.vercel.app/?path=/story/components-statusbar--dark)
+- [Time=custom](https://cozy-corner-design-system.vercel.app/?path=/story/components-statusbar--custom-time)
+- [Indicators=swapped](https://cozy-corner-design-system.vercel.app/?path=/story/components-statusbar--swapped-indicators)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`d32ca48`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d32ca482da136ee311497916a39cb3844d3e1a68) 2026-10-20 · Add Status Bar component (Figma 525:49) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

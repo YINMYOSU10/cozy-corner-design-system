@@ -1,0 +1,213 @@
+---
+title: "Header"
+description: "Header: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-header--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=500-95&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Header">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- at the top of every page on the reader website.
+- at the bottom of every screen in the mobile app, as a tab bar.
+- Set the current page’s item to the Active state.
+
+### Where it goes
+
+- At the top of every page on the reader website.
+- At the bottom of every screen in the mobile app, as a tab bar.
+
+### When not to use
+
+- in the staff dashboard. Use instead: [Sidebar](/core/components/sidebar/).
+- for actions such as Reserve or Pay. Use instead: [Button](/core/components/button/).
+- for steps in a flow. Use instead: [ProgressBar](/core/components/progress-bar/).
+- Do not show more than 5 items. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep the same items in the same order on every page.
+- Use one-word labels, such as Home, Date or Shelf.
+- Show only one Active item at a time.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `platform=Website` | Figma: at the top of every page on the reader website. Code: Logo on the left, navigation on the right. |
+| `platform=Mobile` | Figma: at the bottom of every screen in the mobile app, as a tab bar. Code: no Logo; navigation fills the bar. |
+
+### Accessibility
+
+- Renders a native &lt;header&gt; element. ([src/components/Header/Header.tsx:29](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Header/Header.tsx#L29))
+- Navigation sits in a &lt;nav&gt; landmark, named "Main" by default. ([src/components/Header/Header.tsx:36](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Header/Header.tsx#L36))
+- The Active item is marked aria-current="page". ([src/components/Header/HeaderNavItem.tsx:47](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Header/HeaderNavItem.tsx#L47))
+- Each item is an &lt;a&gt; link with a visible label. ([src/components/Header/HeaderNavItem.tsx:42](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Header/HeaderNavItem.tsx#L42))
+
+### Composition
+
+- [Sidebar](/core/components/sidebar/)
+- [Footer](/core/components/footer/)
+- [Logo](/core/components/logo/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 34 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Header } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Header } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `HeaderNavItem`. Source: [src/components/Header](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Header).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `platform?` <small>(Header)</small> | `HeaderPlatform` | `'Website'` | Figma variant "Platform". |
+| `children?` <small>(Header)</small> | `ReactNode` |  | Figma slot "Navigation": `HeaderNavItem` instances, with the same `platform`. |
+| `navigationLabel?` <small>(Header)</small> | `string` | `'Main'` | Accessible name of the navigation landmark. |
+| `label?` <small>(HeaderNavItem)</small> | `string` | `'Home'` | Figma text property "Label". |
+| `icon?` <small>(HeaderNavItem)</small> | `ReactNode` |  | Figma instance swap "Icon": a glyph from the Icon set. Drawn on Mobile only. |
+| `platform?` <small>(HeaderNavItem)</small> | `HeaderNavItemPlatform` | `'Website'` | Figma variant "Platform". |
+| `state?` <small>(HeaderNavItem)</small> | `HeaderNavItemState` | `'Default'` | Figma variant "State". Mobile has no Hover; it renders as Default. |
+
+- `HeaderProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLElement&gt;, 'children'&gt;`
+- `HeaderNavItemProps` also accepts: `Omit&lt;AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;, 'children'&gt;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `HeaderPlatform` | `'Website' &#124; 'Mobile'` |
+| `HeaderNavItemPlatform` | `'Website' &#124; 'Mobile'` |
+| `HeaderNavItemState` | `'Default' &#124; 'Hover' &#124; 'Active'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderwidth-05` | 0.5px | no dark mode in the Figma export |
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-bg-primary-idle` | #c1633d | no dark mode in the Figma export |
+| `--color-bg-primary-light` | #f6ddd1 | no dark mode in the Figma export |
+| `--color-bg-surfaceprimary` | #fffdf9 | no dark mode in the Figma export |
+| `--color-border-neutral-light` | #cdbb9f | no dark mode in the Figma export |
+| `--color-text-brand` | #834026 | no dark mode in the Figma export |
+| `--color-text-inverse` | #fffdf9 | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--color-text-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--spacing-3xl` | 32px | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-jumbo` | 64px | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--spacing-xxl` | 24px | no dark mode in the Figma export |
+| `--typography-bodysmall-fontfamily` | Karla | no dark mode in the Figma export |
+| `--typography-bodysmall-fontsize` | 14px | no dark mode in the Figma export |
+| `--typography-bodysmall-fontweight` | 400 | no dark mode in the Figma export |
+| `--typography-bodysmall-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-bodysmall-lineheight` | 22px | no dark mode in the Figma export |
+| `--typography-label-fontfamily` | Inter | no dark mode in the Figma export |
+| `--typography-label-fontsize` | 14px | no dark mode in the Figma export |
+| `--typography-label-fontweight` | 500 | no dark mode in the Figma export |
+| `--typography-label-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-label-lineheight` | 22px | no dark mode in the Figma export |
+| `--typography-labellarge-fontfamily` | Inter | no dark mode in the Figma export |
+| `--typography-labellarge-fontsize` | 16px | no dark mode in the Figma export |
+| `--typography-labellarge-fontweight` | 500 | no dark mode in the Figma export |
+| `--typography-labellarge-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-labellarge-lineheight` | 26px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Header props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-header--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-header--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Header in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D500-95%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=500-95&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+7 matrix stories:
+
+- [Platform=Website](https://cozy-corner-design-system.vercel.app/?path=/story/components-header--website)
+- [Platform=Mobile](https://cozy-corner-design-system.vercel.app/?path=/story/components-header--mobile)
+- [Platform=Website, State=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-header-nav-item--website-default)
+- [Platform=Website, State=Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-header-nav-item--website-hover)
+- [Platform=Website, State=Active](https://cozy-corner-design-system.vercel.app/?path=/story/components-header-nav-item--website-active)
+- [Platform=Mobile, State=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-header-nav-item--mobile-default)
+- [Platform=Mobile, State=Active](https://cozy-corner-design-system.vercel.app/?path=/story/components-header-nav-item--mobile-active)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`09fa59b`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/09fa59bc42b1cb8a3c383c096470e7d0ce811ae1) 2026-10-20 · Add Header and Header/item/nav-item (Figma 500:95, 500:20) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

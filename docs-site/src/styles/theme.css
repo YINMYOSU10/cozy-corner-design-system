@@ -1,0 +1,55 @@
+/* Maps Starlight's variables onto the system's own tokens (tokens.css). No hex here.
+   Light uses semantic tokens. The token export has no dark mode, so dark uses core
+   tokens (neutral/terracotta) and is a documented design gap. */
+:root {
+  --sl-font: var(--fontfamily-karla), system-ui, sans-serif;
+  --sl-font-system-mono: ui-monospace, monospace;
+  --sl-text-body: var(--fontsize-16);
+}
+:root[data-theme='light'] {
+  --sl-color-white: var(--color-text-bold);
+  --sl-color-gray-1: var(--color-text-primary);
+  --sl-color-gray-2: var(--color-text-secondary);
+  --sl-color-gray-3: var(--color-text-secondary);
+  --sl-color-gray-4: var(--color-border-primary);
+  --sl-color-gray-5: var(--color-border-secondary);
+  --sl-color-gray-6: var(--color-bg-surfacesecondary);
+  --sl-color-gray-7: var(--color-bg-base);
+  --sl-color-black: var(--color-bg-surfaceprimary);
+  --sl-color-accent-low: var(--color-bg-primary-light);
+  --sl-color-accent: var(--color-bg-primary-idle);
+  --sl-color-accent-high: var(--color-text-brand);
+  --sl-color-bg-nav: var(--color-bg-surfaceprimary);
+  --sl-color-bg-sidebar: var(--color-bg-base);
+}
+:root:not([data-theme='light']) {
+  --sl-color-white: var(--color-neutral-0);
+  --sl-color-gray-1: var(--color-neutral-100);
+  --sl-color-gray-2: var(--color-neutral-200);
+  --sl-color-gray-3: var(--color-neutral-300);
+  --sl-color-gray-4: var(--color-neutral-500);
+  --sl-color-gray-5: var(--color-neutral-700);
+  --sl-color-gray-6: var(--color-neutral-800);
+  --sl-color-gray-7: var(--color-neutral-900);
+  --sl-color-black: var(--color-neutral-1000);
+  --sl-color-accent-low: var(--color-terracotta-900);
+  --sl-color-accent: var(--color-terracotta-400);
+  --sl-color-accent-high: var(--color-terracotta-200);
+}
+h1, h2, h3, h4, .site-title, .hero h1 { font-family: var(--fontfamily-fraunces), serif; }
+.sl-markdown-content :is(h2, h3, h4) { font-family: var(--fontfamily-fraunces), serif; }
+nav, button, .pill, table th { font-family: var(--fontfamily-inter), sans-serif; }
+
+.header-strip { display: flex; flex-wrap: wrap; gap: var(--spacing-md); align-items: center; margin-block: var(--spacing-lg); }
+.pill { background: var(--sl-color-accent-low); color: var(--sl-color-accent-high); padding: var(--spacing-base) var(--spacing-md); border-radius: var(--borderradius-circle); font-size: var(--fontsize-14); }
+.missing { border: var(--borderwidth-1) dashed var(--sl-color-gray-4); border-radius: var(--borderradius-sm); padding: var(--spacing-sm) var(--spacing-md); color: var(--sl-color-gray-2); font-size: var(--fontsize-14); }
+.story-pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-lg); }
+.story-pair figure { margin: 0; }
+.story-pair iframe, .figma-frame, .docs-frame { width: 100%; border: var(--borderwidth-1) solid var(--sl-color-gray-5); border-radius: var(--borderradius-sm); background: var(--color-bg-base); }
+.story-pair iframe { height: 260px; }
+.figma-frame { height: 480px; }
+.docs-frame { height: 560px; }
+.swatch { display: inline-block; width: var(--spacing-xxl); height: var(--spacing-lg); border-radius: var(--borderradius-xs); border: var(--borderwidth-1) solid var(--sl-color-gray-5); }
+.latest { text-align: center; margin-block: var(--spacing-6xl) var(--spacing-xxl); }
+.latest h2 { border: 0; }
+.provenance { text-align: center; color: var(--sl-color-gray-3); font-size: var(--fontsize-12); margin-top: var(--spacing-6xl); }

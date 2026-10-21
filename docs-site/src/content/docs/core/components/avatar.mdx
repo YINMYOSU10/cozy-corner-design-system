@@ -1,0 +1,183 @@
+---
+title: "Avatar"
+description: "Avatar: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-avatar--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=576-24&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Avatar">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to show who is signed in, in the Sidebar and the Top Bar.
+- next to a name in lists, such as who logged a swap.
+- Use the Icon type when a person has no name yet, such as a new reader.
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> Avatar.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- for brands or books. Use instead: Logo or Media Container.
+- as a button on its own without a name or tooltip. *(Figma names no alternative.)*
+- to show status. Use instead: [Badge](/core/components/badge/).
+- Do not use more than two letters for initials. *(Figma names no alternative.)*
+
+### Best practice
+
+- Use 32 in the Top Bar, 40 in the Sidebar and 48 in profile headers.
+- Write initials in capitals, such as SU.
+- Pair the avatar with the person's name whenever there is space.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `size=32` | Figma: use 32 in the Top Bar. |
+| `size=40` | Figma: use 40 in the Sidebar. |
+| `size=48` | Figma: use 48 in profile headers. |
+| `type=Initials` | Shows the initials text (code). |
+| `type=Icon` | Figma: use the Icon type when a person has no name yet, such as a new reader. |
+
+### Accessibility
+
+- Without a label the avatar is hidden from assistive tech (aria-hidden). ([src/components/Avatar/Avatar.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Avatar/Avatar.tsx#L43))
+- With a label the avatar is announced as an image named by the label (role="img", aria-label). ([src/components/Avatar/Avatar.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Avatar/Avatar.tsx#L43))
+
+### Composition
+
+- [Sidebar](/core/components/sidebar/)
+- [TopBar](/core/components/top-bar/)
+- [Badge](/core/components/badge/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 9 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Avatar } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Avatar } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/Avatar](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Avatar).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `size?` | `AvatarSize` | `'32'` | Figma "Size": the circle's width and height, in px. |
+| `type?` | `AvatarType` | `'Initials'` | Figma "Type": Initials shows text; Icon shows the Icon/User glyph. |
+| `initials?` | `string` | `'SU'` | Figma "Initials": the text shown when type is Initials. |
+| `label?` | `string` |  | Accessible name, e.g. the person's full name. Without it the avatar is decorative (`aria-hidden`); with it the avatar is announced as an image. |
+
+- `AvatarProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `AvatarSize` | `'32' &#124; '40' &#124; '48'` |
+| `AvatarType` | `'Initials' &#124; 'Icon'` |
+| `AvatarProps` | `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp; &#123; /** Figma "Size": the circle's width and height, in px. */ size?: AvatarSize` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--color-bg-primary-light` | #f6ddd1 | no dark mode in the Figma export |
+| `--color-text-brand` | #834026 | no dark mode in the Figma export |
+| `--fontfamily-inter` | Inter | no dark mode in the Figma export |
+| `--fontsize-12` | 12px | no dark mode in the Figma export |
+| `--fontsize-14` | 14px | no dark mode in the Figma export |
+| `--fontweight-semibold` | 600 | no dark mode in the Figma export |
+| `--lineheight-16` | 16px | no dark mode in the Figma export |
+| `--lineheight-20` | 20px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Avatar props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-avatar--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-avatar--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Avatar in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D576-24%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=576-24&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+6 matrix stories:
+
+- [Size=32, Type=Initials](https://cozy-corner-design-system.vercel.app/?path=/story/components-avatar--size-32-initials)
+- [Size=32, Type=Icon](https://cozy-corner-design-system.vercel.app/?path=/story/components-avatar--size-32-icon)
+- [Size=40, Type=Initials](https://cozy-corner-design-system.vercel.app/?path=/story/components-avatar--size-40-initials)
+- [Size=40, Type=Icon](https://cozy-corner-design-system.vercel.app/?path=/story/components-avatar--size-40-icon)
+- [Size=48, Type=Initials](https://cozy-corner-design-system.vercel.app/?path=/story/components-avatar--size-48-initials)
+- [Size=48, Type=Icon](https://cozy-corner-design-system.vercel.app/?path=/story/components-avatar--size-48-icon)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`47a0870`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/47a08709d4a3fa19e478aa4d6e90804db81ae868) 2026-10-19 · Add Avatar component (Figma 576:24) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

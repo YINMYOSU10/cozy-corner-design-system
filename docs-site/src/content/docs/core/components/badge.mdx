@@ -1,0 +1,192 @@
+---
+title: "Badge"
+description: "Badge: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-badge--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=385-14&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Badge">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to show the status of an item, such as a row in a table.
+- Use Warning for items that are waiting, such as Pending or Awaiting review.
+- Use Positive for finished items, such as Resolved, and Negative for failed items, such as Rejected.
+- Use Info for work in progress, and Update for items that were changed or are new.
+
+### Where it goes
+
+<p class="missing"><strong>Not available.</strong> Badge.intent.json has no placement (no source states it; nothing was invented).</p>
+
+### When not to use
+
+- as a button. A badge is not clickable. *(Figma names no alternative.)*
+- as a tab or a filter. *(Figma names no alternative.)*
+- for long text. Keep labels to one or two words. *(Figma names no alternative.)*
+- Do not choose a Type for its color. Choose it for its meaning. *(Figma names no alternative.)*
+- Do not change the color, padding or corner radius of a badge. *(Figma names no alternative.)*
+
+### Best practice
+
+- Use the same label for the same status across every screen.
+- Write labels in sentence case, such as "In progress".
+- Show only one badge per item.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `type=Warning` | Figma: items that are waiting, such as Pending or Awaiting review. |
+| `type=Positive` | Figma: finished items, such as Resolved. |
+| `type=Negative` | Figma: failed items, such as Rejected. |
+| `type=Info` | Figma: work in progress. |
+| `type=Update` | Figma: items that were changed or are new. |
+| `type=Neutral` | Renders the gray style (code). Figma does not describe a Neutral type. |
+
+### Accessibility
+
+- Renders a plain &lt;span&gt; with its label text, so the status is named in text and the badge is not focusable. ([src/components/Badge/Badge.tsx:20](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Badge/Badge.tsx#L20))
+
+### Composition
+
+- [Table](/core/components/table/)
+- [Button](/core/components/button/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 20 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Badge } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+<p class="missing"><strong>Not available.</strong> Every story of this component is a variant-matrix row (see the Design tab); there is no other story to embed.</p>
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Badge } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/Badge](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Badge).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `type?` | `BadgeType` |  | Figma "Type": the status colour pair. |
+| `label?` | `string` |  | Figma "label": the text shown in the pill. |
+
+- `BadgeProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `BadgeType` | `'Warning' &#124; 'Positive' &#124; 'Negative' &#124; 'Info' &#124; 'Update' &#124; 'Neutral'` |
+| `BadgeProps` | `Omit&lt;HTMLAttributes&lt;HTMLSpanElement&gt;, 'children'&gt; &amp; &#123; /** Figma "Type": the status colour pair. */ type?: BadgeType` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--color-bg-gray-light` | #f3f4f6 | no dark mode in the Figma export |
+| `--color-bg-info-light` | #dbeafe | no dark mode in the Figma export |
+| `--color-bg-negative-light` | #f8e1de | no dark mode in the Figma export |
+| `--color-bg-positive-light` | #e4eee6 | no dark mode in the Figma export |
+| `--color-bg-update-light` | #f1e3ee | no dark mode in the Figma export |
+| `--color-bg-warning-light` | #f6e7bf | no dark mode in the Figma export |
+| `--color-text-gray-default` | #4a5565 | no dark mode in the Figma export |
+| `--color-text-info` | #193cb8 | no dark mode in the Figma export |
+| `--color-text-negative` | #7e271d | no dark mode in the Figma export |
+| `--color-text-positive` | #2f5a3e | no dark mode in the Figma export |
+| `--color-text-update` | #57284e | no dark mode in the Figma export |
+| `--color-text-warning` | #684b19 | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--typography-label-fontfamily` | Inter | no dark mode in the Figma export |
+| `--typography-label-fontsize` | 14px | no dark mode in the Figma export |
+| `--typography-label-fontweight` | 500 | no dark mode in the Figma export |
+| `--typography-label-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-label-lineheight` | 22px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Badge props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-badge--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-badge--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Badge in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D385-14%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=385-14&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+6 matrix stories:
+
+- [Type=Warning](https://cozy-corner-design-system.vercel.app/?path=/story/components-badge--warning)
+- [Type=Positive](https://cozy-corner-design-system.vercel.app/?path=/story/components-badge--positive)
+- [Type=Negative](https://cozy-corner-design-system.vercel.app/?path=/story/components-badge--negative)
+- [Type=Info](https://cozy-corner-design-system.vercel.app/?path=/story/components-badge--info)
+- [Type=Update](https://cozy-corner-design-system.vercel.app/?path=/story/components-badge--update)
+- [Type=Neutral](https://cozy-corner-design-system.vercel.app/?path=/story/components-badge--neutral)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`14874f2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/14874f25777d473b84dc8132dbb1b7c63c910444) 2026-10-19 · Add Badge component (Figma 385:14) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

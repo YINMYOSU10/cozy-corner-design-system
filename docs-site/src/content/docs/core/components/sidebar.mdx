@@ -1,0 +1,228 @@
+---
+title: "Sidebar"
+description: "Sidebar: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-sidebar--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=453-4975&t=BsETB0AMaX9Ix65B-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Sidebar">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- as the main navigation on every dashboard screen.
+- Group items under section labels, such as Main and Insights.
+- Set exactly one item to Active: the page you are on.
+- Use an expandable item when a page has sub-pages, and show them as sub-items.
+
+### Where it goes
+
+- The Sidebar stays fixed on the left at full height, with the Top Bar and page content to its right.
+
+### When not to use
+
+- on the customer website or mobile app. Use instead: [Header](/core/components/header/).
+- for actions such as "Add book". Use instead: a Button on the page.
+- with more than one level of sub-items. *(Figma names no alternative.)*
+- Do not mark more than one item as Active. *(Figma names no alternative.)*
+- Do not use different icons for the same page in different places. *(Figma names no alternative.)*
+
+### Best practice
+
+- Use the same page names as the page titles and the breadcrumb.
+- Keep labels short, one to three words, so they do not get cut off.
+- Keep about 7 items or fewer per section.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `state=Default` | Resting item (SidebarItem). |
+| `state=Hover` | Pins the hover look (SidebarItem, code). |
+| `state=Active` | Figma: the page you are on; exactly one item. |
+| `state=Focused` | Pins the focus look (SidebarItem, code). |
+| `expand=None` | Renders the item as a link (code). |
+| `expand=Collapsed` | Renders the item as a disclosure button, collapsed (code). |
+| `expand=Expanded` | Renders the item as a disclosure button, expanded (code). |
+
+### Accessibility
+
+- Navigation sits in a &lt;nav&gt; landmark, named "Main" by default. ([src/components/Sidebar/Sidebar.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Sidebar/Sidebar.tsx#L43))
+- The Active item is marked aria-current="page". ([src/components/Sidebar/SidebarItem.tsx:79](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Sidebar/SidebarItem.tsx#L79))
+- Expandable items are buttons with aria-expanded. ([src/components/Sidebar/SidebarItem.tsx:93](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Sidebar/SidebarItem.tsx#L93))
+- Items show a focus ring on keyboard focus. ([src/components/Sidebar/Sidebar.css:139](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Sidebar/Sidebar.css#L139))
+
+### Composition
+
+- [Breadcrumb](/core/components/breadcrumb/)
+- [Header](/core/components/header/)
+- [Logo](/core/components/logo/)
+- [Avatar](/core/components/avatar/)
+- [TopBar](/core/components/top-bar/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 29 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Sidebar } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Default
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Sidebar Default (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-sidebar--default&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-sidebar--default)
+
+#### Interactive
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Sidebar Interactive (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-sidebar--interactive&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-sidebar--interactive)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Sidebar } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: `SidebarItem`, `SidebarSectionLabel`, `SidebarSubItem`, `SidebarUser`. Source: [src/components/Sidebar](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Sidebar).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `children?` <small>(Sidebar)</small> | `ReactNode` |  | Figma slot "Navigation". |
+| `showUser?` <small>(Sidebar)</small> | `boolean` | `true` | Figma boolean "Show user" (Sidebar/item/user at the bottom). |
+| `userName?` <small>(Sidebar)</small> | `string` |  | Figma "Name" of Sidebar/item/user. |
+| `userRole?` <small>(Sidebar)</small> | `string` |  | Figma "Role" of Sidebar/item/user. |
+| `navigationLabel?` <small>(Sidebar)</small> | `string` | `'Main'` | Accessible name of the navigation landmark. |
+| `label?` <small>(SidebarSectionLabel)</small> | `string` |  | Figma text property "Label". |
+| `name?` <small>(SidebarUser)</small> | `string` |  | Figma text property "Name". |
+| `role?` <small>(SidebarUser)</small> | `string` |  | Figma text property "Role". |
+
+- `SidebarProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLElement&gt;, 'children'&gt;`
+- `SidebarSectionLabelProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp;`
+- `SidebarUserProps` also accepts: `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `SidebarItemState` | `'Default' &#124; 'Hover' &#124; 'Active' &#124; 'Focused'` |
+| `SidebarItemExpand` | `'None' &#124; 'Collapsed' &#124; 'Expanded'` |
+| `SidebarItemProps` | `Shared &amp; Omit&lt;AnchorHTMLAttributes&lt;HTMLAnchorElement&gt; &amp; ButtonHTMLAttributes&lt;HTMLButtonElement&gt;, keyof Shared &#124; 'children'&gt;` |
+| `SidebarSectionLabelProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp; &#123; /** Figma text property "Label". */ label?: string` |
+| `SidebarSubItemState` | `'Default' &#124; 'Hover' &#124; 'Active'` |
+| `SidebarSubItemProps` | `Shared &amp; Omit&lt;AnchorHTMLAttributes&lt;HTMLAnchorElement&gt;, keyof Shared &#124; 'children'&gt;` |
+| `SidebarUserProps` | `Omit&lt;HTMLAttributes&lt;HTMLDivElement&gt;, 'children'&gt; &amp; &#123; /** Figma text property "Name". */ name?: string` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--borderradius-sm` | 8px | no dark mode in the Figma export |
+| `--borderwidth-1` | 1px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-bg-neutral-light` | #f3e8d6 | no dark mode in the Figma export |
+| `--color-bg-primary-light` | #f6ddd1 | no dark mode in the Figma export |
+| `--color-bg-surfaceprimary` | #fffdf9 | no dark mode in the Figma export |
+| `--color-border-focus` | #c1633d | no dark mode in the Figma export |
+| `--color-border-secondary` | #cdbb9f | no dark mode in the Figma export |
+| `--color-icon-bold` | #2b211b | no dark mode in the Figma export |
+| `--color-icon-brand` | #a45230 | no dark mode in the Figma export |
+| `--color-icon-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--color-text-bold` | #2b211b | no dark mode in the Figma export |
+| `--color-text-brand` | #834026 | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--color-text-secondary` | #7a6a58 | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body` | 400 14px/20px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-large-medium` | 500 16px/22px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-semibold` | 600 14px/20px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-small` | 400 12px/16px Inter | no dark mode in the Figma export |
+| `--cozy-corner-typography-dashboard-body-small-semibold` | 600 12px/16px Inter | no dark mode in the Figma export |
+| `--spacing-base` | 4px | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--spacing-md` | 12px | no dark mode in the Figma export |
+| `--spacing-sm` | 8px | no dark mode in the Figma export |
+| `--spacing-xl` | 20px | no dark mode in the Figma export |
+| `--typography-bodysmall-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-bodysmallsemibold-letterspacing` | 0px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Sidebar props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-sidebar--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-sidebar--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Sidebar in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D453-4975%26t%3DBsETB0AMaX9Ix65B-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=453-4975&t=BsETB0AMaX9Ix65B-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+1 matrix stories:
+
+- [Show user = false](https://cozy-corner-design-system.vercel.app/?path=/story/components-sidebar--without-user)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`4e1cdc4`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/4e1cdc4475edf2033e75b0890bafbcb972f18cb6) 2026-10-20 · Fix Sidebar: set data-mode=dashboard on Sidebar and subcomponent roots so letter-spacing tokens resolve to 0.32px · *unreleased (next: 0.1.0)*
+- [`00a1cca`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/00a1cca55bd5d13ef597f926f3ab60fd76640fd9) 2026-10-20 · Fix Sidebar: add 0.32px letter-spacing to count, section label and role (Figma 456:410, 456:422, 456:457, 456:459, 453:150, 453:156) · *unreleased (next: 0.1.0)*
+- [`97c76bc`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/97c76bc7b8e3b968aa5dba38aef1e0d41f536b53) 2026-10-20 · Add Sidebar with SidebarItem, SidebarSubItem, SidebarSectionLabel, SidebarUser (Figma 453:4975) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>

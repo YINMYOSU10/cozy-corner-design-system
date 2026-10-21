@@ -1,0 +1,215 @@
+---
+title: "Chip"
+description: "Chip: usage, examples, code, design and changelog."
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<div class="header-strip">
+<span class="pill">Status: Completed</span>
+<span class="pill">Version: unreleased (next: 0.1.0)</span>
+<a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-chip--docs">Storybook</a>
+<a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=391-37&t=j17tKJlPybHY0ENX-1">Figma</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Chip">Source</a>
+</div>
+
+<Tabs>
+<TabItem label="Usage">
+
+### When to use
+
+- to let people choose from a small set of options, such as Pace, Feeling or Tone.
+- Use single select when only one answer fits. Selecting one chip unselects the others.
+- Use multi select when more than one answer can apply.
+- Place chips under a short question or label, so people know what they are choosing.
+
+### Where it goes
+
+- Place chips under a short question or label, so people know what they are choosing.
+
+### When not to use
+
+- to go to another page. Use instead: a link or the header navigation.
+- to show a status. Use instead: [Badge](/core/components/badge/).
+- to start an action, such as submitting a form. Use instead: [Button](/core/components/button/).
+- Do not put more than about 8 chips in one group. Use instead: a dropdown.
+- Do not use the selected color for anything except the chosen option. *(Figma names no alternative.)*
+
+### Best practice
+
+- Keep labels short, one to three words.
+- Use the same chip on mobile and website. It is 40px tall on both.
+- Keep the same options in the same order on every platform.
+
+### Variants
+
+| Variant | What it is for |
+|---|---|
+| `selected=true` | Figma: turn Selected on for the chosen option. |
+| `selected=false` | An option that is not chosen. |
+| `state=Default` | Lets hover and focus happen naturally (code). |
+| `state=Hover` | Pins the hover look, for docs and QA (code). |
+| `state=Focused` | Pins the focus look, for docs and QA (code). |
+| `state=Disabled` | Disables the chip (code). |
+
+### Accessibility
+
+- Renders a native &lt;button&gt; with aria-pressed set from selected. ([src/components/Chip/Chip.tsx:34](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Chip/Chip.tsx#L34))
+- A disabled chip is natively disabled. ([src/components/Chip/Chip.tsx:39](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Chip/Chip.tsx#L39))
+- Shows a focus ring on keyboard focus. ([src/components/Chip/Chip.css:64](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Chip/Chip.css#L64))
+
+### Composition
+
+- [Badge](/core/components/badge/)
+- [Button](/core/components/button/)
+- [Link](/core/components/link/)
+- [ProgressBar](/core/components/progress-bar/)
+
+### What this version promises
+
+- The props, prop values and exports on the Code tab are this component's documented API.
+- While the package is 0.x, a minor release may change them and says so in the changelog; a patch release will not (see [Versioning](/get-started/versioning/)).
+- It uses 20 tokens (Code tab); removing or renaming one of them is a breaking change.
+
+</TabItem>
+<TabItem label="Examples">
+
+### Usage example
+
+The README's example (it uses Button; every component imports the same way):
+
+```tsx
+import { Button } from '@cozy-corner-design-system/components';
+
+export function Example() {
+  return <Button labelText="Save" size="48" />;
+}
+```
+
+For this component: `import { Chip } from '@cozy-corner-design-system/components';`
+
+### Stories
+
+#### Disabled ignores clicks
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Chip Disabled ignores clicks (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-chip--disabled-does-nothing&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--disabled-does-nothing)
+
+#### Toggles by click and keyboard
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Chip Toggles by click and keyboard (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-chip--toggleable&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--toggleable)
+
+#### Group (multi-select)
+
+<div class="story-pair"><figure><figcaption>Light</figcaption><iframe loading="lazy" title="Chip Group (multi-select) (light)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-chip--chip-group&viewMode=story"></iframe></figure><figure><figcaption>Dark</figcaption><p class="missing">Storybook has no dark theme to render: the Figma token export has no dark mode.</p></figure></div>
+
+[Open in Storybook](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--chip-group)
+
+</TabItem>
+<TabItem label="Code">
+
+### Import
+
+```ts
+import { Chip } from '@cozy-corner-design-system/components';
+```
+
+Subcomponents in this folder: none. Source: [src/components/Chip](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Chip).
+
+### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label?` | `string` | `'Chip'` | Figma text property "Label". |
+| `selected?` | `boolean` | `true` | Figma "Selected": True or False. |
+| `state?` | `ChipState` | `'Default'` | Figma "State". |
+
+- `ChipProps` also accepts: `Omit&lt;ButtonHTMLAttributes&lt;HTMLButtonElement&gt;, 'children' | 'type'&gt;`
+
+### Types
+
+| Type | Values |
+|---|---|
+| `ChipState` | `'Default' &#124; 'Hover' &#124; 'Focused' &#124; 'Disabled'` |
+
+### Tokens
+
+| Token | Light | Dark |
+|---|---|---|
+| `--borderradius-circle` | 1000px | no dark mode in the Figma export |
+| `--borderwidth-2` | 2px | no dark mode in the Figma export |
+| `--color-bg-base` | #fbf3e7 | no dark mode in the Figma export |
+| `--color-bg-disabled` | #e6d9c3 | no dark mode in the Figma export |
+| `--color-bg-primary-focused` | #a45230 | no dark mode in the Figma export |
+| `--color-bg-primary-hovered` | #a45230 | no dark mode in the Figma export |
+| `--color-bg-primary-idle` | #c1633d | no dark mode in the Figma export |
+| `--color-bg-primary-light` | #f6ddd1 | no dark mode in the Figma export |
+| `--color-bg-primary-lightfocused` | #e19a79 | no dark mode in the Figma export |
+| `--color-bg-primary-lighthovered` | #e19a79 | no dark mode in the Figma export |
+| `--color-border-focus` | #c1633d | no dark mode in the Figma export |
+| `--color-text-disabled` | #a8967d | no dark mode in the Figma export |
+| `--color-text-inverse` | #fffdf9 | no dark mode in the Figma export |
+| `--color-text-primary` | #4a3c31 | no dark mode in the Figma export |
+| `--spacing-lg` | 16px | no dark mode in the Figma export |
+| `--typography-label-fontfamily` | Inter | no dark mode in the Figma export |
+| `--typography-label-fontsize` | 14px | no dark mode in the Figma export |
+| `--typography-label-fontweight` | 500 | no dark mode in the Figma export |
+| `--typography-label-letterspacing` | 0px | no dark mode in the Figma export |
+| `--typography-label-lineheight` | 22px | no dark mode in the Figma export |
+
+### Storybook props
+
+<iframe class="docs-frame" loading="lazy" title="Chip props (Storybook)" src="https://cozy-corner-design-system.vercel.app/iframe.html?id=components-chip--docs&viewMode=docs"></iframe>
+
+[Open the Storybook docs page](https://cozy-corner-design-system.vercel.app/?path=/docs/components-chip--docs)
+
+</TabItem>
+<TabItem label="Design">
+
+### Figma
+
+<iframe class="figma-frame" loading="lazy" allowfullscreen title="Chip in Figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FMWuaFZQ58G4WvtbCyeaE1X%2Fcozy-corner.Global.Components.v1.0.0.In-Progress%3Fnode-id%3D391-37%26t%3Dj17tKJlPybHY0ENX-1"></iframe>
+
+[Open the Figma node](https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=391-37&t=j17tKJlPybHY0ENX-1). Figma files can be team-only; if the frame is blank, use the link.
+
+### Variant matrix
+
+8 matrix stories:
+
+- [Selected=True, State=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--selected-default)
+- [Selected=True, State=Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--selected-hover)
+- [Selected=True, State=Focused](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--selected-focused)
+- [Selected=True, State=Disabled](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--selected-disabled)
+- [Selected=False, State=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--unselected-default)
+- [Selected=False, State=Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--unselected-hover)
+- [Selected=False, State=Focused](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--unselected-focused)
+- [Selected=False, State=Disabled](https://cozy-corner-design-system.vercel.app/?path=/story/components-chip--unselected-disabled)
+
+### Themes
+
+- Light: the values on the Code tab.
+- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
+
+### Unbound values
+
+<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
+
+### Design gaps
+
+<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
+
+</TabItem>
+<TabItem label="Changelog">
+
+### Commits, newest first
+
+- [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *unreleased (next: 0.1.0)*
+- [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *unreleased (next: 0.1.0)*
+- [`5a00115`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/5a00115ae6a62dd821de6ace401619d8b9bcdcef) 2026-10-20 · Chip: disabled chip keeps its disabled fill on hover (QA row Chip · Disabled) · *unreleased (next: 0.1.0)*
+- [`2a7c98f`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/2a7c98f6244b6522add06b0f438874179c386bfc) 2026-10-20 · Add Chip component (Figma 391:37) · *unreleased (next: 0.1.0)*
+
+</TabItem>
+</Tabs>
