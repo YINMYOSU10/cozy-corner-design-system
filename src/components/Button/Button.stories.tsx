@@ -22,6 +22,8 @@ import {
   type ButtonState,
   type ButtonType,
 } from './Button';
+import { Fields } from '../Fields';
+import { CardContainer } from '../Card/CardContainer';
 
 const STATES: ButtonState[] = ['Default', 'Hover', 'Press', 'Focus', 'Disable'];
 const ICON_STYLES: ButtonIconStyle[] = ['Both icons', 'none', 'leading icon', 'trailing icon', 'Icon only'];
@@ -62,6 +64,37 @@ type Story = StoryObj<typeof meta>;
 
 /** Try every property with the controls below. Hover, press and Tab-focus work for real. */
 export const Playground: Story = {};
+
+/** A Button in a sign-in form: an Email field, a primary action and an outline cancel. */
+export const InForm: Story = {
+  name: 'In Form',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <form
+      onSubmit={(e) => e.preventDefault()}
+      style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)', maxWidth: 360 }}
+    >
+      <Fields type="Form Input" formLabel="Email" placeholderText="you@example.com" helperText="We never share your email." htmlType="email" />
+      <div style={{ display: 'flex', gap: 'var(--spacing-md)' }}>
+        <Button labelText="Sign in" type="Default" size="48" />
+        <Button labelText="Cancel" type="Outline" size="48" />
+      </div>
+    </form>
+  ),
+};
+
+/** A Button placed inside a Card. */
+export const InCard: Story = {
+  name: 'In Card',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ maxWidth: 390, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+      <CardContainer type="Left-aligned Book Card">
+        <Button labelText="Add to cart" type="Default" size="48" />
+      </CardContainer>
+    </div>
+  ),
+};
 
 const sheet = (type: ButtonType, shape: ButtonShape, size: ButtonSize): Story => ({
   name: `${type} · ${shape} · ${size}`,
