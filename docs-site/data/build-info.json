@@ -1,7 +1,10 @@
 {
   "commit": "4fab5eb8099283d987dd4441eec2fe21df1c3420",
   "version": "0.1.0",
-  "published": null,
+  "published": {
+    "version": "0.1.0",
+    "date": "2026-10-21"
+  },
   "components": [
     "Avatar",
     "Badge",

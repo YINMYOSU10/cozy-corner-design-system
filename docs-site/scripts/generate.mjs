@@ -239,6 +239,11 @@ function commitsFor(p) {
 // No release tag exists until the publish: every commit is "unreleased". Phase 2 re-runs with --version.
 const tags = git('tag', '--merged', commit).trim().split('\n').filter(Boolean);
 const shippedIn = (c) => {
+  // After the publish, the release tag (v<version>) sits on the release commit, a descendant of the pinned commit.
+  if (published) {
+    const t = `v${published.version}`;
+    try { git('rev-parse', '--verify', `refs/tags/${t}`); git('merge-base', '--is-ancestor', c.H, t); return t; } catch {}
+  }
   if (!tags.length) return null;
   for (const t of tags.slice().reverse()) {
     try { git('merge-base', '--is-ancestor', c.H, t); return t; } catch {}
