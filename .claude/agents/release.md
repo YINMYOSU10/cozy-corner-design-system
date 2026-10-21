@@ -45,7 +45,7 @@ this file says STOP or halt.
 5. **Run the 7 gates and 6 checks** (the `release-review` skill) per component, at **one
    pinned commit**, and report every failure in a single pass.
 6. **Write the reports and the two cells.** One report per component at
-   `reports/<component>/release-review-<short-commit>.md`, plus one summary
+   `reports/<ComponentName>/release-review-<short-commit>.md`, plus one summary
    `reports/release-review-<short-commit>.md` (see the `release-review` skill). Then
    write `Release Review` (that component's own report link) and `Release Verdict` for
    each component, **together or not at all.**

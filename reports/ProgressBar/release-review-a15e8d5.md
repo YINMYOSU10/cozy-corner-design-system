@@ -1,4 +1,4 @@
-# Release review — progress-bar
+# Release review — ProgressBar
 
 | Row | Value |
 |---|---|

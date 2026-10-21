@@ -1,4 +1,4 @@
-# Release review — footer
+# Release review — Footer
 
 | Row | Value |
 |---|---|

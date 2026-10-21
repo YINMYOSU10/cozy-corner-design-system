@@ -1,4 +1,4 @@
-# Release review — toggle
+# Release review — Toggle
 
 | Row | Value |
 |---|---|

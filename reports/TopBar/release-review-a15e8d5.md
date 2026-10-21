@@ -1,4 +1,4 @@
-# Release review — top-bar
+# Release review — TopBar
 
 | Row | Value |
 |---|---|

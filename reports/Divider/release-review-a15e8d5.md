@@ -1,4 +1,4 @@
-# Release review — divider
+# Release review — Divider
 
 | Row | Value |
 |---|---|

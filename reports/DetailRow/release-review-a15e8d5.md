@@ -1,4 +1,4 @@
-# Release review — detail-row
+# Release review — DetailRow
 
 | Row | Value |
 |---|---|

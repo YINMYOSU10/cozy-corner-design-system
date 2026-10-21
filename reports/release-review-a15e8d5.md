@@ -27,34 +27,34 @@ All 7 gates pass for all 28 components. Check 6 is WAIVED for 5 components (`doc
 
 | Component | Verdict | Check 2 warnings (empty alternatives) | Check 6 | Report |
 |---|---|---|---|---|
-| Avatar | Cleared | 2 | PASS | [reports/avatar/release-review-a15e8d5.md](avatar/release-review-a15e8d5.md) |
-| Badge | Cleared | 5 | PASS | [reports/badge/release-review-a15e8d5.md](badge/release-review-a15e8d5.md) |
-| Breadcrumb | Cleared | 3 | PASS | [reports/breadcrumb/release-review-a15e8d5.md](breadcrumb/release-review-a15e8d5.md) |
-| Button / Primary | Cleared | 4 | PASS | [reports/button/release-review-a15e8d5.md](button/release-review-a15e8d5.md) |
-| Button / Destructive | Cleared | 3 | WAIVED | [reports/button-destructive/release-review-a15e8d5.md](button-destructive/release-review-a15e8d5.md) |
-| Button / Info | Cleared | 3 | WAIVED | [reports/button-info/release-review-a15e8d5.md](button-info/release-review-a15e8d5.md) |
-| Button / Neutral | Cleared | 0 | PASS | [reports/button-neutral/release-review-a15e8d5.md](button-neutral/release-review-a15e8d5.md) |
-| Card | Cleared | 3 | PASS | [reports/card/release-review-a15e8d5.md](card/release-review-a15e8d5.md) |
-| Chip | Cleared | 1 | PASS | [reports/chip/release-review-a15e8d5.md](chip/release-review-a15e8d5.md) |
-| Detail Row | Cleared | 2 | PASS | [reports/detail-row/release-review-a15e8d5.md](detail-row/release-review-a15e8d5.md) |
-| Divider | Cleared | 5 | PASS | [reports/divider/release-review-a15e8d5.md](divider/release-review-a15e8d5.md) |
-| Fields | Cleared | 0 | PASS | [reports/fields/release-review-a15e8d5.md](fields/release-review-a15e8d5.md) |
-| Footer | Cleared | 3 | PASS | [reports/footer/release-review-a15e8d5.md](footer/release-review-a15e8d5.md) |
-| Header | Cleared | 1 | PASS | [reports/header/release-review-a15e8d5.md](header/release-review-a15e8d5.md) |
-| Icon | Cleared | 2 | PASS | [reports/icon/release-review-a15e8d5.md](icon/release-review-a15e8d5.md) |
-| Link | Cleared | 1 | PASS | [reports/link/release-review-a15e8d5.md](link/release-review-a15e8d5.md) |
-| Loading | Cleared | 3 | WAIVED | [reports/loading/release-review-a15e8d5.md](loading/release-review-a15e8d5.md) |
-| Logo | Cleared | 5 | PASS | [reports/logo/release-review-a15e8d5.md](logo/release-review-a15e8d5.md) |
-| Media Container | Cleared | 0 | PASS | [reports/media-container/release-review-a15e8d5.md](media-container/release-review-a15e8d5.md) |
-| Progress Bar | Cleared | 4 | PASS | [reports/progress-bar/release-review-a15e8d5.md](progress-bar/release-review-a15e8d5.md) |
-| Progress Loading / Mobile | Cleared | 3 | WAIVED | [reports/progress-loading-mobile/release-review-a15e8d5.md](progress-loading-mobile/release-review-a15e8d5.md) |
-| Progress Loading / Website | Cleared | 3 | WAIVED | [reports/progress-loading-website/release-review-a15e8d5.md](progress-loading-website/release-review-a15e8d5.md) |
-| Sidebar | Cleared | 3 | PASS | [reports/sidebar/release-review-a15e8d5.md](sidebar/release-review-a15e8d5.md) |
-| Status Bar | Cleared | 4 | PASS | [reports/status-bar/release-review-a15e8d5.md](status-bar/release-review-a15e8d5.md) |
-| Table | Cleared | 3 | PASS | [reports/table/release-review-a15e8d5.md](table/release-review-a15e8d5.md) |
-| Tag | Cleared | 2 | PASS | [reports/tag/release-review-a15e8d5.md](tag/release-review-a15e8d5.md) |
-| Toggle | Cleared | 0 | PASS | [reports/toggle/release-review-a15e8d5.md](toggle/release-review-a15e8d5.md) |
-| Top Bar | Cleared | 2 | PASS | [reports/top-bar/release-review-a15e8d5.md](top-bar/release-review-a15e8d5.md) |
+| Avatar | Cleared | 2 | PASS | [reports/Avatar/release-review-a15e8d5.md](Avatar/release-review-a15e8d5.md) |
+| Badge | Cleared | 5 | PASS | [reports/Badge/release-review-a15e8d5.md](Badge/release-review-a15e8d5.md) |
+| Breadcrumb | Cleared | 3 | PASS | [reports/Breadcrumb/release-review-a15e8d5.md](Breadcrumb/release-review-a15e8d5.md) |
+| Button / Primary | Cleared | 4 | PASS | [reports/Button/release-review-a15e8d5.md](Button/release-review-a15e8d5.md) |
+| Button / Destructive | Cleared | 3 | WAIVED | [reports/ButtonDestructive/release-review-a15e8d5.md](ButtonDestructive/release-review-a15e8d5.md) |
+| Button / Info | Cleared | 3 | WAIVED | [reports/ButtonInfo/release-review-a15e8d5.md](ButtonInfo/release-review-a15e8d5.md) |
+| Button / Neutral | Cleared | 0 | PASS | [reports/ButtonNeutral/release-review-a15e8d5.md](ButtonNeutral/release-review-a15e8d5.md) |
+| Card | Cleared | 3 | PASS | [reports/Card/release-review-a15e8d5.md](Card/release-review-a15e8d5.md) |
+| Chip | Cleared | 1 | PASS | [reports/Chip/release-review-a15e8d5.md](Chip/release-review-a15e8d5.md) |
+| Detail Row | Cleared | 2 | PASS | [reports/DetailRow/release-review-a15e8d5.md](DetailRow/release-review-a15e8d5.md) |
+| Divider | Cleared | 5 | PASS | [reports/Divider/release-review-a15e8d5.md](Divider/release-review-a15e8d5.md) |
+| Fields | Cleared | 0 | PASS | [reports/Fields/release-review-a15e8d5.md](Fields/release-review-a15e8d5.md) |
+| Footer | Cleared | 3 | PASS | [reports/Footer/release-review-a15e8d5.md](Footer/release-review-a15e8d5.md) |
+| Header | Cleared | 1 | PASS | [reports/Header/release-review-a15e8d5.md](Header/release-review-a15e8d5.md) |
+| Icon | Cleared | 2 | PASS | [reports/Icon/release-review-a15e8d5.md](Icon/release-review-a15e8d5.md) |
+| Link | Cleared | 1 | PASS | [reports/Link/release-review-a15e8d5.md](Link/release-review-a15e8d5.md) |
+| Loading | Cleared | 3 | WAIVED | [reports/Loading/release-review-a15e8d5.md](Loading/release-review-a15e8d5.md) |
+| Logo | Cleared | 5 | PASS | [reports/Logo/release-review-a15e8d5.md](Logo/release-review-a15e8d5.md) |
+| Media Container | Cleared | 0 | PASS | [reports/MediaContainer/release-review-a15e8d5.md](MediaContainer/release-review-a15e8d5.md) |
+| Progress Bar | Cleared | 4 | PASS | [reports/ProgressBar/release-review-a15e8d5.md](ProgressBar/release-review-a15e8d5.md) |
+| Progress Loading / Mobile | Cleared | 3 | WAIVED | [reports/ProgressLoadingMobile/release-review-a15e8d5.md](ProgressLoadingMobile/release-review-a15e8d5.md) |
+| Progress Loading / Website | Cleared | 3 | WAIVED | [reports/ProgressLoadingWebsite/release-review-a15e8d5.md](ProgressLoadingWebsite/release-review-a15e8d5.md) |
+| Sidebar | Cleared | 3 | PASS | [reports/Sidebar/release-review-a15e8d5.md](Sidebar/release-review-a15e8d5.md) |
+| Status Bar | Cleared | 4 | PASS | [reports/StatusBar/release-review-a15e8d5.md](StatusBar/release-review-a15e8d5.md) |
+| Table | Cleared | 3 | PASS | [reports/Table/release-review-a15e8d5.md](Table/release-review-a15e8d5.md) |
+| Tag | Cleared | 2 | PASS | [reports/Tag/release-review-a15e8d5.md](Tag/release-review-a15e8d5.md) |
+| Toggle | Cleared | 0 | PASS | [reports/Toggle/release-review-a15e8d5.md](Toggle/release-review-a15e8d5.md) |
+| Top Bar | Cleared | 2 | PASS | [reports/TopBar/release-review-a15e8d5.md](TopBar/release-review-a15e8d5.md) |
 
 ## Overall verdict
 

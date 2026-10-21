@@ -1,4 +1,4 @@
-# Release review — loading
+# Release review — Loading
 
 | Row | Value |
 |---|---|

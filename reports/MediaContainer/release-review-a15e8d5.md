@@ -1,4 +1,4 @@
-# Release review — media-container
+# Release review — MediaContainer
 
 | Row | Value |
 |---|---|

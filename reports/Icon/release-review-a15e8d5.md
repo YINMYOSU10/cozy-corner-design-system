@@ -1,4 +1,4 @@
-# Release review — icon
+# Release review — Icon
 
 | Row | Value |
 |---|---|

@@ -1,4 +1,4 @@
-# Release review — status-bar
+# Release review — StatusBar
 
 | Row | Value |
 |---|---|

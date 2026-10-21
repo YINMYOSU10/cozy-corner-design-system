@@ -1,4 +1,4 @@
-# Release review — button-info
+# Release review — ButtonInfo
 
 | Row | Value |
 |---|---|
