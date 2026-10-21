@@ -7,8 +7,24 @@ and says so here.
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-21
+
+A documentation release: no component or token changed.
+
 ### Added
-- This changelog, and `VERSIONING.md`, are now included in the published package.
+- `CHANGELOG.md` and `VERSIONING.md` are now included in the published package.
+
+### Changed
+- The README shows the install in two steps: the package, then the React 19 peer dependency (`npm install react@^19 react-dom@^19`).
+
+### Fixed
+- Nothing.
+
+### Deprecated
+- Nothing.
+
+### Removed
+- Nothing.
 
 ## [0.1.0] - 2026-10-21
 
@@ -48,5 +64,6 @@ The first release.
   behaviour the code does not implement yet.
 - Dark mode tokens are not part of the token export, so the package ships light-mode values only.
 
-[Unreleased]: https://github.com/YINMYOSU10/cozy-corner-design-system/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/YINMYOSU10/cozy-corner-design-system/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/YINMYOSU10/cozy-corner-design-system/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/YINMYOSU10/cozy-corner-design-system/releases/tag/v0.1.0
