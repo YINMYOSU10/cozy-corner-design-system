@@ -381,11 +381,11 @@ ${figmaUrl ? `<a href="${figmaUrl}">Figma</a>` : ''}
 
 ${list(I?.use_when, intentNote('use_when') + ' Figma has no usage region for this component.')}
 
-### Where it goes
+${I?.placement?.length ? `### Where it goes
 
-${list(I?.placement, intentNote('placement'))}
+${list(I.placement)}
 
-### When not to use
+` : ''}### When not to use
 
 ${dont}
 
