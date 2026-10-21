@@ -3,10 +3,16 @@ title: Introduction
 description: Install the package and use a component.
 ---
 
-Install the package with its two peer dependencies:
+## Install
 
 ```bash
-npm install @cozy-corner-design-system/components react react-dom
+npm install @cozy-corner-design-system/components
+```
+
+React 19 is a peer dependency. If your app does not already have them:
+
+```bash
+npm install react@^19 react-dom@^19
 ```
 
 Load the two stylesheets once, at the root of your app. Tokens first, then the components:

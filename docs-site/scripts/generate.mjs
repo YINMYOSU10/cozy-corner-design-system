@@ -522,7 +522,10 @@ write(
 
 // Home
 const readmeFirst = read('README.md').split('\n\n')[1].trim();
-const installCmd = /```bash\n(npm install [^\n]+)\n```/.exec(read('README.md'))?.[1] ?? '';
+// Install, in two steps: the package, then its peer dependencies (the major version comes from package.json).
+const reactPeer = (pkg.peerDependencies?.react ?? '').match(/\d+/)?.[0] ?? '';
+const installCmd = `npm install ${PKG}`;
+const peerCmd = `npm install react@^${reactPeer} react-dom@^${reactPeer}`;
 write(
   'index.mdx',
   `---
@@ -551,7 +554,15 @@ import { LinkCard, CardGrid } from '@astrojs/starlight/components';
 
 ${published ? `Published ${esc(published.date)}` : 'Publish date: not published yet'} · ${componentNames.length} components on the public surface · ${semanticCount} semantic tokens · ${modeNames.length} Figma modes.
 
-\`${installCmd}\`
+\`\`\`bash
+${installCmd}
+\`\`\`
+
+React ${reactPeer} is a peer dependency. If your app does not already have them:
+
+\`\`\`bash
+${peerCmd}
+\`\`\`
 
 </div>
 
