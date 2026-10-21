@@ -1,7 +1,27 @@
 {
-  "use_when": [],
-  "dont_use_when": [],
-  "best_practice": [],
+  "use_when": [
+    "For a lower-emphasis action beside a main action, such as Cancel or Back",
+    "When the action has no positive, negative or warning meaning"
+  ],
+  "dont_use_when": [
+    {
+      "when": "For the main action on a screen.",
+      "use_instead": "Button"
+    },
+    {
+      "when": "For a destructive action such as delete.",
+      "use_instead": "ButtonDestructive"
+    },
+    {
+      "when": "To go to another page.",
+      "use_instead": "Link"
+    }
+  ],
+  "best_practice": [
+    "Put it next to a main button, not alone",
+    "Label it with a short verb, such as \"Cancel\" or \"Back\"",
+    "Use Disabled only when the action is unavailable"
+  ],
   "variant_intent": {
     "type=Default": "Renders the solid style in the neutral colours (code).",
     "type=Outline": "Renders the outline style in the neutral colours (code).",
@@ -22,7 +42,12 @@
     "state=Disable": "Disables the button. Figma: use Disabled only when the action is temporarily unavailable."
   },
   "placement": [],
-  "pairs_with": [],
+  "pairs_with": [
+    "Button",
+    "ButtonDestructive",
+    "ButtonInfo",
+    "Link"
+  ],
   "required_tokens": [
     "--color-bg-neutral-light",
     "--color-bg-neutral-lightfocused",
