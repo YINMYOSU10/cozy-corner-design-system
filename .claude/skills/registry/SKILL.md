@@ -60,7 +60,7 @@ table are one link; they share an owner, and writing either side writes both.
 | [Staging] Test Records | link → Staging Testing | QA | Mirror of Staging Testing › Composed In. |
 | Production Storybook | url | DevOps | Written only after opening it. Feeds precedence 5. |
 | Astro Link | url | Doc Generator | Written only for a docs page fetched and seen to render (Decision 8). Feeds precedence 4. |
-| Release Review | url | Release | The review report, written together with Release Verdict or not at all (Decision 8). Feeds precedence 4. |
+| Release Review | url | Release | This component's own review report (`reports/<component>/release-review-<sha>.md`), written together with Release Verdict or not at all (Decision 8). Feeds precedence 4. |
 | Release Verdict | single select: Cleared, Blocked | Release | Written together with Release Review or not at all (Decision 8). Feeds precedence 4. |
 | Development | formula → single select | Computed | **No agent may write this.** See below. |
 | Staging Testing Results Summary | rollup of Staging Testing › Testing Results | Computed | Feeds precedence 1, 2, 3, 6. |

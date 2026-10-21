@@ -44,8 +44,11 @@ this file says STOP or halt.
    component and the field. Do not review around it.
 5. **Run the 7 gates and 6 checks** (the `release-review` skill) per component, at **one
    pinned commit**, and report every failure in a single pass.
-6. **Write `Release Review` and `Release Verdict`** for each component, **together or not
-   at all.**
+6. **Write the reports and the two cells.** One report per component at
+   `reports/<component>/release-review-<short-commit>.md`, plus one summary
+   `reports/release-review-<short-commit>.md` (see the `release-review` skill). Then
+   write `Release Review` (that component's own report link) and `Release Verdict` for
+   each component, **together or not at all.**
 7. **Split into two tracks that run at the same time.**
    - **Track A · package** — you do this, for **Cleared components only**:
      - confirm `react` is a peer dependency, not bundled
