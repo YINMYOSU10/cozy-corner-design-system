@@ -39,7 +39,7 @@
     {
       "name": "Avatar",
       "display": "Avatar",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 6,
       "stories": 6,
       "props": 4,
@@ -56,7 +56,7 @@
     {
       "name": "Badge",
       "display": "Badge",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 6,
       "stories": 6,
       "props": 2,
@@ -73,7 +73,7 @@
     {
       "name": "Breadcrumb",
       "display": "Breadcrumb",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 6,
       "stories": 9,
       "props": 6,
@@ -88,7 +88,7 @@
     {
       "name": "Button",
       "display": "Button / Primary",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 12,
       "stories": 13,
       "props": 9,
@@ -105,7 +105,7 @@
     {
       "name": "ButtonDestructive",
       "display": "Button / Destructive",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 12,
       "stories": 13,
       "props": 0,
@@ -122,7 +122,7 @@
     {
       "name": "ButtonInfo",
       "display": "Button / Info",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 12,
       "stories": 13,
       "props": 0,
@@ -139,7 +139,7 @@
     {
       "name": "ButtonNeutral",
       "display": "Button / Neutral",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 12,
       "stories": 13,
       "props": 0,
@@ -156,7 +156,7 @@
     {
       "name": "Card",
       "display": "Card",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 0,
       "stories": 10,
       "props": 11,
@@ -171,7 +171,7 @@
     {
       "name": "Chip",
       "display": "Chip",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 8,
       "stories": 11,
       "props": 3,
@@ -186,7 +186,7 @@
     {
       "name": "DetailRow",
       "display": "Detail Row",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 0,
       "stories": 4,
       "props": 4,
@@ -203,7 +203,7 @@
     {
       "name": "Divider",
       "display": "Divider",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 2,
       "stories": 2,
       "props": 1,
@@ -220,7 +220,7 @@
     {
       "name": "Fields",
       "display": "Fields",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 12,
       "stories": 17,
       "props": 17,
@@ -237,7 +237,7 @@
     {
       "name": "Footer",
       "display": "Footer",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 4,
       "stories": 5,
       "props": 7,
@@ -252,7 +252,7 @@
     {
       "name": "Header",
       "display": "Header",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 7,
       "stories": 7,
       "props": 7,
@@ -267,7 +267,7 @@
     {
       "name": "Icon",
       "display": "Icon",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 17,
       "stories": 19,
       "props": 5,
@@ -284,7 +284,7 @@
     {
       "name": "Link",
       "display": "Link",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 16,
       "stories": 19,
       "props": 7,
@@ -301,7 +301,7 @@
     {
       "name": "Loading",
       "display": "Loading",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 7,
       "stories": 8,
       "props": 5,
@@ -318,7 +318,7 @@
     {
       "name": "Logo",
       "display": "Logo",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 8,
       "stories": 8,
       "props": 3,
@@ -333,7 +333,7 @@
     {
       "name": "MediaContainer",
       "display": "Media Container",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 12,
       "stories": 14,
       "props": 7,
@@ -350,7 +350,7 @@
     {
       "name": "ProgressBar",
       "display": "Progress Bar",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 8,
       "stories": 8,
       "props": 5,
@@ -365,7 +365,7 @@
     {
       "name": "ProgressLoadingMobile",
       "display": "Progress Loading / Mobile",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 5,
       "stories": 5,
       "props": 2,
@@ -382,7 +382,7 @@
     {
       "name": "ProgressLoadingWebsite",
       "display": "Progress Loading / Website",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 5,
       "stories": 5,
       "props": 2,
@@ -399,7 +399,7 @@
     {
       "name": "Sidebar",
       "display": "Sidebar",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 1,
       "stories": 3,
       "props": 8,
@@ -414,7 +414,7 @@
     {
       "name": "StatusBar",
       "display": "Status Bar",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 4,
       "stories": 4,
       "props": 5,
@@ -429,7 +429,7 @@
     {
       "name": "Table",
       "display": "Table",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 15,
       "stories": 16,
       "props": 18,
@@ -444,7 +444,7 @@
     {
       "name": "Tag",
       "display": "Tag",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 4,
       "stories": 7,
       "props": 5,
@@ -459,7 +459,7 @@
     {
       "name": "Toggle",
       "display": "Toggle",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 7,
       "stories": 8,
       "props": 4,
@@ -474,7 +474,7 @@
     {
       "name": "TopBar",
       "display": "Top Bar",
-      "status": "Completed",
+      "status": "Released",
       "matrix": 0,
       "stories": 4,
       "props": 5,

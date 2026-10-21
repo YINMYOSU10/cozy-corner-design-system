@@ -4,7 +4,7 @@
     {
       "name": "Fields",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=275-141&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-fields--docs",
@@ -13,7 +13,7 @@
     {
       "name": "Media Container",
       "level": "MOLECULES",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=304-2006&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-media-container--docs",
@@ -22,7 +22,7 @@
     {
       "name": "Avatar",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=576-24&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-avatar--docs",
@@ -31,7 +31,7 @@
     {
       "name": "Logo",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=4-484&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-logo--docs",
@@ -40,7 +40,7 @@
     {
       "name": "Progress Bar",
       "level": "MOLECULES",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=416-46&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressbar--docs",
@@ -49,7 +49,7 @@
     {
       "name": "Divider",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=17-3671&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-divider--docs",
@@ -58,7 +58,7 @@
     {
       "name": "Button / Info",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=445-5037&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-button-info--docs",
@@ -67,7 +67,7 @@
     {
       "name": "Button / Neutral",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=444-6334&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-button-neutral--docs",
@@ -76,7 +76,7 @@
     {
       "name": "Loading ",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=212-690&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-loading--docs",
@@ -85,7 +85,7 @@
     {
       "name": "Breadcrumb",
       "level": "MOLECULES",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=431-68&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-breadcrumb--docs",
@@ -94,7 +94,7 @@
     {
       "name": "Footer",
       "level": "ORGANISMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=500-261&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-footer--docs",
@@ -103,7 +103,7 @@
     {
       "name": "Top Bar",
       "level": "ORGANISMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=576-22718&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-top-bar--docs",
@@ -112,7 +112,7 @@
     {
       "name": "Tag",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=448-13&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-tag--docs",
@@ -121,7 +121,7 @@
     {
       "name": "Progress Loading / Mobile",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=215-983&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressloadingmobile--docs",
@@ -130,7 +130,7 @@
     {
       "name": "Table",
       "level": "ORGANISMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=438-14&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-table--docs",
@@ -139,7 +139,7 @@
     {
       "name": "Toggle",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=299-317&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-toggle--docs",
@@ -148,7 +148,7 @@
     {
       "name": "Button / Destructive",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=444-4114&t=m14RF1dhOS9VJMpn-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-button-destructive--docs",
@@ -157,7 +157,7 @@
     {
       "name": "Header",
       "level": "ORGANISMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=500-95&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-header--docs",
@@ -166,7 +166,7 @@
     {
       "name": "Chip",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=391-37&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-chip--docs",
@@ -175,7 +175,7 @@
     {
       "name": "Badge",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=385-14&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-badge--docs",
@@ -184,7 +184,7 @@
     {
       "name": "Card",
       "level": "MOLECULES",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=381-1660&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-card--docs",
@@ -193,7 +193,7 @@
     {
       "name": "Progress Loading / Website",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=173-4829&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-progressloadingwebsite--docs",
@@ -202,7 +202,7 @@
     {
       "name": "Detail Row",
       "level": "MOLECULES",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=554-25&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-detailrow--docs",
@@ -211,7 +211,7 @@
     {
       "name": "Button / Primary",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=66-459&t=Z3xlh9o7gLQZaqP1-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-button--docs",
@@ -220,7 +220,7 @@
     {
       "name": "Sidebar",
       "level": "ORGANISMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=453-4975&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-sidebar--docs",
@@ -229,7 +229,7 @@
     {
       "name": "Icon",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=48-1251&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-icon--docs",
@@ -238,7 +238,7 @@
     {
       "name": "Link",
       "level": "ATOMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=33-382&t=j17tKJlPybHY0ENX-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-link--docs",
@@ -247,7 +247,7 @@
     {
       "name": "Status Bar",
       "level": "ORGANISMS",
-      "development": "Completed",
+      "development": "Released",
       "releaseVerdict": "Cleared",
       "figma": "https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=525-49&t=BsETB0AMaX9Ix65B-1",
       "productionStorybook": "https://cozy-corner-design-system.vercel.app/?path=/docs/components-statusbar--docs",
