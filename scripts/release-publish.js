@@ -1,4 +1,6 @@
 // Usage: npm run release:publish -- <version> [--dry-run]
+// After a real publish the version bump is committed on release/v<version>, never on the
+// branch you ran this from.
 //
 // package.json carries "private": true so a stray `npm publish` is refused.
 // This script is the only thing that lifts that guard, and only for the one
@@ -101,11 +103,22 @@ async function main() {
   }
 
   if (!dryRun) {
-    step(`Tag v${version}`);
-    await run('git', ['add', PKG]);
-    await run('git', ['commit', '-m', `Release ${version}`]);
-    await run('git', ['tag', '-a', `v${version}`, '-m', `v${version}`]);
-    console.log(`Tag created locally. Push it yourself: git push origin v${version}`);
+    // main only takes PRs from staging, so the version bump never lands on main
+    // directly: it goes on its own branch, which is tagged and left for a PR.
+    step(`Tag v${version} on branch release/v${version}`);
+    const start = (await run('git', ['branch', '--show-current'], { capture: true })).out.trim();
+    await run('git', ['switch', '-c', `release/v${version}`]);
+    try {
+      await run('git', ['add', PKG]);
+      // --allow-empty: on a first release package.json already holds this version.
+      await run('git', ['commit', '--allow-empty', '-m', `Release ${version}`]);
+      await run('git', ['tag', '-a', `v${version}`, '-m', `v${version}`]);
+    } finally {
+      await run('git', ['switch', start], { allowFail: true });
+    }
+    console.log(`Created branch release/v${version} and tag v${version} locally; ${start} is untouched.`);
+    console.log(`Next, by a person or the release agent: git push origin release/v${version} v${version}`);
+    console.log(`then open a PR from release/v${version} into staging (a human merges it).`);
   }
 
   step('Verify: install into an empty folder and render a component');

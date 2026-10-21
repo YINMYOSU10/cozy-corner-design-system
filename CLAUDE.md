@@ -47,6 +47,11 @@ and what to avoid. Stack facts and commands live in `tools.md`.
 - **Engineer** builds and fixes. Never verifies its own work.
 - **QA** tests and reports. Never repairs.
 - **A human approves.** No agent approves its own work, ever.
+  - One exception, granted by the human on 2026-10-21: the **Release** agent may
+    commit, open a PR for and merge its own *release-review report* (a report file,
+    never a component) into `staging`, and write the two registry cells that carry its
+    verdict. It never publishes without the human approving the version, and it never
+    touches `src/`, `tokens/` or `build/`.
 
 ## 5. Common failures to avoid
 
