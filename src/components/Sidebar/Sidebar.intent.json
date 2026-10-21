@@ -1,0 +1,103 @@
+{
+  "use_when": [
+    "as the main navigation on every dashboard screen.",
+    "Group items under section labels, such as Main and Insights.",
+    "Set exactly one item to Active: the page you are on.",
+    "Use an expandable item when a page has sub-pages, and show them as sub-items."
+  ],
+  "dont_use_when": [
+    {
+      "when": "on the customer website or mobile app.",
+      "use_instead": "Header"
+    },
+    {
+      "when": "for actions such as \"Add book\".",
+      "use_instead": "a Button on the page"
+    },
+    {
+      "when": "with more than one level of sub-items.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not mark more than one item as Active.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not use different icons for the same page in different places.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use the same page names as the page titles and the breadcrumb.",
+    "Keep labels short, one to three words, so they do not get cut off.",
+    "Keep about 7 items or fewer per section."
+  ],
+  "variant_intent": {
+    "state=Default": "Resting item (SidebarItem).",
+    "state=Hover": "Pins the hover look (SidebarItem, code).",
+    "state=Active": "Figma: the page you are on; exactly one item.",
+    "state=Focused": "Pins the focus look (SidebarItem, code).",
+    "expand=None": "Renders the item as a link (code).",
+    "expand=Collapsed": "Renders the item as a disclosure button, collapsed (code).",
+    "expand=Expanded": "Renders the item as a disclosure button, expanded (code)."
+  },
+  "placement": [
+    "The Sidebar stays fixed on the left at full height, with the Top Bar and page content to its right."
+  ],
+  "pairs_with": [
+    "Breadcrumb",
+    "Header",
+    "Logo",
+    "Avatar",
+    "TopBar"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderradius-sm",
+    "--borderwidth-1",
+    "--borderwidth-2",
+    "--color-bg-base",
+    "--color-bg-neutral-light",
+    "--color-bg-primary-light",
+    "--color-bg-surfaceprimary",
+    "--color-border-focus",
+    "--color-border-secondary",
+    "--color-icon-bold",
+    "--color-icon-brand",
+    "--color-icon-secondary",
+    "--color-text-bold",
+    "--color-text-brand",
+    "--color-text-primary",
+    "--color-text-secondary",
+    "--cozy-corner-typography-dashboard-body",
+    "--cozy-corner-typography-dashboard-body-large-medium",
+    "--cozy-corner-typography-dashboard-body-semibold",
+    "--cozy-corner-typography-dashboard-body-small",
+    "--cozy-corner-typography-dashboard-body-small-semibold",
+    "--spacing-base",
+    "--spacing-lg",
+    "--spacing-md",
+    "--spacing-sm",
+    "--spacing-xl",
+    "--typography-bodysmall-letterspacing",
+    "--typography-bodysmallsemibold-letterspacing"
+  ],
+  "a11y": [
+    {
+      "fact": "Navigation sits in a <nav> landmark, named \"Main\" by default.",
+      "source": "src/components/Sidebar/Sidebar.tsx:43"
+    },
+    {
+      "fact": "The Active item is marked aria-current=\"page\".",
+      "source": "src/components/Sidebar/SidebarItem.tsx:79"
+    },
+    {
+      "fact": "Expandable items are buttons with aria-expanded.",
+      "source": "src/components/Sidebar/SidebarItem.tsx:93"
+    },
+    {
+      "fact": "Items show a focus ring on keyboard focus.",
+      "source": "src/components/Sidebar/Sidebar.css:139"
+    }
+  ]
+}

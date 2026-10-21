@@ -1,0 +1,55 @@
+{
+  "use_when": [
+    "to list short facts about one thing, such as the shop’s address, hours and restock day.",
+    "in Read drawers and order details, where each fact has a name and a value.",
+    "Stack rows in a list and turn off Show divider on the last row."
+  ],
+  "dont_use_when": [
+    {
+      "when": "for data people sort or compare across many items.",
+      "use_instead": "Table"
+    },
+    {
+      "when": "for values people can edit.",
+      "use_instead": "Fields"
+    },
+    {
+      "when": "for long paragraphs. Keep values to one short line.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not mix Mobile and Website rows in one list.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep labels to one or two words, such as Address or Hours.",
+    "Pick Platform to match the screen: Mobile in the app, Website on the website.",
+    "Write values the way readers say them, such as “Tue–Sun, 10–7”."
+  ],
+  "variant_intent": {
+    "platform=Mobile": "Figma: Mobile in the app. Code: spacing/md vertical padding.",
+    "platform=Website": "Figma: Website on the website. Code: spacing/lg vertical padding."
+  },
+  "placement": [
+    "Stack rows in a list and turn off Show divider on the last row."
+  ],
+  "pairs_with": [
+    "Footer",
+    "Table",
+    "Divider"
+  ],
+  "required_tokens": [
+    "--color-bg-base",
+    "--color-text-primary",
+    "--color-text-secondary",
+    "--spacing-lg",
+    "--spacing-md",
+    "--typography-body-fontfamily",
+    "--typography-body-fontsize",
+    "--typography-body-fontweight",
+    "--typography-body-letterspacing",
+    "--typography-body-lineheight"
+  ],
+  "a11y": []
+}

@@ -1,0 +1,113 @@
+{
+  "use_when": [
+    "To collect short text such as a name, email, or phone number",
+    "Form Input for forms with a label and helper text",
+    "Text Input for longer answers like notes or messages",
+    "Search to let people look up books or content",
+    "When input needs clear success or error feedback"
+  ],
+  "dont_use_when": [
+    {
+      "when": "When there are only a few fixed choices.",
+      "use_instead": "a selection component"
+    },
+    {
+      "when": "To display information that can't be edited.",
+      "use_instead": "plain text"
+    },
+    {
+      "when": "For dates or numbers where a picker is easier.",
+      "use_instead": "a picker"
+    }
+  ],
+  "best_practice": [
+    "Show a label in forms. Don't use the placeholder as a replacement for it.",
+    "Keep the placeholder as a short example, not an instruction.",
+    "Use helper text to explain the format before people type, and error text to explain how to fix a problem after."
+  ],
+  "variant_intent": {
+    "type=Form Input": "Figma: forms with a label and helper text.",
+    "type=Text Input": "Figma: longer answers like notes or messages.",
+    "type=Search Input": "Figma: Search, to let people look up books or content.",
+    "type=Search Input with Button": "Renders the search input with a button (code).",
+    "size=sm": "Renders the small size (code).",
+    "size=Lg": "Renders the large size (code).",
+    "state=Default": "Resting field.",
+    "state=Hover": "Pins the hover look (code).",
+    "state=Active": "Figma \"Active\": focused, with typed text.",
+    "state=Success": "Figma: Success tint; needs helper text, and ideally an icon, to say what happened.",
+    "state=Error": "Figma: Error tint; needs helper text, and ideally an icon, to say what happened. Code also sets aria-invalid.",
+    "state=Disable": "Disables the control. Figma: disabled fields are skipped by the keyboard, so do not use them for important information."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Button",
+    "Link",
+    "Icon",
+    "TopBar"
+  ],
+  "required_tokens": [
+    "--borderradius-sm",
+    "--borderwidth-05",
+    "--borderwidth-1",
+    "--color-bg-gray-light",
+    "--color-bg-inverse",
+    "--color-bg-negative-light",
+    "--color-bg-positive-light",
+    "--color-bg-surfaceprimary",
+    "--color-bg-surfacesecondary",
+    "--color-border-gray-light",
+    "--color-border-negative-bold",
+    "--color-border-positive-bold",
+    "--color-border-primary",
+    "--color-border-secondary",
+    "--color-icon-disabled",
+    "--color-icon-secondary",
+    "--color-text-bold",
+    "--color-text-disabled",
+    "--color-text-gray-light",
+    "--color-text-negative",
+    "--color-text-positive",
+    "--color-text-primary",
+    "--color-text-secondary",
+    "--cozy-corner-typography-label",
+    "--cozy-corner-typography-label-large",
+    "--cozy-corner-typography-label-small",
+    "--cozy-corner-typography-mobile-body",
+    "--cozy-corner-typography-mobile-body-small",
+    "--spacing-base",
+    "--spacing-lg",
+    "--spacing-sm",
+    "--typography-body-lineheight",
+    "--typography-bodysmall-lineheight",
+    "--typography-label-letterspacing",
+    "--typography-labellarge-letterspacing",
+    "--typography-labelsmall-letterspacing"
+  ],
+  "a11y": [
+    {
+      "fact": "The label is a <label> tied to the control with htmlFor.",
+      "source": "src/components/Fields/FieldParts.tsx:12"
+    },
+    {
+      "fact": "The Error state sets aria-invalid on the control.",
+      "source": "src/components/Fields/Fields.tsx:123"
+    },
+    {
+      "fact": "The control points at its helper text with aria-describedby.",
+      "source": "src/components/Fields/Fields.tsx:124"
+    },
+    {
+      "fact": "When the label is hidden the control gets an aria-label.",
+      "source": "src/components/Fields/Fields.tsx:125"
+    },
+    {
+      "fact": "Search types are wrapped in role=\"search\".",
+      "source": "src/components/Fields/Fields.tsx:163"
+    },
+    {
+      "fact": "The Disable state disables the control natively.",
+      "source": "src/components/Fields/Fields.tsx:122"
+    }
+  ]
+}

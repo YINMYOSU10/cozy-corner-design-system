@@ -1,0 +1,65 @@
+{
+  "use_when": [
+    "Loading Animation_2 for short waits like loading more content or a quick refresh",
+    "When submitting a form or saving changes",
+    "When fetching data or moving between screens"
+  ],
+  "dont_use_when": [
+    {
+      "when": "For instant actions that finish in under a second, including a mood result that appears right away.",
+      "use_instead": ""
+    },
+    {
+      "when": "To decorate a screen when nothing is actually loading.",
+      "use_instead": ""
+    },
+    {
+      "when": "As a stack of several loaders on the same screen.",
+      "use_instead": ""
+    },
+    {
+      "when": "For errors or empty states.",
+      "use_instead": "a message"
+    },
+    {
+      "when": "For a wait with no end.",
+      "use_instead": "an error or retry state"
+    }
+  ],
+  "best_practice": [
+    "Show loading only when the wait is noticeable (roughly over 1 second).",
+    "Use Progress Loading when the wait has a clear start and finish, and let it end on the green check so users know it worked.",
+    "Use Loading Animation_2 for short, open-ended waits where you can't show progress."
+  ],
+  "variant_intent": {
+    "step=1": "First of seven steps; the first dot is dark and rests (code).",
+    "step=2": "First dot dark and lifted (code).",
+    "step=3": "First dot dark and rests (code).",
+    "step=4": "Second dot dark and lifted (code).",
+    "step=5": "Second dot dark and rests (code).",
+    "step=6": "Third dot dark and lifted (code).",
+    "step=7": "Third dot dark and rests (code)."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Card"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--color-bg-inverse",
+    "--color-bg-surfacesecondary",
+    "--spacing-6xl",
+    "--spacing-base",
+    "--spacing-sm"
+  ],
+  "a11y": [
+    {
+      "fact": "Has role=\"status\" with an aria-label (\"Loading\" by default).",
+      "source": "src/components/Loading/Loading.tsx:46"
+    },
+    {
+      "fact": "Cycling steps are disabled under prefers-reduced-motion.",
+      "source": "src/components/Loading/Loading.css:62"
+    }
+  ]
+}

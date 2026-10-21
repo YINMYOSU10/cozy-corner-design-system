@@ -1,0 +1,40 @@
+{
+  "use_when": [],
+  "dont_use_when": [],
+  "best_practice": [],
+  "variant_intent": {
+    "ratio=5:3": "Renders the landscape frame (code).",
+    "ratio=1:1": "Renders the square frame (code).",
+    "device=Website": "Renders the Website frame size (code).",
+    "device=Mobile": "Renders the Mobile frame size (code).",
+    "type=Landscape": "Descriptive; defaults from ratio 5:3 (code).",
+    "type=Square": "Descriptive; defaults from ratio 1:1 (code).",
+    "state=Default": "Lets hover and keyboard focus happen for real (code).",
+    "state=Hover": "Pins the hover look, for docs and QA (code).",
+    "state=Focus": "Pins the focus look, for docs and QA (code)."
+  },
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--borderradius-sm",
+    "--borderwidth-05",
+    "--borderwidth-1",
+    "--color-bg-overlay",
+    "--color-border-neutral-light",
+    "--color-border-primary"
+  ],
+  "a11y": [
+    {
+      "fact": "The container takes keyboard focus (tabIndex defaults to 0).",
+      "source": "src/components/MediaContainer/MediaContainer.tsx:60"
+    },
+    {
+      "fact": "The image takes its alternative text from the alt prop; an empty alt marks it decorative.",
+      "source": "src/components/MediaContainer/MediaContainer.tsx:70"
+    },
+    {
+      "fact": "Shows a focus stroke on keyboard focus.",
+      "source": "src/components/MediaContainer/MediaContainer.css:92"
+    }
+  ]
+}

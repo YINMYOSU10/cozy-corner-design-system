@@ -1,0 +1,77 @@
+{
+  "use_when": [
+    "to show where someone is in a flow with a fixed number of steps.",
+    "Fill the completed steps and the current step. Leave upcoming steps light.",
+    "Pair the bar with a text label, such as \"Step 2 of 5\".",
+    "Place it at the top of the content, right under the header."
+  ],
+  "dont_use_when": [
+    {
+      "when": "for loading or waiting.",
+      "use_instead": "Loading"
+    },
+    {
+      "when": "when the number of steps is unknown or can change.",
+      "use_instead": ""
+    },
+    {
+      "when": "for more than about 7 steps. Group the steps instead.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not make the segments clickable. A progress bar is not navigation.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not hide the label when the bar is the only progress cue.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep the same total number of steps across the whole flow.",
+    "Write the label as \"Step X of Y\", then a short task.",
+    "Stretch the bar to the width of the content column."
+  ],
+  "variant_intent": {
+    "step=1": "Current step 1 of 5; segment 1 is filled.",
+    "step=2": "Current step 2 of 5; segments 1 to 2 are filled.",
+    "step=3": "Current step 3 of 5; segments 1 to 3 are filled.",
+    "step=4": "Current step 4 of 5; segments 1 to 4 are filled.",
+    "step=5": "Current step 5 of 5; all segments are filled."
+  },
+  "placement": [
+    "Place it at the top of the content, right under the header."
+  ],
+  "pairs_with": [
+    "Chip",
+    "Button",
+    "Loading"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--color-bg-primary-idle",
+    "--color-bg-primary-light",
+    "--color-twotone-gold-foreground",
+    "--spacing-base",
+    "--spacing-sm",
+    "--typography-bodysmall-fontfamily",
+    "--typography-bodysmall-fontsize",
+    "--typography-bodysmall-fontweight",
+    "--typography-bodysmall-letterspacing",
+    "--typography-bodysmall-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "Has role=\"progressbar\" with aria-valuemin, aria-valuemax and aria-valuenow for the current and total steps.",
+      "source": "src/components/ProgressBar/ProgressBar.tsx:36"
+    },
+    {
+      "fact": "The label is exposed as aria-label and aria-valuetext.",
+      "source": "src/components/ProgressBar/ProgressBar.tsx:37"
+    },
+    {
+      "fact": "The text label is rendered visibly unless showLabel is false.",
+      "source": "src/components/ProgressBar/ProgressBar.tsx:45"
+    }
+  ]
+}

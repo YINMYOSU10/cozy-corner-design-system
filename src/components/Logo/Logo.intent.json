@@ -1,0 +1,72 @@
+{
+  "use_when": [
+    "to identify the Cozy Corner brand on a page or screen.",
+    "Use the full logo (glyph and wordmark) wherever there is room, such as the Header and Footer.",
+    "Use the glyph only in tight spaces, such as a collapsed Sidebar.",
+    "Use the wordmark only when the glyph already appears nearby.",
+    "Use the Website platform for customer-facing pages and the Dashboard platform for dashboard screens.",
+    "Use the logo on light backgrounds."
+  ],
+  "dont_use_when": [
+    {
+      "when": "as a decoration or a repeating background pattern.",
+      "use_instead": ""
+    },
+    {
+      "when": "if it needs to be stretched, rotated or recolored.",
+      "use_instead": ""
+    },
+    {
+      "when": "with both the glyph and the wordmark turned off.",
+      "use_instead": ""
+    },
+    {
+      "when": "on dark or busy backgrounds.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not place other elements inside the clear space.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep the clear space free on every side.",
+    "Use one logo per screen."
+  ],
+  "variant_intent": {
+    "platform=Website": "Figma: customer-facing pages.",
+    "platform=Dashboard": "Figma: dashboard screens."
+  },
+  "placement": [
+    "Header and Footer (full logo); a collapsed Sidebar (glyph only)."
+  ],
+  "pairs_with": [
+    "Sidebar",
+    "Header",
+    "Footer"
+  ],
+  "required_tokens": [
+    "--borderradius-sm",
+    "--color-accent-gold-default",
+    "--color-bg-inverse",
+    "--color-bg-negative-lightfocused",
+    "--color-icon-primary",
+    "--color-text-primary",
+    "--spacing-sm",
+    "--typography-logo-fontfamily",
+    "--typography-logo-fontsize",
+    "--typography-logo-fontweight",
+    "--typography-logo-letterspacing",
+    "--typography-logo-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "With the wordmark hidden, the glyph alone is exposed as an image named \"Cozy Corner\" (role=\"img\", aria-label).",
+      "source": "src/components/Logo/Logo.tsx:34"
+    },
+    {
+      "fact": "The glyph SVG is hidden from assistive tech.",
+      "source": "src/components/Logo/LogoGlyph.tsx:71"
+    }
+  ]
+}

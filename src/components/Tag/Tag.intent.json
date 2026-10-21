@@ -1,0 +1,83 @@
+{
+  "use_when": [
+    "to describe an item with keywords, such as cozy or mystery.",
+    "when an item can have several labels at once.",
+    "Use Small tags in tables and lists, and Medium tags in forms and filters.",
+    "Turn on Show remove when people can delete the tag, such as an applied filter."
+  ],
+  "dont_use_when": [
+    {
+      "when": "to show a status.",
+      "use_instead": "Badge"
+    },
+    {
+      "when": "as a selectable option.",
+      "use_instead": "Chip"
+    },
+    {
+      "when": "to start an action.",
+      "use_instead": "Button"
+    },
+    {
+      "when": "Do not give tags colors. Tags are always neutral.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not show more than 3 tags in a table cell.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Write tags in lowercase, one or two words.",
+    "Use the same word for the same idea everywhere, such as always “cozy”, never “cosy”.",
+    "Keep 8px between tags in a row."
+  ],
+  "variant_intent": {
+    "size=Small": "Figma: tags in tables and lists.",
+    "size=Medium": "Figma: tags in forms and filters.",
+    "showRemove=true": "Figma: when people can delete the tag, such as an applied filter.",
+    "showRemove=false": "Renders the label only (code default)."
+  },
+  "placement": [
+    "Keep 8px between tags in a row."
+  ],
+  "pairs_with": [
+    "Badge",
+    "Chip",
+    "Table",
+    "Card"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderwidth-2",
+    "--color-bg-gray-light",
+    "--color-border-focus",
+    "--color-icon-disabled",
+    "--color-icon-gray",
+    "--color-text-gray-default",
+    "--fontfamily-inter",
+    "--fontsize-12",
+    "--fontsize-14",
+    "--fontweight-semibold",
+    "--lineheight-16",
+    "--lineheight-20",
+    "--spacing-3xl",
+    "--spacing-base",
+    "--spacing-md",
+    "--spacing-sm"
+  ],
+  "a11y": [
+    {
+      "fact": "The remove control is a native <button> labelled \"Remove <label>\".",
+      "source": "src/components/Tag/Tag.tsx:47"
+    },
+    {
+      "fact": "The remove button can be disabled natively (removeDisabled).",
+      "source": "src/components/Tag/Tag.tsx:51"
+    },
+    {
+      "fact": "The remove button shows a focus ring on keyboard focus.",
+      "source": "src/components/Tag/Tag.css:60"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "use_when": [
+    "to let people choose from a small set of options, such as Pace, Feeling or Tone.",
+    "Use single select when only one answer fits. Selecting one chip unselects the others.",
+    "Use multi select when more than one answer can apply.",
+    "Place chips under a short question or label, so people know what they are choosing."
+  ],
+  "dont_use_when": [
+    {
+      "when": "to go to another page.",
+      "use_instead": "a link or the header navigation"
+    },
+    {
+      "when": "to show a status.",
+      "use_instead": "Badge"
+    },
+    {
+      "when": "to start an action, such as submitting a form.",
+      "use_instead": "Button"
+    },
+    {
+      "when": "Do not put more than about 8 chips in one group.",
+      "use_instead": "a dropdown"
+    },
+    {
+      "when": "Do not use the selected color for anything except the chosen option.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep labels short, one to three words.",
+    "Use the same chip on mobile and website. It is 40px tall on both.",
+    "Keep the same options in the same order on every platform."
+  ],
+  "variant_intent": {
+    "selected=true": "Figma: turn Selected on for the chosen option.",
+    "selected=false": "An option that is not chosen.",
+    "state=Default": "Lets hover and focus happen naturally (code).",
+    "state=Hover": "Pins the hover look, for docs and QA (code).",
+    "state=Focused": "Pins the focus look, for docs and QA (code).",
+    "state=Disabled": "Disables the chip (code)."
+  },
+  "placement": [
+    "Place chips under a short question or label, so people know what they are choosing."
+  ],
+  "pairs_with": [
+    "Badge",
+    "Button",
+    "Link",
+    "ProgressBar"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderwidth-2",
+    "--color-bg-base",
+    "--color-bg-disabled",
+    "--color-bg-primary-focused",
+    "--color-bg-primary-hovered",
+    "--color-bg-primary-idle",
+    "--color-bg-primary-light",
+    "--color-bg-primary-lightfocused",
+    "--color-bg-primary-lighthovered",
+    "--color-border-focus",
+    "--color-text-disabled",
+    "--color-text-inverse",
+    "--color-text-primary",
+    "--spacing-lg",
+    "--typography-label-fontfamily",
+    "--typography-label-fontsize",
+    "--typography-label-fontweight",
+    "--typography-label-letterspacing",
+    "--typography-label-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <button> with aria-pressed set from selected.",
+      "source": "src/components/Chip/Chip.tsx:34"
+    },
+    {
+      "fact": "A disabled chip is natively disabled.",
+      "source": "src/components/Chip/Chip.tsx:39"
+    },
+    {
+      "fact": "Shows a focus ring on keyboard focus.",
+      "source": "src/components/Chip/Chip.css:64"
+    }
+  ]
+}
