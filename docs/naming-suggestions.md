@@ -5,6 +5,8 @@ and moves the clashing one aside; the suggestion is for the design team.
 
 ## Button / Primary (66:459)
 
+**Status:** Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
+
 | Figma property | Clashes with | What code does now | Suggestion |
 |---|---|---|---|
 | `Type` (Default / Outline) | The HTML `<button type>` attribute (button / submit / reset) | The `type` prop is Figma's Type; the HTML attribute is `htmlType` | Rename the Figma property to `Variant` or `Appearance`, so `type` can mean the HTML button type, as developers expect |
@@ -12,6 +14,8 @@ and moves the clashing one aside; the suggestion is for the design team.
 | `Icon-style` value `none` | The other values are capitalised (`Both icons`, `Icon only`) | Kept as `none` | Use `None`, and capitalise `leading icon` / `trailing icon` to match |
 
 ## Fields (275:141)
+
+**Status:** Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
 
 | Figma property | Clashes with | What code does now | Suggestion |
 |---|---|---|---|
@@ -23,6 +27,8 @@ and moves the clashing one aside; the suggestion is for the design team.
 | Box layer named `Button / primary` | The real `Button / Primary` component | Built as the `FieldBox` subcomponent | Rename the layer to `Input box` |
 
 ## Progress Loading / App (215:983)
+
+**Status:** Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
 
 | Figma name | Clashes with | What code does now | Suggestion |
 |---|---|---|---|

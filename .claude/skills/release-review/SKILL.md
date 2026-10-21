@@ -29,14 +29,15 @@ A gate is pass or fail. Any failed gate makes the verdict Blocked.
    `tokens/` and `build/` carry no hand edits (compare with git).
 4. **Public surface decided** — every component folder is either exported from
    `src/index.ts` or recorded as internal, with a reason. None is undecided.
-5. **Names final** — `docs/naming-suggestions.md` has no open suggestion that touches a
-   name in `src/index.ts`, and prop names match Figma property names.
+5. **Names final** — every suggestion in `docs/naming-suggestions.md` that touches a name
+   in `src/index.ts` is closed: either applied, or marked **Accepted** with a date and who
+   decided. An unmarked suggestion is open. Prop names match Figma property names.
 6. **States complete** — every component covers the states the product uses (default,
    hover, pressed, focus, disabled, loading, error, where applicable) and every variant
    and state has a story.
-7. **Version meaning known** — the version being released, and what it promises
-   consumers, is written down by a human (release PR or the Versioning page). If it is
-   not written, the gate fails. Do not infer it.
+7. **Version meaning known** — what a version number promises consumers is written down
+   by a human in `VERSIONING.md` (or the release PR). If it is not written, the gate
+   fails. Do not infer it.
 
 ### 3 · The 6 checks
 Checks look at the intent files. They run across every component.
@@ -54,9 +55,15 @@ Checks look at the intent files. They run across every component.
    `variant_intent` entry.
 6. **No overlap** — no two components claim the same job in `use_when`. Name the pair.
 
+### Waivers
+A human may waive a **check** (never a gate) in `docs/release-waivers.md`, naming the check
+number, the components, the reason, who decided, the date, and the version it covers. A
+waived check is reported as **WAIVED** with a pointer to that entry, never as PASS, and it
+does not block. A waiver covers only the version it names. You never write a waiver.
+
 ### 4 · Verdict
-- **Cleared** — every gate passes and every check passes, warnings aside.
-- **Blocked** — any gate fails or any non-warning check fails. List each reason.
+- **Cleared** — every gate passes and every check passes or is WAIVED, warnings aside.
+- **Blocked** — any gate fails or any non-warning, non-waived check fails. List each reason.
 
 ### 5 · Write the report
 Write `reports/release-review-<short-commit>.md` at the reviewed commit: the commit,
