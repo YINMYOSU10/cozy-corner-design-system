@@ -1,7 +1,33 @@
 {
-  "use_when": [],
-  "dont_use_when": [],
-  "best_practice": [],
+  "use_when": [
+    "To show one image or video in a fixed frame, landscape (5:3) or square (1:1)",
+    "When the media should fill the frame, cropped to cover",
+    "When the frame should be focusable and respond to hover, such as a clickable media tile"
+  ],
+  "dont_use_when": [
+    {
+      "when": "For a person's photo or initials.",
+      "use_instead": "Avatar"
+    },
+    {
+      "when": "For an icon.",
+      "use_instead": "Icon"
+    },
+    {
+      "when": "For the brand mark.",
+      "use_instead": "Logo"
+    },
+    {
+      "when": "When the whole image must stay visible, since edges get cropped.",
+      "use_instead": "a plain, uncropped image"
+    }
+  ],
+  "best_practice": [
+    "Pick the ratio to suit the subject: 5:3 for scenes, 1:1 for objects or portraits",
+    "Use the Website size on web and the Mobile size on mobile",
+    "Keep the key part of the image away from the edges, because they are cropped",
+    "Write alt text that describes the image, or leave it empty if it is purely decorative"
+  ],
   "variant_intent": {
     "ratio=5:3": "Renders the landscape frame (code).",
     "ratio=1:1": "Renders the square frame (code).",
@@ -14,7 +40,12 @@
     "state=Focus": "Pins the focus look, for docs and QA (code)."
   },
   "placement": [],
-  "pairs_with": [],
+  "pairs_with": [
+    "Card",
+    "Avatar",
+    "Logo",
+    "Icon"
+  ],
   "required_tokens": [
     "--borderradius-sm",
     "--borderwidth-05",
