@@ -1,0 +1,59 @@
+{
+  "use_when": [
+    "at the very top of every mobile app screen and mockup.",
+    "Use Light mode on light screens and Dark mode on dark screens, such as the Blind Date flow.",
+    "Keep the time at 9:41 in mockups so screens look consistent."
+  ],
+  "dont_use_when": [
+    {
+      "when": "on website or dashboard screens.",
+      "use_instead": ""
+    },
+    {
+      "when": "inside cards, dialogs or drawers.",
+      "use_instead": ""
+    },
+    {
+      "when": "as a place for app content or buttons.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not change the order of the indicators.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Match the status bar background to the screen behind it.",
+    "Keep 20px of space on both sides, the same as the app screens.",
+    "Swap the icons only to show special states, such as low battery."
+  ],
+  "variant_intent": {
+    "mode=Light": "Figma: on light screens.",
+    "mode=Dark": "Figma: on dark screens, such as the Blind Date flow."
+  },
+  "placement": [
+    "At the very top of every mobile app screen and mockup."
+  ],
+  "pairs_with": [
+    "Header",
+    "Icon"
+  ],
+  "required_tokens": [
+    "--color-bg-base",
+    "--color-bg-inverse",
+    "--color-text-bold",
+    "--color-text-inverse",
+    "--spacing-xl",
+    "--typography-labellarge-fontfamily",
+    "--typography-labellarge-fontsize",
+    "--typography-labellarge-fontweight",
+    "--typography-labellarge-letterspacing",
+    "--typography-labellarge-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "The whole bar is hidden from assistive tech (aria-hidden).",
+      "source": "src/components/StatusBar/StatusBar.tsx:40"
+    }
+  ]
+}

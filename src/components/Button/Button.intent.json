@@ -1,0 +1,115 @@
+{
+  "use_when": [
+    "to start an action, such as saving, continuing or submitting.",
+    "Use a Default button for the main action, once per section.",
+    "Use an Outline button for secondary actions, such as Cancel or Back.",
+    "Use a Semantic button when color should support the meaning, such as Positive to confirm or Negative to delete."
+  ],
+  "dont_use_when": [
+    {
+      "when": "to move to another page from inside a sentence.",
+      "use_instead": "Link"
+    },
+    {
+      "when": "as decoration or as a label.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not place two Default buttons side by side.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not mix Rounded and Pill shapes on one screen.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not write a long sentence as the label.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep labels short and start with a verb, for example \"Save changes\".",
+    "Use icon-only buttons only for icons that are easy to recognize.",
+    "Use Disabled only when the action is temporarily unavailable."
+  ],
+  "variant_intent": {
+    "type=Default": "Figma: the main action, once per section.",
+    "type=Outline": "Figma: secondary actions, such as Cancel or Back.",
+    "shape=Rounded": "Renders the rounded shape. Figma: do not mix Rounded and Pill shapes on one screen.",
+    "shape=Pill": "Renders the pill shape. Figma: do not mix Rounded and Pill shapes on one screen.",
+    "size=32": "Button height of 32px.",
+    "size=48": "Button height of 48px.",
+    "size=56": "Button height of 56px.",
+    "iconStyle=none": "Renders the label only.",
+    "iconStyle=leading icon": "Renders an icon before the label.",
+    "iconStyle=trailing icon": "Renders an icon after the label.",
+    "iconStyle=Both icons": "Renders an icon before and after the label.",
+    "iconStyle=Icon only": "Renders the icon alone; labelText becomes the accessible name. Figma: use icon-only buttons only for icons that are easy to recognize.",
+    "state=Default": "Lets hover, press and focus happen naturally (code).",
+    "state=Hover": "Pins the hover look, for docs and QA (code).",
+    "state=Press": "Pins the pressed look, for docs and QA (code).",
+    "state=Focus": "Pins the focus look, for docs and QA (code).",
+    "state=Disable": "Disables the button. Figma: use Disabled only when the action is temporarily unavailable."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Link",
+    "Icon",
+    "ButtonDestructive",
+    "ButtonInfo",
+    "ButtonNeutral"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderradius-sm",
+    "--borderradius-xs",
+    "--borderwidth-0",
+    "--borderwidth-1",
+    "--borderwidth-2",
+    "--color-bg-base",
+    "--color-bg-disabled",
+    "--color-bg-primary-focused",
+    "--color-bg-primary-hovered",
+    "--color-bg-primary-idle",
+    "--color-bg-primary-light",
+    "--color-bg-primary-lighthovered",
+    "--color-bg-primary-pressed",
+    "--color-border-brand-bold",
+    "--color-border-brand-default",
+    "--color-border-focus",
+    "--color-border-secondary",
+    "--color-icon-brand",
+    "--color-icon-disabled",
+    "--color-icon-inverse",
+    "--color-text-brand",
+    "--color-text-disabled",
+    "--color-text-inverse",
+    "--cozy-corner-typography-body-small",
+    "--cozy-corner-typography-label-large",
+    "--size-button-lg",
+    "--size-button-md",
+    "--size-button-sm",
+    "--spacing-md",
+    "--spacing-sm",
+    "--typography-bodysmall-letterspacing",
+    "--typography-labellarge-letterspacing"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <button> element, so it takes keyboard focus and Enter/Space activate it.",
+      "source": "src/components/Button/Button.tsx:64"
+    },
+    {
+      "fact": "A disabled button (state=\"Disable\" or the disabled prop) is natively disabled.",
+      "source": "src/components/Button/Button.tsx:67"
+    },
+    {
+      "fact": "An icon-only button gets aria-label from labelText unless aria-label is passed.",
+      "source": "src/components/Button/Button.tsx:68"
+    },
+    {
+      "fact": "Shows a focus ring (2px page-colour gap, then 2px focus colour) on keyboard focus.",
+      "source": "src/components/Button/Button.css:105"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "use_when": [
+    "to take people to another page, such as “View all books”",
+    "to take people to another part of the same page",
+    "inside a sentence, where a full button would be too heavy"
+  ],
+  "dont_use_when": [
+    {
+      "when": "for the main action on a screen.",
+      "use_instead": "Button"
+    },
+    {
+      "when": "for an action that changes data, such as “Add to cart”.",
+      "use_instead": "Button"
+    },
+    {
+      "when": "with long text. Keep the label short and clear.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use short link text that says where the link goes, such as \"View all books\".",
+    "Don't use \"click here\" or \"read more\" on their own.",
+    "Keep the underline, so links don't depend on color alone."
+  ],
+  "variant_intent": {
+    "type=Link": "Plain text link (code).",
+    "type=With icon": "Link with a leading and/or trailing icon (code).",
+    "size=L": "The Link text style (code).",
+    "size=S": "The Link small text style (code).",
+    "state=Default": "Lets hover, focus and visited happen naturally (code).",
+    "state=Hover": "Pins the hover look, for docs and QA (code).",
+    "state=Visited": "Pins the visited look, for docs and QA (code).",
+    "state=Disable": "Makes the link inert: no href, aria-disabled, not focusable (code)."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Button",
+    "Breadcrumb",
+    "Footer",
+    "Header",
+    "Card"
+  ],
+  "required_tokens": [
+    "--borderradius-xs",
+    "--borderwidth-2",
+    "--color-border-focus",
+    "--color-icon-brand",
+    "--color-icon-disabled",
+    "--color-icon-primary",
+    "--color-icon-secondary",
+    "--color-text-brand",
+    "--color-text-disabled",
+    "--color-text-primary",
+    "--color-text-secondary",
+    "--cozy-corner-typography-link",
+    "--cozy-corner-typography-link-small",
+    "--spacing-sm",
+    "--typography-link-letterspacing",
+    "--typography-linksmall-letterspacing"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <a>; keyboard users reach it with Tab when it has an href.",
+      "source": "src/components/Link/Link.tsx:66"
+    },
+    {
+      "fact": "A disabled link drops its href and sets aria-disabled, so it is not focusable or followable.",
+      "source": "src/components/Link/Link.tsx:70"
+    },
+    {
+      "fact": "Shows a focus outline on keyboard focus.",
+      "source": "src/components/Link/Link.css:67"
+    }
+  ]
+}

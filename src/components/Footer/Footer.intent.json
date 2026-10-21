@@ -1,0 +1,83 @@
+{
+  "use_when": [
+    "at the bottom of every page on the reader website.",
+    "to repeat links readers may need again, such as Home or Visit.",
+    "to show the shop’s address and opening hours."
+  ],
+  "dont_use_when": [
+    {
+      "when": "in the staff dashboard.",
+      "use_instead": ""
+    },
+    {
+      "when": "as the main navigation.",
+      "use_instead": "Header"
+    },
+    {
+      "when": "for long text or forms.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not add more than 4 columns.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Write column headings in capitals, one or two words.",
+    "Keep 2 to 4 links in each column.",
+    "Keep the address and opening hours in the Visit us column up to date."
+  ],
+  "variant_intent": {
+    "platform=Website": "Renders the Website footer (code). Figma: at the bottom of every page on the reader website.",
+    "platform=Mobile": "Renders the Mobile footer (code)."
+  },
+  "placement": [
+    "At the bottom of every page on the reader website."
+  ],
+  "pairs_with": [
+    "Header",
+    "Link",
+    "Logo"
+  ],
+  "required_tokens": [
+    "--color-bg-base",
+    "--color-text-brand",
+    "--color-text-secondary",
+    "--spacing-3xl",
+    "--spacing-5xl",
+    "--spacing-jumbo",
+    "--spacing-lg",
+    "--spacing-md",
+    "--spacing-xl",
+    "--spacing-xxl",
+    "--typography-body-fontfamily",
+    "--typography-body-fontsize",
+    "--typography-body-fontweight",
+    "--typography-body-letterspacing",
+    "--typography-body-lineheight",
+    "--typography-bodysmall-fontfamily",
+    "--typography-bodysmall-fontsize",
+    "--typography-bodysmall-fontweight",
+    "--typography-bodysmall-letterspacing",
+    "--typography-bodysmall-lineheight",
+    "--typography-label-fontfamily",
+    "--typography-label-fontsize",
+    "--typography-label-fontweight",
+    "--typography-label-letterspacing",
+    "--typography-label-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <footer> element.",
+      "source": "src/components/Footer/Footer.tsx:35"
+    },
+    {
+      "fact": "Each column is a <nav> named by its heading (aria-labelledby).",
+      "source": "src/components/Footer/FooterColumn.tsx:17"
+    },
+    {
+      "fact": "Column links are a list (<ul>/<li>).",
+      "source": "src/components/Footer/FooterColumn.tsx:26"
+    }
+  ]
+}

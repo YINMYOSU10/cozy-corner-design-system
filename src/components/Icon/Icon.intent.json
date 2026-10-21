@@ -1,0 +1,63 @@
+{
+  "use_when": [
+    "to show an icon at a consistent size and shape",
+    "Standard for light, everyday icons",
+    "Outlined when the icon should stand out as its own element",
+    "Size 12 or 16 in tight spaces, 24 for everyday use, 32 for emphasis"
+  ],
+  "dont_use_when": [
+    {
+      "when": "for an action people can press.",
+      "use_instead": "an icon-only Button"
+    },
+    {
+      "when": "to hold text or more than one icon.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not stretch it or draw a custom size.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use the swapIcon property to change the icon. Don't detach.",
+    "Use the same Type and Shape within one group of icons.",
+    "Put one icon in each container.",
+    "Pair the icon with a visible label when the meaning isn't obvious."
+  ],
+  "variant_intent": {
+    "size=12": "Figma: tight spaces.",
+    "size=16": "Figma: tight spaces.",
+    "size=24": "Figma: everyday use.",
+    "size=32": "Figma: emphasis.",
+    "type=Standard": "Figma: light, everyday icons.",
+    "type=Outlined": "Figma: when the icon should stand out as its own element.",
+    "shape=Rounded": "Renders the rounded-corner frame (code).",
+    "shape=Circle": "Renders the circular frame (code)."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Button",
+    "Header",
+    "Sidebar",
+    "Card"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderradius-xs",
+    "--borderwidth-1",
+    "--color-bg-base",
+    "--color-border-neutral-default",
+    "--color-icon-secondary"
+  ],
+  "a11y": [
+    {
+      "fact": "Without a label the icon is hidden from assistive tech (aria-hidden).",
+      "source": "src/components/Icon/Icon.tsx:45"
+    },
+    {
+      "fact": "With a label the icon is announced as an image named by the label (role=\"img\", aria-label).",
+      "source": "src/components/Icon/Icon.tsx:45"
+    }
+  ]
+}

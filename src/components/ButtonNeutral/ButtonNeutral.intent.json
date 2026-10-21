@@ -1,0 +1,49 @@
+{
+  "use_when": [],
+  "dont_use_when": [],
+  "best_practice": [],
+  "variant_intent": {
+    "type=Default": "Renders the solid style in the neutral colours (code).",
+    "type=Outline": "Renders the outline style in the neutral colours (code).",
+    "shape=Rounded": "Renders the rounded shape. Figma: do not mix Rounded and Pill shapes on one screen.",
+    "shape=Pill": "Renders the pill shape. Figma: do not mix Rounded and Pill shapes on one screen.",
+    "size=32": "Button height of 32px.",
+    "size=48": "Button height of 48px.",
+    "size=56": "Button height of 56px.",
+    "iconStyle=none": "Renders the label only.",
+    "iconStyle=leading icon": "Renders an icon before the label.",
+    "iconStyle=trailing icon": "Renders an icon after the label.",
+    "iconStyle=Both icons": "Renders an icon before and after the label.",
+    "iconStyle=Icon only": "Renders the icon alone; labelText becomes the accessible name. Figma: use icon-only buttons only for icons that are easy to recognize.",
+    "state=Default": "Lets hover, press and focus happen naturally (code).",
+    "state=Hover": "Pins the hover look, for docs and QA (code).",
+    "state=Press": "Pins the pressed look, for docs and QA (code).",
+    "state=Focus": "Pins the focus look, for docs and QA (code).",
+    "state=Disable": "Disables the button. Figma: use Disabled only when the action is temporarily unavailable."
+  },
+  "placement": [],
+  "pairs_with": [],
+  "required_tokens": [
+    "--color-bg-neutral-light",
+    "--color-bg-neutral-lightfocused",
+    "--color-bg-neutral-lighthovered",
+    "--color-border-neutral-bold",
+    "--color-border-neutral-default",
+    "--color-icon-bold",
+    "--color-text-bold"
+  ],
+  "a11y": [
+    {
+      "fact": "Composes Button, so it renders a native <button> that takes keyboard focus.",
+      "source": "src/components/ButtonNeutral/ButtonNeutral.tsx:11"
+    },
+    {
+      "fact": "Native <button> element, disabled natively when disabled.",
+      "source": "src/components/Button/Button.tsx:64"
+    },
+    {
+      "fact": "An icon-only button gets aria-label from labelText unless aria-label is passed.",
+      "source": "src/components/Button/Button.tsx:68"
+    }
+  ]
+}

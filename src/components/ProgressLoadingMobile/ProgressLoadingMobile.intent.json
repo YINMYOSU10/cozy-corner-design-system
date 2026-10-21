@@ -1,0 +1,60 @@
+{
+  "use_when": [
+    "Progress Loading after the user chooses a mood, while their result is found. It ends on the green check when the result is ready",
+    "When submitting a form or saving changes",
+    "When fetching data or moving between screens"
+  ],
+  "dont_use_when": [
+    {
+      "when": "For instant actions that finish in under a second, including a mood result that appears right away.",
+      "use_instead": ""
+    },
+    {
+      "when": "To decorate a screen when nothing is actually loading.",
+      "use_instead": ""
+    },
+    {
+      "when": "As a stack of several loaders on the same screen.",
+      "use_instead": ""
+    },
+    {
+      "when": "For errors or empty states.",
+      "use_instead": "a message"
+    },
+    {
+      "when": "For a wait with no end.",
+      "use_instead": "an error or retry state"
+    }
+  ],
+  "best_practice": [
+    "Show loading only when the wait is noticeable (roughly over 1 second).",
+    "Use Progress Loading when the wait has a clear start and finish, and let it end on the green check so users know it worked."
+  ],
+  "variant_intent": {
+    "step=1": "First of five steps; the ring has not started (code).",
+    "step=2": "Ring drawn partway across the steps (code).",
+    "step=3": "Ring drawn partway across the steps (code).",
+    "step=4": "Ring drawn partway across the steps (code).",
+    "step=5": "Ring turns positive green with a check mark. Figma: it ends on the green check so users know it worked."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Card"
+  ],
+  "required_tokens": [
+    "--color-bg-base",
+    "--color-bg-positive-idle",
+    "--color-bg-primary-idle",
+    "--color-icon-positive"
+  ],
+  "a11y": [
+    {
+      "fact": "Has role=\"progressbar\" with aria-valuemin, aria-valuemax (5) and aria-valuenow for the step.",
+      "source": "src/components/ProgressLoadingMobile/ProgressLoadingMobile.tsx:53"
+    },
+    {
+      "fact": "Named by the label prop, or \"Step n of 5\" by default (aria-label, aria-valuetext).",
+      "source": "src/components/ProgressLoadingMobile/ProgressLoadingMobile.tsx:54"
+    }
+  ]
+}

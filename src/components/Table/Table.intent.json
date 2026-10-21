@@ -1,0 +1,102 @@
+{
+  "use_when": [
+    "to show many records with the same fields, such as orders or stock.",
+    "when people need to compare values across rows.",
+    "Put the most important column first, such as the order ID or book title.",
+    "Use Badge cells for status, and Toggle or Action cells for quick changes."
+  ],
+  "dont_use_when": [
+    {
+      "when": "for one or two records.",
+      "use_instead": "Card"
+    },
+    {
+      "when": "for page layout.",
+      "use_instead": ""
+    },
+    {
+      "when": "with text that wraps. Keep rows on one line; long text ends with \"…\".",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not show a status with color alone. Badges always include text.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not put more than one button in a row.",
+      "use_instead": "a menu for more actions"
+    }
+  ],
+  "best_practice": [
+    "Right-align numbers and their headers, so the digits line up.",
+    "Use Muted text for secondary information, such as times and authors.",
+    "Keep column headers to one or two words."
+  ],
+  "variant_intent": {
+    "cell type=Text": "Text cell (TableCell, code).",
+    "cell type=Number": "Number cell (TableCell, code). Figma: right-align numbers and their headers.",
+    "cell type=Badge": "Figma: Badge cells for status.",
+    "cell type=Tags": "Cell that renders Tags (code).",
+    "cell type=Toggle": "Figma: Toggle cells for quick changes.",
+    "cell type=Action": "Figma: Action cells for quick changes.",
+    "cell type=Custom": "Slot for custom content (code).",
+    "cell type=More": "Renders a More button (code).",
+    "cell emphasis=Default": "Default text weight.",
+    "cell emphasis=Muted": "Figma: Muted text for secondary information, such as times and authors.",
+    "cell emphasis=Strong": "Strong text (code)."
+  },
+  "placement": [
+    "Use one table per page, placed under the Top Bar.",
+    "Search and the main action live in the title bar; row actions sit in the last column."
+  ],
+  "pairs_with": [
+    "Badge",
+    "Toggle",
+    "Card",
+    "Tag",
+    "TopBar"
+  ],
+  "required_tokens": [
+    "--borderradius-md",
+    "--borderradius-sm",
+    "--borderwidth-1",
+    "--borderwidth-2",
+    "--color-bg-surfaceprimary",
+    "--color-border-focus",
+    "--color-border-gray-light",
+    "--color-icon-bold",
+    "--color-text-gray-bold",
+    "--color-text-gray-default",
+    "--fontfamily-inter",
+    "--fontsize-12",
+    "--fontsize-14",
+    "--fontsize-16",
+    "--fontsize-18",
+    "--fontweight-regular",
+    "--fontweight-semibold",
+    "--lineheight-16",
+    "--lineheight-20",
+    "--lineheight-22",
+    "--lineheight-24",
+    "--spacing-3xl",
+    "--spacing-6xl",
+    "--spacing-jumbo",
+    "--spacing-lg",
+    "--spacing-sm",
+    "--spacing-xl"
+  ],
+  "a11y": [
+    {
+      "fact": "The More action is a native <button> with aria-label \"More\".",
+      "source": "src/components/Table/TableCell.tsx:83"
+    },
+    {
+      "fact": "The Toggle cell passes an aria-label to its Toggle.",
+      "source": "src/components/Table/TableCell.tsx:72"
+    },
+    {
+      "fact": "The More button shows a focus ring on keyboard focus.",
+      "source": "src/components/Table/Table.css:159"
+    }
+  ]
+}
