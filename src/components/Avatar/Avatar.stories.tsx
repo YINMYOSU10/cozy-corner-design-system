@@ -63,3 +63,23 @@ export const Size40Initials: Story = { name: 'Size=40, Type=Initials', args: { s
 export const Size40Icon: Story = { name: 'Size=40, Type=Icon', args: { size: '40', type: 'Icon' } };
 export const Size48Initials: Story = { name: 'Size=48, Type=Initials', args: { size: '48', type: 'Initials' } };
 export const Size48Icon: Story = { name: 'Size=48, Type=Icon', args: { size: '48', type: 'Icon' } };
+
+/** Avatars beside names in a list, like who logged a swap. */
+export const InAList: Story = {
+  name: 'In A List',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)', maxWidth: 320 }}>
+      {[
+        { initials: 'SU', name: 'Su' },
+        { initials: 'MK', name: 'Mei Kyaw' },
+        { initials: 'TA', name: 'Tom Aye' },
+      ].map((p) => (
+        <li key={p.initials} style={{ display: 'flex', alignItems: 'center', gap: 'var(--spacing-md)' }}>
+          <Avatar type="Initials" size="40" initials={p.initials} label={p.name} />
+          <span style={{ font: 'var(--cozy-corner-typography-label-large)', color: 'var(--color-text-primary)' }}>{p.name}</span>
+        </li>
+      ))}
+    </ul>
+  ),
+};

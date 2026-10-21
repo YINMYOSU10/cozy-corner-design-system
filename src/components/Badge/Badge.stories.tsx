@@ -57,3 +57,32 @@ export const Negative: Story = { name: 'Type=Negative', args: { type: 'Negative'
 export const Info: Story = { name: 'Type=Info', args: { type: 'Info' } };
 export const Update: Story = { name: 'Type=Update', args: { type: 'Update' } };
 export const Neutral: Story = { name: 'Type=Neutral', args: { type: 'Neutral' } };
+
+/** Badges as the status in a small table-like list of rows. */
+export const InATableRow: Story = {
+  name: 'In A Table Row',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', minWidth: 320 }}>
+      {[
+        { item: 'Swap request', type: 'Warning', label: 'Pending' },
+        { item: 'Swap request', type: 'Positive', label: 'Resolved' },
+      ].map((row, i) => (
+        <div
+          key={i}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            gap: 'var(--spacing-xl)',
+            padding: 'var(--spacing-md) 0',
+            borderBottom: 'var(--borderwidth-1) solid var(--color-border-secondary)',
+          }}
+        >
+          <span style={{ font: 'var(--cozy-corner-typography-body-small)', color: 'var(--color-text-primary)' }}>{row.item}</span>
+          <Badge type={row.type as 'Warning' | 'Positive'} label={row.label} />
+        </div>
+      ))}
+    </div>
+  ),
+};
