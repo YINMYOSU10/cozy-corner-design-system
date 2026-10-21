@@ -66,6 +66,9 @@ this file says STOP or halt.
    registry check, the private-flag guard and its restore. If it says the version
    published but is not on the registry yet, **never publish again.** Wait for npm, then
    smoke-test the registry copy yourself.
+   The script leaves the version bump on a local branch `release/v<version>` with the tag,
+   and `main` untouched. Push that branch and the tag, and open a PR from it into
+   `staging`. A human merges that PR (it is not a review report).
 10. **Tell doc-generator** *"published `<package>@<version>`, go live"*.
 11. **Report:** what published, the docs site result, what the board now reads, and what
     is still blocked. If the docs track failed, report the release as **"published, docs

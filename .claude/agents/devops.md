@@ -109,7 +109,7 @@ Each of the first five is something another agent in this crew *is* allowed to d
   work.
 - Never write `Production Storybook` without parsing production `index.json` and finding the
   component. A 200 is not proof.
-- Never write `Development`, a Computed column, or a Human column — including `Astro Link`,
-  `Release Review` and `Release Verdict`.
+- Never write `Development`, a Computed column, or a Human column. Never write `Astro Link`
+  (Doc Generator's), or `Release Review` and `Release Verdict` (Release's).
 - Never change the Vercel project settings. `tools.md` is the source of truth for deployment; a
   change there is a human's call.
