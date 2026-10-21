@@ -53,3 +53,46 @@ nav, button, .pill, table th { font-family: var(--fontfamily-inter), sans-serif;
 .latest { text-align: center; margin-block: var(--spacing-6xl) var(--spacing-xxl); }
 .latest h2 { border: 0; }
 .provenance { text-align: center; color: var(--sl-color-gray-3); font-size: var(--fontsize-12); margin-top: var(--spacing-6xl); }
+
+/* Tabs on component pages: one rounded bar, equal-width tabs with an icon, the selected tab as a filled pill.
+   Colours come from Starlight variables (mapped onto tokens above); no hex. Icons are masks, so they follow the text colour. */
+starlight-tabs [role='tablist'] {
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm);
+  border-bottom: 0;
+  background: var(--sl-color-gray-6);
+  border-radius: var(--borderradius-circle);
+}
+starlight-tabs .tab { flex: 1 1 auto; }
+starlight-tabs .tab > [role='tab'] {
+  flex: 1;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--borderradius-circle);
+  box-shadow: none;
+  white-space: nowrap;
+  color: var(--sl-color-gray-2);
+  font-family: var(--fontfamily-inter), sans-serif;
+  font-size: var(--fontsize-14);
+}
+starlight-tabs .tab > [role='tab']:hover { background: var(--sl-color-gray-5); color: var(--sl-color-white); }
+starlight-tabs .tab > [role='tab'][aria-selected='true'] {
+  background: var(--sl-color-accent-low);
+  color: var(--sl-color-accent-high);
+  font-weight: 600;
+}
+starlight-tabs .tab > [role='tab']::before {
+  content: '';
+  width: var(--spacing-xl);
+  height: var(--spacing-xl);
+  flex: none;
+  background: currentColor;
+  -webkit-mask: var(--tab-icon) center / contain no-repeat;
+  mask: var(--tab-icon) center / contain no-repeat;
+}
+starlight-tabs .tab:nth-child(1):is(:last-child, :nth-last-child(5)) > [role='tab'] { --tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M12%2011a1%201%200%200%200-1%201v4a1%201%200%200%200%202%200v-4a1%201%200%200%200-1-1Zm.38-3.92a1%201%200%200%200-.76%200%201%201%200%200%200-.33.21%201.15%201.15%200%200%200-.21.33%201%201%200%200%200%20.21%201.09c.097.088.209.16.33.21A1%201%200%200%200%2013%208a1.05%201.05%200%200%200-.29-.71%201%201%200%200%200-.33-.21ZM12%202a10%2010%200%201%200%200%2020%2010%2010%200%200%200%200-20Zm0%2018a8%208%200%201%201%200-16.001A8%208%200%200%201%2012%2020Z%22%2F%3E%3C%2Fsvg%3E"); }
+starlight-tabs .tab:nth-child(2):is(:last-child, :nth-last-child(4)) > [role='tab'] { --tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M10%205a1%201%200%201%200%201%201%201%201%200%200%200-1-1M6%205a1%201%200%201%200%201%201%201%201%200%200%200-1-1m8%200a1%201%200%201%200%201%201%201%201%200%200%200-1-1m6-4H4a3%203%200%200%200-3%203v16a3%203%200%200%200%203%203h16a3%203%200%200%200%203-3V4a3%203%200%200%200-3-3m1%2019a1%201%200%200%201-1%201H4a1%201%200%200%201-1-1v-9h18Zm0-11H3V4a1%201%200%200%201%201-1h16a1%201%200%200%201%201%201Z%22%2F%3E%3C%2Fsvg%3E"); }
+starlight-tabs .tab:nth-child(3):is(:last-child, :nth-last-child(3)) > [role='tab'] { --tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M9.4%2016.6L4.8%2012l4.6-4.6L8%206l-6%206%206%206%201.4-1.4zm5.2%200l4.6-4.6-4.6-4.6L16%206l6%206-6%206-1.4-1.4z%22%2F%3E%3C%2Fsvg%3E"); }
+starlight-tabs .tab:nth-child(4):is(:last-child, :nth-last-child(2)) > [role='tab'] { --tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M22%207.24a1%201%200%200%200-.29-.71l-4.24-4.24a1%201%200%200%200-1.1-.22%201%201%200%200%200-.32.22l-2.83%202.83L2.29%2016.05a1%201%200%200%200-.29.71V21a1%201%200%200%200%201%201h4.24a1%201%200%200%200%20.76-.29l10.87-10.93L21.71%208c.1-.1.17-.2.22-.33a1%201%200%200%200%200-.24v-.14l.07-.05ZM6.83%2020H4v-2.83l9.93-9.93%202.83%202.83L6.83%2020ZM18.17%208.66l-2.83-2.83%201.42-1.41%202.82%202.82-1.41%201.42Z%22%2F%3E%3C%2Fsvg%3E"); }
+starlight-tabs .tab:nth-child(5):is(:last-child, :nth-last-child(1)) > [role='tab'] { --tab-icon: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%3E%3Cpath%20d%3D%22M15.1%2012.6%2013%2011.4V7a1%201%200%200%200-2%200v5a1%201%200%200%200%20.5.9l2.6%201.5a1%201%200%201%200%201-1.8M12%202a10%2010%200%201%200%2010%2010A10%2010%200%200%200%2012%202m0%2018a8%208%200%201%201%208-8%208%208%200%200%201-8%208%22%2F%3E%3C%2Fsvg%3E"); }
