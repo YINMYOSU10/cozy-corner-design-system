@@ -65,11 +65,35 @@ does not block. A waiver covers only the version it names. You never write a wai
 - **Cleared** — every gate passes and every check passes or is WAIVED, warnings aside.
 - **Blocked** — any gate fails or any non-warning, non-waived check fails. List each reason.
 
-### 5 · Write the report
-Write `reports/release-review-<short-commit>.md` at the reviewed commit: the commit,
-each gate and check as pass or fail with the evidence, the warnings, and the verdict on
-its own line. Findings name the file and the field. Do not propose rewrites of intent
-text.
+### 5 · Write the reports
+Write **one report per component**, at the reviewed commit, at
+`reports/<component>/release-review-<short-commit>.md`. `<component>` is the component's
+folder name in lower case with words joined by hyphens (`Card` becomes `card`,
+`ButtonNeutral` becomes `button-neutral`). Each file starts with the title
+`# Release review — <component>` and a two-column table with these rows:
+
+| Row | Holds |
+|---|---|
+| Reviewed commit | the full commit SHA, its date, and the branch it was read from |
+| Registry | the component's row: `Development` at review, `Design`, and the Last Modified time |
+| Figma | the component set node and the documentation page it was read from |
+| Intent file | `src/components/<Name>/<Name>.intent.json` and the commit it was read at |
+| Production Storybook | the board's `Production Storybook` link |
+| Verdict | `Cleared` or `Blocked` on its own line |
+
+Below the table, say in a sentence that the review is fresh and nothing was carried over
+from earlier reviews, then list **this component's** result for each of the 7 gates and
+the 6 checks: PASS, FAIL, WARNING or WAIVED, with the evidence and the file and field it
+names. A waived check points at its entry in `docs/release-waivers.md`. Do not propose
+rewrites of intent text.
+
+Also write one summary, `reports/release-review-<short-commit>.md`, for the whole release:
+the commit, the build and package results, the gates and checks that apply to the whole
+package, a table with one line per component (verdict plus a link to its own file), and the
+overall verdict. The overall verdict is Cleared only when every component is Cleared.
+
+Each component's `Release Review` cell holds the link to **its own** report at the commit
+the report was committed in, not the summary.
 
 The registry's `Release Review` and `Release Verdict` columns are written only by the
 owner the registry names (`.claude/skills/registry/SKILL.md`). If this skill is not
