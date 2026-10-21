@@ -58,3 +58,15 @@ export const SegmentUnfilled: StoryObj = {
   name: 'Segment Filled=False',
   render: () => <div style={{ inlineSize: '40px', ['--cc-progress-bar-segment-height' as string]: '4px' }}><ProgressBarSegment filled={false} /></div>,
 };
+
+/** The bar with a "Step 2 of 4" label above a short heading. */
+export const WithAStepLabel: Story = {
+  name: 'With A Step Label',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-lg)' }}>
+      <ProgressBar step={2} label="Step 2 of 4" showLabel segmentHeight="4px" />
+      <span style={{ font: 'var(--cozy-corner-typography-label-large)', color: 'var(--color-text-primary)' }}>Choose a mood</span>
+    </div>
+  ),
+};

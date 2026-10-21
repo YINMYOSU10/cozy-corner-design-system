@@ -39,3 +39,26 @@ export const Step3: Story = { name: 'Step=3', args: { step: 3 } };
 export const Step4: Story = { name: 'Step=4', args: { step: 4 } };
 /** Step=5 (215:978) */
 export const Step5: Story = { name: 'Step=5', args: { step: 5 } };
+
+/** The loading ring centred on a phone-sized screen with a short label. */
+export const OnAScreen: Story = {
+  name: 'On A Screen',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div
+      style={{
+        inlineSize: 390,
+        blockSize: 640,
+        background: 'var(--color-bg-base)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: 'var(--spacing-xl)',
+      }}
+    >
+      <ProgressLoadingMobile step={3} />
+      <span style={{ font: 'var(--cozy-corner-typography-label-large)', color: 'var(--color-text-primary)' }}>Finding your book</span>
+    </div>
+  ),
+};

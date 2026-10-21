@@ -75,3 +75,23 @@ export const DashboardNeither: Story = {
   name: 'Platform=Dashboard · Neither',
   args: { platform: 'Dashboard', showGlyph: false, showWordmark: false },
 };
+
+/** The Logo beside a short tagline, on a light background. */
+export const NextToATagline: Story = {
+  name: 'Next To A Tagline',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--spacing-xl)',
+        padding: 'var(--spacing-xxl)',
+        background: 'var(--color-bg-base)',
+      }}
+    >
+      <Logo platform="Website" showGlyph showWordmark />
+      <span style={{ font: 'var(--cozy-corner-typography-body)', color: 'var(--color-text-secondary)' }}>Find your next book.</span>
+    </div>
+  ),
+};

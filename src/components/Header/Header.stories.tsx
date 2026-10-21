@@ -56,3 +56,24 @@ export const Mobile: Story = {
     </Header>
   ),
 };
+
+/** The Header (Website) at the top of a page-sized frame, with a little page content under it. */
+export const OnAPage: Story = {
+  name: 'On A Page',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ minHeight: 480, background: 'var(--color-bg-base)', display: 'flex', flexDirection: 'column' }}>
+      <Header platform="Website">
+        <HeaderNavItem platform="Website" label="Home" href="#home" state="Active" />
+        <HeaderNavItem platform="Website" label="Date" href="#date" />
+        <HeaderNavItem platform="Website" label="Shelf" href="#shelf" />
+        <HeaderNavItem platform="Website" label="About" href="#about" />
+        <HeaderNavItem platform="Website" label="Visit" href="#visit" />
+      </Header>
+      <main style={{ padding: 'var(--spacing-3xl)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+        <h1 style={{ margin: 0, font: 'var(--cozy-corner-typography-body-large-semibold)', color: 'var(--color-text-primary)' }}>Home</h1>
+        <p style={{ margin: 0, font: 'var(--cozy-corner-typography-body)', color: 'var(--color-text-secondary)' }}>Pick a mood and find your next book.</p>
+      </main>
+    </div>
+  ),
+};

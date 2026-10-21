@@ -47,3 +47,18 @@ export const SwappedIndicators: Story = {
   name: 'Indicators=swapped',
   args: { wifi: <WifiHighGlyph />, battery: <BatteryFullGlyph /> },
 };
+
+/** The StatusBar at the top of a phone-sized frame, with some content below. */
+export const OnAPhoneScreen: Story = {
+  name: 'On A Phone Screen',
+  parameters: { controls: { disable: true } },
+  render: () => (
+    <div style={{ inlineSize: 390, blockSize: 640, background: 'var(--color-bg-base)', display: 'flex', flexDirection: 'column' }}>
+      <StatusBar mode="Light" time="9:41" />
+      <div style={{ padding: 'var(--spacing-xl)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+        <span style={{ font: 'var(--cozy-corner-typography-label-large)', color: 'var(--color-text-primary)' }}>Home</span>
+        <span style={{ font: 'var(--cozy-corner-typography-body)', color: 'var(--color-text-secondary)' }}>Pick a mood and find your next book.</span>
+      </div>
+    </div>
+  ),
+};
