@@ -31,11 +31,13 @@ IDs are never written in this file or in any agent file. Read them from
 | **QA** | `.claude/agents/qa.md` — tests staging, writes every test row |
 | **DevOps** | `.claude/agents/devops.md` — takes staging to main, records production |
 | **PM** | `.claude/agents/pm.md` — reads the whole registry, writes Asana tickets. Owns no column |
+| **Doc Generator** | `.claude/agents/doc-generator.md` — writes intent files and builds the docs site |
+| **Release** | `.claude/agents/release.md` — reviews, publishes, and records the release verdict |
 | **Human** | A person. No agent writes these, ever |
 | **Computed** | Airtable derives it. Nobody writes it, human or agent |
 
-The crew is these four agents. There is no Reviewer, Release or docs-site agent in this
-crew (see Decisions), so the columns that belonged to them are Human.
+The crew is six agents: the four above plus Doc Generator and Release (Decision 8). A
+column with no agent owner stays Human.
 
 Each column has exactly one owner. A linked-record field and its mirror in the other
 table are one link; they share an owner, and writing either side writes both.
@@ -57,9 +59,9 @@ table are one link; they share an owner, and writing either side writes both.
 | Composed Into | link → Components | Computed | Reverse of Composes. Written only by writing Composes. |
 | [Staging] Test Records | link → Staging Testing | QA | Mirror of Staging Testing › Composed In. |
 | Production Storybook | url | DevOps | Written only after opening it. Feeds precedence 5. |
-| Astro Link | url | Human | Out of scope for this crew (Decision 4). No agent writes it. Feeds precedence 4. |
-| Release Review | url | Human | Out of scope for this crew (Decision 3). No agent writes it. Feeds precedence 4. |
-| Release Verdict | single select: Cleared, Blocked | Human | Out of scope for this crew (Decision 3). No agent writes it. Feeds precedence 4. |
+| Astro Link | url | Doc Generator | Written only for a docs page fetched and seen to render (Decision 8). Feeds precedence 4. |
+| Release Review | url | Release | The review report, written together with Release Verdict or not at all (Decision 8). Feeds precedence 4. |
+| Release Verdict | single select: Cleared, Blocked | Release | Written together with Release Review or not at all (Decision 8). Feeds precedence 4. |
 | Development | formula → single select | Computed | **No agent may write this.** See below. |
 | Staging Testing Results Summary | rollup of Staging Testing › Testing Results | Computed | Feeds precedence 1, 2, 3, 6. |
 | Total Staging Tests | count of [Staging] Test Records | Computed | |
@@ -138,9 +140,8 @@ Settled by the human on 2026-10-18, where the crew board and this contract disag
    one transition above. QA still owns the column and every verdict in it.
 2. **No production testing.** The board has QA re-test after `Completed`; the base has no
    table for it. Out of scope until a Production Testing table exists.
-3. **No Reviewer.** `Release Review` and `Release Verdict` are Human. `Released` is never
-   reached by the crew; `Completed` is the end of its loop.
-4. **No Astro docs site.** `Astro Link` is Human.
+3. **No Reviewer.** *Superseded by Decision 8.*
+4. **No Astro docs site.** *Superseded by Decision 8.*
 5. **PM writes Asana, not Airtable.** It reads every table on a schedule and owns no column.
 6. **`To-do` follows the formula**: Figma set and Design = Done. The board's "Figma link
    exists" is shorthand for it.
@@ -149,6 +150,12 @@ Settled by the human on 2026-10-18, where the crew board and this contract disag
    without those properties), not one per variant. Each row lists every variant it
    covers in `Variants`, and its `Testing Results` is `Failed` if any covered variant
    fails. Per-variant detail stays in `reports/<Component>.md`.
+8. **Doc Generator and Release join the crew (2026-10-21).** `Astro Link` is owned by
+   Doc Generator. `Release Review` and `Release Verdict` are owned by Release, and are
+   written together or not at all. Neither agent writes `Development`. This supersedes
+   Decisions 3 and 4. A release, not the crew's loop, is what moves a component to
+   `Released` (precedence 4). The Release agent may commit, PR and merge its own
+   *release-review report* into `staging`; `CLAUDE.md` section 4 records that one exception.
 
 ## The loop — who each status wakes
 
@@ -222,8 +229,6 @@ not fixed. A human decides which side is right.
 
 - The crew board writes `Fixed (Re-test)`. The real option is `Fixed (To re-test)`. The
   formula matches lowercase `re-test`, so use the real option name exactly.
-- `Release Review` and `Release Verdict` point to `.claude/skills/release-review/SKILL.md`,
-  which is not in the repo.
 - 44 of 72 Staging Testing rows are fully empty and linked to nothing.
 
 ## Never

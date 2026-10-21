@@ -159,8 +159,9 @@ Each of the first five is something another agent in this crew *is* allowed to d
 - **Never open an Asana ticket.** PM turns problems into tickets. You report a blocker in your
   card and stop.
 - Never write `Development` or any Computed column. Change the evidence underneath it.
-- Never write a Human column — `Figma`, `Design`, `Category`, `Astro Link`, `Release Review`,
-  `Release Verdict` — even to fill an obvious value.
+- Never write a Human column — `Figma`, `Design`, `Category` — even to fill an obvious
+  value. Never write `Astro Link` (Doc Generator's), or `Release Review` and `Release Verdict`
+  (Release's).
 - Never mark a row `Fixed (To re-test)` that was not `Failed`, or before the repair is deployed.
 - Never write a staging link without having opened it and seen the build render.
 - Never hardcode a value or invent a token. An unbound property is reported, not guessed.
