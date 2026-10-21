@@ -1,0 +1,112 @@
+{
+  "use_when": [
+    "to group related information about one thing, such as a stat or a book.",
+    "Use the Dashboard card for one number with a short label and a trend.",
+    "Use the Clue card (Type = Clue) to preview a blind date clue with its mood tags, such as on the Clue cards screen.",
+    "Use the Mobile book card in the app and the Website book card on the website.",
+    "Use the Hover state only when the whole card is clickable."
+  ],
+  "dont_use_when": [
+    {
+      "when": "for a single line of text.",
+      "use_instead": "Badge or plain text"
+    },
+    {
+      "when": "inside another card.",
+      "use_instead": ""
+    },
+    {
+      "when": "for long articles or forms.",
+      "use_instead": "a page section"
+    },
+    {
+      "when": "Do not add borders or extra shadows. Only the Clue card has a border, so it reads like a wrapped book.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not mix dashboard and book content in the same card.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep cards in the same row the same width.",
+    "Put the most important content first: the number, or the book title.",
+    "For a Down trend, edit the text to match, such as \"−3 today\"."
+  ],
+  "variant_intent": {
+    "platform=Dashboard": "Figma: the Dashboard card, one number with a short label and a trend.",
+    "platform=Mobile": "Figma: the Mobile book card, used in the app.",
+    "platform=Website": "Figma: the Website book card, used on the website.",
+    "type=Default": "Renders the platform's default card (code).",
+    "type=Clue": "Figma: previews a blind date clue with its mood tags. Code: always renders the Clue card, whatever platform says.",
+    "state=Default": "Resting card.",
+    "state=Hover": "Figma: use the Hover state only when the whole card is clickable.",
+    "trend=Up": "Dashboard card trend going up (code default).",
+    "trend=None": "Dashboard card with no trend.",
+    "trend=Down": "Dashboard card trend going down. Figma: edit the text to match, such as \"−3 today\"."
+  },
+  "placement": [
+    "Stat cards sit in an equal-width row at the top of a page.",
+    "Clue cards wrap in a 3-column grid with a 24px gap.",
+    "Keep cards in the same row the same width."
+  ],
+  "pairs_with": [
+    "Badge",
+    "Button",
+    "Divider",
+    "Tag"
+  ],
+  "required_tokens": [
+    "--borderradius-md",
+    "--borderwidth-1",
+    "--borderwidth-2",
+    "--color-bg-surfaceprimary",
+    "--color-border-secondary",
+    "--color-text-bold",
+    "--color-text-negative",
+    "--color-text-positive",
+    "--color-text-primary",
+    "--color-text-secondary",
+    "--cozy-corner-typography-dashboard-body-large",
+    "--cozy-corner-typography-dashboard-body-large-medium",
+    "--cozy-corner-typography-dashboard-body-small",
+    "--cozy-corner-typography-dashboard-display",
+    "--cozy-corner-typography-mobile-body",
+    "--cozy-corner-typography-mobile-body-small",
+    "--cozy-corner-typography-mobile-h2",
+    "--cozy-corner-typography-website-body",
+    "--cozy-corner-typography-website-h2",
+    "--elevation-level1-shadow1-blur",
+    "--elevation-level1-shadow1-color",
+    "--elevation-level1-shadow1-offsetx",
+    "--elevation-level1-shadow1-offsety",
+    "--elevation-level1-shadow1-spread",
+    "--elevation-level1-shadow2-blur",
+    "--elevation-level1-shadow2-color",
+    "--elevation-level1-shadow2-offsetx",
+    "--elevation-level1-shadow2-offsety",
+    "--elevation-level1-shadow2-spread",
+    "--elevation-level2-shadow1-blur",
+    "--elevation-level2-shadow1-color",
+    "--elevation-level2-shadow1-offsetx",
+    "--elevation-level2-shadow1-offsety",
+    "--elevation-level2-shadow1-spread",
+    "--elevation-level2-shadow2-blur",
+    "--elevation-level2-shadow2-color",
+    "--elevation-level2-shadow2-offsetx",
+    "--elevation-level2-shadow2-offsety",
+    "--elevation-level2-shadow2-spread",
+    "--spacing-base",
+    "--spacing-lg",
+    "--spacing-md",
+    "--spacing-sm",
+    "--spacing-xl",
+    "--spacing-xxl"
+  ],
+  "a11y": [
+    {
+      "fact": "The title renders as an <h3> heading.",
+      "source": "src/components/Card/CardText.tsx:137"
+    }
+  ]
+}

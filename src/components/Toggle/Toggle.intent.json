@@ -1,0 +1,84 @@
+{
+  "use_when": [
+    "To turn a setting on or off, such as notifications or sound",
+    "For a single option with two clear states",
+    "When the change takes effect right away, with no Save button"
+  ],
+  "dont_use_when": [
+    {
+      "when": "To choose between several options.",
+      "use_instead": "radio buttons or a selection component"
+    },
+    {
+      "when": "When the choice is only applied after a Submit or Save button.",
+      "use_instead": "a checkbox"
+    },
+    {
+      "when": "For an action such as \"Delete\" or \"Send\".",
+      "use_instead": "Button"
+    }
+  ],
+  "best_practice": [
+    "Put a clear label beside the toggle that describes the setting, such as \"Email notifications\".",
+    "Place toggles in one aligned column, with the label on the left and the toggle on the right.",
+    "Use Disabled only when the setting is unavailable, and explain why nearby.",
+    "Don't use a toggle for something risky without a confirmation step."
+  ],
+  "variant_intent": {
+    "checked=true": "Figma \"Checked? True\": the setting is on.",
+    "checked=false": "Figma \"Checked? False\": the setting is off.",
+    "state=Default": "Resting toggle.",
+    "state=Focus": "Pins the focus look, for docs (code).",
+    "state=Disabled": "Disables the toggle. Figma: use Disabled only when the setting is unavailable, and explain why nearby."
+  },
+  "placement": [
+    "Place toggles in one aligned column, with the label on the left and the toggle on the right."
+  ],
+  "pairs_with": [
+    "Button",
+    "Table"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderradius-lg",
+    "--borderwidth-0",
+    "--borderwidth-2",
+    "--color-bg-gray-lighthovered",
+    "--color-bg-positive-idle",
+    "--color-bg-positive-light",
+    "--color-bg-surfaceprimary",
+    "--color-border-focus",
+    "--elevation-level1-shadow1-blur",
+    "--elevation-level1-shadow1-color",
+    "--elevation-level1-shadow1-offsetx",
+    "--elevation-level1-shadow1-offsety",
+    "--elevation-level1-shadow1-spread",
+    "--elevation-level1-shadow2-blur",
+    "--elevation-level1-shadow2-color",
+    "--elevation-level1-shadow2-offsetx",
+    "--elevation-level1-shadow2-offsety",
+    "--elevation-level1-shadow2-spread",
+    "--size-toggle-height",
+    "--size-toggle-inset",
+    "--size-toggle-thumb",
+    "--size-toggle-width"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <button role=\"switch\"> with aria-checked, so it is announced as a switch that is on or off.",
+      "source": "src/components/Toggle/Toggle.tsx:52"
+    },
+    {
+      "fact": "Space and Enter toggle it, and it takes keyboard focus.",
+      "source": "src/components/Toggle/Toggle.tsx:49"
+    },
+    {
+      "fact": "A disabled toggle is natively disabled.",
+      "source": "src/components/Toggle/Toggle.tsx:54"
+    },
+    {
+      "fact": "Shows a focus ring on keyboard focus.",
+      "source": "src/components/Toggle/Toggle.css:79"
+    }
+  ]
+}

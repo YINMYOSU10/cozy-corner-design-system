@@ -1,0 +1,74 @@
+{
+  "use_when": [
+    "when the meaning of the action matters as much as the action itself.",
+    "Use Default (solid) for the main action and Two-Tone for a quieter option beside it",
+    "Pair a semantic button with an Outline button for the safe choice, such as Cancel next to Delete.",
+    "Negative: delete, remove or hard to undo (Figma semantic-button colour meaning; this component is the Button / Destructive node)."
+  ],
+  "dont_use_when": [
+    {
+      "when": "for everyday actions. If everything has a color, nothing stands out.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not put more than one semantic color in the same group of buttons.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not choose a color because it looks nice.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Match the label to the color: \"Delete account\" for Negative, \"Confirm order\" for Positive.",
+    "Add an icon when it helps people understand the meaning faster."
+  ],
+  "variant_intent": {
+    "type=Default": "Figma semantic buttons: Default (solid) for the main action.",
+    "type=Outline": "Renders the outline style (code). Figma names the quieter option Two-Tone, not Outline.",
+    "shape=Rounded": "Renders the rounded shape. Figma: do not mix Rounded and Pill shapes on one screen.",
+    "shape=Pill": "Renders the pill shape. Figma: do not mix Rounded and Pill shapes on one screen.",
+    "size=32": "Button height of 32px.",
+    "size=48": "Button height of 48px.",
+    "size=56": "Button height of 56px.",
+    "iconStyle=none": "Renders the label only.",
+    "iconStyle=leading icon": "Renders an icon before the label.",
+    "iconStyle=trailing icon": "Renders an icon after the label.",
+    "iconStyle=Both icons": "Renders an icon before and after the label.",
+    "iconStyle=Icon only": "Renders the icon alone; labelText becomes the accessible name. Figma: use icon-only buttons only for icons that are easy to recognize.",
+    "state=Default": "Lets hover, press and focus happen naturally (code).",
+    "state=Hover": "Pins the hover look, for docs and QA (code).",
+    "state=Press": "Pins the pressed look, for docs and QA (code).",
+    "state=Focus": "Pins the focus look, for docs and QA (code).",
+    "state=Disable": "Disables the button. Figma: use Disabled only when the action is temporarily unavailable."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Button"
+  ],
+  "required_tokens": [
+    "--color-bg-negative-focused",
+    "--color-bg-negative-hovered",
+    "--color-bg-negative-idle",
+    "--color-bg-negative-light",
+    "--color-bg-negative-lighthovered",
+    "--color-border-negative-bold",
+    "--color-border-negative-default",
+    "--color-icon-negative",
+    "--color-text-negative"
+  ],
+  "a11y": [
+    {
+      "fact": "Composes Button, so it renders a native <button> that takes keyboard focus.",
+      "source": "src/components/ButtonDestructive/ButtonDestructive.tsx:12"
+    },
+    {
+      "fact": "Native <button> element, disabled natively when disabled.",
+      "source": "src/components/Button/Button.tsx:64"
+    },
+    {
+      "fact": "An icon-only button gets aria-label from labelText unless aria-label is passed.",
+      "source": "src/components/Button/Button.tsx:68"
+    }
+  ]
+}

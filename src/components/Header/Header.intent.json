@@ -1,0 +1,97 @@
+{
+  "use_when": [
+    "at the top of every page on the reader website.",
+    "at the bottom of every screen in the mobile app, as a tab bar.",
+    "Set the current page’s item to the Active state."
+  ],
+  "dont_use_when": [
+    {
+      "when": "in the staff dashboard.",
+      "use_instead": "Sidebar"
+    },
+    {
+      "when": "for actions such as Reserve or Pay.",
+      "use_instead": "Button"
+    },
+    {
+      "when": "for steps in a flow.",
+      "use_instead": "Progress bar"
+    },
+    {
+      "when": "Do not show more than 5 items.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Keep the same items in the same order on every page.",
+    "Use one-word labels, such as Home, Date or Shelf.",
+    "Show only one Active item at a time."
+  ],
+  "variant_intent": {
+    "platform=Website": "Figma: at the top of every page on the reader website. Code: Logo on the left, navigation on the right.",
+    "platform=Mobile": "Figma: at the bottom of every screen in the mobile app, as a tab bar. Code: no Logo; navigation fills the bar."
+  },
+  "placement": [
+    "At the top of every page on the reader website.",
+    "At the bottom of every screen in the mobile app, as a tab bar."
+  ],
+  "pairs_with": [
+    "Sidebar",
+    "Footer",
+    "Logo"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--borderradius-sm",
+    "--borderwidth-05",
+    "--color-bg-base",
+    "--color-bg-primary-idle",
+    "--color-bg-primary-light",
+    "--color-bg-surfaceprimary",
+    "--color-border-neutral-light",
+    "--color-text-brand",
+    "--color-text-inverse",
+    "--color-text-primary",
+    "--color-text-secondary",
+    "--spacing-3xl",
+    "--spacing-base",
+    "--spacing-jumbo",
+    "--spacing-lg",
+    "--spacing-md",
+    "--spacing-sm",
+    "--spacing-xxl",
+    "--typography-bodysmall-fontfamily",
+    "--typography-bodysmall-fontsize",
+    "--typography-bodysmall-fontweight",
+    "--typography-bodysmall-letterspacing",
+    "--typography-bodysmall-lineheight",
+    "--typography-label-fontfamily",
+    "--typography-label-fontsize",
+    "--typography-label-fontweight",
+    "--typography-label-letterspacing",
+    "--typography-label-lineheight",
+    "--typography-labellarge-fontfamily",
+    "--typography-labellarge-fontsize",
+    "--typography-labellarge-fontweight",
+    "--typography-labellarge-letterspacing",
+    "--typography-labellarge-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <header> element.",
+      "source": "src/components/Header/Header.tsx:29"
+    },
+    {
+      "fact": "Navigation sits in a <nav> landmark, named \"Main\" by default.",
+      "source": "src/components/Header/Header.tsx:36"
+    },
+    {
+      "fact": "The Active item is marked aria-current=\"page\".",
+      "source": "src/components/Header/HeaderNavItem.tsx:47"
+    },
+    {
+      "fact": "Each item is an <a> link with a visible label.",
+      "source": "src/components/Header/HeaderNavItem.tsx:42"
+    }
+  ]
+}

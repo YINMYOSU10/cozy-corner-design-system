@@ -1,0 +1,64 @@
+{
+  "use_when": [
+    "to show who is signed in, in the Sidebar and the Top Bar.",
+    "next to a name in lists, such as who logged a swap.",
+    "Use the Icon type when a person has no name yet, such as a new reader."
+  ],
+  "dont_use_when": [
+    {
+      "when": "for brands or books.",
+      "use_instead": "Logo or Media Container"
+    },
+    {
+      "when": "as a button on its own without a name or tooltip.",
+      "use_instead": ""
+    },
+    {
+      "when": "to show status.",
+      "use_instead": "Badge"
+    },
+    {
+      "when": "Do not use more than two letters for initials.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use 32 in the Top Bar, 40 in the Sidebar and 48 in profile headers.",
+    "Write initials in capitals, such as SU.",
+    "Pair the avatar with the person's name whenever there is space."
+  ],
+  "variant_intent": {
+    "size=32": "Figma: use 32 in the Top Bar.",
+    "size=40": "Figma: use 40 in the Sidebar.",
+    "size=48": "Figma: use 48 in profile headers.",
+    "type=Initials": "Shows the initials text (code).",
+    "type=Icon": "Figma: use the Icon type when a person has no name yet, such as a new reader."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Sidebar",
+    "TopBar",
+    "Badge"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--color-bg-primary-light",
+    "--color-text-brand",
+    "--fontfamily-inter",
+    "--fontsize-12",
+    "--fontsize-14",
+    "--fontweight-semibold",
+    "--lineheight-16",
+    "--lineheight-20"
+  ],
+  "a11y": [
+    {
+      "fact": "Without a label the avatar is hidden from assistive tech (aria-hidden).",
+      "source": "src/components/Avatar/Avatar.tsx:43"
+    },
+    {
+      "fact": "With a label the avatar is announced as an image named by the label (role=\"img\", aria-label).",
+      "source": "src/components/Avatar/Avatar.tsx:43"
+    }
+  ]
+}

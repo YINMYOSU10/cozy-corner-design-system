@@ -1,0 +1,82 @@
+{
+  "use_when": [
+    "to show where a page sits in a hierarchy, such as Dashboard / Inventory.",
+    "on pages two or more levels deep.",
+    "Make every level a link, except the current page.",
+    "Place it at the top of the page, above the page title."
+  ],
+  "dont_use_when": [
+    {
+      "when": "on a top-level page, such as the dashboard home.",
+      "use_instead": ""
+    },
+    {
+      "when": "as the main navigation.",
+      "use_instead": "Header or Sidebar"
+    },
+    {
+      "when": "to show steps in a flow.",
+      "use_instead": "Progress bar"
+    },
+    {
+      "when": "Do not make the current page a link.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not show more than 4 levels. Shorten the middle levels instead.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use the same page names as the navigation and page titles.",
+    "Keep labels short, one or two words.",
+    "Keep the breadcrumb on one line."
+  ],
+  "variant_intent": {
+    "levels=2": "Shows two levels, the last being the current page (Figma default: Dashboard / Inventory).",
+    "levels=3": "Shows three levels, the last being the current page.",
+    "levels=4": "Shows four levels, the last being the current page. Figma: no more than 4 levels."
+  },
+  "placement": [
+    "Place it at the top of the page, above the page title."
+  ],
+  "pairs_with": [
+    "Header",
+    "Sidebar",
+    "Link",
+    "TopBar"
+  ],
+  "required_tokens": [
+    "--borderradius-sm",
+    "--borderwidth-1",
+    "--borderwidth-2",
+    "--color-border-focus",
+    "--color-text-gray-bold",
+    "--color-text-gray-default",
+    "--cozy-corner-typography-dashboard-body-large",
+    "--cozy-corner-typography-dashboard-body-large-semibold",
+    "--spacing-base"
+  ],
+  "a11y": [
+    {
+      "fact": "Wrapped in a <nav> landmark labelled \"Breadcrumb\" by default.",
+      "source": "src/components/Breadcrumb/Breadcrumb.tsx:43"
+    },
+    {
+      "fact": "The current page is marked aria-current=\"page\".",
+      "source": "src/components/Breadcrumb/BreadcrumbItemCurrent.tsx:9"
+    },
+    {
+      "fact": "The separators are hidden from screen readers.",
+      "source": "src/components/Breadcrumb/BreadcrumbItemSeparator.tsx:4"
+    },
+    {
+      "fact": "Every level except the last renders as an <a> link.",
+      "source": "src/components/Breadcrumb/BreadcrumbItemLink.tsx:25"
+    },
+    {
+      "fact": "Links show a focus ring on keyboard focus.",
+      "source": "src/components/Breadcrumb/Breadcrumb.css:54"
+    }
+  ]
+}

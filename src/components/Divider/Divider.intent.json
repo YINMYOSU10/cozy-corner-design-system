@@ -1,0 +1,56 @@
+{
+  "use_when": [
+    "to separate groups of related content.",
+    "Use a solid divider for standard separation, such as between footer links and the copyright text, or between Sidebar groups.",
+    "Use a dashed divider for a lighter, secondary break, such as inside an order summary or between optional details.",
+    "Use a divider between rows when a Table needs extra structure."
+  ],
+  "dont_use_when": [
+    {
+      "when": "as decoration.",
+      "use_instead": ""
+    },
+    {
+      "when": "if spacing alone already groups the content clearly.",
+      "use_instead": ""
+    },
+    {
+      "when": "if it requires interaction.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not stack two dividers back to back.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not change the thickness of a divider.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use the same style (solid or dashed) for the same job across a screen.",
+    "Make the divider as wide as the content it separates.",
+    "Keep equal space above and below the line."
+  ],
+  "variant_intent": {
+    "isDashed=false": "Figma: solid line, for standard separation.",
+    "isDashed=true": "Figma: dashed line, for a lighter, secondary break."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Sidebar",
+    "Footer",
+    "Table",
+    "DetailRow"
+  ],
+  "required_tokens": [
+    "--borderwidth-1",
+    "--color-border-secondary"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a native <hr>, which carries the separator role.",
+      "source": "src/components/Divider/Divider.tsx:14"
+    }
+  ]
+}

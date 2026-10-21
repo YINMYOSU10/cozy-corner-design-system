@@ -1,0 +1,76 @@
+{
+  "use_when": [
+    "to show the status of an item, such as a row in a table.",
+    "Use Warning for items that are waiting, such as Pending or Awaiting review.",
+    "Use Positive for finished items, such as Resolved, and Negative for failed items, such as Rejected.",
+    "Use Info for work in progress, and Update for items that were changed or are new."
+  ],
+  "dont_use_when": [
+    {
+      "when": "as a button. A badge is not clickable.",
+      "use_instead": ""
+    },
+    {
+      "when": "as a tab or a filter.",
+      "use_instead": ""
+    },
+    {
+      "when": "for long text. Keep labels to one or two words.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not choose a Type for its color. Choose it for its meaning.",
+      "use_instead": ""
+    },
+    {
+      "when": "Do not change the color, padding or corner radius of a badge.",
+      "use_instead": ""
+    }
+  ],
+  "best_practice": [
+    "Use the same label for the same status across every screen.",
+    "Write labels in sentence case, such as \"In progress\".",
+    "Show only one badge per item."
+  ],
+  "variant_intent": {
+    "type=Warning": "Figma: items that are waiting, such as Pending or Awaiting review.",
+    "type=Positive": "Figma: finished items, such as Resolved.",
+    "type=Negative": "Figma: failed items, such as Rejected.",
+    "type=Info": "Figma: work in progress.",
+    "type=Update": "Figma: items that were changed or are new.",
+    "type=Neutral": "Renders the gray style (code). Figma does not describe a Neutral type."
+  },
+  "placement": [],
+  "pairs_with": [
+    "Table",
+    "Button"
+  ],
+  "required_tokens": [
+    "--borderradius-circle",
+    "--color-bg-gray-light",
+    "--color-bg-info-light",
+    "--color-bg-negative-light",
+    "--color-bg-positive-light",
+    "--color-bg-update-light",
+    "--color-bg-warning-light",
+    "--color-text-gray-default",
+    "--color-text-info",
+    "--color-text-negative",
+    "--color-text-positive",
+    "--color-text-update",
+    "--color-text-warning",
+    "--spacing-base",
+    "--spacing-md",
+    "--typography-label-fontfamily",
+    "--typography-label-fontsize",
+    "--typography-label-fontweight",
+    "--typography-label-letterspacing",
+    "--typography-label-lineheight"
+  ],
+  "a11y": [
+    {
+      "fact": "Renders a plain <span> with its label text, so the status is named in text and the badge is not focusable.",
+      "source": "src/components/Badge/Badge.tsx:20"
+    }
+  ]
+}
