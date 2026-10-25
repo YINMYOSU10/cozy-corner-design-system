@@ -1,6 +1,6 @@
 ---
 name: astro-page
-description: Build the whole Cozy Corner docs site every run — home, guides, one page per component with five tabs, Tokens, Changelog, Roadmap and News — in docs-site/ on the astro branch, generated from the repo, the board and Figma, then verify it live.
+description: Build the whole Cozy Corner docs site every run — home, guides, one page per component with five tabs, Tokens, Changelog and Roadmap — in docs-site/ on the astro branch, generated from the repo, the board and Figma, then verify it live.
 ---
 
 # Build the docs site
@@ -24,9 +24,9 @@ build** instead of vanishing from the navigation:
 
 | Group | Pages |
 |---|---|
-| Get Started | Changelog, Roadmap, News, Versioning, Upgrading |
+| Get Started | Changelog, Roadmap, Versioning, Upgrading |
 | Designing | Introduction |
-| Developing | Introduction, React, React Router |
+| Developing | Introduction, React |
 | Skills | Knowledge skill |
 | Core | Components (All components, then one page per component), Tokens |
 | Styling | Theming |
@@ -77,7 +77,7 @@ one line per accessibility fact. Each tab fits one screen's worth of reading bef
 needs a scroll, where the source allows.
 
 ## Generated, never edited by hand
-Home, All components, every component page, Tokens, Changelog, Roadmap, News.
+Home, All components, every component page, Tokens, Changelog, Roadmap.
 
 **One script, `docs-site/scripts/generate.mjs`, builds them.** Its inputs are:
 - the repo at a **pinned commit** (pass it in; record it on the site);
@@ -93,7 +93,7 @@ Every guide (Versioning, Upgrading, Developing, Theming, FAQ, and the rest). **E
 re-reads them against the code and corrects any sentence that stopped being true.**
 Guides state facts from the repo only.
 
-**Roadmap and News state no date, owner or priority that a source does not state.**
+**Roadmap states no date, owner or priority that a source does not state.**
 
 ## The site wears the system's own tokens
 One stylesheet maps Starlight's variables onto semantic tokens from `tokens.css`, with
