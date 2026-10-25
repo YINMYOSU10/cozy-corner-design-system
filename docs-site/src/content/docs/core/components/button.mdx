@@ -10,7 +10,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 <span class="pill">Version: v0.1.0</span>
 <a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-button--docs">Storybook</a>
 <a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=66-459&t=Z3xlh9o7gLQZaqP1-1">Figma</a>
-<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button">Source</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Button">Source</a>
 </div>
 
 <Tabs>
@@ -61,10 +61,10 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- Renders a native &lt;button&gt; element, so it takes keyboard focus and Enter/Space activate it. ([src/components/Button/Button.tsx:64](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L64))
-- A disabled button (state="Disable" or the disabled prop) is natively disabled. ([src/components/Button/Button.tsx:67](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L67))
-- An icon-only button gets aria-label from labelText unless aria-label is passed. ([src/components/Button/Button.tsx:68](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.tsx#L68))
-- Shows a focus ring (2px page-colour gap, then 2px focus colour) on keyboard focus. ([src/components/Button/Button.css:105](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button/Button.css#L105))
+- Renders a native &lt;button&gt; element, so it takes keyboard focus and Enter/Space activate it. ([src/components/Button/Button.tsx:64](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Button/Button.tsx#L64))
+- A disabled button (state="Disable" or the disabled prop) is natively disabled. ([src/components/Button/Button.tsx:67](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Button/Button.tsx#L67))
+- An icon-only button gets aria-label from labelText unless aria-label is passed. ([src/components/Button/Button.tsx:68](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Button/Button.tsx#L68))
+- Shows a focus ring (2px page-colour gap, then 2px focus colour) on keyboard focus. ([src/components/Button/Button.css:105](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Button/Button.css#L105))
 
 ### Composition
 
@@ -126,7 +126,7 @@ For this component: `import { Button } from '@cozy-corner-design-system/componen
 import { Button } from '@cozy-corner-design-system/components';
 ```
 
-Subcomponents in this folder: `PlusIcon`. Source: [src/components/Button](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Button).
+Subcomponents in this folder: `PlusIcon`. Source: [src/components/Button](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Button).
 
 ### Props
 
@@ -225,20 +225,11 @@ Subcomponents in this folder: `PlusIcon`. Source: [src/components/Button](https:
 - [Outline Pill 48](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-pill-48)
 - [Outline Pill 56](https://cozy-corner-design-system.vercel.app/?path=/story/components-button--outline-pill-56)
 
-### Themes
-
-- Light: the values on the Code tab.
-- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
-
-### Unbound values
-
-<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
-
 ### Design gaps
 
-Recorded in [docs/naming-suggestions.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/docs/naming-suggestions.md), section "Button / Primary (66:459)":
+Recorded in [docs/naming-suggestions.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/docs/naming-suggestions.md), section "Button / Primary (66:459)":
 
-Status: Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
+Status: Accepted for 0.1.0 (2026-10-21). The code keeps the Figma names. Revisit before 1.0; a rename in 0.x is allowed in a minor version (see `VERSIONING.md`).
 | Figma property | Clashes with | What code does now | Suggestion |
 |---|---|---|---|
 | `Type` (Default / Outline) | The HTML `&#60;button type&#62;` attribute (button / submit / reset) | The `type` prop is Figma's Type; the HTML attribute is `htmlType` | Rename the Figma property to `Variant` or `Appearance`, so `type` can mean the HTML button type, as developers expect |
@@ -250,6 +241,7 @@ Status: Accepted for 0.1.0 (decided by Yin Myo Su, 2026-10-21). The code keeps t
 
 ### Commits, newest first
 
+- [`111e4b2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/111e4b22cd64826f744408197563fa06f6213966) 2026-10-21 · Button: add In Form and In Card example stories · *v0.1.1*
 - [`a2807a2`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/a2807a2cb09a6e4aa262a8af6e90de3c1a1091ce) 2026-10-21 · Add intent files for the 28 Completed components · *v0.1.0*
 - [`d3e894a`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/d3e894ad081f1beefd50b2e9c5e86458c7d31ca3) 2026-10-21 · Make the design system a publishable npm package · *v0.1.0*
 - [`57a6d65`](https://github.com/YINMYOSU10/cozy-corner-design-system/commit/57a6d65f34bafd423d5088d9030646dbb3b15660) 2026-10-17 · Button: 32px icon for Icon only at Size 56 (QA finding F1) · *v0.1.0*

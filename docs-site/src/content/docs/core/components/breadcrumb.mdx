@@ -10,7 +10,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 <span class="pill">Version: v0.1.0</span>
 <a href="https://cozy-corner-design-system.vercel.app/?path=/docs/components-breadcrumb--docs">Storybook</a>
 <a href="https://www.figma.com/design/MWuaFZQ58G4WvtbCyeaE1X/cozy-corner.Global.Components.v1.0.0.In-Progress?node-id=431-68&t=BsETB0AMaX9Ix65B-1">Figma</a>
-<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb">Source</a>
+<a href="https://github.com/YINMYOSU10/cozy-corner-design-system/tree/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb">Source</a>
 </div>
 
 <Tabs>
@@ -51,11 +51,11 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 ### Accessibility
 
-- Wrapped in a &lt;nav&gt; landmark labelled "Breadcrumb" by default. ([src/components/Breadcrumb/Breadcrumb.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/Breadcrumb.tsx#L43))
-- The current page is marked aria-current="page". ([src/components/Breadcrumb/BreadcrumbItemCurrent.tsx:9](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/BreadcrumbItemCurrent.tsx#L9))
-- The separators are hidden from screen readers. ([src/components/Breadcrumb/BreadcrumbItemSeparator.tsx:4](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/BreadcrumbItemSeparator.tsx#L4))
-- Every level except the last renders as an &lt;a&gt; link. ([src/components/Breadcrumb/BreadcrumbItemLink.tsx:25](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/BreadcrumbItemLink.tsx#L25))
-- Links show a focus ring on keyboard focus. ([src/components/Breadcrumb/Breadcrumb.css:54](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb/Breadcrumb.css#L54))
+- Wrapped in a &lt;nav&gt; landmark labelled "Breadcrumb" by default. ([src/components/Breadcrumb/Breadcrumb.tsx:43](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb/Breadcrumb.tsx#L43))
+- The current page is marked aria-current="page". ([src/components/Breadcrumb/BreadcrumbItemCurrent.tsx:9](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb/BreadcrumbItemCurrent.tsx#L9))
+- The separators are hidden from screen readers. ([src/components/Breadcrumb/BreadcrumbItemSeparator.tsx:4](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb/BreadcrumbItemSeparator.tsx#L4))
+- Every level except the last renders as an &lt;a&gt; link. ([src/components/Breadcrumb/BreadcrumbItemLink.tsx:25](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb/BreadcrumbItemLink.tsx#L25))
+- Links show a focus ring on keyboard focus. ([src/components/Breadcrumb/Breadcrumb.css:54](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb/Breadcrumb.css#L54))
 
 ### Composition
 
@@ -116,7 +116,7 @@ For this component: `import { Breadcrumb } from '@cozy-corner-design-system/comp
 import { Breadcrumb } from '@cozy-corner-design-system/components';
 ```
 
-Subcomponents in this folder: `BreadcrumbItemCurrent`, `BreadcrumbItemLink`, `BreadcrumbItemSeparator`. Source: [src/components/Breadcrumb](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/4fab5eb8099283d987dd4441eec2fe21df1c3420/src/components/Breadcrumb).
+Subcomponents in this folder: `BreadcrumbItemCurrent`, `BreadcrumbItemLink`, `BreadcrumbItemSeparator`. Source: [src/components/Breadcrumb](https://github.com/YINMYOSU10/cozy-corner-design-system/tree/081eda50682f18df146ebfd57f8247360e3b50f7/src/components/Breadcrumb).
 
 ### Props
 
@@ -176,19 +176,6 @@ Subcomponents in this folder: `BreadcrumbItemCurrent`, `BreadcrumbItemLink`, `Br
 - [Item/link/State=Default](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-link-default)
 - [Item/link/State=Hover](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-link-hover)
 - [Item/link/State=Focused](https://cozy-corner-design-system.vercel.app/?path=/story/components-breadcrumb--item-link-focused)
-
-### Themes
-
-- Light: the values on the Code tab.
-- Dark: not available. The Figma export has these modes only: `value`, `light`, `website`, `mobile`, `dashboard`. A dark column cannot be filled in without inventing values.
-
-### Unbound values
-
-<p class="missing"><strong>Not available.</strong> No live Figma read was made for this staged build, so the unbound values of this component are not recorded. data/figma.json holds the node links only.</p>
-
-### Design gaps
-
-<p class="missing"><strong>Not available.</strong> docs/naming-suggestions.md records no design gap against this component.</p>
 
 </TabItem>
 <TabItem label="Changelog">

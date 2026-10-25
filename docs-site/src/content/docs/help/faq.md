@@ -10,5 +10,3 @@ description: Short answers, each from the repo.
 **Does it work with React 18?** The peer dependency is React `^19.3.1`.
 
 **Is there a dark mode?** Not yet: the Figma token export has none.
-
-**Can I run a plain `npm publish`?** No. Releases go through `npm run release:publish -- <version>`; the package is marked `"private": true` as a guard.

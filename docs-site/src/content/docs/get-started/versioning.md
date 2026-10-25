@@ -30,4 +30,4 @@ Removing or renaming a component, a prop, a prop value, an exported type, or a t
 Some Figma property names clash with HTML terms (for example `Type` and `Disable`). They are listed in `docs/naming-suggestions.md` and were accepted as they are for 0.1.0.
 
 
-*Source: [VERSIONING.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/4fab5eb8099283d987dd4441eec2fe21df1c3420/VERSIONING.md) at `4fab5eb`.*
+*Source: [VERSIONING.md](https://github.com/YINMYOSU10/cozy-corner-design-system/blob/081eda50682f18df146ebfd57f8247360e3b50f7/VERSIONING.md) at `081eda5`.*

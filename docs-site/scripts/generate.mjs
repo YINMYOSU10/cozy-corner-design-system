@@ -237,15 +237,10 @@ function commitsFor(p) {
   return out ? out.split('\n').map((l) => { const [H, h, d, s] = l.split('\x1f'); return { H, h, d, s }; }) : [];
 }
 // No release tag exists until the publish: every commit is "unreleased". Phase 2 re-runs with --version.
-const tags = git('tag', '--merged', commit).trim().split('\n').filter(Boolean);
+// Release tags (v<version>), oldest first. A commit shipped in the earliest release tag that contains it.
+const tags = git('tag', '-l', 'v*', '--sort=v:refname').trim().split('\n').filter(Boolean);
 const shippedIn = (c) => {
-  // After the publish, the release tag (v<version>) sits on the release commit, a descendant of the pinned commit.
-  if (published) {
-    const t = `v${published.version}`;
-    try { git('rev-parse', '--verify', `refs/tags/${t}`); git('merge-base', '--is-ancestor', c.H, t); return t; } catch {}
-  }
-  if (!tags.length) return null;
-  for (const t of tags.slice().reverse()) {
+  for (const t of tags) {
     try { git('merge-base', '--is-ancestor', c.H, t); return t; } catch {}
   }
   return null;
@@ -275,7 +270,7 @@ function componentPage(name) {
   const line = (s) => (s.includes(':') ? s : null);
 
   const list = (arr, what) => (arr && arr.length ? arr.map((x) => `- ${esc(x)}`).join('\n') : notice(what));
-  const intentNote = (f) => `${name}.intent.json has no ${f} (no source states it; nothing was invented).`;
+  const intentNote = (f) => `${name}.intent.json has no ${f} (no source states it).`;
 
   // Usage
   const dont = I?.dont_use_when?.length
@@ -351,12 +346,8 @@ function componentPage(name) {
     figmaUrl ? `<iframe class="figma-frame" loading="lazy" allowfullscreen title="${esc(display)} in Figma" src="https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(figmaUrl)}"></iframe>\n\n[Open the Figma node](${figmaUrl}). Figma files can be team-only; if the frame is blank, use the link.` : notice('The board has no Figma link for this component.'),
     '### Variant matrix',
     matrix.length ? `${matrix.length} matrix stories:\n\n${matrix.map((e) => `- [${esc(e.name)}](${sbStoryUrl(e.id)})`).join('\n')}` : notice('No variant-matrix story exists for this component.'),
-    '### Themes',
-    `- Light: the values on the Code tab.\n- Dark: ${hasDarkMode ? 'see the Code tab.' : 'not available. The Figma export has these modes only: ' + modeNames.map((m) => '`' + m + '`').join(', ') + '. A dark column cannot be filled in without inventing values.'}`,
-    '### Unbound values',
-    unbound?.length ? unbound.map((u) => `- ${esc(u)}`).join('\n') : notice(figma.liveReadNote ?? 'No live Figma read of unbound values is recorded in data/figma.json for this component.'),
-    '### Design gaps',
-    gapSec ? `Recorded in [docs/naming-suggestions.md](${GH}/blob/${commit}/docs/naming-suggestions.md), section "${esc(gapSec.head)}":\n\n${gapSec.body.split('\n').filter((l) => l.startsWith('|') || l.startsWith('**Status')).map((l) => (l.startsWith('|') ? l.replace(/[{}<>]/g, (ch) => `&#${ch.charCodeAt(0)};`) : esc(l.replace(/\*\*/g, '')))).join('\n')}` : notice('docs/naming-suggestions.md records no design gap against this component.'),
+    ...(unbound?.length ? ['### Unbound values', unbound.map((u) => `- ${esc(u)}`).join('\n')] : []),
+    ...(gapSec ? ['### Design gaps', `Recorded in [docs/naming-suggestions.md](${GH}/blob/${commit}/docs/naming-suggestions.md), section "${esc(gapSec.head)}":\n\n${gapSec.body.split('\n').filter((l) => l.startsWith('|') || l.startsWith('**Status')).map((l) => (l.startsWith('|') ? l.replace(/[{}<>]/g, (ch) => `&#${ch.charCodeAt(0)};`) : esc(l.replace(/\*\*/g, '').replace(/\(decided by [^,)]+, (\d{4}-\d{2}-\d{2})\)/, '($1)')))).join('\n')}`] : []),
   ].join('\n\n');
 
   // Changelog
@@ -475,27 +466,32 @@ ${order.filter((g) => groups.has(g)).map((g) => `## ${g}\n\n| | Token | Light va
 `,
 );
 
-// Changelog (whole repo)
-const all = commitsFor('.');
+// Changelog: the release entries of CHANGELOG.md (the per-component tabs keep their git-based commit lists)
+const changelogSrc = read('CHANGELOG.md');
+const entries = changelogSrc
+  .split(/^## /m)
+  .slice(1)
+  .map((e) => e.replace(/^\[[^\]]+\]:.*$/gm, '').trim())
+  .filter((e) => /^\[\d/.test(e))
+  .map((e) => e.replace(/^\[([^\]]+)\] - (\S+)/, (_, v, d) => `${v} (${d})`))
+  .map((e) => `## ${e}`);
+if (!entries.length) throw new Error('CHANGELOG.md has no release entries');
 write(
   'get-started/changelog.mdx',
-  `${fm('Changelog', 'Every commit to the repo up to the pinned commit.')}Built from \`git log\` at \`${short}\`. ${published ? `Latest published version: **${esc(published.version)}**.` : `No version has been published yet; the package.json version is **${esc(pkg.version)}**, so every commit below is *unreleased*.`}
+  `${fm('Changelog', 'The release notes of every published version.')}Release notes from [CHANGELOG.md](${GH}/blob/${commit}/CHANGELOG.md) at \`${short}\`. ${published ? `Latest published version: **${esc(published.version)}**.` : ''}
 
-${all.map(commitLine).join('\n')}
+${entries.join('\n\n').replace(/\{/g, '&#123;').replace(/\}/g, '&#125;')}
 `,
 );
 
 // Roadmap: only what a repo file states, no dates, owners or priorities
-const waivers = read('docs/release-waivers.md');
-const before10 = waivers.split('\n').filter((l) => /before 1\.0/i.test(l)).map((l) => l.split('|').filter(Boolean).map((s) => s.trim()));
 write(
   'get-started/roadmap.mdx',
   `${fm('Roadmap', 'What the repo itself says is still open. No dates, owners or priorities are stated.')}This page lists open items that a file in the repo states. It gives no dates, owners or priorities because no source does.
 
 ## Before 1.0
 
-- Figma names that clash with HTML terms were accepted for ${esc(pkg.version)} and "revisit before 1.0" ([docs/naming-suggestions.md](${GH}/blob/${commit}/docs/naming-suggestions.md)).
-${before10.map((r) => `- Waived check ${esc(r[0])} for ${esc(r[1])}: ${esc(r[2])} ([docs/release-waivers.md](${GH}/blob/${commit}/docs/release-waivers.md))`).join('\n')}
+- Figma names that clash with HTML terms were accepted for 0.1.0 and "revisit before 1.0" ([docs/naming-suggestions.md](${GH}/blob/${commit}/docs/naming-suggestions.md)). They may change in a later minor release.
 
 ## Design gaps
 
@@ -576,7 +572,7 @@ export default [
   { label: 'Skills', items: ['skills/knowledge-skill'] },
   { label: 'Core', items: [{ label: 'Components', items: ['core/components', ${eligible.map((n) => `'core/components/${slugify(n)}'`).join(', ')}] }, 'core/tokens'] },
   { label: 'Styling', items: ['styling/theming'] },
-  { label: 'Help', items: ['help/faq', 'help/report-a-bug', 'help/request-a-feature', 'help/contributing', 'help/embedding'] },
+  { label: 'Help', items: ['help/faq', 'help/report-a-bug', 'help/request-a-feature', 'help/contributing'] },
 ];
 `;
 fs.writeFileSync(path.join(site, 'sidebar.generated.mjs'), sidebar);

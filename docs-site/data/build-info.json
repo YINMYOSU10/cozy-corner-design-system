@@ -1,8 +1,8 @@
 {
-  "commit": "4fab5eb8099283d987dd4441eec2fe21df1c3420",
-  "version": "0.1.0",
+  "commit": "081eda50682f18df146ebfd57f8247360e3b50f7",
+  "version": "0.1.1",
   "published": {
-    "version": "0.1.0",
+    "version": "0.1.1",
     "date": "2026-10-21"
   },
   "components": [
@@ -44,7 +44,7 @@
       "stories": 7,
       "props": 4,
       "tokens": 9,
-      "commits": 3,
+      "commits": 4,
       "hasIntent": true,
       "intentEmpty": [
         "placement"
@@ -61,7 +61,7 @@
       "stories": 7,
       "props": 2,
       "tokens": 20,
-      "commits": 3,
+      "commits": 4,
       "hasIntent": true,
       "intentEmpty": [
         "placement"
@@ -93,7 +93,7 @@
       "stories": 15,
       "props": 9,
       "tokens": 34,
-      "commits": 5,
+      "commits": 6,
       "hasIntent": true,
       "intentEmpty": [
         "placement"
@@ -208,7 +208,7 @@
       "stories": 3,
       "props": 1,
       "tokens": 2,
-      "commits": 3,
+      "commits": 4,
       "hasIntent": true,
       "intentEmpty": [
         "placement"
@@ -257,7 +257,7 @@
       "stories": 8,
       "props": 7,
       "tokens": 34,
-      "commits": 3,
+      "commits": 4,
       "hasIntent": true,
       "intentEmpty": [],
       "tokenDrift": 0,
@@ -323,7 +323,7 @@
       "stories": 9,
       "props": 3,
       "tokens": 12,
-      "commits": 4,
+      "commits": 5,
       "hasIntent": true,
       "intentEmpty": [],
       "tokenDrift": 0,
@@ -355,7 +355,7 @@
       "stories": 9,
       "props": 5,
       "tokens": 12,
-      "commits": 3,
+      "commits": 4,
       "hasIntent": true,
       "intentEmpty": [],
       "tokenDrift": 0,
@@ -370,7 +370,7 @@
       "stories": 6,
       "props": 2,
       "tokens": 4,
-      "commits": 4,
+      "commits": 5,
       "hasIntent": true,
       "intentEmpty": [
         "placement"
@@ -387,7 +387,7 @@
       "stories": 6,
       "props": 2,
       "tokens": 4,
-      "commits": 4,
+      "commits": 5,
       "hasIntent": true,
       "intentEmpty": [
         "placement"
@@ -419,7 +419,7 @@
       "stories": 5,
       "props": 5,
       "tokens": 10,
-      "commits": 3,
+      "commits": 4,
       "hasIntent": true,
       "intentEmpty": [],
       "tokenDrift": 0,

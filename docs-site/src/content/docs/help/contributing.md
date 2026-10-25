@@ -1,15 +1,33 @@
 ---
 title: Contributing
-description: How we work in the repo.
+description: Guidelines for contributors.
 ---
 
-From `CLAUDE.md`:
+Thank you for helping. These are the rules the project follows.
 
-- Tokens are the only source of visual values. Never hand-edit `tokens/` or `build/`. Never invent a token: report the gap.
-- Components are PascalCase, one folder each in `src/components/`. Prop names match Figma property names.
-- Every variant and every state has a story. A component's props are its documented API.
+## Tokens
+
+- Tokens are the only source of visual values. Every colour, spacing, radius, font and shadow in a component references a token.
+- Never hand-edit anything in `tokens/` or `build/`. The first is exported from Figma and the second is generated from it.
+- Never invent a token. If the one you need does not exist, report the gap.
+
+## Components
+
+- Component names are PascalCase, one folder each in `src/components/`.
+- Prop names match the Figma property names exactly.
+- Every variant and every state has a story.
 - Import components; never copy their styles.
-- A component branch never merges into `main`; `main` accepts pull requests from `staging` only.
-- A human approves; no agent approves its own work.
 
-Commands: `npm install`, `npm run build:tokens`, `npm run storybook`, `npm test`, `npm run lint`.
+## Pull requests
+
+Pull requests into `main` come from `staging` only.
+
+## Commands
+
+| Job | Command |
+|---|---|
+| Install | `npm install` |
+| Build tokens | `npm run build:tokens` |
+| Run Storybook | `npm run storybook` |
+| Test | `npm test` |
+| Type check | `npm run lint` |
