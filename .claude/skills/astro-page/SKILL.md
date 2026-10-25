@@ -30,7 +30,7 @@ build** instead of vanishing from the navigation:
 | Skills | Knowledge skill |
 | Core | Components (All components, then one page per component), Tokens |
 | Styling | Theming |
-| Help | FAQ, Report a bug, Request a feature, Contributing, Embedding |
+| Help | FAQ, Report a bug, Request a feature, Contributing |
 
 ## Home
 A splash page.
@@ -62,14 +62,16 @@ Then **five tabs, in this order**:
 Every component page uses **the same headings, in the same order**, so a reader always
 knows where to look. A section with no source keeps its heading and shows the missing
 notice (see "A missing source"); it never disappears and never moves.
-The one exception: "Where it goes" is omitted (heading and notice) when no source states a placement.
+The exceptions: "Where it goes", "Unbound values" and "Design gaps" are omitted (heading
+and notice) when no source has content for them. The "Themes" section is not shown on
+component pages (the Theming and FAQ pages say there is no dark mode).
 
 | Tab | Headings, in this order |
 |---|---|
 | Usage | When to use · Where it goes · When not to use · Best practice · Variants · Accessibility · Composition · What this version promises |
 | Examples | Usage example · Stories |
 | Code | Import · Props · Types · Tokens · Storybook props |
-| Design | Figma · Variant matrix · Themes · Unbound values · Design gaps |
+| Design | Figma · Variant matrix · Unbound values · Design gaps (the last two only when they have content) |
 | Changelog | Commits, newest first |
 
 Short blocks, not long prose: bullet lists for rules, a table for variants and props,
@@ -78,6 +80,8 @@ needs a scroll, where the source allows.
 
 ## Generated, never edited by hand
 Home, All components, every component page, Tokens, Changelog, Roadmap.
+The Changelog page is rendered from the release entries of `CHANGELOG.md`, not from
+`git log`. (A component's Changelog tab still lists its git commits.)
 
 **One script, `docs-site/scripts/generate.mjs`, builds them.** Its inputs are:
 - the repo at a **pinned commit** (pass it in; record it on the site);
@@ -87,6 +91,11 @@ Home, All components, every component page, Tokens, Changelog, Roadmap.
 - the **deployed Storybook's `index.json`** (fetch it; `tools.md` gives the URL pattern).
 
 Re-running the script on the same inputs gives the same pages.
+
+## Never on the site
+Internal workflow details never appear on the site: agents, skills, the board, release
+scripts and review reports. Neither do people's names. If a source file contains one,
+change how the generator renders it; do not edit the source file.
 
 ## Written from the repo
 Every guide (Versioning, Upgrading, Developing, Theming, FAQ, and the rest). **Each run
